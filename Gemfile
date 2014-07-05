@@ -48,3 +48,5 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 # gem 'refinerycms-search', '~> 2.1.0'
 # gem 'refinerycms-page-images', '~> 2.1.0'
+
+gem 'refinerycms-products', path: 'vendor/extensions'
