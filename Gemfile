@@ -50,3 +50,12 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 # gem 'refinerycms-page-images', '~> 2.1.0'
 
 gem 'refinerycms-products', path: 'vendor/extensions'
+
+# enables serving assets in production and setting your logger to standard out
+gem 'rails_12factor', group: [:production, :staging]
+gem 'dotenv-rails' #loads .env files into ENV
+gem 'closure_tree'
+
+# Development gems
+gem 'rack-mini-profiler'
+gem 'mailcatcher', group: :development
