@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140705065922) do
+ActiveRecord::Schema.define(version: 20140705073504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,10 @@ ActiveRecord::Schema.define(version: 20140705065922) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "refinery_products", ["slug"], name: "index_refinery_products_on_slug", using: :btree
 
   create_table "refinery_products_categories", force: true do |t|
     t.integer  "parent_id"
@@ -112,7 +115,26 @@ ActiveRecord::Schema.define(version: 20140705065922) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "refinery_products_categories", ["slug"], name: "index_refinery_products_categories_on_slug", using: :btree
+
+  create_table "refinery_products_categories_products", force: true do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  add_index "refinery_products_categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", unique: true, using: :btree
+
+  create_table "refinery_products_category_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "refinery_products_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_udx", unique: true, using: :btree
+  add_index "refinery_products_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
 
   create_table "refinery_resources", force: true do |t|
     t.string   "file_mime_type"
