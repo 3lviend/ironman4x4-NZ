@@ -1,0 +1,25 @@
+development:
+  adapter: postgresql
+  encoding: utf8
+  database: ironman4x4_development
+  username: ironman4x4
+  password: ironman4x4
+  host: localhost
+
+test:
+  adapter: postgresql
+  encoding: utf8
+  database: ironman4x4_test
+  username: ironman4x4
+  password: ironman4x4
+  host: localhost
+
+# This is for local production testing/profiling. Heroku overrides this with
+# it's own connection string
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: ironman4x4_production
+  username: ironman4x4
+  password: ironman4x4
+  host: localhost
