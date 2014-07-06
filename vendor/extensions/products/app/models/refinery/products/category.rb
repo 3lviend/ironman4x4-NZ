@@ -9,7 +9,6 @@ module Refinery
 
       has_and_belongs_to_many :products, :join_table => 'refinery_products_categories_products', :dependent => :destroy
 
-      validates :name, :presence => true, :uniqueness => true
       validates_presence_of :name, :visible
       validates_uniqueness_of :name, scope: :parent_id
 
