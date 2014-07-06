@@ -1,0 +1,30 @@
+<%= form_for [refinery, :products_admin, @vehicle] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @vehicle,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :parent_id -%>
+    <%= f.number_field :parent_id -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :sort_order -%>
+    <%= f.number_field :sort_order -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :visible -%>
+    <%= f.check_box :visible, :checked => @vehicle[:visible] -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.vehicles.admin.vehicles.vehicle'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @vehicle.name) -%>
+<% end -%>

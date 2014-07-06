@@ -1,12 +1,29 @@
 tr:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: Yeni Ekle Vehicle
+            reorder: Tekrar sirala Vehicles
+            reorder_done: Tekrar siralama tamamlandiVehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Vehicles yok henuz.  Tikla "Yeni Ekle Vehicle"
+              eklemek senin ilk vehicle.
+          vehicle:
+            view_live_html: Bunu canlu vehicle goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle vehicle
+            delete: Bunu Sil vehicle sonsuza dek
         categories:
           actions:
             create_new: Yeni Ekle Category
@@ -37,6 +54,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      vehicles:
+        show:
+          other: Diger Vehicles
       categories:
         show:
           other: Diger Categories
@@ -45,6 +65,11 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name

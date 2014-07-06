@@ -1,12 +1,27 @@
 zh-CN:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: 建立新的 Vehicle
+            reorder: 对 Vehicles 重新排序
+            reorder_done: 对 Vehicles 的重新排序结束
+          records:
+            title: Vehicles
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Vehicles . 点击 "Add New Vehicle" 创建一个vehicle.
+          vehicle:
+            view_live_html: 查看 vehicle 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 vehicle
+            delete: 永久删除 vehicle
         categories:
           actions:
             create_new: 建立新的 Category
@@ -33,6 +48,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      vehicles:
+        show:
+          other: 其他 Vehicles
       categories:
         show:
           other: 其他 Categories
@@ -41,6 +59,11 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name

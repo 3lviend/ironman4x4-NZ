@@ -1,12 +1,29 @@
 nl:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: Nieuwe Vehicle toevoegen
+            reorder: De volgorde van de Vehicles wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Vehicle-volgorde
+          records:
+            title: Vehicles
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Vehicles. Druk op 'Nieuwe Vehicle toevoegen'
+              om de eerste toe te voegen.
+          vehicle:
+            view_live_html: Deze vehicle op de website bekijken <br/><em>(opent in
+              een nieuw venster)</em>
+            edit: Bewerk deze vehicle
+            delete: Deze vehicle definitief verwijderen
         categories:
           actions:
             create_new: Nieuwe Category toevoegen
@@ -37,6 +54,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      vehicles:
+        show:
+          other: Andere Vehicles
       categories:
         show:
           other: Andere Categories
@@ -45,6 +65,11 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name

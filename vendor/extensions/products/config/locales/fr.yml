@@ -1,12 +1,28 @@
 fr:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Vehicle
+            reorder: Réordonner les Vehicles
+            reorder_done: Fin de réordonnancement des Vehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Désolé ! Aucun résultat.
+            no_items_yet: Il n'y a actuellement aucun(e) Vehicle. Cliquer sur "Créer
+              un(e) nouve(au/l/lle) Vehicle" pour créer votre premi(er/ère) vehicle.
+          vehicle:
+            view_live_html: Voir ce(t/tte) vehicle <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) vehicle
+            delete: Supprimer définitivement ce(t/tte) vehicle
         categories:
           actions:
             create_new: Créer un(e) nouve(au/l/lle) Category
@@ -35,6 +51,9 @@ fr:
             view_live_html: Voir ce(t/tte) product <br/><em>(Ouvre une nouvelle fenêtre)</em>
             edit: Modifier ce(t/tte) product
             delete: Supprimer définitivement ce(t/tte) product
+      vehicles:
+        show:
+          other: Autres Vehicles
       categories:
         show:
           other: Autres Categories
@@ -43,6 +62,11 @@ fr:
           other: Autres Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name

@@ -1,12 +1,28 @@
 en:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: Add New Vehicle
+            reorder: Reorder Vehicles
+            reorder_done: Done Reordering Vehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Vehicles yet. Click "Add New Vehicle" to add
+              your first vehicle.
+          vehicle:
+            view_live_html: View this vehicle live <br/><em>(opens in a new window)</em>
+            edit: Edit this vehicle
+            delete: Remove this vehicle forever
         categories:
           actions:
             create_new: Add New Category
@@ -35,6 +51,9 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      vehicles:
+        show:
+          other: Other Vehicles
       categories:
         show:
           other: Other Categories
@@ -43,6 +62,11 @@ en:
           other: Other Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name

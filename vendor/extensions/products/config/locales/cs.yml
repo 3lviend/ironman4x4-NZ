@@ -1,12 +1,28 @@
 cs:
   refinery:
     plugins:
+      vehicles:
+        title: Vehicles
       categories:
         title: Categories
       products:
         title: Products
     products:
       admin:
+        vehicles:
+          actions:
+            create_new: Přidat Vehicle
+            reorder: Řadit Vehicles
+            reorder_done: Konec řazení Vehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Vehicles. Zvolte "Přidat Vehicle"
+              pro přidání prvního vehicle.
+          vehicle:
+            view_live_html: Zobrazit náhled vehicle<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit vehicle
+            delete: Smazat vehicle
         categories:
           actions:
             create_new: Přidat Category
@@ -35,6 +51,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      vehicles:
+        show:
+          other: Další Vehicles
       categories:
         show:
           other: Další Categories
@@ -43,6 +62,11 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
       refinery/products/category:
         parent_id: Parent
         name: Name
