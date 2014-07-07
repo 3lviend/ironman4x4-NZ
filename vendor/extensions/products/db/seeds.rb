@@ -1,10 +1,10 @@
 #Dir[File.join(Rails.root, 'vendor', 'extensions', 'products', 'db', 'seeds', '*.rb')].sort.each { |seed| load seed }
 
-#load 'db/seeds/01_users.rb'
-#load 'db/seeds/02_vehicles.rb'
-#load 'db/seeds/03_categories.rb'
-#load 'db/seeds/04_accessory_products.rb'
-#load 'db/seeds/05_suspension_products.rb'
+#load 'vendor/extensions/products/db/seeds/01_users.rb'
+#load 'vendor/extensions/products/db/seeds/02_vehicles.rb'
+#load 'vendor/extensions/products/db/seeds/03_categories.rb'
+load 'vendor/extensions/products/db/seeds/04_accessory_products.rb'
+load 'vendor/extensions/products/db/seeds/05_suspension_products.rb'
 
 Refinery::I18n.frontend_locales.each do |lang|
   I18n.locale = lang
