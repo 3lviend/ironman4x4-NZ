@@ -3,7 +3,9 @@ module Refinery
     class Product < Refinery::Core::BaseModel
       extend FriendlyId
 
-      friendly_id :name, use: [:slugged, :history]
+      #TODO: find out why history isn't working with friendly_id and refinery
+      #friendly_id :name, use: [:slugged, :history]
+      friendly_id :name, use: :slugged
       acts_as_indexed :fields => [:product_no, :name, :description]
 
       self.table_name = 'refinery_products'
