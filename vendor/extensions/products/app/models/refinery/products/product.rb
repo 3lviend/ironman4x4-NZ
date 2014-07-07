@@ -13,7 +13,8 @@ module Refinery
       has_and_belongs_to_many :categories, :join_table => 'refinery_products_categories_products', touch: true
       has_and_belongs_to_many :vehicles, :join_table => 'refinery_products_vehicles_products', touch: true
 
-      validates_uniqueness_of :product_no
+      #TODO: turn back on once duplicate product_no's have been sorted
+      #validates_uniqueness_of :product_no
       validates_presence_of :product_no, :name, :quantity_required
 
       after_initialize do
