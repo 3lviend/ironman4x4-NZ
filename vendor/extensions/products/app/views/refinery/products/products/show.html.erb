@@ -1,3 +1,9 @@
+<% @layout_fit_my_car = 'below' %>
+
+<% content_for :page_header do %>
+  <%= @product.name %>
+<% end %>
+
 <% content_for :body_content_title do %>
   <%= @product.product_no %>
 <% end %>

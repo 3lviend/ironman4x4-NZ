@@ -1,0 +1,22 @@
+@import "bootstrap/variables";
+
+$white: #FFFFFF;
+$black: #000000;
+$dark-grey: #808080;
+$medium-grey: #999999;
+$grey: #B3B3B3;
+$light-grey: #CCCCCC;
+$lighter-grey: #E6E6E6;
+$off-white: #F2F2F2;
+
+$navbar-default-bg: $dark-grey;
+$navbar-default-border: $dark-grey;
+$navbar-default-link-color: $black;
+$navbar-default-link-hover-color: $white;
+$navbar-border-radius: 0;
+
+/* Put bootstrap customizations here: */
+/*$grid-gutter-width: 24px;*/
+/*$grid-float-breakpoint: $screen-md;*/
+
+@import "bootstrap";

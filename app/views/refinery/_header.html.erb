@@ -1,0 +1,13 @@
+<%= render :partial => 'layouts/first_nav' if @layout_first_nav.nil? or @layout_first_nav %>
+<%= render :partial => 'layouts/second_nav' if @layout_second_nav.nil? or @layout_second_nav %>
+<%= render :partial => 'layouts/heading' if @layout_heading.nil? or @layout_heading or content_for?(:page_header) %>
+<%= render :partial => 'layouts/photo_slideshow' if @layout_photo_slideshow.present? or @layout_photo_slideshow or content_for?(:photo_slideshow) %>
+<%= render :partial => 'layouts/fit_my_car' if @layout_fit_my_car.nil? or @layout_fit_my_car == 'above' %>
+<%= render :partial => 'layouts/breadcrumbs' if @layout_breadcrumbs.nil? or @layout_breadcrumbs %>
+
+<!--
+<h1 id='logo'>
+  <%= link_to Refinery::Core.site_name, refinery.root_path %>
+</h1>
+<%= Refinery::Pages::MenuPresenter.new(refinery_menu_pages, self).to_html %>
+-->

@@ -55,6 +55,10 @@ gem 'refinerycms-products', path: 'vendor/extensions'
 gem 'rails_12factor', group: [:production, :staging]
 gem 'dotenv-rails' #loads .env files into ENV
 gem 'closure_tree'
+gem 'gretel', github: 'asgeo1/gretel', branch:'make_breadcrumb_key_public'
+
+gem 'modernizr-rails'
+gem 'bootstrap-sass'
 
 # Development gems
 gem 'rack-mini-profiler'

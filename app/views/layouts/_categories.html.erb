@@ -1,0 +1,29 @@
+<% cache(cache_key_for_categories) do %>
+  <div id="layout-categories">
+    <div class="container">
+      <div class="toggle"></div>
+      <div class="categories">
+      <% Refinery::Products::Category.roots.each do |top_category| %>
+        <ul class="category">
+          <li class="top-level">
+            <% if top_category.leaf? %>
+            <%= link_to top_category.name, refinery.category_products_path(top_category) %>
+            <% else %>
+            <%= link_to top_category.name, refinery.product_categories_path(top_category) %>
+            <% end %>
+          </li>
+          <% top_category.children.each do |subcategory| %>
+          <li>
+            <% if top_category.leaf? %>
+            <%= link_to subcategory.name, refinery.subcategory_products_path(subcategory.parent, subcategory) %>
+            <% else %>
+            <%= link_to subcategory.name, refinery.product_subcategories_path(subcategory.parent, subcategory) %>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

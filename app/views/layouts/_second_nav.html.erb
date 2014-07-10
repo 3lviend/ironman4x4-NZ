@@ -1,0 +1,40 @@
+  <div id="second-nav">
+    <div class="container">
+      <div class="logo">
+        <h1><%= t('.logo.title') %></h1>
+      </div>
+
+      <ul class="sections">
+        <li>
+          <%= link_to refinery.products_products_path do %>
+            <%= image_tag 'nav_icon_products.png' %>
+            <div class="link-text"><%= t('.nav.products') %><div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to refinery.root_path do %>
+            <%= image_tag 'nav_icon_fitmycar.png' %>
+            <div class="link-text"><%= t('.nav.fitmycar') %><div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to refinery.root_path do %>
+            <%= image_tag 'nav_icon_stores.png' %>
+            <div class="link-text"><%= t('.nav.stores') %><div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to refinery.root_path do %>
+            <%= image_tag 'nav_icon_technical.png' %>
+            <div class="link-text"><%= t('.nav.technical') %><div>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to refinery.root_path do %>
+            <%= image_tag 'nav_icon_wishlist.png' %>
+            <div class="link-text"><%= t('.nav.wish_list') %><div>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>

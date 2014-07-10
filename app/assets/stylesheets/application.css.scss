@@ -1,0 +1,385 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require refinery/formatting
+ *= require refinery/theme
+ *= require_self
+ *= require products
+ */
+
+@import "bootstrap-config";
+
+.navbar-default {
+  .navbar-nav {
+    > li > a {
+      text-transform: uppercase;
+    }
+  }
+}
+
+/* new class, so submit button in navbar can be grouped with search input */
+.navbar-input-group {
+  @media (min-width: $screen-sm) {
+    font-size: 0px; /*removes whitespace between button and input*/
+
+    input {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+    .btn {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-left: 0px;
+    }
+  }
+  @media (max-width: $screen-xs-max) {
+    margin-top:0px;
+    margin-bottom:0px;
+
+    .btn {
+      width:100%;
+    }
+  }
+}
+
+#layout-first-nav {
+}
+
+#second-nav {
+  .logo {
+    width: 305px;
+    height: 134px;
+    background-color: $medium-grey;
+    text-indent: -99999px;
+    background-image: image-url('nav_logo.png');
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+  }
+
+  ul.sections {
+    margin-top: 38px;
+    margin-bottom: 0;
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    float: right;
+    height: 96px;
+
+    li {
+      display: inline-block;
+      text-align: center;
+      width: 84px;
+
+      .link-text {
+        text-transform: uppercase;
+        margin-top: $line-height-computed/2;
+      }
+
+      a {
+        display: block;
+
+        img {
+          margin-left: auto;
+          margin-right: auto;
+          display:block;
+          width: 66px;
+          height: 66px;
+        }
+      }
+    }
+  }
+
+  margin-bottom: $line-height-computed;
+}
+
+#layout-photo-slideshow {
+  height: 377px;
+  background-color: $light-grey;
+}
+
+#layout-fit-my-car {
+  min-height: 114px;
+  background-color: $dark-grey;
+
+  .icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 19px;
+  }
+
+  .description {
+    margin-left: 20px;
+    margin-top: 19px;
+    width: 193px;
+    display: inline-block;
+
+    h3 {
+      margin: 0;
+      text-transform: uppercase;
+    }
+
+    div {
+      line-height: 96%;
+    }
+  }
+
+  .vehicle-selector {
+    margin-top: 32px;
+    display: inline-block;
+    vertical-align: top;
+    float: right;
+
+    .selector {
+      display: inline-block;
+      height: 51px;
+      box-sizing: border-box;
+      background-color: $white;
+      border: 1px solid $black;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      display: block;
+      float: none;
+
+      .selector {
+        display: block;
+        margin-bottom: $grid-gutter-width / 4;
+      }
+    }
+
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: $screen-sm-min) {
+      .make {
+        width: 100px;
+        margin-right: 16px;
+      }
+
+      .model {
+        width: 181px;
+        margin-right: 16px;
+      }
+
+      .series {
+        width: 104px;
+      }
+    }
+
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: $screen-md-min) {
+      .make {
+        width: 190px;
+        margin-right: 16px;
+      }
+
+      .model {
+        width: 301px;
+        margin-right: 16px;
+      }
+
+      .series {
+        width: 104px;
+      }
+    }
+
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: $screen-lg-min) {
+      .make {
+        width: 207px;
+        margin-right: 16px;
+      }
+
+      .model {
+        width: 371px;
+        margin-right: 16px;
+      }
+
+      .series {
+        width: 104px;
+      }
+    }
+  }
+}
+
+#layout-social {
+  min-height: 114px;
+  background-color: $dark-grey;
+
+  .icons {
+    margin-top: 24px;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+
+    .icon {
+      display: inline-block;
+      background-color: $grey;
+      width: 66px;
+      height: 66px;
+      margin-right: 36px;
+      text-indent: -99999px;
+    }
+  }
+
+  form {
+    display: inline-block;
+    float: right;
+    margin-top: 20px;
+    margin-bottom: $line-height-computed;
+
+    .description {
+      text-align: left;
+    }
+
+    input {
+      display: inline-block;
+      height: 51px;
+      width: 513px;
+      box-sizing: border-box;
+      background-color: $white;
+      border: 1px solid $black;
+      text-align: center;
+    }
+  }
+}
+
+#layout-categories {
+  background-color: $off-white;
+
+  .categories {
+    margin-top: $line-height-computed*1.5;
+    margin-bottom: $line-height-computed;
+    -moz-column-gap: 28px;
+    -webkit-column-gap: 28px;
+    column-gap: 28px;
+
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: $screen-sm-min) {
+      -webkit-column-count: 3;
+      -moz-column-count: 3;
+      column-count: 3;
+    }
+
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: $screen-md-min) {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+    }
+
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: $screen-lg-min) {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+    }
+
+    .category {
+      list-style-type: none;
+      padding: 0;
+      display: inline-block;
+      width: 100%;
+
+      .top-level {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+#layout-footer {
+  background-color: $dark-grey;
+  padding-top: $line-height-computed;
+
+  dl {
+    vertical-align: top;
+  }
+
+  a {
+    color: $black;
+  }
+}
+
+#layout-acknowledgements {
+  min-height: 64px;
+  line-height: 64px;
+
+  .copyright {
+    display: inline-block;
+    float: left;
+  }
+
+  .designed_by {
+    display: inline-block;
+    float: right;
+  }
+}
+
+#layout-heading {
+  height: 112px;
+  background-color: $lighter-grey;
+
+  .page-header {
+    display: inline-block;
+    padding-bottom: 0;
+    margin: 0;
+    line-height: 112px;
+    border: none;
+  }
+
+  .icons {
+    float: right;
+    margin-top: 38px;
+    display: inline-block;
+    list-style-type: none;
+    padding: 0;
+
+    .icon {
+      display: inline-block;
+      background-color: $grey;
+      width: 36px;
+      height: 36px;
+      margin-left: 36px;
+      text-indent: -99999px;
+    }
+  }
+}
+
+#layout-breadcrumbs {
+  .breadcrumb {
+    padding-left: 0;
+    background-color: $white;
+    font-size: 70%;
+    color: $dark-grey;
+
+    &> li + li:before {
+      /*content: "/\00a0";*/
+      /*padding: 0 5px;*/
+      content: "\2192";
+      color: $dark-grey;
+    }
+
+    a {
+      color: $dark-grey;
+    }
+  }
+}
+
+#layout-main {
+  @media (min-width: $screen-sm-min) {
+    min-height: 250px;
+  }
+}

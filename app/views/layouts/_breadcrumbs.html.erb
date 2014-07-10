@@ -1,0 +1,26 @@
+<% if @_gretel_renderer.present? %>
+<% cache([@_gretel_renderer.breadcrumb_key, @_gretel_renderer.breadcrumb_args]) do %>
+<% breadcrumbs.tap do |links| %>
+  <% if links.any? %>
+<div class="breadcrumbs breadcrumbs-fixed" id="layout-breadcrumbs">
+  <div class="container">
+    <ul class="breadcrumb">
+      <% links.each do |link| %>
+      <li<%= ' class="current"' if link.current? %>>
+        <% if link.icon.present? %>
+        <i class="ace-icon<%= " #{link.icon}" %>"></i>
+        <% end %>
+        <% if link.current? %>
+        <%= link.text %>
+        <% else %>
+        <%= link_to link.text, link.url %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+  <% end %>
+<% end %>
+<% end %>
+<% end %>

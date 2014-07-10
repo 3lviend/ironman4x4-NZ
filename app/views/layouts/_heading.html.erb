@@ -1,0 +1,14 @@
+<% if content_for?(:page_header) %>
+<div id="layout-heading">
+  <div class="container">
+    <h1 class="page-header"><%= yield :page_header %></h1>
+
+    <ul class="icons">
+      <li class="icon facebook"><%= t('.social.links.facebook') %></li><!--
+      --><li class="icon twitter"><%= t('.social.links.twitter') %></li><!--
+      --><li class="icon pinterest"><%= t('.social.links.pinterest') %></li><!--
+      --><li class="icon youtube"><%= t('.social.links.youtube') %></li>
+    </ul>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,125 @@
+@import "bootstrap-config";
+
+.product-category-filters {
+  .form-group {
+    margin-right: 20px;
+  }
+}
+
+#page-product-categories, #page-product-list {
+  margin: 0;
+  padding: 0;
+
+  .category-container, .product-container {
+    padding-bottom: $grid-gutter-width;
+    display: block;
+
+    .category, .product {
+      border: 2px solid $black;
+      color: $black;
+      display: block;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      .photo {
+        overflow: hidden;
+        box-sizing: content-box;
+        border-bottom: 2px solid $black;
+
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .content {
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+
+        h3 {
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+
+        .description {
+          margin-top: 12px;
+          margin-bottom: 12px;
+        }
+      }
+    }
+
+    .product {
+      .price {
+        font-size: 26px;
+
+        .inc_gst {
+          font-size: 10px;
+        }
+      }
+
+      .buttons {
+        @media (max-width: $screen-xs-max) {
+          .view-product, .add-to-wishlist {
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: $grid-gutter-width/2;
+          }
+        }
+
+        @media (min-width: $screen-sm-min) {
+          .view-product {
+            padding-left: 0;
+            padding-right: $grid-gutter-width/8;
+          }
+
+          .add-to-wishlist {
+            padding-left: $grid-gutter-width/8;
+            padding-right: 0;
+          }
+        }
+      }
+    }
+
+    /* Small devices (tablets, 768px and up) */
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      &:nth-child(2n+3) {
+        clear: left;
+      }
+
+      .category {
+        .photo {
+          height: 208px;
+        }
+      }
+    }
+
+    /* Medium devices (desktops, 992px and up) */
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      &:nth-child(3n+4) {
+        clear: left;
+      }
+
+      .category {
+        .photo {
+          height: 179px;
+        }
+      }
+    }
+
+    /* Large devices (large desktops, 1200px and up) */
+    @media (min-width: $screen-lg-min) {
+      &:nth-child(4n+5) {
+        clear: left;
+      }
+
+      .category {
+        .photo {
+          height: 160px;
+        }
+      }
+    }
+  }
+}

@@ -1,11 +1,64 @@
+<% content_for :page_header do %>
+  <% if @this_category.present? %>
+  <%= @this_category.name %>
+  <% breadcrumb :category, @this_category %>
+  <% end %>
+<% end %>
+
 <% content_for :body do %>
-  <ul id="products">
-    <% @products.each do |product| %>
-      <li>
-        <%= link_to product.product_no, refinery.products_product_path(product) %>
-      </li>
+<% cache(@this_category) do %>
+<%= render :partial => 'refinery/products/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
+
+<% if @products.present? and @products.empty? %>
+  <p><%= t('.no_products_found') %></p>
+<% end %>
+
+<% if @products.present? %>
+<ul id="page-product-list" class="clearfix">
+<% @products.each do |product| %>
+  <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
+    <% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
+    <% elsif @category.present? and @subcategory.present? %>
+    <% url = refinery.products_subcategory_product_path(@subcategory, @category, product) %>
+    <% elsif @category.present? %>
+    <% url = refinery.products_category_product_path(@category, product) %>
+    <% else %>
+    <% url = refinery.products_products_path %>
     <% end %>
-  </ul>
+
+    <div class="product">
+      <div class="photo"><!--
+        --><%= image_tag 'product_list_photo_default.png' %><!--
+      --></div>
+      <div class="content">
+        <h3><%= product.name %></h3>
+        <div class="product_no"><%= product.product_no %></div>
+        <% if product.price.present? %>
+        <div class="price"><%= number_to_currency product.price %> <span class="inc_gst"><%= t('.inc_gst') %></span></div>
+        <% end %>
+        <div class="description">
+          <% if product.description.present? %>
+          <%= product.description %>
+          <% else %>
+          <%= t('.default_product_description') %>
+          <% end %>
+        </div>
+        <div class="buttons clearfix">
+          <div class="view-product col-sm-6">
+            <%= link_to t('.buttons.view_product'), url, class: 'btn btn-default btn-block' %>
+          </div>
+          <div class="add-to-wishlist col-sm-6">
+            <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-default btn-block' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+<% end %>
+</ul>
+<% end %>
+<% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>
