@@ -44,6 +44,7 @@ gem 'refinerycms-i18n', :github => 'refinery/refinerycms-i18n'
 
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
+gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 'take-2'
 # gem 'refinerycms-blog', '~> 2.1.0'
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 # gem 'refinerycms-search', '~> 2.1.0'

@@ -7,6 +7,14 @@ GIT
       rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/parndt/refinerycms-wymeditor.git
+  revision: b9c1c9c395fde14e4fb298b6e32f632b95dfc19f
+  branch: take-2
+  specs:
+    refinerycms-wymeditor (0.0.1)
+      refinerycms-core (>= 3.0.0.dev)
+
+GIT
   remote: git://github.com/refinery/refinerycms-acts-as-indexed.git
   revision: 44ee42364a13389ba7ce3bb7371021cf388c64a6
   specs:
@@ -335,6 +343,7 @@ DEPENDENCIES
   refinerycms-acts-as-indexed!
   refinerycms-i18n!
   refinerycms-products!
+  refinerycms-wymeditor!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
