@@ -60,7 +60,8 @@ en:
       support:
         description: 'Support'
         fitting_information: 'Fitting Information'
-        technical_support: 'Technical Support'
+        technical_information: 'Technical Support'
+        faqs: 'FAQs'
       warranty:
         description: 'Warranty'
         terms: 'Warranty Terms'
