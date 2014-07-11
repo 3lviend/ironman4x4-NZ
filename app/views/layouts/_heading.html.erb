@@ -1,7 +1,15 @@
-<% if content_for?(:page_header) %>
+<% if content_for?(:page_header) or content_for?(:body_content_title) or page_title.present? %>
 <div id="layout-heading">
   <div class="container">
-    <h1 class="page-header"><%= yield :page_header %></h1>
+    <h1 class="page-header">
+      <% if content_for?(:page_header) %>
+        <%= yield :page_header %>
+      <% elsif content_for?(:body_content_title) %>
+        <%= yield :body_content_title %></span>
+      <% elsif page_title.present? %>
+        <%= page_title %>
+      <% end %>
+    </h1>
 
     <ul class="icons">
       <li class="icon facebook"><%= t('.social.links.facebook') %></li><!--
