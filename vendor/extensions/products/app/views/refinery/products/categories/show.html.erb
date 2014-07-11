@@ -8,10 +8,6 @@
   hello
 <% end %>
 
-<% content_for :body_content_title do %>
-  <%= @category.name %>
-<% end %>
-
 <% content_for :body do %>
 <% breadcrumb :category_info, @category %>
 
