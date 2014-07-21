@@ -47,7 +47,6 @@ module Refinery
       end
 
     protected
-
       def find_all_categories
         @categories = Category.order('position ASC')
       end
