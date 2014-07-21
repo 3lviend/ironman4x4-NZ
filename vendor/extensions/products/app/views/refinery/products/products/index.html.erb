@@ -38,8 +38,8 @@
         <div class="price"><%= number_to_currency product.price %> <span class="inc_gst"><%= t('.inc_gst') %></span></div>
         <% end %>
         <div class="description">
-          <% if product.description.present? %>
-          <%= product.description %>
+          <% if product.short_description.present? %>
+          <%= product.short_description %>
           <% else %>
           <%= t('.default_product_description') %>
           <% end %>

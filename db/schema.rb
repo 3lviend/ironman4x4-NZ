@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706223552) do
+ActiveRecord::Schema.define(version: 20140721083048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 20140706223552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "short_description"
   end
 
   add_index "refinery_products", ["slug"], name: "index_refinery_products_on_slug", using: :btree
@@ -116,6 +117,7 @@ ActiveRecord::Schema.define(version: 20140706223552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "short_description"
   end
 
   add_index "refinery_products_categories", ["slug"], name: "index_refinery_products_categories_on_slug", using: :btree

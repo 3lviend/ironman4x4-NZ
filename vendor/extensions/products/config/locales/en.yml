@@ -65,7 +65,7 @@ en:
             view_product_listing: 'View Product Listing'
         index:
           page_header: 'Products'
-          default_product_description: 'Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum'
+          default_category_description: 'Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum'
           buttons:
             view_product_range: 'View Product Range'
             view_category_info: 'View Category Info'

@@ -58,10 +58,10 @@
       <div class="content">
         <h3><%= category.name %></h3>
         <div class="description">
-          <% if category.description.present? %>
-          <%= category.description %>
+          <% if category.short_description.present? %>
+          <%= category.short_description %>
           <% else %>
-          <%= t('.default_product_description') %>
+          <%= t('.default_category_description') %>
           <% end %>
         </div>
         <% if @this_category.nil? %>

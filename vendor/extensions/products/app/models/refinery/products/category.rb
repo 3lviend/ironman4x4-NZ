@@ -5,7 +5,7 @@ module Refinery
 
       friendly_id :name, use: :slugged
       acts_as_tree name_column: 'name', order: 'sort_order', touch: true
-      acts_as_indexed :fields => [:name, :description]
+      acts_as_indexed :fields => [:name, :description, :short_description]
 
       has_and_belongs_to_many :products, :join_table => 'refinery_products_categories_products', :dependent => :destroy
 
