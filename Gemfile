@@ -47,7 +47,7 @@ gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed
 gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 'take-2'
 # gem 'refinerycms-blog', '~> 2.1.0'
 # gem 'refinerycms-inquiries', '~> 2.1.0'
-# gem 'refinerycms-search', :github => 'refinery/refinerycms-search'
+gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'
 # gem 'refinerycms-page-images', '~> 2.1.0'
 
 gem 'refinerycms-products', path: 'vendor/extensions'

@@ -80,6 +80,14 @@ GIT
       dragonfly-s3_data_store (~> 1.0.0)
       refinerycms-core (= 3.0.0)
 
+GIT
+  remote: git://github.com/wantedtech/refinerycms-search.git
+  revision: ff4c48c4858bc01689196bd7dcf3920909c6d6da
+  specs:
+    refinerycms-search (2.1.0)
+      refinerycms-acts-as-indexed (~> 1.0.0)
+      refinerycms-core (>= 2.1.0)
+
 PATH
   remote: vendor/extensions
   specs:
@@ -343,6 +351,7 @@ DEPENDENCIES
   refinerycms-acts-as-indexed!
   refinerycms-i18n!
   refinerycms-products!
+  refinerycms-search!
   refinerycms-wymeditor!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
