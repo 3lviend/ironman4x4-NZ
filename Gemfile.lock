@@ -91,6 +91,9 @@ GIT
 PATH
   remote: vendor/extensions
   specs:
+    refinerycms-posts (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
     refinerycms-products (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
@@ -350,6 +353,7 @@ DEPENDENCIES
   refinerycms!
   refinerycms-acts-as-indexed!
   refinerycms-i18n!
+  refinerycms-posts!
   refinerycms-products!
   refinerycms-search!
   refinerycms-wymeditor!

@@ -51,6 +51,7 @@ gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'
 # gem 'refinerycms-page-images', '~> 2.1.0'
 
 gem 'refinerycms-products', path: 'vendor/extensions'
+gem 'refinerycms-posts', path: 'vendor/extensions'
 
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: [:production, :staging]

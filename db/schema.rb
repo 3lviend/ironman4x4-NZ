@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723061256) do
+ActiveRecord::Schema.define(version: 20140723074749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,22 @@ ActiveRecord::Schema.define(version: 20140723061256) do
   add_index "refinery_pages", ["lft"], name: "index_refinery_pages_on_lft", using: :btree
   add_index "refinery_pages", ["parent_id"], name: "index_refinery_pages_on_parent_id", using: :btree
   add_index "refinery_pages", ["rgt"], name: "index_refinery_pages_on_rgt", using: :btree
+
+  create_table "refinery_posts", force: true do |t|
+    t.string   "type"
+    t.string   "title"
+    t.text     "teaser"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "index_image_id"
+    t.integer  "hero_image_id"
+    t.datetime "published_at"
+    t.datetime "expire_at"
+    t.boolean  "draft"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "refinery_products", force: true do |t|
     t.string   "product_no"
