@@ -14,7 +14,7 @@
     <%= link_to refinery_icon_tag("delete.png"), refinery.posts_admin_post_path(post),
         :class => "cancel confirm-delete",
         :title => t('.delete'),
-        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => post.type)},
+        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => post.title)},
         :method => :delete %>
   </span>
 </li>
