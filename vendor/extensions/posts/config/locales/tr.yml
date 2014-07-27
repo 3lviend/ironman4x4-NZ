@@ -23,7 +23,14 @@ tr:
           other: Diger Posts
   activerecord:
     attributes:
-      'refinery/posts/post':
+      refinery/posts/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/posts/post:
         type: Type
         title: Title
         teaser: Teaser
