@@ -13,6 +13,24 @@ Refinery::Core::Engine.routes.draw do
           post :update_positions
         end
       end
+
+      resources :blog_posts, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
+      resources :events, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
+      resources :news_items, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
     end
   end
 
