@@ -9,8 +9,8 @@ describe Refinery do
 
         describe "posts list" do
           before do
-            FactoryGirl.create(:post, :type => "UniqueTitleOne")
-            FactoryGirl.create(:post, :type => "UniqueTitleTwo")
+            FactoryGirl.create(:post, :title => "UniqueTitleOne")
+            FactoryGirl.create(:post, :title => "UniqueTitleTwo")
           end
 
           it "shows two items" do
@@ -29,7 +29,7 @@ describe Refinery do
 
           context "valid data" do
             it "should succeed" do
-              fill_in "Type", :with => "This is a test of the first string field"
+              fill_in "Title", :with => "This is a test of the first string field"
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")
@@ -41,20 +41,20 @@ describe Refinery do
             it "should fail" do
               click_button "Save"
 
-              page.should have_content("Type can't be blank")
+              page.should have_content("Title can't be blank")
               Refinery::Posts::Post.count.should == 0
             end
           end
 
           context "duplicate" do
-            before { FactoryGirl.create(:post, :type => "UniqueTitle") }
+            before { FactoryGirl.create(:post, :title => "UniqueTitle") }
 
             it "should fail" do
               visit refinery.posts_admin_posts_path
 
               click_link "Add New Post"
 
-              fill_in "Type", :with => "UniqueTitle"
+              fill_in "Title", :with => "UniqueTitle"
               click_button "Save"
 
               page.should have_content("There were problems")
@@ -65,7 +65,7 @@ describe Refinery do
         end
 
         describe "edit" do
-          before { FactoryGirl.create(:post, :type => "A type") }
+          before { FactoryGirl.create(:post, :title => "A title") }
 
           it "should succeed" do
             visit refinery.posts_admin_posts_path
@@ -74,16 +74,16 @@ describe Refinery do
               click_link "Edit this post"
             end
 
-            fill_in "Type", :with => "A different type"
+            fill_in "Title", :with => "A different title"
             click_button "Save"
 
-            page.should have_content("'A different type' was successfully updated.")
-            page.should have_no_content("A type")
+            page.should have_content("'A different title' was successfully updated.")
+            page.should have_no_content("A title")
           end
         end
 
         describe "destroy" do
-          before { FactoryGirl.create(:post, :type => "UniqueTitleOne") }
+          before { FactoryGirl.create(:post, :title => "UniqueTitleOne") }
 
           it "should succeed" do
             visit refinery.posts_admin_posts_path
