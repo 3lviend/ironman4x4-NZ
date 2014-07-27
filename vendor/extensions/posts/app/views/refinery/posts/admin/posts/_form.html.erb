@@ -25,14 +25,26 @@
     <%= f.number_field :user_id -%>
   </div>
 
-  <div class='field'>
-    <%= f.label :index_image_id -%>
-    <%= f.number_field :index_image_id -%>
+  <div class="field">
+    <%= f.label :index_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :index_image_id,
+      :image => f.object.index_image,
+      :toggle_image_display => false
+    }
+    %>
   </div>
 
-  <div class='field'>
-    <%= f.label :hero_image_id -%>
-    <%= f.number_field :hero_image_id -%>
+  <div class="field">
+    <%= f.label :hero_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :hero_image_id,
+      :image => f.object.hero_image,
+      :toggle_image_display => false
+    }
+    %>
   </div>
 
   <div class='field'>
