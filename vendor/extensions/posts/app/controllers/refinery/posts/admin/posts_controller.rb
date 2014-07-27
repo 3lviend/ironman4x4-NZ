@@ -9,9 +9,9 @@ module Refinery
 
       protected
         def post_params
-          params.require(:post).permit(:type, :title,
-            :teaser, :body, :published_at, :expire_at, :draft,
-            :locale)
+          params.require(:post).permit(:type, :title, :teaser, :body,
+            :published_at, :expire_at, :draft, :locale, :index_image_id,
+            :hero_image_id)
         end
       end
     end
