@@ -30,7 +30,7 @@
   <section>
     <h1>User</h1>
     <p>
-      <%=raw @post.user_id %>
+      <%=raw @post.author.username if @post.author.present? %>
     </p>
   </section>
   <section>

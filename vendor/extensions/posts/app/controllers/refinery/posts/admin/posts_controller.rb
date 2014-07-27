@@ -7,6 +7,10 @@ module Refinery
                 :title_attribute => 'type',
                 :xhr_paging => true
 
+        def new
+          @post = ::Refinery::Posts::Post.new(:author => current_refinery_user)
+        end
+
       protected
         def post_params
           params.require(:post).permit(:type, :title, :teaser, :body,

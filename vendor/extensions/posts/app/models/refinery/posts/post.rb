@@ -10,6 +10,7 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      belongs_to :author, proc { readonly(true) }, :class_name => Refinery::User.to_s, :foreign_key => :user_id
 
       # Add an association to the Refinery::Image class, so we
       # can take advantage of the magic that the class provides
