@@ -2,7 +2,7 @@
   <ul id="posts">
     <% @posts.each do |post| %>
       <li>
-        <%= link_to post.type, refinery.posts_post_path(post) %>
+        <%= link_to post.title, refinery.posts_post_path(post) %>
       </li>
     <% end %>
   </ul>
