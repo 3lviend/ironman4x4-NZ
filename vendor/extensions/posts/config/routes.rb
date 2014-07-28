@@ -10,6 +10,8 @@ Refinery::Core::Engine.routes.draw do
     namespace :admin, :path => Refinery::Core.backend_route do
       resources :posts, :except => :show do
         collection do
+          # NOTE: there is no position column on these models, but still need
+          # this for some reason...
           post :update_positions
         end
       end

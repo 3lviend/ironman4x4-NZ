@@ -22,7 +22,7 @@ module Refinery
     protected
 
       def find_all_posts
-        @posts = Post.order('position ASC')
+        @posts = Post.order('published_at ASC')
       end
 
       def find_page
