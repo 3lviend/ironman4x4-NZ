@@ -4,7 +4,7 @@ module Refinery
       class PostsController < ::Refinery::AdminController
 
         crudify :'refinery/posts/post',
-                :title_attribute => 'type',
+                :title_attribute => 'title',
                 :xhr_paging => true
 
         def new
