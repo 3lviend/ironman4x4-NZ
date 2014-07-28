@@ -21,6 +21,10 @@ en:
           form:
             author: Author
             author_help: Set which user this post will show as the author.
+            post_types:
+              blog_post: 'Blog Post'
+              news_item: 'News Item'
+              event: 'Event'
       posts:
         show:
           other: Other Posts

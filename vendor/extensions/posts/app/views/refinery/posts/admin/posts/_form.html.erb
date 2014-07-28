@@ -8,10 +8,17 @@
     <%= f.text_field :title, :class => 'larger widest' -%>
   </div>
 
+  <% if @post.new_record? %>
   <div class='field'>
     <%= f.label :type -%>
-    <%= f.text_field :type -%>
+    <% post_types = {
+        t('.post_types.blog_post') => Refinery::Posts::BlogPost.to_s,
+        t('.post_types.news_item') => Refinery::Posts::NewsItem.to_s,
+        t('.post_types.event') => Refinery::Posts::Event.to_s
+    } %>
+    <%= f.select :type, options_for_select(post_types, @post.type) %>
   </div>
+  <% end %>
 
   <div class='field'>
     <%= render '/refinery/admin/wysiwyg',
