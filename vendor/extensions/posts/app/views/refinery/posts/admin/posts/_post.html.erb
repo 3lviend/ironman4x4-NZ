@@ -1,5 +1,14 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(post) -%>">
   <span class='title'>
+    <%= post.published_at.strftime '%d/%m/%Y' %>
+    -
+    <% post_types = {
+        Refinery::Posts::BlogPost.to_s => t('refinery.posts.admin.posts.form.post_types.blog_post'),
+        Refinery::Posts::NewsItem.to_s => t('refinery.posts.admin.posts.form.post_types.news_item'),
+        Refinery::Posts::Event.to_s => t('refinery.posts.admin.posts.form.post_types.event')
+    } %>
+    <%= post_types[post.type] %>
+    -
     <%= post.title %>
 
   </span>
