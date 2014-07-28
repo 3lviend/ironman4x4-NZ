@@ -1,14 +1,12 @@
 module Refinery
   module Posts
     class Post < Refinery::Core::BaseModel
+
+
       self.table_name = 'refinery_posts'
 
-
       validates :title, :presence => true, :uniqueness => true
-
-      # To enable admin searching, add acts_as_indexed on searchable fields, for example:
-      #
-      #   acts_as_indexed :fields => [:title]
+      validates_presence_of :type, :teaser, :body, :user_id, :index_image_id, :published_at
 
       belongs_to :author, proc { readonly(true) }, :class_name => Refinery::User.to_s, :foreign_key => :user_id
 
