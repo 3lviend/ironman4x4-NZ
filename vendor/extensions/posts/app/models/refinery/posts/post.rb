@@ -1,7 +1,12 @@
 module Refinery
   module Posts
     class Post < Refinery::Core::BaseModel
+      extend FriendlyId
 
+      #TODO: find out why history isn't working with friendly_id and refinery
+      #friendly_id :name, use: [:slugged, :history]
+      friendly_id :title, use: :slugged
+      acts_as_indexed :fields => [:title]
 
       self.table_name = 'refinery_posts'
 
