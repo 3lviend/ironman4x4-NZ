@@ -61,13 +61,13 @@
   <% if not @post.new_record? %>
   <div class='field'>
     <%= f.label :published_at -%>
-    <%= f.text_field :published_at, :'data-role' => 'datetimepicker' -%>
+    <%= f.text_field :published_at, :'data-role' => 'datetimepicker', :value => d(@post.published_at) -%>
   </div>
   <% end %>
 
   <div class='field'>
     <%= f.label :expire_at -%>
-    <%= f.text_field :expire_at, :'data-role' => 'datetimepicker' -%>
+    <%= f.text_field :expire_at, :'data-role' => 'datetimepicker', :value => d(@post.published_at) -%>
   </div>
 
   <div class='field'>

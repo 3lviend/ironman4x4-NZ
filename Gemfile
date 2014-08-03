@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'jquery-ui-rails'
 gem 'jquery-timepicker-addon-rails'
+gem 'date_parity'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
@@ -50,6 +51,7 @@ gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 
 # gem 'refinerycms-blog', '~> 2.1.0'
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'
+gem 'refinerycms-settings', :github => 'refinery/refinerycms-settings'
 # gem 'refinerycms-page-images', '~> 2.1.0'
 
 gem 'refinerycms-products', path: 'vendor/extensions'

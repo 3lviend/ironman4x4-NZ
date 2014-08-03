@@ -1,13 +1,13 @@
 module ApplicationHelper
-  def d(date, user = nil)
-    if not user.present?
-      user = current_user
-    end
+  def d(date)
+    time_zone = Refinery::Setting.get(:time_zone)
+    datetime_format = Refinery::Setting.get(:datetime_format)
+    date_format = Refinery::Setting.get(:date_format)
 
     if date.is_a?(DateTime) or date.is_a?(Time)
-      date.in_time_zone(user.time_zone).strftime user.datetime_format
+      date.in_time_zone(time_zone).strftime datetime_format
     elsif date.is_a?(Date)
-      date.in_time_zone(user.time_zone).strftime user.date_format
+      date.in_time_zone(time_zone).strftime date_format
     end
   end
 

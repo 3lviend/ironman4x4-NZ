@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728085908) do
+ActiveRecord::Schema.define(version: 20140803073810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,21 @@ ActiveRecord::Schema.define(version: 20140728085908) do
 
   add_index "refinery_roles_users", ["role_id", "user_id"], name: "index_refinery_roles_users_on_role_id_and_user_id", using: :btree
   add_index "refinery_roles_users", ["user_id", "role_id"], name: "index_refinery_roles_users_on_user_id_and_role_id", using: :btree
+
+  create_table "refinery_settings", force: true do |t|
+    t.string   "name"
+    t.text     "value"
+    t.boolean  "destroyable",     default: true
+    t.string   "scoping"
+    t.boolean  "restricted",      default: false
+    t.string   "form_value_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "title"
+  end
+
+  add_index "refinery_settings", ["name"], name: "index_refinery_settings_on_name", using: :btree
 
   create_table "refinery_user_plugins", force: true do |t|
     t.integer "user_id"

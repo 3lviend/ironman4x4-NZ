@@ -1,6 +1,11 @@
 #= require jquery-ui-timepicker-addon
 
-$ ->
-  $('input[data-role=timepicker]').timepicker()
-  $('input[data-role=datepicker]').datepicker()
-  $('input[data-role=datetimepicker]').datetimepicker()
+$(document).on 'page:load ready', ->
+  options = {
+    dateFormat: 'dd/mm/yy'
+    timeFormat: 'HH:mm'
+  }
+
+  $('input[data-role=datetimepicker]').datetimepicker(options)
+  $('input[data-role=datepicker]').datepicker(options)
+  $('input[data-role=timepicker]').timepicker(options)

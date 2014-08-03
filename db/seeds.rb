@@ -17,3 +17,7 @@ Refinery::Search::Engine.load_seed
 
 # Added by Refinery CMS Posts extension
 Refinery::Posts::Engine.load_seed
+
+Refinery::Setting.set(:time_zone, 'Melbourne')
+Refinery::Setting.set(:datetime_format, '%d/%m/%Y %H:%M')
+Refinery::Setting.set(:date_format, '%d/%m/%Y')
