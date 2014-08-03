@@ -11,6 +11,10 @@ module Refinery
           @post = ::Refinery::Posts::Post.new(:author => current_refinery_user)
         end
 
+        def self.sortable?
+          false
+        end
+
       protected
         def massage_params(p)
           time_zone = Refinery::Setting.get(:time_zone)
