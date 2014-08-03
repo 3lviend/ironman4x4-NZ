@@ -35,10 +35,10 @@ Refinery::Core.configure do |config|
   # config.dragonfly_secret = "ac5a0ef6fb99cc3056beec423f8fd6091487ba79a6e5a871"
 
   # Register extra javascript for backend
-  # config.register_javascript "prototype-rails"
+  config.register_javascript 'backend'
 
   # Register extra stylesheet for backend (optional options)
-  # config.register_stylesheet "custom", :media => 'screen'
+  config.register_stylesheet 'refinery/admin', :media => 'screen'
 
   # Specify a different backend path than the default of /refinery.
   # config.backend_route = "refinery"
