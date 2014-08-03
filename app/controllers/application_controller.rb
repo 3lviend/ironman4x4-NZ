@@ -27,6 +27,6 @@ Refinery::AdminController.class_eval do
 
   def set_date_format
     date_format = Refinery::Setting.get(:date_format)
-    Date.format = date_format
+    Date.format = date_format if date_format.present?
   end
 end

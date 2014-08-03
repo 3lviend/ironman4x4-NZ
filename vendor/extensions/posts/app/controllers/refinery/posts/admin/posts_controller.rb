@@ -16,11 +16,15 @@ module Refinery
           time_zone = Refinery::Setting.get(:time_zone)
           datetime_format = Refinery::Setting.get(:datetime_format)
 
-          p[:published_at] =
-            Time.strptime(p[:published_at], datetime_format).in_time_zone(time_zone)
+          if not p[:published_at].blank?
+            p[:published_at] =
+              Time.strptime(p[:published_at], datetime_format).in_time_zone(time_zone)
+          end
 
-          p[:expire_at] =
-            Time.strptime(p[:expire_at], datetime_format).in_time_zone(time_zone)
+          if not p[:expire_at].blank?
+            p[:expire_at] =
+              Time.strptime(p[:expire_at], datetime_format).in_time_zone(time_zone)
+          end
 
           p
         end
