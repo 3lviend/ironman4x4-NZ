@@ -1,6 +1,7 @@
 module Refinery
   module Posts
     class Post < Refinery::Core::BaseModel
+      extend Forwardable
       extend FriendlyId
 
       #TODO: find out why history isn't working with friendly_id and refinery
@@ -20,6 +21,24 @@ module Refinery
       belongs_to :index_image, :class_name => '::Refinery::Image'
       belongs_to :hero_image, :class_name => '::Refinery::Image'
 
+      # Use in subclasses like:
+      # delegate_details :win_ratio, :tanning_time, to: :wrestling_details
+      def self.delegate_details(*attributes)
+        options = attributes.extract_options!
+        association_name = options.fetch(:to) {
+          raise ArgumentError.new "You must specify the name of the details association"
+        }
+
+        define_method association_name do
+          super() || send("build_#{association_name}")
+        end
+
+        attributes.each do |attribute_name|
+          # Getter, setter, and boolean getter (in case it's a boolean attribute)
+          def_delegators association_name,
+            :"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
+        end
+      end
     end
   end
 end

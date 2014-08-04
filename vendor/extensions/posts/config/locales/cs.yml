@@ -7,7 +7,9 @@ cs:
       admin:
         posts:
           actions:
-            create_new: Přidat Post
+            create_new_blog_post: Přidat Blog Post
+            create_new_news_item: Přidat News Item
+            create_new_event: Přidat Event
             reorder: Řadit Posts
             reorder_done: Konec řazení Posts
           records:

@@ -5,7 +5,15 @@
     </li>
   <% end %>
   <li>
-    <%= link_to t('.create_new'), refinery.new_posts_admin_post_path,
+    <%= link_to t('.create_new_blog_post'), refinery.new_posts_admin_blog_post_path,
+                 :class => "add_icon" %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_news_item'), refinery.new_posts_admin_news_item_path,
+                 :class => "add_icon" %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_event'), refinery.new_posts_admin_event_path,
                  :class => "add_icon" %>
   </li>
 <% if !searching? && ::Refinery::Posts::Admin::PostsController.sortable? && ::Refinery::Posts::Post.many? %>

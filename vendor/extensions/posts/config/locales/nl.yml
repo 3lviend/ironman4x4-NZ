@@ -7,7 +7,9 @@ nl:
       admin:
         posts:
           actions:
-            create_new: Nieuwe Post toevoegen
+            create_new_blog_post: Nieuwe Post toevoegen
+            create_new_news_item: Nieuwe Post toevoegen
+            create_new_event: Nieuwe Post toevoegen
             reorder: De volgorde van de Posts wijzigen
             reorder_done: Klaar met het wijzingen van de van de Post-volgorde
           records:

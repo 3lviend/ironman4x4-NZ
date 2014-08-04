@@ -2,6 +2,10 @@ module Refinery
   module Posts
     module Admin
       class NewsItemsController < Refinery::Posts::Admin::PostsController
+        def new
+          @post = ::Refinery::Posts::NewsItem.new(:author => current_refinery_user)
+        end
+
       protected
         def post_params
           p = params.require(:news_item).permit(:type, :title, :teaser, :body,

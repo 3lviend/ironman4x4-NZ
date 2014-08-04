@@ -7,7 +7,9 @@ zh-CN:
       admin:
         posts:
           actions:
-            create_new: 建立新的 Post
+            create_new_blog_post: 建立新的 Post
+            create_new_news_item: 建立新的 Post
+            create_new_event: 建立新的 Post
             reorder: 对 Posts 重新排序
             reorder_done: 对 Posts 的重新排序结束
           records:

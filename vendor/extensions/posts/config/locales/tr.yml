@@ -7,7 +7,9 @@ tr:
       admin:
         posts:
           actions:
-            create_new: Yeni Ekle Post
+            create_new_blog_post: Yeni Ekle Post
+            create_new_news_item: Yeni Ekle Post
+            create_new_event: Yeni Ekle Post
             reorder: Tekrar sirala Posts
             reorder_done: Tekrar siralama tamamlandiPosts
           records:

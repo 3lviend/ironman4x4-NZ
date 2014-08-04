@@ -7,7 +7,9 @@ fr:
       admin:
         posts:
           actions:
-            create_new: Créer un(e) nouve(au/l/lle) Post
+            create_new_blog_post: Créer un(e) nouve(au/l/lle) Post
+            create_new_news_item: Créer un(e) nouve(au/l/lle) Post
+            create_new_event: Créer un(e) nouve(au/l/lle) Post
             reorder: Réordonner les Posts
             reorder_done: Fin de réordonnancement des Posts
           records:

@@ -7,7 +7,9 @@ it:
       admin:
         posts:
           actions:
-            create_new: Aggiungi Nuovo Post
+            create_new_blog_post: Aggiungi Nuovo Post
+            create_new_news_item: Aggiungi Nuovo Post
+            create_new_event: Aggiungi Nuovo Post
             reorder: Riordina Posts
             reorder_done: Termina il Riordino di Posts
           records:
