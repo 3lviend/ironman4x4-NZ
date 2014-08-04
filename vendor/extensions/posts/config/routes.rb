@@ -3,6 +3,7 @@ Refinery::Core::Engine.routes.draw do
   # Frontend routes
   namespace :posts, :path => '' do
     resources :posts, :path => '/news', :only => [:index, :show]
+    resources :blog_posts, :path => '/blog', :only => [:index, :show]
   end
 
   # Admin routes

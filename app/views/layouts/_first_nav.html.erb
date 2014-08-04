@@ -22,9 +22,9 @@
         <% end %>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#"><%= t('.menu.about') %></a></li>
-          <li><a href="#"><%= t('.menu.blog') %></a></li>
+          <li><%= link_to t('.menu.blog'), refinery.posts_blog_posts_path %></li>
           <li><a href="#"><%= t('.menu.catalogue') %></a></li>
-          <li><a href="#"><%= t('.menu.news') %></a></li>
+          <li><%= link_to t('.menu.news'), refinery.posts_posts_path %></li>
           <li><a href="#"><%= t('.menu.media') %></a></li>
           <li><a href="#"><%= t('.menu.search') %></a></li>
         </ul>
