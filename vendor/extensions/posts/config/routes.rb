@@ -1,8 +1,8 @@
 Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
-  namespace :posts do
-    resources :posts, :path => '', :only => [:index, :show]
+  namespace :posts, :path => '' do
+    resources :posts, :path => '/news', :only => [:index, :show]
   end
 
   # Admin routes
