@@ -40,7 +40,7 @@ en:
         catalogue: 'Catlogue'
         news: 'News & Events'
         media: 'Media'
-        search: 'Search'
+        contact: 'Contact'
       search_form:
         placeholder: 'Search'
         button: 'Submit'
