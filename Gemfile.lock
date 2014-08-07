@@ -99,6 +99,9 @@ GIT
 PATH
   remote: vendor/extensions
   specs:
+    refinerycms-media_releases (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
     refinerycms-posts (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
@@ -365,12 +368,12 @@ DEPENDENCIES
   mailcatcher
   modernizr-rails
   pg
-  rack-mini-profiler
   rails (~> 4.1.0)
   rails_12factor
   refinerycms!
   refinerycms-acts-as-indexed!
   refinerycms-i18n!
+  refinerycms-media_releases!
   refinerycms-posts!
   refinerycms-products!
   refinerycms-search!

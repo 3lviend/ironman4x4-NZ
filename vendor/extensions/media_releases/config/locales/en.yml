@@ -1,0 +1,36 @@
+en:
+  refinery:
+    plugins:
+      media_releases:
+        title: Media Releases
+    media_releases:
+      admin:
+        media_releases:
+          actions:
+            create_new: Add New Media Release
+            reorder: Reorder Media Releases
+            reorder_done: Done Reordering Media Releases
+          records:
+            title: Media Releases
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Media Releases yet. Click "Add New Media Release" to add your first media release.
+          media_release:
+            view_live_html: View this media release live <br/><em>(opens in a new window)</em>
+            edit: Edit this media release
+            delete: Remove this media release forever
+      media_releases:
+        show:
+          other: Other Media Releases
+  activerecord:
+    attributes:
+      'refinery/media_releases/media_release':
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft

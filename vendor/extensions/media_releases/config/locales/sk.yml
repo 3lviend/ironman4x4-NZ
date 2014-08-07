@@ -1,0 +1,36 @@
+sk:
+  refinery:
+    plugins:
+      media_releases:
+        title: Media Releases
+    media_releases:
+      admin:
+        media_releases:
+          actions:
+            create_new: Pridať Media Release
+            reorder: Preusporiadať Media Releases
+            reorder_done: Koniec radenia Media Releases
+          records:
+            title: Media Releases
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Media Releases. Kliknite na "Pridať Media Release" pre pridanie prvého media release.
+          media_release:
+            view_live_html: Zobraziť náhľad media release<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť media release
+            delete: Zmazať media release
+      media_releases:
+        show:
+          other: Daľšie Media Releases
+  activerecord:
+    attributes:
+      'refinery/media_releases/media_release':
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft

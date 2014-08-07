@@ -69,3 +69,5 @@ gem 'bootstrap-sass'
 # Development gems
 gem 'rack-mini-profiler'
 gem 'mailcatcher', group: :development
+
+gem 'refinerycms-media_releases', path: 'vendor/extensions'

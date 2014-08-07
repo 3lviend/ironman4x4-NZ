@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="media_releases">
+    <% @media_releases.each do |media_release| %>
+      <li>
+        <%= link_to media_release.title, refinery.media_releases_media_release_path(media_release) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>
