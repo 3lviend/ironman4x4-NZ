@@ -99,16 +99,7 @@ GIT
 PATH
   remote: vendor/extensions
   specs:
-    refinerycms-media_releases (1.0)
-      acts_as_indexed (~> 0.8.0)
-      refinerycms-core (~> 3.0.0)
-    refinerycms-posts (1.0)
-      acts_as_indexed (~> 0.8.0)
-      refinerycms-core (~> 3.0.0)
-    refinerycms-products (1.0)
-      acts_as_indexed (~> 0.8.0)
-      refinerycms-core (~> 3.0.0)
-    refinerycms-stockists (1.0)
+    refinerycms-ironman (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
 
@@ -376,12 +367,9 @@ DEPENDENCIES
   refinerycms!
   refinerycms-acts-as-indexed!
   refinerycms-i18n!
-  refinerycms-media_releases!
-  refinerycms-posts!
-  refinerycms-products!
+  refinerycms-ironman!
   refinerycms-search!
   refinerycms-settings!
-  refinerycms-stockists!
   refinerycms-wymeditor!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808071411) do
+ActiveRecord::Schema.define(version: 20140808115959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,80 @@ ActiveRecord::Schema.define(version: 20140808071411) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "refinery_ironman_categories", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "sort_order"
+    t.boolean  "visible"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "short_description"
+  end
+
+  add_index "refinery_ironman_categories", ["slug"], name: "index_refinery_ironman_categories_on_slug", using: :btree
+
+  create_table "refinery_ironman_categories_products", force: true do |t|
+    t.integer "category_id"
+    t.integer "product_id"
+  end
+
+  add_index "refinery_ironman_categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", unique: true, using: :btree
+
+  create_table "refinery_ironman_category_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "refinery_ironman_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_udx", unique: true, using: :btree
+  add_index "refinery_ironman_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
+
+  create_table "refinery_ironman_products", force: true do |t|
+    t.string   "product_no"
+    t.string   "name"
+    t.text     "description"
+    t.text     "notes"
+    t.integer  "quantity_required"
+    t.json     "product_attributes"
+    t.decimal  "price"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+    t.string   "short_description"
+  end
+
+  add_index "refinery_ironman_products", ["slug"], name: "index_refinery_ironman_products_on_slug", using: :btree
+
+  create_table "refinery_ironman_vehicle_hierarchies", id: false, force: true do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "refinery_ironman_vehicle_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "vehicle_anc_desc_udx", unique: true, using: :btree
+  add_index "refinery_ironman_vehicle_hierarchies", ["descendant_id"], name: "vehicle_desc_idx", using: :btree
+
+  create_table "refinery_ironman_vehicles", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.integer  "sort_order"
+    t.boolean  "visible"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_ironman_vehicles_products", force: true do |t|
+    t.integer "vehicle_id"
+    t.integer "product_id"
+  end
+
+  add_index "refinery_ironman_vehicles_products", ["vehicle_id", "product_id"], name: "index_refinery_vehicles_products_on_vehicle_id_and_product_id", unique: true, using: :btree
 
   create_table "refinery_page_part_translations", force: true do |t|
     t.integer  "refinery_page_part_id", null: false

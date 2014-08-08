@@ -2,7 +2,7 @@
 require "spec_helper"
 
 describe Refinery do
-  describe "Products" do
+  describe "Ironman" do
     describe "Admin" do
       describe "vehicles" do
         refinery_login_with :refinery_user
@@ -33,7 +33,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::Products::Vehicle.count.should == 1
+              Refinery::Ironman::Vehicle.count.should == 1
             end
           end
 
@@ -42,7 +42,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("Name can't be blank")
-              Refinery::Products::Vehicle.count.should == 0
+              Refinery::Ironman::Vehicle.count.should == 0
             end
           end
 
@@ -58,7 +58,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("There were problems")
-              Refinery::Products::Vehicle.count.should == 1
+              Refinery::Ironman::Vehicle.count.should == 1
             end
           end
 
@@ -91,7 +91,7 @@ describe Refinery do
             click_link "Remove this vehicle forever"
 
             page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::Products::Vehicle.count.should == 0
+            Refinery::Ironman::Vehicle.count.should == 0
           end
         end
 

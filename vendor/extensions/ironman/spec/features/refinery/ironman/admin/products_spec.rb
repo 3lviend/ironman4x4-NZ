@@ -33,7 +33,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("'This is a test of the first string field' was successfully added.")
-              Refinery::Products::Product.count.should == 1
+              Refinery::Ironman::Product.count.should == 1
             end
           end
 
@@ -42,7 +42,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("Product No can't be blank")
-              Refinery::Products::Product.count.should == 0
+              Refinery::Ironman::Product.count.should == 0
             end
           end
 
@@ -58,7 +58,7 @@ describe Refinery do
               click_button "Save"
 
               page.should have_content("There were problems")
-              Refinery::Products::Product.count.should == 1
+              Refinery::Ironman::Product.count.should == 1
             end
           end
 
@@ -91,7 +91,7 @@ describe Refinery do
             click_link "Remove this product forever"
 
             page.should have_content("'UniqueTitleOne' was successfully removed.")
-            Refinery::Products::Product.count.should == 0
+            Refinery::Ironman::Product.count.should == 0
           end
         end
 

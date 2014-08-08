@@ -1,3 +1,4 @@
+# This migration comes from refinery_ironman (originally 1)
 class CreateIronmanProducts < ActiveRecord::Migration
 
   def up

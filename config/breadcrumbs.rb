@@ -3,7 +3,7 @@ crumb :root do
 end
 
 crumb :categories do
-  link t('breadcrumbs.products'), refinery.products_products_path
+  link t('breadcrumbs.products'), refinery.ironman_products_path
 end
 
 crumb :category do |category|

@@ -28,7 +28,7 @@ module Ironman4x4
     # config.i18n.default_locale = :de
 
     config.to_prepare do
-      Refinery.searchable_models = [Refinery::Page, Refinery::Products::Product, Refinery::Products::Category]
+      Refinery.searchable_models = [Refinery::Page, Refinery::Ironman::Product, Refinery::Ironman::Category]
     end
   end
 end

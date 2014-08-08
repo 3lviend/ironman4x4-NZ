@@ -9,7 +9,7 @@
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
 
-# Added by Refinery CMS Products extension
+# Added by Refinery CMS Ironman extension
 Refinery::Ironman::Engine.load_seed
 
 # Added by Refinery CMS Search engine
