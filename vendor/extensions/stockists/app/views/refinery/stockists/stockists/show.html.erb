@@ -1,0 +1,99 @@
+<% content_for :body_content_title do %>
+  <%= @stockist.name %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Name</h1>
+    <p>
+      <%=raw @stockist.name %>
+    </p>
+  </section>
+  <section>
+    <h1>Store Type</h1>
+    <p>
+      <%=raw @stockist.store_type %>
+    </p>
+  </section>
+  <section>
+    <h1>Address</h1>
+    <p>
+      <%=raw @stockist.address %>
+    </p>
+  </section>
+  <section>
+    <h1>Suburb</h1>
+    <p>
+      <%=raw @stockist.suburb %>
+    </p>
+  </section>
+  <section>
+    <h1>Postcode</h1>
+    <p>
+      <%=raw @stockist.postcode %>
+    </p>
+  </section>
+  <section>
+    <h1>State</h1>
+    <p>
+      <%=raw @stockist.state %>
+    </p>
+  </section>
+  <section>
+    <h1>Country</h1>
+    <p>
+      <%=raw @stockist.country %>
+    </p>
+  </section>
+  <section>
+    <h1>Contact</h1>
+    <p>
+      <%=raw @stockist.contact %>
+    </p>
+  </section>
+  <section>
+    <h1>Phone</h1>
+    <p>
+      <%=raw @stockist.phone %>
+    </p>
+  </section>
+  <section>
+    <h1>Website</h1>
+    <p>
+      <%=raw @stockist.website %>
+    </p>
+  </section>
+  <section>
+    <h1>Email</h1>
+    <p>
+      <%=raw @stockist.email %>
+    </p>
+  </section>
+  <section>
+    <h1>Logo Image</h1>
+    <p>
+      <%=raw @stockist.logo_image_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Visible</h1>
+    <p>
+      <%=raw @stockist.visible %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="stockists">
+      <% @stockists.each do |stockist| %>
+        <li>
+          <%= link_to stockist.name, refinery.stockists_stockist_path(stockist) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,0 +1,41 @@
+zh-CN:
+  refinery:
+    plugins:
+      stockists:
+        title: Stockists
+    stockists:
+      admin:
+        stockists:
+          actions:
+            create_new: 建立新的 Stockist
+            reorder: 对 Stockists 重新排序
+            reorder_done: 对 Stockists 的重新排序结束
+          records:
+            title: Stockists
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Stockists yet. Click "Add New Stockist" to add your first stockist.
+            no_items_yet: 目前没有 Stockists . 点击 "Add New Stockist" 创建一个stockist.
+          stockist:
+            view_live_html: 查看 stockist 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 stockist
+            delete: 永久删除 stockist
+      stockists:
+        show:
+          other: 其他 Stockists
+  activerecord:
+    attributes:
+      'refinery/stockists/stockist':
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible

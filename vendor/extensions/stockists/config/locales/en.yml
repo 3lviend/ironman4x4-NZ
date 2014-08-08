@@ -1,0 +1,39 @@
+en:
+  refinery:
+    plugins:
+      stockists:
+        title: Stockists
+    stockists:
+      admin:
+        stockists:
+          actions:
+            create_new: Add New Stockist
+            reorder: Reorder Stockists
+            reorder_done: Done Reordering Stockists
+          records:
+            title: Stockists
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Stockists yet. Click "Add New Stockist" to add your first stockist.
+          stockist:
+            view_live_html: View this stockist live <br/><em>(opens in a new window)</em>
+            edit: Edit this stockist
+            delete: Remove this stockist forever
+      stockists:
+        show:
+          other: Other Stockists
+  activerecord:
+    attributes:
+      'refinery/stockists/stockist':
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible

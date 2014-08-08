@@ -108,6 +108,9 @@ PATH
     refinerycms-products (1.0)
       acts_as_indexed (~> 0.8.0)
       refinerycms-core (~> 3.0.0)
+    refinerycms-stockists (1.0)
+      acts_as_indexed (~> 0.8.0)
+      refinerycms-core (~> 3.0.0)
 
 GEM
   remote: https://rubygems.org/
@@ -378,6 +381,7 @@ DEPENDENCIES
   refinerycms-products!
   refinerycms-search!
   refinerycms-settings!
+  refinerycms-stockists!
   refinerycms-wymeditor!
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

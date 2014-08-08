@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140807230800) do
+ActiveRecord::Schema.define(version: 20140808071411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -246,6 +246,25 @@ ActiveRecord::Schema.define(version: 20140807230800) do
   end
 
   add_index "refinery_settings", ["name"], name: "index_refinery_settings_on_name", using: :btree
+
+  create_table "refinery_stockists", force: true do |t|
+    t.string   "name"
+    t.string   "store_type"
+    t.string   "address"
+    t.string   "suburb"
+    t.string   "postcode"
+    t.string   "state"
+    t.string   "country"
+    t.string   "contact"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "email"
+    t.integer  "logo_image_id"
+    t.boolean  "visible"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "refinery_user_plugins", force: true do |t|
     t.integer "user_id"

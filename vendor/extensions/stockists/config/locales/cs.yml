@@ -1,0 +1,39 @@
+cs:
+  refinery:
+    plugins:
+      stockists:
+        title: Stockists
+    stockists:
+      admin:
+        stockists:
+          actions:
+            create_new: Přidat Stockist
+            reorder: Řadit Stockists
+            reorder_done: Konec řazení Stockists
+          records:
+            title: Stockists
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Stockists. Zvolte "Přidat Stockist" pro přidání prvního stockist.
+          stockist:
+            view_live_html: Zobrazit náhled stockist<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit stockist
+            delete: Smazat stockist
+      stockists:
+        show:
+          other: Další Stockists
+  activerecord:
+    attributes:
+      'refinery/stockists/stockist':
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible

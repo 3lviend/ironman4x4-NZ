@@ -1,0 +1,39 @@
+fr:
+  refinery:
+    plugins:
+      stockists:
+        title: Stockists
+    stockists:
+      admin:
+        stockists:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Stockist
+            reorder: Réordonner les Stockists
+            reorder_done: Fin de réordonnancement des Stockists
+          records:
+            title: Stockists
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Stockist. Cliquer sur "Créer un(e) nouve(au/l/lle) Stockist" pour créer votre premi(er/ère) stockist.'
+          stockist:
+            view_live_html: Voir ce(t/tte) stockist <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) stockist
+            delete: Supprimer définitivement ce(t/tte) stockist
+      stockists:
+        show:
+          other: Autres Stockists
+  activerecord:
+    attributes:
+      'refinery/stockists/stockist':
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible

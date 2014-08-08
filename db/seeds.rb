@@ -24,3 +24,6 @@ Refinery::Setting.set(:date_format, '%d/%m/%Y')
 
 # Added by Refinery CMS MediaReleases extension
 Refinery::MediaReleases::Engine.load_seed
+
+# Added by Refinery CMS Stockists extension
+Refinery::Stockists::Engine.load_seed
