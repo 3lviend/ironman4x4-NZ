@@ -27,22 +27,6 @@ ActiveRecord::Schema.define(version: 20140808071411) do
     t.datetime "updated_at"
   end
 
-  create_table "refinery_media_releases", force: true do |t|
-    t.string   "title"
-    t.string   "category"
-    t.string   "publication"
-    t.date     "published_at"
-    t.text     "description"
-    t.integer  "priced_resource_id"
-    t.integer  "unpriced_resource_id"
-    t.integer  "thumbnail_image_id"
-    t.date     "posted_at"
-    t.boolean  "draft"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "refinery_page_part_translations", force: true do |t|
     t.integer  "refinery_page_part_id", null: false
     t.string   "locale",                null: false
@@ -106,110 +90,6 @@ ActiveRecord::Schema.define(version: 20140808071411) do
   add_index "refinery_pages", ["parent_id"], name: "index_refinery_pages_on_parent_id", using: :btree
   add_index "refinery_pages", ["rgt"], name: "index_refinery_pages_on_rgt", using: :btree
 
-  create_table "refinery_posts", force: true do |t|
-    t.string   "type"
-    t.string   "title"
-    t.text     "teaser"
-    t.text     "body"
-    t.integer  "user_id"
-    t.integer  "index_image_id"
-    t.integer  "hero_image_id"
-    t.datetime "published_at"
-    t.datetime "expire_at"
-    t.boolean  "draft"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-  end
-
-  add_index "refinery_posts", ["slug"], name: "index_refinery_posts_on_slug", using: :btree
-
-  create_table "refinery_posts_event_details", force: true do |t|
-    t.integer  "post_id"
-    t.datetime "start"
-    t.datetime "end"
-    t.string   "location"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "refinery_products", force: true do |t|
-    t.string   "product_no"
-    t.string   "name"
-    t.text     "description"
-    t.text     "notes"
-    t.integer  "quantity_required"
-    t.json     "product_attributes"
-    t.decimal  "price"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "short_description"
-  end
-
-  add_index "refinery_products", ["slug"], name: "index_refinery_products_on_slug", using: :btree
-
-  create_table "refinery_products_categories", force: true do |t|
-    t.integer  "parent_id"
-    t.string   "name"
-    t.text     "description"
-    t.integer  "sort_order"
-    t.boolean  "visible"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slug"
-    t.string   "short_description"
-  end
-
-  add_index "refinery_products_categories", ["slug"], name: "index_refinery_products_categories_on_slug", using: :btree
-
-  create_table "refinery_products_categories_products", force: true do |t|
-    t.integer "category_id"
-    t.integer "product_id"
-  end
-
-  add_index "refinery_products_categories_products", ["category_id", "product_id"], name: "index_categories_products_on_category_id_and_product_id", unique: true, using: :btree
-
-  create_table "refinery_products_category_hierarchies", id: false, force: true do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "refinery_products_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_udx", unique: true, using: :btree
-  add_index "refinery_products_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
-
-  create_table "refinery_products_vehicle_hierarchies", id: false, force: true do |t|
-    t.integer "ancestor_id",   null: false
-    t.integer "descendant_id", null: false
-    t.integer "generations",   null: false
-  end
-
-  add_index "refinery_products_vehicle_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "vehicle_anc_desc_udx", unique: true, using: :btree
-  add_index "refinery_products_vehicle_hierarchies", ["descendant_id"], name: "vehicle_desc_idx", using: :btree
-
-  create_table "refinery_products_vehicles", force: true do |t|
-    t.integer  "parent_id"
-    t.string   "name"
-    t.integer  "sort_order"
-    t.boolean  "visible"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "refinery_products_vehicles_products", force: true do |t|
-    t.integer "vehicle_id"
-    t.integer "product_id"
-  end
-
-  add_index "refinery_products_vehicles_products", ["vehicle_id", "product_id"], name: "index_refinery_vehicles_products_on_vehicle_id_and_product_id", unique: true, using: :btree
-
   create_table "refinery_resources", force: true do |t|
     t.string   "file_mime_type"
     t.string   "file_name"
@@ -246,25 +126,6 @@ ActiveRecord::Schema.define(version: 20140808071411) do
   end
 
   add_index "refinery_settings", ["name"], name: "index_refinery_settings_on_name", using: :btree
-
-  create_table "refinery_stockists", force: true do |t|
-    t.string   "name"
-    t.string   "store_type"
-    t.string   "address"
-    t.string   "suburb"
-    t.string   "postcode"
-    t.string   "state"
-    t.string   "country"
-    t.string   "contact"
-    t.string   "phone"
-    t.string   "website"
-    t.string   "email"
-    t.integer  "logo_image_id"
-    t.boolean  "visible"
-    t.integer  "position"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "refinery_user_plugins", force: true do |t|
     t.integer "user_id"

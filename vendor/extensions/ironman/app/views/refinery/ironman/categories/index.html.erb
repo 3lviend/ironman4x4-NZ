@@ -1,0 +1,81 @@
+<% content_for :page_header do %>
+  <% if @this_category.present? %>
+  <%= @this_category.name %>
+  <% else %>
+  <%= t('.page_header') %>
+  <% end %>
+<% end %>
+
+<% content_for :body do %>
+<% if @this_category.present? %>
+  <% breadcrumb :category, @this_category %>
+<% else %>
+  <% breadcrumb :categories %>
+<% end %>
+
+<% if @this_category.present? %>
+  <% cache_key = [@category, @subcategory, @sub_subcategory] %>
+<% else %>
+  <% cache_key = cache_key_for_categories %>
+<% end %>
+
+<% cache(cache_key) do %>
+<%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
+
+<ul id="page-product-categories" class="clearfix">
+<% @categories.each do |category| %>
+  <li class="category-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <% if @category.nil? %>
+      <% if category.leaf? %>
+      <% list_url = refinery.category_products_path(category) %>
+      <% info_url = refinery.ironman_category_path(category) %>
+      <% else %>
+      <% list_url = refinery.product_categories_path(category) %>
+      <% info_url = nil %>
+      <% end %>
+    <% elsif category.depth == 1 %>
+      <% if category.leaf? %>
+      <% list_url = refinery.subcategory_products_path(category.parent, category) %>
+      <% info_url = refinery.subcategory_path(category.parent, category) %>
+      <% else %>
+      <% list_url = refinery.product_subcategories_path(category.parent, category) %>
+      <% info_url = nil %>
+      <% end %>
+    <% else %>
+      <% if category.leaf? %>
+      <% list_url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category) %>
+      <% info_url = refinery.sub_subcategory_path(category.parent.parent, category.parent, category) %>
+      <% else %>
+      <% list_url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category) %>
+      <% info_url = nil %>
+      <% end %>
+    <% end %>
+
+    <div class="category">
+      <div class="photo"><!--
+        --><%= image_tag 'category_list_photo_default.png' %><!--
+      --></div>
+      <div class="content">
+        <h3><%= category.name %></h3>
+        <div class="description">
+          <% if category.short_description.present? %>
+          <%= category.short_description %>
+          <% else %>
+          <%= t('.default_category_description') %>
+          <% end %>
+        </div>
+        <% if @this_category.nil? %>
+        <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-default btn-block' %>
+        <% else %>
+        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-default btn-block' %>
+        <%= link_to t('.buttons.view_product_listing'), list_url, class: 'btn btn-default btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </li>
+<% end %>
+</ul>
+<% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

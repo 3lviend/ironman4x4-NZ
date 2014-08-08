@@ -1,9 +1,109 @@
 en:
   refinery:
     plugins:
-      ironman:
-        title: Ironman
+      products:
+        title: Products
     ironman:
       admin:
+        vehicles:
+          actions:
+            create_new: Add New Vehicle
+            reorder: Reorder Vehicles
+            reorder_done: Done Reordering Vehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Vehicles yet. Click "Add New Vehicle" to add
+              your first vehicle.
+          vehicle:
+            view_live_html: View this vehicle live <br/><em>(opens in a new window)</em>
+            edit: Edit this vehicle
+            delete: Remove this vehicle forever
+        categories:
+          actions:
+            create_new: Add New Category
+            reorder: Reorder Categories
+            reorder_done: Done Reordering Categories
+          records:
+            title: Categories
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Categories yet. Click "Add New Category" to
+              add your first category.
+          category:
+            view_live_html: View this category live <br/><em>(opens in a new window)</em>
+            edit: Edit this category
+            delete: Remove this category forever
+        products:
+          actions:
+            create_new: Add New Product
+            reorder: Reorder Products
+            reorder_done: Done Reordering Products
+          records:
+            title: Products
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Products yet. Click "Add New Product" to add
+              your first product.
+          product:
+            view_live_html: View this product live <br/><em>(opens in a new window)</em>
+            edit: Edit this product
+            delete: Remove this product forever
+      vehicles:
+        show:
+          other: Other Vehicles
+
+      categories:
+        show:
+          other: Other Categories
+          page_header: '%{category} Info'
+          buttons:
+            back: 'Back to %{parent}'
+            view_product_listing: 'View Product Listing'
+        index:
+          page_header: 'Products'
+          default_category_description: 'Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum'
+          buttons:
+            view_product_range: 'View Product Range'
+            view_category_info: 'View Category Info'
+            view_product_listing: 'View Product Listing'
+        filters:
+          category:
+            label: 'Product Category'
+            prompt: 'Select'
+          subcategory:
+            label: 'Subcategory'
+            prompt: 'Select'
+          subsubcategory:
+            label: 'Subcategory'
+            prompt: 'Select'
+
+      products:
+        show:
+          other: Other Products
+        index:
+          page_header: 'Products'
+          buttons:
+            view_product: 'View Product'
+            add_to_wishlist: 'Add to Wishlist'
+          inc_gst: ' (RRP inc GST)'
+          no_products_found: 'No products were found'
   activerecord:
     attributes:
+      refinery/ironman/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
+      refinery/ironman/category:
+        parent_id: Parent
+        name: Name
+        description: Description
+        sort_order: Sort Order
+        visible: Visible
+      refinery/ironman/product:
+        product_no: Product No
+        name: Name
+        description: Description
+        notes: Notes
+        quantity_required: Quantity Required
+        product_attributes: Product Attributes
+        price: Price

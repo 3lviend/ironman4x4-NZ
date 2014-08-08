@@ -1,0 +1,55 @@
+<%= form_for [refinery, :ironman_admin, @product] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @product,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :product_no -%>
+    <%= f.text_field :product_no, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :name -%>
+    <%= f.text_field :name -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :short_description -%>
+    <%= f.text_area :short_description -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:description, :notes],
+                :object => "ironman/product" -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :quantity_required -%>
+    <%= f.number_field :quantity_required -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :product_attributes -%>
+    <%= f.text_field :product_attributes -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :price -%>
+    <%= f.text_field :price -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.ironman.admin.products.product'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @product.product_no) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

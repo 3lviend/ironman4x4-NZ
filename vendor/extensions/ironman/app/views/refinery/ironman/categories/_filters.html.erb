@@ -1,0 +1,31 @@
+<%= form_tag refinery.ironman_products_path, {:method => :get, :class => 'form-inline product-category-filters'} do %>
+  <div class="form-group">
+    <%= label_tag :category_1st_id, t('.category.label') %>
+    <%= select_tag :category_1st_id, options_from_collection_for_select(Refinery::Ironman::Category.roots, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'form-control input-sm' %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :category_2nd_id, t('.subcategory.label') %>
+  <%= select_tag :category_2nd_id, options_from_collection_for_select(if category.present? then category.children else [] end, 'slug', 'name', (subcategory.slug if subcategory.present?)),
+                 'data-option-dependent' => true,
+                 'data-option-observed' => 'category_1st_id',
+                 'data-option-url' => '/categories/:category_1st_id:/children.json',
+                 'data-option-key-method' => :slug,
+                 'data-option-value-method' => :name,
+                 :prompt => t('.subcategory.prompt'),
+                 :class => 'form-control input-sm' %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :category_3rd_id, t('.subsubcategory.label') %>
+  <%= select_tag :category_3rd_id, options_from_collection_for_select(if subcategory.present? then subcategory.children else [] end, 'slug', 'name', (sub_subcategory.slug if sub_subcategory.present?)),
+                 'data-option-dependent' => true,
+                 'data-option-observed' => 'category_2nd_id',
+                 'data-option-url' => '/categories/:category_2nd_id:/children.json',
+                 'data-option-key-method' => :slug,
+                 'data-option-value-method' => :name,
+                 :prompt => t('.subsubcategory.prompt'),
+                 :class => 'form-control input-sm' %>
+  </div>
+<% end %>
+<hr />

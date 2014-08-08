@@ -1,9 +1,86 @@
 nb:
   refinery:
     plugins:
-      ironman:
-        title: Ironman
+      vehicles:
+        title: Vehicles
+      categories:
+        title: Categories
+      products:
+        title: Products
     ironman:
       admin:
+        vehicles:
+          actions:
+            create_new: Lag en ny Vehicle
+            reorder: Endre rekkefølgen på Vehicles
+            reorder_done: Ferdig å endre rekkefølgen Vehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Vehicles enda. Klikk på "Lag en ny Vehicle"
+              for å legge til din første vehicle.
+          vehicle:
+            view_live_html: Vis hvordan denne vehicle ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne vehicle
+            delete: Fjern denne vehicle permanent
+        categories:
+          actions:
+            create_new: Lag en ny Category
+            reorder: Endre rekkefølgen på Categories
+            reorder_done: Ferdig å endre rekkefølgen Categories
+          records:
+            title: Categories
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Categories enda. Klikk på "Lag en ny Category"
+              for å legge til din første category.
+          category:
+            view_live_html: Vis hvordan denne category ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne category
+            delete: Fjern denne category permanent
+        products:
+          actions:
+            create_new: Lag en ny Product
+            reorder: Endre rekkefølgen på Products
+            reorder_done: Ferdig å endre rekkefølgen Products
+          records:
+            title: Products
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Products enda. Klikk på "Lag en ny Product"
+              for å legge til din første product.
+          product:
+            view_live_html: Vis hvordan denne product ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne product
+            delete: Fjern denne product permanent
+      vehicles:
+        show:
+          other: Andre Vehicles
+      categories:
+        show:
+          other: Andre Categories
+      products:
+        show:
+          other: Andre Products
   activerecord:
     attributes:
+      refinery/ironman/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
+      refinery/ironman/category:
+        parent_id: Parent
+        name: Name
+        description: Description
+        sort_order: Sort Order
+        visible: Visible
+      refinery/ironman/product:
+        product_no: Product No
+        name: Name
+        description: Description
+        notes: Notes
+        quantity_required: Quantity Required
+        product_attributes: Product Attributes
+        price: Price

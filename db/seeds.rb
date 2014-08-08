@@ -10,20 +10,11 @@
 Refinery::Pages::Engine.load_seed
 
 # Added by Refinery CMS Products extension
-Refinery::Products::Engine.load_seed
+Refinery::Ironman::Engine.load_seed
 
 # Added by Refinery CMS Search engine
 Refinery::Search::Engine.load_seed
 
-# Added by Refinery CMS Posts extension
-Refinery::Posts::Engine.load_seed
-
 Refinery::Setting.set(:time_zone, 'Melbourne')
 Refinery::Setting.set(:datetime_format, '%d/%m/%Y %H:%M')
 Refinery::Setting.set(:date_format, '%d/%m/%Y')
-
-# Added by Refinery CMS MediaReleases extension
-Refinery::MediaReleases::Engine.load_seed
-
-# Added by Refinery CMS Stockists extension
-Refinery::Stockists::Engine.load_seed

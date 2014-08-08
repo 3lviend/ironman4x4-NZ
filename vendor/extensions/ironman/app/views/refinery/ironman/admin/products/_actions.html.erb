@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Ironman::Admin::ProductsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_products_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_ironman_admin_product_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Ironman::Admin::ProductsController.sortable? && ::Refinery::Ironman::Product.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Products"),
+                 refinery.ironman_admin_products_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Products"),
+                 refinery.ironman_admin_products_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

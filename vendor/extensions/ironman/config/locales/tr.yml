@@ -1,9 +1,86 @@
 tr:
   refinery:
     plugins:
-      ironman:
-        title: Ironman
+      vehicles:
+        title: Vehicles
+      categories:
+        title: Categories
+      products:
+        title: Products
     ironman:
       admin:
+        vehicles:
+          actions:
+            create_new: Yeni Ekle Vehicle
+            reorder: Tekrar sirala Vehicles
+            reorder_done: Tekrar siralama tamamlandiVehicles
+          records:
+            title: Vehicles
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Vehicles yok henuz.  Tikla "Yeni Ekle Vehicle"
+              eklemek senin ilk vehicle.
+          vehicle:
+            view_live_html: Bunu canlu vehicle goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle vehicle
+            delete: Bunu Sil vehicle sonsuza dek
+        categories:
+          actions:
+            create_new: Yeni Ekle Category
+            reorder: Tekrar sirala Categories
+            reorder_done: Tekrar siralama tamamlandiCategories
+          records:
+            title: Categories
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Categories yok henuz.  Tikla "Yeni Ekle Category"
+              eklemek senin ilk category.
+          category:
+            view_live_html: Bunu canlu category goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle category
+            delete: Bunu Sil category sonsuza dek
+        products:
+          actions:
+            create_new: Yeni Ekle Product
+            reorder: Tekrar sirala Products
+            reorder_done: Tekrar siralama tamamlandiProducts
+          records:
+            title: Products
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Products yok henuz.  Tikla "Yeni Ekle Product"
+              eklemek senin ilk product.
+          product:
+            view_live_html: Bunu canlu product goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle product
+            delete: Bunu Sil product sonsuza dek
+      vehicles:
+        show:
+          other: Diger Vehicles
+      categories:
+        show:
+          other: Diger Categories
+      products:
+        show:
+          other: Diger Products
   activerecord:
     attributes:
+      refinery/products/vehicle:
+        parent_id: Parent
+        name: Name
+        sort_order: Sort Order
+        visible: Visible
+      refinery/products/category:
+        parent_id: Parent
+        name: Name
+        description: Description
+        sort_order: Sort Order
+        visible: Visible
+      refinery/products/product:
+        product_no: Product No
+        name: Name
+        description: Description
+        notes: Notes
+        quantity_required: Quantity Required
+        product_attributes: Product Attributes
+        price: Price
