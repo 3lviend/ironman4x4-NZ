@@ -7,7 +7,7 @@ module Refinery
                 :xhr_paging => true
 
       protected
-        def media_releases_params
+        def media_release_params
           params.require(:media_release).permit(:title, :description, :category,
             :publication, :published_at, :posted_at, :draft, :locale,
             :thumbnail_image_id, :priced_resource_id, :unpriced_resource_id,
