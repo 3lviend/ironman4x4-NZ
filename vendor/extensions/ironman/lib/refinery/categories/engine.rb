@@ -16,6 +16,7 @@ module Refinery
             :title => 'name'
           }
           plugin.menu_match = %r{refinery/ironman/categories(/.*)?$}
+          plugin.hide_from_menu = true
         end
       end
 

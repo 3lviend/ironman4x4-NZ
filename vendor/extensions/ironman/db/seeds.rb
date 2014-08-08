@@ -15,15 +15,15 @@ Refinery::I18n.frontend_locales.each do |lang|
     )
   end if defined?(Refinery::User)
 
-  Refinery::Page.where(link_url: (url = "/ironman/products")).first_or_create!(
-    title: 'Products',
-    deletable: false,
-    menu_match: "^#{url}(\/|\/.+?|)$"
-  ) do |page|
-    Refinery::Pages.default_parts.each_with_index do |part, index|
-      page.parts.build title: part, body: nil, position: index
-    end
-  end if defined?(Refinery::Page)
+  # Refinery::Page.where(link_url: (url = "/ironman/products")).first_or_create!(
+  #   title: 'Products',
+  #   deletable: false,
+  #   menu_match: "^#{url}(\/|\/.+?|)$"
+  # ) do |page|
+  #   Refinery::Pages.default_parts.each_with_index do |part, index|
+  #     page.parts.build title: part, body: nil, position: index
+  #   end
+  # end if defined?(Refinery::Page)
 
   # Refinery::Page.where(link_url: (url = "/ironman/categories")).first_or_create!(
   #   title: 'Categories',
@@ -35,13 +35,13 @@ Refinery::I18n.frontend_locales.each do |lang|
   #   end
   # end if defined?(Refinery::Page)
 
-  Refinery::Page.where(link_url: (url = "/ironman/vehicles")).first_or_create!(
-    title: 'Vehicles',
-    deletable: false,
-    menu_match: "^#{url}(\/|\/.+?|)$"
-  ) do |page|
-    Refinery::Pages.default_parts.each_with_index do |part, index|
-      page.parts.build title: part, body: nil, position: index
-    end
-  end if defined?(Refinery::Page)
+  # Refinery::Page.where(link_url: (url = "/ironman/vehicles")).first_or_create!(
+  #   title: 'Vehicles',
+  #   deletable: false,
+  #   menu_match: "^#{url}(\/|\/.+?|)$"
+  # ) do |page|
+  #   Refinery::Pages.default_parts.each_with_index do |part, index|
+  #     page.parts.build title: part, body: nil, position: index
+  #   end
+  # end if defined?(Refinery::Page)
 end
