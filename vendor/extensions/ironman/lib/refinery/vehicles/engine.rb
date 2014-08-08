@@ -8,7 +8,7 @@ module Refinery
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "vehicles"
+          plugin.name = "ironman_vehicles"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.ironman_admin_vehicles_path }
           plugin.pathname = root
           plugin.activity = {

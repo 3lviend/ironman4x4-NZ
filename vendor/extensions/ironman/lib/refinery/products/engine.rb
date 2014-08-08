@@ -8,14 +8,14 @@ module Refinery
 
       before_inclusion do
         Refinery::Plugin.register do |plugin|
-          plugin.name = "products"
+          plugin.name = "ironman_products"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.ironman_admin_products_path }
           plugin.pathname = root
           plugin.activity = {
             :class_name => :'refinery/ironman/product',
             :title => 'product_no'
           }
-          
+          plugin.menu_match = %r{refinery/ironman/products(/.*)?$}
         end
       end
 

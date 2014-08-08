@@ -1,11 +1,11 @@
 nl:
   refinery:
     plugins:
-      vehicles:
+      ironman_vehicles:
         title: Vehicles
-      categories:
+      ironman_categories:
         title: Categories
-      products:
+      ironman_products:
         title: Products
     ironman:
       admin:

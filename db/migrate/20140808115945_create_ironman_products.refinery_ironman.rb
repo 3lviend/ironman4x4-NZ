@@ -19,7 +19,7 @@ class CreateIronmanProducts < ActiveRecord::Migration
 
   def down
     if defined?(::Refinery::UserPlugin)
-      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-ironman"})
+      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms_ironman"})
     end
 
     if defined?(::Refinery::Page)

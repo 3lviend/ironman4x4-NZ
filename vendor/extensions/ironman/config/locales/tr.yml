@@ -1,11 +1,11 @@
 tr:
   refinery:
     plugins:
-      vehicles:
+      ironman_vehicles:
         title: Vehicles
-      categories:
+      ironman_categories:
         title: Categories
-      products:
+      ironman_products:
         title: Products
     ironman:
       admin:
@@ -65,18 +65,18 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
-      refinery/products/vehicle:
+      refinery/ironman/vehicle:
         parent_id: Parent
         name: Name
         sort_order: Sort Order
         visible: Visible
-      refinery/products/category:
+      refinery/ironman/category:
         parent_id: Parent
         name: Name
         description: Description
         sort_order: Sort Order
         visible: Visible
-      refinery/products/product:
+      refinery/ironman/product:
         product_no: Product No
         name: Name
         description: Description

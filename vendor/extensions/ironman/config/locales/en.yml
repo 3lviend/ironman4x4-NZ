@@ -1,7 +1,11 @@
 en:
   refinery:
     plugins:
-      products:
+      ironman_vehicles:
+        title: Vehicles
+      ironman_categories:
+        title: Categories
+      ironman_products:
         title: Products
     ironman:
       admin:
