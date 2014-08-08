@@ -1,0 +1,9 @@
+zh-CN:
+  refinery:
+    plugins:
+      ironman:
+        title: Ironman
+    ironman:
+      admin:
+  activerecord:
+    attributes:

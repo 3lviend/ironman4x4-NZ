@@ -58,6 +58,7 @@ gem 'refinerycms-products', path: 'vendor/extensions'
 gem 'refinerycms-posts', path: 'vendor/extensions'
 gem 'refinerycms-media_releases', path: 'vendor/extensions'
 gem 'refinerycms-stockists', path: 'vendor/extensions'
+gem 'refinerycms-ironman', path: 'vendor/extensions'
 
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: [:production, :staging]
