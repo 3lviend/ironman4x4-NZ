@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810061345) do
+ActiveRecord::Schema.define(version: 20140810064435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20140810061345) do
     t.datetime "updated_at"
   end
 
+  create_table "refinery_ironman_order_lines", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.decimal  "net_amount"
+    t.decimal  "tax_amount"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "refinery_ironman_orders", force: true do |t|
     t.string   "order_no"
     t.integer  "stockist_id"
@@ -131,6 +142,8 @@ ActiveRecord::Schema.define(version: 20140810061345) do
     t.string   "enquiry_type"
     t.integer  "vehicle_id"
     t.text     "comments"
+    t.decimal  "total_amount"
+    t.decimal  "tax_amount"
     t.boolean  "spam"
     t.integer  "position"
     t.datetime "created_at"

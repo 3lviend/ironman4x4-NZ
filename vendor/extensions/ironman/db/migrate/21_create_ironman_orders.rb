@@ -16,6 +16,8 @@ class CreateIronmanOrders < ActiveRecord::Migration
       t.string :enquiry_type
       t.integer :vehicle_id
       t.text :comments
+      t.decimal :total_amount
+      t.decimal :tax_amount
       t.boolean :spam
       t.integer :position
 
