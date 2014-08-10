@@ -1,0 +1,45 @@
+<%= form_for [refinery, :ironman_admin, @catalogue] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @catalogue,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:description],
+                :object => "ironman/catalogue" -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :priced_resource_id -%>
+    <%= f.number_field :priced_resource_id -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :unpriced_resource_id -%>
+    <%= f.number_field :unpriced_resource_id -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :products_link -%>
+    <%= f.text_field :products_link -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.catalogues.admin.catalogues.catalogue'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @catalogue.title) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

@@ -1,6 +1,8 @@
 en:
   refinery:
     plugins:
+      ironman_catalogues:
+        title: Catalogues
       ironman_warehouses:
         title: Warehouses
       ironman_enquiries:
@@ -19,6 +21,20 @@ en:
         title: Products
     ironman:
       admin:
+        catalogues:
+          actions:
+            create_new: Add New Catalogue
+            reorder: Reorder Catalogues
+            reorder_done: Done Reordering Catalogues
+          records:
+            title: Catalogues
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Catalogues yet. Click "Add New Catalogue" to
+              add your first catalogue.
+          catalogue:
+            view_live_html: View this catalogue live <br/><em>(opens in a new window)</em>
+            edit: Edit this catalogue
+            delete: Remove this catalogue forever
         warehouses:
           actions:
             create_new: Add New Warehouse
@@ -174,6 +190,9 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      catalogues:
+        show:
+          other: Other Catalogues
       warehouses:
         show:
           other: Other Warehouses
@@ -248,6 +267,12 @@ en:
             should you ever want to view it later there.
   activerecord:
     attributes:
+      refinery/ironman/catalogue:
+        title: Title
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
         address: Address

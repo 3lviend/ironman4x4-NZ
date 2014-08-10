@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_catalogues:
+        title: Catalogues
       ironman_warehouses:
         title: Warehouses
       ironman_enquiries:
@@ -19,6 +21,21 @@ tr:
         title: Products
     ironman:
       admin:
+        catalogues:
+          actions:
+            create_new: Yeni Ekle Catalogue
+            reorder: Tekrar sirala Catalogues
+            reorder_done: Tekrar siralama tamamlandiCatalogues
+          records:
+            title: Catalogues
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Catalogues yok henuz.  Tikla "Yeni Ekle Catalogue"
+              eklemek senin ilk catalogue.
+          catalogue:
+            view_live_html: Bunu canlu catalogue goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle catalogue
+            delete: Bunu Sil catalogue sonsuza dek
         warehouses:
           actions:
             create_new: Yeni Ekle Warehouse
@@ -141,6 +158,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      catalogues:
+        show:
+          other: Diger Catalogues
       warehouses:
         show:
           other: Diger Warehouses
@@ -167,6 +187,12 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/catalogue:
+        title: Title
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
         address: Address

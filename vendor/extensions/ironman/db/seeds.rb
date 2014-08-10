@@ -95,6 +95,16 @@ Refinery::I18n.frontend_locales.each do |lang|
   #   end
   # end if defined?(Refinery::Page)
 
+  # Refinery::Page.where(link_url: (url = "/ironman/catalogues")).first_or_create!(
+  #   title: 'Catalogues',
+  #   deletable: false,
+  #   menu_match: "^#{url}(\/|\/.+?|)$"
+  # ) do |page|
+  #   Refinery::Pages.default_parts.each_with_index do |part, index|
+  #     page.parts.build title: part, body: nil, position: index
+  #   end
+  # end if defined?(Refinery::Page)
+
   if defined?(Refinery::Page)
     contact_us_page = Refinery::Page.where(:link_url => '/contact').first
 

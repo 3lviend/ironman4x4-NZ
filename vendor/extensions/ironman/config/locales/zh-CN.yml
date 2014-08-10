@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_catalogues:
+        title: Catalogues
       ironman_warehouses:
         title: Warehouses
       ironman_enquiries:
@@ -19,6 +21,19 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        catalogues:
+          actions:
+            create_new: 建立新的 Catalogue
+            reorder: 对 Catalogues 重新排序
+            reorder_done: 对 Catalogues 的重新排序结束
+          records:
+            title: Catalogues
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Catalogues . 点击 "Add New Catalogue" 创建一个catalogue.
+          catalogue:
+            view_live_html: 查看 catalogue 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 catalogue
+            delete: 永久删除 catalogue
         warehouses:
           actions:
             create_new: 建立新的 Warehouse
@@ -126,6 +141,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      catalogues:
+        show:
+          other: 其他 Catalogues
       warehouses:
         show:
           other: 其他 Warehouses
@@ -152,6 +170,12 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/catalogue:
+        title: Title
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
         address: Address

@@ -26,6 +26,7 @@ Refinery::Core::Engine.routes.draw do
     resources :media_releases, :only => [:index, :show]
     resources :stockists, :only => [:index, :show]
     resources :warehouses, :only => [:index, :show]
+    resources :catalogues, :only => [:index, :show]
   end
 
   namespace :ironman, :path => '' do
@@ -104,6 +105,12 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
+      resources :catalogues, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
       resources :enquiries, :only => [:index, :show, :destroy] do
         get :spam, :on => :collection
         get :toggle_spam, :on => :member
@@ -114,5 +121,4 @@ Refinery::Core::Engine.routes.draw do
       end
     end
   end
-
 end

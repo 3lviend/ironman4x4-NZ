@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810052224) do
+ActiveRecord::Schema.define(version: 20140810054913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20140810052224) do
     t.integer  "image_width"
     t.integer  "image_height"
     t.string   "image_uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_ironman_catalogues", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "priced_resource_id"
+    t.integer  "unpriced_resource_id"
+    t.string   "products_link"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,6 +1,8 @@
 nl:
   refinery:
     plugins:
+      ironman_catalogues:
+        title: Catalogues
       ironman_warehouses:
         title: Warehouses
       ironman_enquiries:
@@ -19,6 +21,21 @@ nl:
         title: Products
     ironman:
       admin:
+        catalogues:
+          actions:
+            create_new: Nieuwe Catalogue toevoegen
+            reorder: De volgorde van de Catalogues wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Catalogue-volgorde
+          records:
+            title: Catalogues
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Catalogues. Druk op 'Nieuwe Catalogue toevoegen'
+              om de eerste toe te voegen.
+          catalogue:
+            view_live_html: Deze catalogue op de website bekijken <br/><em>(opent
+              in een nieuw venster)</em>
+            edit: Bewerk deze catalogue
+            delete: Deze catalogue definitief verwijderen
         warehouses:
           actions:
             create_new: Nieuwe Warehouse toevoegen
@@ -141,6 +158,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      catalogues:
+        show:
+          other: Andere Catalogues
       warehouses:
         show:
           other: Andere Warehouses
@@ -167,6 +187,12 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/ironman/catalogue:
+        title: Title
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
         address: Address

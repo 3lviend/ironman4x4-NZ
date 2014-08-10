@@ -1,6 +1,8 @@
 sk:
   refinery:
     plugins:
+      ironman_catalogues:
+        title: Catalogues
       ironman_warehouses:
         title: Warehouses
       ironman_enquiries:
@@ -19,6 +21,20 @@ sk:
         title: Products
     ironman:
       admin:
+        catalogues:
+          actions:
+            create_new: Pridať Catalogue
+            reorder: Preusporiadať Catalogues
+            reorder_done: Koniec radenia Catalogues
+          records:
+            title: Catalogues
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Catalogues. Kliknite na "Pridať
+              Catalogue" pre pridanie prvého catalogue.
+          catalogue:
+            view_live_html: Zobraziť náhľad catalogue<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť catalogue
+            delete: Zmazať catalogue
         warehouses:
           actions:
             create_new: Pridať Warehouse
@@ -134,6 +150,9 @@ sk:
             view_live_html: Zobraziť náhľad product<br/><em>(otvorí sa v novom okne)</em>
             edit: Upraviť product
             delete: Zmazať product
+      catalogues:
+        show:
+          other: Daľšie Catalogues
       warehouses:
         show:
           other: Daľšie Warehouses
@@ -160,6 +179,12 @@ sk:
           other: Daľšie Products
   activerecord:
     attributes:
+      refinery/ironman/catalogue:
+        title: Title
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
         address: Address

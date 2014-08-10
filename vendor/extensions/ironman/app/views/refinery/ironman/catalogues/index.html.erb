@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="catalogues">
+    <% @catalogues.each do |catalogue| %>
+      <li>
+        <%= link_to catalogue.title, refinery.ironman_catalogue_path(catalogue) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>
