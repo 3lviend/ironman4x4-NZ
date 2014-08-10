@@ -5,8 +5,11 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
-      validates_presence_of :title, :description, :priced_resource_id,
-        :unpriced_resource_id, :products_link
+      belongs_to :unpriced_resource, :class_name => '::Refinery::Resource'
+      belongs_to :priced_resource, :class_name => '::Refinery::Resource'
+
+      validates_presence_of :title, :description, :priced_resource,
+        :unpriced_resource, :products_link
       validates_uniqueness_of :title
 
     end

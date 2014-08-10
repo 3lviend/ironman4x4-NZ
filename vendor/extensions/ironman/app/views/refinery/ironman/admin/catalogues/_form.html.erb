@@ -16,13 +16,25 @@
   </div>
 
   <div class='field'>
-    <%= f.label :priced_resource_id -%>
-    <%= f.number_field :priced_resource_id -%>
+    <%= f.label :priced_resource_id %>
+    <%= render :partial => "/refinery/admin/resource_picker", :locals =>
+      {
+        :f => f,
+        :field => :priced_resource_id,
+        :resource => f.object.priced_resource
+      }
+    %>
   </div>
 
   <div class='field'>
-    <%= f.label :unpriced_resource_id -%>
-    <%= f.number_field :unpriced_resource_id -%>
+    <%= f.label :unpriced_resource_id %>
+    <%= render :partial => "/refinery/admin/resource_picker", :locals =>
+      {
+        :f => f,
+        :field => :unpriced_resource_id,
+        :resource => f.object.unpriced_resource
+      }
+    %>
   </div>
 
   <div class='field'>
