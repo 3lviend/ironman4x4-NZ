@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,20 @@ it:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: Aggiungi Nuovo Order
+            reorder: Riordina Orders
+            reorder_done: Termina il Riordino di Orders
+          records:
+            title: Orders
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Orders. Clicca "Aggiungi Nuovo Order"
+              per aggiungere il tuo primo order.
+          order:
+            view_live_html: Guarda live questo order <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo order
+            delete: Rimuovi per sempre questo order
         catalogues:
           actions:
             create_new: Aggiungi Nuovo Catalogue
@@ -152,6 +168,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      orders:
+        show:
+          other: Altri Orders
       catalogues:
         show:
           other: Altri Catalogues
@@ -181,6 +200,22 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description

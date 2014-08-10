@@ -1,6 +1,8 @@
 nl:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,21 @@ nl:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: Nieuwe Order toevoegen
+            reorder: De volgorde van de Orders wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Order-volgorde
+          records:
+            title: Orders
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Orders. Druk op 'Nieuwe Order toevoegen'
+              om de eerste toe te voegen.
+          order:
+            view_live_html: Deze order op de website bekijken <br/><em>(opent in een
+              nieuw venster)</em>
+            edit: Bewerk deze order
+            delete: Deze order definitief verwijderen
         catalogues:
           actions:
             create_new: Nieuwe Catalogue toevoegen
@@ -158,6 +175,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      orders:
+        show:
+          other: Andere Orders
       catalogues:
         show:
           other: Andere Catalogues
@@ -187,6 +207,22 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description

@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,19 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: 建立新的 Order
+            reorder: 对 Orders 重新排序
+            reorder_done: 对 Orders 的重新排序结束
+          records:
+            title: Orders
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Orders . 点击 "Add New Order" 创建一个order.
+          order:
+            view_live_html: 查看 order 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 order
+            delete: 永久删除 order
         catalogues:
           actions:
             create_new: 建立新的 Catalogue
@@ -141,6 +156,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      orders:
+        show:
+          other: 其他 Orders
       catalogues:
         show:
           other: 其他 Catalogues
@@ -170,6 +188,22 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description

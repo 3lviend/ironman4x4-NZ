@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,21 @@ tr:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: Yeni Ekle Order
+            reorder: Tekrar sirala Orders
+            reorder_done: Tekrar siralama tamamlandiOrders
+          records:
+            title: Orders
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Orders yok henuz.  Tikla "Yeni Ekle Order"
+              eklemek senin ilk order.
+          order:
+            view_live_html: Bunu canlu order goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle order
+            delete: Bunu Sil order sonsuza dek
         catalogues:
           actions:
             create_new: Yeni Ekle Catalogue
@@ -158,6 +175,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      orders:
+        show:
+          other: Diger Orders
       catalogues:
         show:
           other: Diger Catalogues
@@ -187,6 +207,22 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description

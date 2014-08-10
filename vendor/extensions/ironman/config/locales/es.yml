@@ -1,6 +1,8 @@
 es:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,21 @@ es:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: Crear nuevo order
+            reorder: Reordenar orders
+            reorder_done: Reordenación de orders completada
+          records:
+            title: Orders
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay orders todavía. Pulsa en "Crear nuevo Order" para
+              crear tu primer order.
+          order:
+            view_live_html: Ver este order como abierto al público <br/><em>(abre
+              en ventana nueva)</em>
+            edit: Editar este order
+            delete: Borrar este order para siempre
         catalogues:
           actions:
             create_new: Crear nuevo catalogue
@@ -158,6 +175,9 @@ es:
               en ventana nueva)</em>
             edit: Editar este product
             delete: Borrar este product para siempre
+      orders:
+        show:
+          other: Otros orders
       catalogues:
         show:
           other: Otros catalogues
@@ -187,6 +207,22 @@ es:
           other: Otros products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description

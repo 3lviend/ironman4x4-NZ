@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_orders:
+        title: Orders
       ironman_catalogues:
         title: Catalogues
       ironman_warehouses:
@@ -21,6 +23,20 @@ cs:
         title: Products
     ironman:
       admin:
+        orders:
+          actions:
+            create_new: Přidat Order
+            reorder: Řadit Orders
+            reorder_done: Konec řazení Orders
+          records:
+            title: Orders
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Orders. Zvolte "Přidat Order"
+              pro přidání prvního order.
+          order:
+            view_live_html: Zobrazit náhled order<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit order
+            delete: Smazat order
         catalogues:
           actions:
             create_new: Přidat Catalogue
@@ -150,6 +166,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      orders:
+        show:
+          other: Další Orders
       catalogues:
         show:
           other: Další Catalogues
@@ -179,6 +198,22 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/order:
+        order_no: Order No
+        stockist_id: Stockist
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        comments: Comments
+        spam: Spam
       refinery/ironman/catalogue:
         title: Title
         description: Description
