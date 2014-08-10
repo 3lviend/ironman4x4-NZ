@@ -46,7 +46,7 @@ module Refinery
           elsif @category.present?
             path = refinery.products_category_product_path(@category, @product)
           else
-            path = refinery.product_path(@product)
+            path = refinery.ironman_product_path(@product)
           end
 
           redirect_to path, status: :moved_permanently

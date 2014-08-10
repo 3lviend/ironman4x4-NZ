@@ -14,7 +14,7 @@ describe Refinery do
           end
 
           it "shows two items" do
-            visit refinery.products_admin_products_path
+            visit refinery.ironman_admin_products_path
             page.should have_content("UniqueTitleOne")
             page.should have_content("UniqueTitleTwo")
           end
@@ -22,7 +22,7 @@ describe Refinery do
 
         describe "create" do
           before do
-            visit refinery.products_admin_products_path
+            visit refinery.ironman_admin_products_path
 
             click_link "Add New Product"
           end
@@ -50,7 +50,7 @@ describe Refinery do
             before { FactoryGirl.create(:product, :product_no => "UniqueTitle") }
 
             it "should fail" do
-              visit refinery.products_admin_products_path
+              visit refinery.ironman_admin_products_path
 
               click_link "Add New Product"
 
@@ -68,7 +68,7 @@ describe Refinery do
           before { FactoryGirl.create(:product, :product_no => "A product_no") }
 
           it "should succeed" do
-            visit refinery.products_admin_products_path
+            visit refinery.ironman_admin_products_path
 
             within ".actions" do
               click_link "Edit this product"
@@ -86,7 +86,7 @@ describe Refinery do
           before { FactoryGirl.create(:product, :product_no => "UniqueTitleOne") }
 
           it "should succeed" do
-            visit refinery.products_admin_products_path
+            visit refinery.ironman_admin_products_path
 
             click_link "Remove this product forever"
 

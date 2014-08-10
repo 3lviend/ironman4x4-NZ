@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_media_releases:
+        title: Media Releases
       ironman_posts:
         title: Posts
       ironman_vehicles:
@@ -11,6 +13,20 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        media_releases:
+          actions:
+            create_new: 建立新的 Media Release
+            reorder: 对 Media Releases 重新排序
+            reorder_done: 对 Media Releases 的重新排序结束
+          records:
+            title: Media Releases
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Media Releases . 点击 "Add New Media Release" 创建一个media
+              release.
+          media_release:
+            view_live_html: 查看 media release 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 media release
+            delete: 永久删除 media release
         posts:
           actions:
             create_new_blog_post: 建立新的 Post
@@ -65,6 +81,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      media_releases:
+        show:
+          other: 其他 Media Releases
       posts:
         show:
           other: 其他 Posts
@@ -79,6 +98,17 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/media_release:
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft
       refinery/ironman/event_detail:
         post_id: Post
         start: Start

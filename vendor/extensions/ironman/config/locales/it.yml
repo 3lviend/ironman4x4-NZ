@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_media_releases:
+        title: Media Releases
       ironman_posts:
         title: Posts
       ironman_vehicles:
@@ -11,6 +13,21 @@ it:
         title: Products
     ironman:
       admin:
+        media_releases:
+          actions:
+            create_new: Aggiungi Nuovo Media Release
+            reorder: Riordina Media Releases
+            reorder_done: Termina il Riordino di Media Releases
+          records:
+            title: Media Releases
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Media Releases. Clicca "Aggiungi Nuovo
+              Media Release" per aggiungere il tuo primo media release.
+          media_release:
+            view_live_html: Guarda live questo media release <br/><em>(apre una nuova
+              finestra)</em>
+            edit: Modifica questo media release
+            delete: Rimuovi per sempre questo media release
         posts:
           actions:
             create_new_blog_post: Aggiungi Nuovo Post
@@ -69,6 +86,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      media_releases:
+        show:
+          other: Altri Media Releases
       posts:
         show:
           other: Altri Posts
@@ -83,6 +103,17 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/media_release:
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft
       refinery/ironman/event_detail:
         post_id: Post
         start: Start

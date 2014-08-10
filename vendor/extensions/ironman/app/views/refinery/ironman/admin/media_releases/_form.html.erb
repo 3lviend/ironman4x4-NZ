@@ -1,0 +1,86 @@
+<%= form_for [refinery, :ironman_admin, @media_release] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @media_release,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :category -%>
+    <%= f.text_field :category -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :publication -%>
+    <%= f.text_field :publication -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :published_at -%>
+    <%= f.text_field :published_at, :'data-role' => 'datepicker', :value => d(@media_release.published_at) -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :description -%>
+    <%= f.text_area :description -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :priced_resource_id %>
+    <%= render :partial => "/refinery/admin/resource_picker", :locals =>
+      {
+        :f => f,
+        :field => :priced_resource_id,
+        :resource => f.object.priced_resource
+      }
+    %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :unpriced_resource_id %>
+    <%= render :partial => "/refinery/admin/resource_picker", :locals =>
+      {
+        :f => f,
+        :field => :unpriced_resource_id,
+        :resource => f.object.unpriced_resource
+      }
+    %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :thumbnail_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :thumbnail_image_id,
+      :image => f.object.thumbnail_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
+    <%= f.label :posted_at -%>
+    <%= f.text_field :posted_at, :'data-role' => 'datepicker', :value => d(@media_release.posted_at) -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :draft -%>
+    <%= f.check_box :draft, :checked => @media_release[:draft] -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.media_releases.admin.media_releases.media_release'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @media_release.title) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

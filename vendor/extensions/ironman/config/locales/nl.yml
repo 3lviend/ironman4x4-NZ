@@ -1,6 +1,8 @@
 nl:
   refinery:
     plugins:
+      ironman_media_releases:
+        title: Media Releases
       ironman_posts:
         title: Posts
       ironman_vehicles:
@@ -11,6 +13,21 @@ nl:
         title: Products
     ironman:
       admin:
+        media_releases:
+          actions:
+            create_new: Nieuwe Media Release toevoegen
+            reorder: De volgorde van de Media Releases wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Media Release-volgorde
+          records:
+            title: Media Releases
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Media Releases. Druk op 'Nieuwe Media Release
+              toevoegen' om de eerste toe te voegen.
+          media_release:
+            view_live_html: Deze media release op de website bekijken <br/><em>(opent
+              in een nieuw venster)</em>
+            edit: Bewerk deze media release
+            delete: Deze media release definitief verwijderen
         posts:
           actions:
             create_new_blog_post: Nieuwe Post toevoegen
@@ -73,6 +90,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      media_releases:
+        show:
+          other: Andere Media Releases
       posts:
         show:
           other: Andere Posts
@@ -87,6 +107,17 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/ironman/media_release:
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft
       refinery/ironman/event_detail:
         post_id: Post
         start: Start

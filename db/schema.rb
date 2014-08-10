@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140809044263) do
+ActiveRecord::Schema.define(version: 20140810011924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,22 @@ ActiveRecord::Schema.define(version: 20140809044263) do
     t.string   "location"
     t.decimal  "latitude"
     t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_ironman_media_releases", force: true do |t|
+    t.string   "title"
+    t.string   "category"
+    t.string   "publication"
+    t.date     "published_at"
+    t.text     "description"
+    t.integer  "priced_resource_id"
+    t.integer  "unpriced_resource_id"
+    t.integer  "thumbnail_image_id"
+    t.date     "posted_at"
+    t.boolean  "draft"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

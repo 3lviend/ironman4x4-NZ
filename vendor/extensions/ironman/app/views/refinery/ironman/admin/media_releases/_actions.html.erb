@@ -1,0 +1,25 @@
+<ul>
+  <% if ::Refinery::Ironman::Admin::MediaReleasesController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_media_releases_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new'), refinery.new_ironman_admin_media_release_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Ironman::Admin::MediaReleasesController.sortable? && ::Refinery::Ironman::MediaRelease.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Media Releases"),
+                 refinery.ironman_admin_media_releases_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Media Releases"),
+                 refinery.ironman_admin_media_releases_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

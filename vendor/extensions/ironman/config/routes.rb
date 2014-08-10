@@ -23,6 +23,7 @@ Refinery::Core::Engine.routes.draw do
     resources :products, :only => [:index, :show]
     resources :categories, :only => [:index, :show]
     resources :vehicles, :only => [:index, :show]
+    resources :media_releases, :only => [:index, :show]
   end
 
   namespace :ironman, :path => '' do
@@ -74,6 +75,12 @@ Refinery::Core::Engine.routes.draw do
               post :update_positions
             end
           end
+        end
+      end
+
+      resources :media_releases, :except => :show do
+        collection do
+          post :update_positions
         end
       end
     end

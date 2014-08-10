@@ -2,8 +2,8 @@ class CreateIronmanPosts < ActiveRecord::Migration
 
   def up
     create_table :refinery_ironman_posts do |t|
-      t.string :type
       t.string :title
+      t.string :type
       t.text :teaser
       t.text :body
       t.integer :user_id
@@ -20,7 +20,16 @@ class CreateIronmanPosts < ActiveRecord::Migration
   end
 
   def down
-    drop_table :refinery_posts
+    if defined?(::Refinery::UserPlugin)
+      ::Refinery::UserPlugin.destroy_all({:name => "refinerycms-ironman"})
+    end
+
+    if defined?(::Refinery::Page)
+      ::Refinery::Page.delete_all({:link_url => "/ironman/posts"})
+    end
+
+    drop_table :refinery_ironman_posts
+
   end
 
 end

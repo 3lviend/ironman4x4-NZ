@@ -1,6 +1,8 @@
 nb:
   refinery:
     plugins:
+      ironman_media_releases:
+        title: Media Releases
       ironman_posts:
         title: Posts
       ironman_vehicles:
@@ -11,6 +13,21 @@ nb:
         title: Products
     ironman:
       admin:
+        media_releases:
+          actions:
+            create_new: Lag en ny Media Release
+            reorder: Endre rekkefølgen på Media Releases
+            reorder_done: Ferdig å endre rekkefølgen Media Releases
+          records:
+            title: Media Releases
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Media Releases enda. Klikk på "Lag en ny Media
+              Release" for å legge til din første media release.
+          media_release:
+            view_live_html: Vis hvordan denne media release ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne media release
+            delete: Fjern denne media release permanent
         posts:
           actions:
             create_new_blog_post: Lag en ny Post
@@ -73,6 +90,9 @@ nb:
               i et nytt vindu)</em>
             edit: Rediger denne product
             delete: Fjern denne product permanent
+      media_releases:
+        show:
+          other: Andre Media Releases
       posts:
         show:
           other: Andre Posts
@@ -87,6 +107,17 @@ nb:
           other: Andre Products
   activerecord:
     attributes:
+      refinery/ironman/media_release:
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft
       refinery/ironman/event_detail:
         post_id: Post
         start: Start

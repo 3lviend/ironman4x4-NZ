@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_media_releases:
+        title: Media Releases
       ironman_posts:
         title: Posts
       ironman_vehicles:
@@ -11,6 +13,21 @@ cs:
         title: Products
     ironman:
       admin:
+        media_releases:
+          actions:
+            create_new: Přidat Media Release
+            reorder: Řadit Media Releases
+            reorder_done: Konec řazení Media Releases
+          records:
+            title: Media Releases
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Media Releases. Zvolte "Přidat
+              Media Release" pro přidání prvního media release.
+          media_release:
+            view_live_html: Zobrazit náhled media release<br/><em>(otevře se v novém
+              okně)</em>
+            edit: Upravit media release
+            delete: Smazat media release
         posts:
           actions:
             create_new_blog_post: Přidat Blog Post
@@ -69,6 +86,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      media_releases:
+        show:
+          other: Další Media Releases
       posts:
         show:
           other: Další Posts
@@ -83,6 +103,17 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/media_release:
+        title: Title
+        category: Category
+        publication: Publication
+        published_at: Published At
+        description: Description
+        priced_resource_id: Priced Resource
+        unpriced_resource_id: Unpriced Resource
+        thumbnail_image_id: Thumbnail Image
+        posted_at: Posted At
+        draft: Draft
       refinery/ironman/event_detail:
         post_id: Post
         start: Start
