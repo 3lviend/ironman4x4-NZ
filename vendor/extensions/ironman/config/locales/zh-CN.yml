@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_warehouses:
+        title: Warehouses
       ironman_enquiries:
         title: Enquiries
       ironman_stockists:
@@ -17,6 +19,19 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        warehouses:
+          actions:
+            create_new: 建立新的 Warehouse
+            reorder: 对 Warehouses 重新排序
+            reorder_done: 对 Warehouses 的重新排序结束
+          records:
+            title: Warehouses
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Warehouses . 点击 "Add New Warehouse" 创建一个warehouse.
+          warehouse:
+            view_live_html: 查看 warehouse 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 warehouse
+            delete: 永久删除 warehouse
         enquiries:
           actions:
             create_new: 建立新的 Enquiry
@@ -111,6 +126,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      warehouses:
+        show:
+          other: 其他 Warehouses
       enquiries:
         show:
           other: 其他 Enquiries
@@ -134,6 +152,17 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/warehouse:
+        name: Name
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
         address1: Address1

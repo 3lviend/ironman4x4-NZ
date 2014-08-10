@@ -1,6 +1,8 @@
 en:
   refinery:
     plugins:
+      ironman_warehouses:
+        title: Warehouses
       ironman_enquiries:
         title: Enquiries
       ironman_stockists:
@@ -16,24 +18,39 @@ en:
       ironman_products:
         title: Products
     ironman:
-      config:
-        from_name: "%{name} [%{site_name}]"
       admin:
+        warehouses:
+          actions:
+            create_new: Add New Warehouse
+            reorder: Reorder Warehouses
+            reorder_done: Done Reordering Warehouses
+          records:
+            title: Warehouses
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Warehouses yet. Click "Add New Warehouse" to
+              add your first warehouse.
+          warehouse:
+            view_live_html: View this warehouse live <br/><em>(opens in a new window)</em>
+            edit: Edit this warehouse
+            delete: Remove this warehouse forever
         settings:
           notification_recipients_form:
             enquiry_settings_value_name: Send notifications to
-            hint: When a new enquiry is submitted, Refinery will send an email notification to you.
-            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+            hint: When a new enquiry is submitted, Refinery will send an email notification
+              to you.
+            example: ! 'Enter your email address(es) like: jack@work.com, jill@office.com'
           confirmation_email_form:
             to: To
             from: From
             subject: Subject
             click_to_edit_subject: Click here to edit the subject
-            explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the enquiry with the person who made it.
+            explanation: Every time someone contacts you on your website, Refinery
+              sends out an email to confirm the enquiry with the person who made it.
             below_edit_email_sent: Below you can edit the email that is sent out.
             the_customer_making_enquiry: The customer making the enquiry
             message: Message
-            note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+            note: ! 'Note: place the text %name% where you''d like the customer''s
+              name to appear in the email'
         enquiries:
           delete: Remove this enquiry forever
           enquiry:
@@ -157,6 +174,11 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      warehouses:
+        show:
+          other: Other Warehouses
+      config:
+        from_name: ! '%{name} [%{site_name}]'
       enquiries:
         new:
           send: Send message
@@ -215,16 +237,28 @@ en:
         notification:
           greeting: Hi there
           you_recieved_new_enquiry: You just received a new enquiry on your website.
-          enquiry_starts: --- enquiry starts ---
-          enquiry_ends: --- enquiry ends ---
+          enquiry_starts: ! '--- enquiry starts ---'
+          enquiry_ends: ! '--- enquiry ends ---'
           from: From
           email: Email
           phone: Phone
           message: Message
           closing_line: Kind Regards
-          ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery should you ever want to view it later there.
+          ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery
+            should you ever want to view it later there.
   activerecord:
     attributes:
+      refinery/ironman/warehouse:
+        name: Name
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
         address1: Address1

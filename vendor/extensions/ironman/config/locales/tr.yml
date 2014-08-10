@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_warehouses:
+        title: Warehouses
       ironman_enquiries:
         title: Enquiries
       ironman_stockists:
@@ -17,6 +19,21 @@ tr:
         title: Products
     ironman:
       admin:
+        warehouses:
+          actions:
+            create_new: Yeni Ekle Warehouse
+            reorder: Tekrar sirala Warehouses
+            reorder_done: Tekrar siralama tamamlandiWarehouses
+          records:
+            title: Warehouses
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Warehouses yok henuz.  Tikla "Yeni Ekle Warehouse"
+              eklemek senin ilk warehouse.
+          warehouse:
+            view_live_html: Bunu canlu warehouse goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle warehouse
+            delete: Bunu Sil warehouse sonsuza dek
         enquiries:
           actions:
             create_new: Yeni Ekle Enquiry
@@ -124,6 +141,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      warehouses:
+        show:
+          other: Diger Warehouses
       enquiries:
         show:
           other: Diger Enquiries
@@ -147,6 +167,17 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/warehouse:
+        name: Name
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
         address1: Address1

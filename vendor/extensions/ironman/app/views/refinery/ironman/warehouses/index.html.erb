@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="warehouses">
+    <% @warehouses.each do |warehouse| %>
+      <li>
+        <%= link_to warehouse.name, refinery.ironman_warehouse_path(warehouse) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_warehouses:
+        title: Warehouses
       ironman_enquiries:
         title: Enquiries
       ironman_stockists:
@@ -17,6 +19,20 @@ cs:
         title: Products
     ironman:
       admin:
+        warehouses:
+          actions:
+            create_new: Přidat Warehouse
+            reorder: Řadit Warehouses
+            reorder_done: Konec řazení Warehouses
+          records:
+            title: Warehouses
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Warehouses. Zvolte "Přidat
+              Warehouse" pro přidání prvního warehouse.
+          warehouse:
+            view_live_html: Zobrazit náhled warehouse<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit warehouse
+            delete: Smazat warehouse
         enquiries:
           actions:
             create_new: Přidat Enquiry
@@ -118,6 +134,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      warehouses:
+        show:
+          other: Další Warehouses
       enquiries:
         show:
           other: Další Enquiries
@@ -141,6 +160,17 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/warehouse:
+        name: Name
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
         address1: Address1

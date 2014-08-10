@@ -25,6 +25,7 @@ Refinery::Core::Engine.routes.draw do
     resources :vehicles, :only => [:index, :show]
     resources :media_releases, :only => [:index, :show]
     resources :stockists, :only => [:index, :show]
+    resources :warehouses, :only => [:index, :show]
   end
 
   namespace :ironman, :path => '' do
@@ -92,6 +93,12 @@ Refinery::Core::Engine.routes.draw do
       end
 
       resources :media_releases, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+
+      resources :warehouses, :except => :show do
         collection do
           post :update_positions
         end

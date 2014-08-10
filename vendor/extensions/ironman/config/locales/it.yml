@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_warehouses:
+        title: Warehouses
       ironman_enquiries:
         title: Enquiries
       ironman_stockists:
@@ -17,6 +19,21 @@ it:
         title: Products
     ironman:
       admin:
+        warehouses:
+          actions:
+            create_new: Aggiungi Nuovo Warehouse
+            reorder: Riordina Warehouses
+            reorder_done: Termina il Riordino di Warehouses
+          records:
+            title: Warehouses
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Warehouses. Clicca "Aggiungi Nuovo Warehouse"
+              per aggiungere il tuo primo warehouse.
+          warehouse:
+            view_live_html: Guarda live questo warehouse <br/><em>(apre una nuova
+              finestra)</em>
+            edit: Modifica questo warehouse
+            delete: Rimuovi per sempre questo warehouse
         enquiries:
           actions:
             create_new: Aggiungi Nuovo Enquiry
@@ -118,6 +135,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      warehouses:
+        show:
+          other: Altri Warehouses
       enquiries:
         show:
           other: Altri Enquiries
@@ -141,6 +161,17 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/warehouse:
+        name: Name
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        phone: Phone
+        fax: Fax
+        latitude: Latitude
+        longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
         address1: Address1
