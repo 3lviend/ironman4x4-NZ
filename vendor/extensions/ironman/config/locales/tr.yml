@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,21 @@ tr:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Yeni Ekle Enquiry
+            reorder: Tekrar sirala Enquiries
+            reorder_done: Tekrar siralama tamamlandiEnquiries
+          records:
+            title: Enquiries
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Enquiries yok henuz.  Tikla "Yeni Ekle Enquiry"
+              eklemek senin ilk enquiry.
+          enquiry:
+            view_live_html: Bunu canlu enquiry goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle enquiry
+            delete: Bunu Sil enquiry sonsuza dek
         stockists:
           actions:
             create_new: Yeni Ekle Stockist
@@ -107,6 +124,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      enquiries:
+        show:
+          other: Diger Enquiries
       stockists:
         show:
           other: Diger Stockists
@@ -127,6 +147,20 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

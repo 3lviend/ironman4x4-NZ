@@ -1,6 +1,8 @@
 fr:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,20 @@ fr:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Enquiry
+            reorder: Réordonner les Enquiries
+            reorder_done: Fin de réordonnancement des Enquiries
+          records:
+            title: Enquiries
+            sorry_no_results: Désolé ! Aucun résultat.
+            no_items_yet: Il n'y a actuellement aucun(e) Enquiry. Cliquer sur "Créer
+              un(e) nouve(au/l/lle) Enquiry" pour créer votre premi(er/ère) enquiry.
+          enquiry:
+            view_live_html: Voir ce(t/tte) enquiry <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) enquiry
+            delete: Supprimer définitivement ce(t/tte) enquiry
         stockists:
           actions:
             create_new: Créer un(e) nouve(au/l/lle) Stockist
@@ -103,6 +119,9 @@ fr:
             view_live_html: Voir ce(t/tte) product <br/><em>(Ouvre une nouvelle fenêtre)</em>
             edit: Modifier ce(t/tte) product
             delete: Supprimer définitivement ce(t/tte) product
+      enquiries:
+        show:
+          other: Autres Enquiries
       stockists:
         show:
           other: Autres Stockists
@@ -123,6 +142,20 @@ fr:
           other: Autres Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

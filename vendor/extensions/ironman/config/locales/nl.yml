@@ -1,6 +1,8 @@
 nl:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,21 @@ nl:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Nieuwe Enquiry toevoegen
+            reorder: De volgorde van de Enquiries wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Enquiry-volgorde
+          records:
+            title: Enquiries
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Enquiries. Druk op 'Nieuwe Enquiry toevoegen'
+              om de eerste toe te voegen.
+          enquiry:
+            view_live_html: Deze enquiry op de website bekijken <br/><em>(opent in
+              een nieuw venster)</em>
+            edit: Bewerk deze enquiry
+            delete: Deze enquiry definitief verwijderen
         stockists:
           actions:
             create_new: Nieuwe Stockist toevoegen
@@ -107,6 +124,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      enquiries:
+        show:
+          other: Andere Enquiries
       stockists:
         show:
           other: Andere Stockists
@@ -127,6 +147,20 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

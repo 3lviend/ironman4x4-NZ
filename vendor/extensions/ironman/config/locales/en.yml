@@ -1,6 +1,8 @@
 en:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -14,7 +16,53 @@ en:
       ironman_products:
         title: Products
     ironman:
+      config:
+        from_name: "%{name} [%{site_name}]"
       admin:
+        settings:
+          notification_recipients_form:
+            enquiry_settings_value_name: Send notifications to
+            hint: When a new enquiry is submitted, Refinery will send an email notification to you.
+            example: "Enter your email address(es) like: jack@work.com, jill@office.com"
+          confirmation_email_form:
+            to: To
+            from: From
+            subject: Subject
+            click_to_edit_subject: Click here to edit the subject
+            explanation: Every time someone contacts you on your website, Refinery sends out an email to confirm the enquiry with the person who made it.
+            below_edit_email_sent: Below you can edit the email that is sent out.
+            the_customer_making_enquiry: The customer making the enquiry
+            message: Message
+            note: "Note: place the text %name% where you'd like the customer's name to appear in the email"
+        enquiries:
+          delete: Remove this enquiry forever
+          enquiry:
+            read_enquiry: Read the enquiry
+            said: said
+            mark_as_spam: Mark as spam
+            mark_as_ham: Move to inbox
+          submenu:
+            inbox: Inbox
+            spam: Spam
+            update_notified: Update who gets notified
+            edit_confirmation_email: Edit confirmation email
+          index:
+            no_enquiries: You have not received any enquiries yet.
+            no_spam: Hooray! You don't have any spam.
+          show:
+            details: Details
+            age: Age
+            actions: Actions
+            back_to_all_enquiries: Back to all Enquiries
+            spam: Spam
+            spam_yes: 'yes'
+            enquiry: Enquiry
+            to: To
+            from: From
+            click_to_email: Click to email this address
+            phone: Phone
+            date: Date
+            message: Message
         stockists:
           actions:
             create_new: Add New Stockist
@@ -109,6 +157,12 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      enquiries:
+        new:
+          send: Send message
+          privacy_policy: We value your privacy
+        show:
+          other: Other Enquiries
       stockists:
         show:
           other: Other Stockists
@@ -157,8 +211,34 @@ en:
             add_to_wishlist: Add to Wishlist
           inc_gst: ! ' (RRP inc GST)'
           no_products_found: No products were found
+      enquiry_mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_enquiry: You just received a new enquiry on your website.
+          enquiry_starts: --- enquiry starts ---
+          enquiry_ends: --- enquiry ends ---
+          from: From
+          email: Email
+          phone: Phone
+          message: Message
+          closing_line: Kind Regards
+          ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery should you ever want to view it later there.
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

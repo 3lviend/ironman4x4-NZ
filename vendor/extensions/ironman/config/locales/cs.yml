@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,20 @@ cs:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Přidat Enquiry
+            reorder: Řadit Enquiries
+            reorder_done: Konec řazení Enquiries
+          records:
+            title: Enquiries
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Enquiries. Zvolte "Přidat Enquiry"
+              pro přidání prvního enquiry.
+          enquiry:
+            view_live_html: Zobrazit náhled enquiry<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit enquiry
+            delete: Smazat enquiry
         stockists:
           actions:
             create_new: Přidat Stockist
@@ -102,6 +118,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      enquiries:
+        show:
+          other: Další Enquiries
       stockists:
         show:
           other: Další Stockists
@@ -122,6 +141,20 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

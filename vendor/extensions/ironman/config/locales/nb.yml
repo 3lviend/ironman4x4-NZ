@@ -1,6 +1,8 @@
 nb:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,21 @@ nb:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Lag en ny Enquiry
+            reorder: Endre rekkefølgen på Enquiries
+            reorder_done: Ferdig å endre rekkefølgen Enquiries
+          records:
+            title: Enquiries
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Enquiries enda. Klikk på "Lag en ny Enquiry"
+              for å legge til din første enquiry.
+          enquiry:
+            view_live_html: Vis hvordan denne enquiry ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne enquiry
+            delete: Fjern denne enquiry permanent
         stockists:
           actions:
             create_new: Lag en ny Stockist
@@ -107,6 +124,9 @@ nb:
               i et nytt vindu)</em>
             edit: Rediger denne product
             delete: Fjern denne product permanent
+      enquiries:
+        show:
+          other: Andre Enquiries
       stockists:
         show:
           other: Andre Stockists
@@ -127,6 +147,20 @@ nb:
           other: Andre Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

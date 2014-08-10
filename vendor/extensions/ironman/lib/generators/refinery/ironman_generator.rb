@@ -1,8 +1,14 @@
 module Refinery
   class IronmanGenerator < Rails::Generators::Base
+    source_root File.expand_path('../templates', __FILE__)
+
+    def generate_enquiries_initializer
+      template 'config/initializers/refinery/enquiries.rb.erb', File.join(destination_root, 'config', 'initializers', 'refinery', 'enquiries.rb')
+    end
 
     def rake_db
       rake "refinery_ironman:install:migrations"
+      rake "refinery_settings:install:migrations"
     end
 
     def append_load_seed_data

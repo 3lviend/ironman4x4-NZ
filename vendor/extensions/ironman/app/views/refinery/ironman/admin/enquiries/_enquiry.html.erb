@@ -1,0 +1,29 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>'>
+  <span class='title'>
+    <%= link_to enquiry.name, refinery.ironman_admin_enquiry_path(enquiry) %> <%= t('.said') %>
+    <span class="preview"><%= truncate(strip_tags(sanitize(enquiry.message)), :length => 60) -%></span>
+  </span>
+  <span class='actions'>
+    <%= link_to refinery_icon_tag('delete.png'), 
+                refinery.ironman_admin_enquiry_path(enquiry),
+                :class => "cancel confirm-delete",
+                :title => t('refinery.ironman.admin.enquiries.delete'),
+                :data => {
+                  :confirm => t('refinery.admin.delete.message', :title => enquiry.name)
+                },
+                :method => :delete -%>
+
+    <%= link_to refinery_icon_tag('zoom.png'), refinery.ironman_admin_enquiry_path(enquiry),
+                :title => t('.read_enquiry') -%>
+
+    <% if enquiry.spam? %>
+      <%= link_to refinery_icon_tag('email.png'),
+                  refinery.toggle_spam_ironman_admin_enquiry_path(enquiry),
+                  :title => t('.mark_as_ham') -%>
+    <% else %>
+      <%= link_to refinery_icon_tag('bin_closed.png'),
+                  refinery.toggle_spam_ironman_admin_enquiry_path(enquiry),
+                  :title => t('.mark_as_spam') -%>
+    <% end %>
+  </span>
+</li>

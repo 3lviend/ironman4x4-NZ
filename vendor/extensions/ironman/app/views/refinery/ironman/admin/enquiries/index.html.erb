@@ -1,0 +1,30 @@
+<%= render "submenu" %>
+<div id='records'>
+  <% if searching? %>
+    <%= render 'refinery/admin/search_header', :url => request.path.gsub("//", "/") %>
+    <% if @enquiries.any? %>
+      <%= will_paginate @enquiries %>
+      <ul>
+        <%= render :partial => "enquiry", :collection => @enquiries %>
+      </ul>
+      <%= will_paginate @enquiries %>
+    <% else %>
+      <p><%= t('refinery.admin.search.no_results') %></p>
+    <% end %>
+  <% else %>
+    <% if @enquiries.any? -%>
+      <%= will_paginate @enquiries %>
+      <% group_by_date(@enquiries).each do |container| %>
+        <h3><%= l((enquiry_group = container.last).first.created_at, :format => :short) %></h3>
+        <ul>
+          <%= render :partial => 'enquiry', :collection => enquiry_group %>
+        </ul>
+      <% end %>
+      <%= will_paginate @enquiries %>
+    <% else -%>
+      <p>
+        <strong><%= t(".no_#{action_name == 'index' ? 'enquiries' : 'spam'}") %></strong>
+      </p>
+    <% end -%>
+  <% end %>
+</div>

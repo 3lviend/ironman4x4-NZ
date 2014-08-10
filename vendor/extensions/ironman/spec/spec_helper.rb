@@ -12,6 +12,10 @@ end
 
 require 'rspec/rails'
 require 'capybara/rspec'
+require 'factory_girl_rails'
+require 'capybara/poltergeist'
+
+Capybara.javascript_driver = :poltergeist
 
 Rails.backtrace_cleaner.remove_silencers!
 

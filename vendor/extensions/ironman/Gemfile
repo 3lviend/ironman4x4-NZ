@@ -4,9 +4,12 @@ gemspec
 
 git 'git://github.com/refinery/refinerycms.git', :branch => 'master' do
   gem 'refinerycms'
+  gem 'refinerycms-settings'
 
   group :development, :test do
     gem 'refinerycms-testing'
+    gem 'capybara-email', '~> 2.1.2'
+    gem 'poltergeist'
   end
 end
 

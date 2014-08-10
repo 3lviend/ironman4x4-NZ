@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,20 @@ it:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: Aggiungi Nuovo Enquiry
+            reorder: Riordina Enquiries
+            reorder_done: Termina il Riordino di Enquiries
+          records:
+            title: Enquiries
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Enquiries. Clicca "Aggiungi Nuovo Enquiry"
+              per aggiungere il tuo primo enquiry.
+          enquiry:
+            view_live_html: Guarda live questo enquiry <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo enquiry
+            delete: Rimuovi per sempre questo enquiry
         stockists:
           actions:
             create_new: Aggiungi Nuovo Stockist
@@ -102,6 +118,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      enquiries:
+        show:
+          other: Altri Enquiries
       stockists:
         show:
           other: Altri Stockists
@@ -122,6 +141,20 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type

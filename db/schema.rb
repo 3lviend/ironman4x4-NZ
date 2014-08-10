@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810015816) do
+ActiveRecord::Schema.define(version: 20140810033558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,26 @@ ActiveRecord::Schema.define(version: 20140810015816) do
 
   add_index "refinery_ironman_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_udx", unique: true, using: :btree
   add_index "refinery_ironman_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
+
+  create_table "refinery_ironman_enquiries", force: true do |t|
+    t.string   "name"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "suburb"
+    t.string   "postcode"
+    t.string   "state"
+    t.string   "country"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "enquiry_type"
+    t.integer  "vehicle_id"
+    t.text     "message"
+    t.boolean  "receive_news"
+    t.boolean  "spam"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "refinery_ironman_event_details", force: true do |t|
     t.integer  "post_id"

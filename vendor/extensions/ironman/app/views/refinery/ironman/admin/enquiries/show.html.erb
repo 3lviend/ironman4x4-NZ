@@ -1,0 +1,76 @@
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@enquiry.created_at) %>
+  </p>
+  <% if @enquiry.spam? %>
+    <p>
+      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
+    </p>
+  <% end %>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_enquiries'),
+                  refinery.ironman_admin_enquiries_path,
+                  :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('refinery.ironman.admin.enquiries.delete'),
+                  refinery.ironman_admin_enquiry_path(@enquiry),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('refinery.ironman.admin.enquiries.delete'),
+                  :data => {
+                    :confirm => t('refinery.admin.delete.message', :title => @enquiry.name)
+                  },
+                  :method => :delete %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <h2><%= t('.enquiry') %></h2>
+  <table id='enquiry'>
+    <tr>
+      <td>
+        <strong><%= t('.to') %></strong>
+      </td>
+      <td>
+        <%= Refinery::Core.config.site_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.from') %></strong>
+      </td>
+      <td>
+        <%= @enquiry.name %> [<%= mail_to @enquiry.email, @enquiry.email, {:title => t('.click_to_email')} %>]
+      </td>
+    </tr>
+    <% unless @enquiry.phone.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.phone') %></strong>
+        </td>
+        <td>
+          <%= @enquiry.phone %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>
+        <strong><%= t('.date') %></strong>
+      </td>
+      <td>
+        <%= l(Date.parse(@enquiry.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <strong><%= t('.message') %></strong>
+      </td>
+      <td>
+        <%= simple_format strip_tags(@enquiry.message), :style => 'margin-top: 0' %>
+      </td>
+    </tr>
+  </table>
+</div>

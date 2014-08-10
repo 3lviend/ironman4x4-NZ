@@ -30,6 +30,12 @@ Refinery::Core::Engine.routes.draw do
   namespace :ironman, :path => '' do
     resources :posts, :path => '/news', :only => [:index, :show]
     resources :blog_posts, :path => '/blog', :only => [:index, :show]
+
+    get '/contact', :to => 'enquiries#new', :as => 'new_enquiry'
+
+    resources :contact, :only => :create, :as => :enquiries, :controller => 'enquiries' do
+      get :thank_you, :on => :collection
+    end
   end
 
   # Admin routes
@@ -89,6 +95,15 @@ Refinery::Core::Engine.routes.draw do
         collection do
           post :update_positions
         end
+      end
+
+      resources :enquiries, :only => [:index, :show, :destroy] do
+        get :spam, :on => :collection
+        get :toggle_spam, :on => :member
+      end
+
+      scope :path => 'enquiries' do
+        resources :settings, :only => [:edit, :update]
       end
     end
   end

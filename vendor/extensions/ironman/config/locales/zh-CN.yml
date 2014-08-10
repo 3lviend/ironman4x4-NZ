@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_enquiries:
+        title: Enquiries
       ironman_stockists:
         title: Stockists
       ironman_media_releases:
@@ -15,6 +17,19 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        enquiries:
+          actions:
+            create_new: 建立新的 Enquiry
+            reorder: 对 Enquiries 重新排序
+            reorder_done: 对 Enquiries 的重新排序结束
+          records:
+            title: Enquiries
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Enquiries . 点击 "Add New Enquiry" 创建一个enquiry.
+          enquiry:
+            view_live_html: 查看 enquiry 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 enquiry
+            delete: 永久删除 enquiry
         stockists:
           actions:
             create_new: 建立新的 Stockist
@@ -96,6 +111,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      enquiries:
+        show:
+          other: 其他 Enquiries
       stockists:
         show:
           other: 其他 Stockists
@@ -116,6 +134,20 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/enquiry:
+        name: Name
+        address1: Address1
+        address2: Address2
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        email: Email
+        phone: Phone
+        enquiry_type: Enquiry Type
+        vehicle_id: Vehicle
+        message: Message
+        receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type
