@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810011924) do
+ActiveRecord::Schema.define(version: 20140810015816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,25 @@ ActiveRecord::Schema.define(version: 20140810011924) do
   end
 
   add_index "refinery_ironman_products", ["slug"], name: "index_refinery_ironman_products_on_slug", using: :btree
+
+  create_table "refinery_ironman_stockists", force: true do |t|
+    t.string   "name"
+    t.string   "store_type"
+    t.string   "address"
+    t.string   "suburb"
+    t.string   "postcode"
+    t.string   "state"
+    t.string   "country"
+    t.string   "contact"
+    t.string   "phone"
+    t.string   "website"
+    t.string   "email"
+    t.integer  "logo_image_id"
+    t.boolean  "visible"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "refinery_ironman_vehicle_hierarchies", id: false, force: true do |t|
     t.integer "ancestor_id",   null: false

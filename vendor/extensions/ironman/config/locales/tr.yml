@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_stockists:
+        title: Stockists
       ironman_media_releases:
         title: Media Releases
       ironman_posts:
@@ -13,6 +15,21 @@ tr:
         title: Products
     ironman:
       admin:
+        stockists:
+          actions:
+            create_new: Yeni Ekle Stockist
+            reorder: Tekrar sirala Stockists
+            reorder_done: Tekrar siralama tamamlandiStockists
+          records:
+            title: Stockists
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Stockists yok henuz.  Tikla "Yeni Ekle Stockist"
+              eklemek senin ilk stockist.
+          stockist:
+            view_live_html: Bunu canlu stockist goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle stockist
+            delete: Bunu Sil stockist sonsuza dek
         media_releases:
           actions:
             create_new: Yeni Ekle Media Release
@@ -90,6 +107,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      stockists:
+        show:
+          other: Diger Stockists
       media_releases:
         show:
           other: Diger Media Releases
@@ -107,6 +127,20 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/stockist:
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible
       refinery/ironman/media_release:
         title: Title
         category: Category

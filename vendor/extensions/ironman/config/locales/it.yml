@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_stockists:
+        title: Stockists
       ironman_media_releases:
         title: Media Releases
       ironman_posts:
@@ -13,6 +15,20 @@ it:
         title: Products
     ironman:
       admin:
+        stockists:
+          actions:
+            create_new: Aggiungi Nuovo Stockist
+            reorder: Riordina Stockists
+            reorder_done: Termina il Riordino di Stockists
+          records:
+            title: Stockists
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Stockists. Clicca "Aggiungi Nuovo Stockist"
+              per aggiungere il tuo primo stockist.
+          stockist:
+            view_live_html: Guarda live questo stockist <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo stockist
+            delete: Rimuovi per sempre questo stockist
         media_releases:
           actions:
             create_new: Aggiungi Nuovo Media Release
@@ -86,6 +102,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      stockists:
+        show:
+          other: Altri Stockists
       media_releases:
         show:
           other: Altri Media Releases
@@ -103,6 +122,20 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/stockist:
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible
       refinery/ironman/media_release:
         title: Title
         category: Category

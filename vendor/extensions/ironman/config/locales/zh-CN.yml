@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_stockists:
+        title: Stockists
       ironman_media_releases:
         title: Media Releases
       ironman_posts:
@@ -13,6 +15,19 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        stockists:
+          actions:
+            create_new: 建立新的 Stockist
+            reorder: 对 Stockists 重新排序
+            reorder_done: 对 Stockists 的重新排序结束
+          records:
+            title: Stockists
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Stockists . 点击 "Add New Stockist" 创建一个stockist.
+          stockist:
+            view_live_html: 查看 stockist 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 stockist
+            delete: 永久删除 stockist
         media_releases:
           actions:
             create_new: 建立新的 Media Release
@@ -81,6 +96,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      stockists:
+        show:
+          other: 其他 Stockists
       media_releases:
         show:
           other: 其他 Media Releases
@@ -98,6 +116,20 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/stockist:
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible
       refinery/ironman/media_release:
         title: Title
         category: Category

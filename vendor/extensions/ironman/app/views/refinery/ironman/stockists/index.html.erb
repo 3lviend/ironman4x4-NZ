@@ -1,0 +1,11 @@
+<% content_for :body do %>
+  <ul id="stockists">
+    <% @stockists.each do |stockist| %>
+      <li>
+        <%= link_to stockist.name, refinery.ironman_stockist_path(stockist) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= render '/refinery/content_page' %>

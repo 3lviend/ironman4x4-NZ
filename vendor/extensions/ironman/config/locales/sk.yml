@@ -1,6 +1,8 @@
 sk:
   refinery:
     plugins:
+      ironman_stockists:
+        title: Stockists
       ironman_media_releases:
         title: Media Releases
       ironman_posts:
@@ -13,6 +15,20 @@ sk:
         title: Products
     ironman:
       admin:
+        stockists:
+          actions:
+            create_new: Pridať Stockist
+            reorder: Preusporiadať Stockists
+            reorder_done: Koniec radenia Stockists
+          records:
+            title: Stockists
+            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            no_items_yet: Nie sú vytvorené žiadne Stockists. Kliknite na "Pridať Stockist"
+              pre pridanie prvého stockist.
+          stockist:
+            view_live_html: Zobraziť náhľad stockist<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť stockist
+            delete: Zmazať stockist
         media_releases:
           actions:
             create_new: Pridať Media Release
@@ -86,6 +102,9 @@ sk:
             view_live_html: Zobraziť náhľad product<br/><em>(otvorí sa v novom okne)</em>
             edit: Upraviť product
             delete: Zmazať product
+      stockists:
+        show:
+          other: Daľšie Stockists
       media_releases:
         show:
           other: Daľšie Media Releases
@@ -103,6 +122,20 @@ sk:
           other: Daľšie Products
   activerecord:
     attributes:
+      refinery/ironman/stockist:
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible
       refinery/ironman/media_release:
         title: Title
         category: Category

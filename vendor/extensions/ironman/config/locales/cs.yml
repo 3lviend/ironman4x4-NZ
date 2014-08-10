@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_stockists:
+        title: Stockists
       ironman_media_releases:
         title: Media Releases
       ironman_posts:
@@ -13,6 +15,20 @@ cs:
         title: Products
     ironman:
       admin:
+        stockists:
+          actions:
+            create_new: Přidat Stockist
+            reorder: Řadit Stockists
+            reorder_done: Konec řazení Stockists
+          records:
+            title: Stockists
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Stockists. Zvolte "Přidat Stockist"
+              pro přidání prvního stockist.
+          stockist:
+            view_live_html: Zobrazit náhled stockist<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit stockist
+            delete: Smazat stockist
         media_releases:
           actions:
             create_new: Přidat Media Release
@@ -86,6 +102,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      stockists:
+        show:
+          other: Další Stockists
       media_releases:
         show:
           other: Další Media Releases
@@ -103,6 +122,20 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/stockist:
+        name: Name
+        store_type: Store Type
+        address: Address
+        suburb: Suburb
+        postcode: Postcode
+        state: State
+        country: Country
+        contact: Contact
+        phone: Phone
+        website: Website
+        email: Email
+        logo_image_id: Logo Image
+        visible: Visible
       refinery/ironman/media_release:
         title: Title
         category: Category
