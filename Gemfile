@@ -42,7 +42,7 @@ gem 'unicorn'
 
 
 # Refinery CMS
-gem 'refinerycms', :github => 'refinery/refinerycms'
+gem 'refinerycms', :github => 'asgeo1/refinerycms', :branch => 'myfork' #:github => 'refinery/refinerycms'
 gem 'refinerycms-i18n', :github => 'refinery/refinerycms-i18n'
 
 # Optionally, specify additional Refinery CMS Extensions here:
@@ -52,7 +52,7 @@ gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'
 gem 'refinerycms-settings', :github => 'refinery/refinerycms-settings'
-# gem 'refinerycms-page-images', '~> 2.1.0'
+gem 'refinerycms-page-images', :github => 'refinery/refinerycms-page-images'
 
 gem 'refinerycms-ironman', path: 'vendor/extensions'
 
@@ -66,5 +66,5 @@ gem 'modernizr-rails'
 gem 'bootstrap-sass'
 
 # Development gems
-gem 'rack-mini-profiler'
+#gem 'rack-mini-profiler'
 gem 'mailcatcher', group: :development
