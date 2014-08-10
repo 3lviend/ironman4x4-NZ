@@ -393,5 +393,5 @@ en:
         description: Description
         notes: Notes
         quantity_required: Quantity Required
-        product_attributes: Product Attributes
+        product_attribs: Product Attributes
         price: Price

@@ -52,7 +52,7 @@ gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'
 gem 'refinerycms-settings', :github => 'refinery/refinerycms-settings'
-gem 'refinerycms-page-images', :github => 'refinery/refinerycms-page-images'
+gem 'refinerycms-page-images', :github => 'asgeo1/refinerycms-page-images', :branch => 'rails-4-strong-parameters2'
 
 gem 'refinerycms-ironman', path: 'vendor/extensions'
 

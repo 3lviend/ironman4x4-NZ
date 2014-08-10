@@ -7,6 +7,15 @@ GIT
       rails (>= 3.2.0)
 
 GIT
+  remote: git://github.com/asgeo1/refinerycms-page-images.git
+  revision: 9d25c92df7ac0f0ba982365800f565e9fa9f39dc
+  branch: rails-4-strong-parameters2
+  specs:
+    refinerycms-page-images (3.0.0.dev)
+      decorators (~> 1.0.0)
+      refinerycms-pages (~> 3.0.0)
+
+GIT
   remote: git://github.com/asgeo1/refinerycms.git
   revision: 4549606d40fc1916684a221047c6471c0a40614f
   branch: myfork
@@ -80,13 +89,6 @@ GIT
     refinerycms-i18n (3.0.0.dev)
       rails-i18n (~> 4.0.1)
       routing-filter (>= 0.4.0.dev)
-
-GIT
-  remote: git://github.com/refinery/refinerycms-page-images.git
-  revision: 3d8af17318a2bf3180bb1eee4f1df8bea48f0280
-  specs:
-    refinerycms-page-images (3.0.0.dev)
-      refinerycms-pages (~> 3.0.0)
 
 GIT
   remote: git://github.com/refinery/refinerycms-settings.git
@@ -339,7 +341,7 @@ GEM
     truncate_html (0.9.2)
     turbolinks (2.2.2)
       coffee-rails
-    tzinfo (1.2.1)
+    tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.1)
       execjs (>= 0.3.0)
