@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808115959) do
+ActiveRecord::Schema.define(version: 20140809044263) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,35 @@ ActiveRecord::Schema.define(version: 20140808115959) do
 
   add_index "refinery_ironman_category_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_udx", unique: true, using: :btree
   add_index "refinery_ironman_category_hierarchies", ["descendant_id"], name: "category_desc_idx", using: :btree
+
+  create_table "refinery_ironman_event_details", force: true do |t|
+    t.integer  "post_id"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "location"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "refinery_ironman_posts", force: true do |t|
+    t.string   "title"
+    t.string   "type"
+    t.text     "teaser"
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "index_image_id"
+    t.integer  "hero_image_id"
+    t.datetime "published_at"
+    t.datetime "expire_at"
+    t.boolean  "draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "refinery_ironman_posts", ["slug"], name: "index_refinery_ironman_posts_on_slug", using: :btree
 
   create_table "refinery_ironman_products", force: true do |t|
     t.string   "product_no"

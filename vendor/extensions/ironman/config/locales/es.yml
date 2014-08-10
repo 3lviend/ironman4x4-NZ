@@ -1,6 +1,8 @@
 es:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,23 @@ es:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Crear nuevo post
+            create_new_news_item: Crear nuevo post
+            create_new_event: Crear nuevo post
+            reorder: Reordenar posts
+            reorder_done: Reordenación de posts completada
+          records:
+            title: Posts
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay posts todavía. Pulsa en "Crear nuevo Post" para crear
+              tu primer post.
+          post:
+            view_live_html: Ver este post como abierto al público <br/><em>(abre en
+              ventana nueva)</em>
+            edit: Editar este post
+            delete: Borrar este post para siempre
         vehicles:
           actions:
             create_new: Crear nuevo vehicle
@@ -54,6 +73,9 @@ es:
               en ventana nueva)</em>
             edit: Editar este product
             delete: Borrar este product para siempre
+      posts:
+        show:
+          other: Otros posts
       vehicles:
         show:
           other: Otros vehicles
@@ -65,6 +87,24 @@ es:
           other: Otros products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

@@ -1,0 +1,81 @@
+<% content_for :body_content_title do %>
+  <%= @post.title %>
+<% end %>
+
+<% content_for :body do %>
+  <section>
+    <h1>Title</h1>
+    <p>
+      <%=raw @post.title %>
+    </p>
+  </section>
+  <section>
+    <h1>Type</h1>
+    <p>
+      <%=raw @post.type %>
+    </p>
+  </section>
+  <section>
+    <h1>Teaser</h1>
+    <p>
+      <%=raw @post.teaser %>
+    </p>
+  </section>
+  <section>
+    <h1>Body</h1>
+    <p>
+      <%=raw @post.body %>
+    </p>
+  </section>
+  <section>
+    <h1>User</h1>
+    <p>
+      <%=raw @post.user_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Index Image</h1>
+    <p>
+      <%=raw @post.index_image_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Hero Image</h1>
+    <p>
+      <%=raw @post.hero_image_id %>
+    </p>
+  </section>
+  <section>
+    <h1>Published At</h1>
+    <p>
+      <%=raw @post.published_at %>
+    </p>
+  </section>
+  <section>
+    <h1>Expire At</h1>
+    <p>
+      <%=raw @post.expire_at %>
+    </p>
+  </section>
+  <section>
+    <h1>Draft</h1>
+    <p>
+      <%=raw @post.draft %>
+    </p>
+  </section>
+<% end %>
+
+<% content_for :side_body do %>
+  <aside>
+    <h2><%= t('.other') %></h2>
+    <ul id="posts">
+      <% @posts.each do |post| %>
+        <li>
+          <%= link_to post.title, refinery.ironman_post_path(post) %>
+        </li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+
+<%= render '/refinery/content_page' %>

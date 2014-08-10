@@ -25,6 +25,11 @@ Refinery::Core::Engine.routes.draw do
     resources :vehicles, :only => [:index, :show]
   end
 
+  namespace :ironman, :path => '' do
+    resources :posts, :path => '/news', :only => [:index, :show]
+    resources :blog_posts, :path => '/blog', :only => [:index, :show]
+  end
+
   # Admin routes
   namespace :ironman, :path => '' do
     namespace :admin, :path => "#{Refinery::Core.backend_route}/ironman" do
@@ -43,6 +48,32 @@ Refinery::Core::Engine.routes.draw do
       resources :vehicles, :except => :show do
         collection do
           post :update_positions
+        end
+      end
+
+      resources :posts, :except => :show do
+        collection do
+          # NOTE: there is no position column on these models, but still need
+          # this for some reason...
+          post :update_positions
+
+          resources :blog_posts, :except => :show do
+            collection do
+              post :update_positions
+            end
+          end
+
+          resources :events, :except => :show do
+            collection do
+              post :update_positions
+            end
+          end
+
+          resources :news_items, :except => :show do
+            collection do
+              post :update_positions
+            end
+          end
         end
       end
     end

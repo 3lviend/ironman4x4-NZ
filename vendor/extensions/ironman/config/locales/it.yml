@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,22 @@ it:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Aggiungi Nuovo Post
+            create_new_news_item: Aggiungi Nuovo Post
+            create_new_event: Aggiungi Nuovo Post
+            reorder: Riordina Posts
+            reorder_done: Termina il Riordino di Posts
+          records:
+            title: Posts
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Posts. Clicca "Aggiungi Nuovo Post" per
+              aggiungere il tuo primo post.
+          post:
+            view_live_html: Guarda live questo post <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo post
+            delete: Rimuovi per sempre questo post
         vehicles:
           actions:
             create_new: Aggiungi Nuovo Vehicle
@@ -51,6 +69,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      posts:
+        show:
+          other: Altri Posts
       vehicles:
         show:
           other: Altri Vehicles
@@ -62,6 +83,24 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

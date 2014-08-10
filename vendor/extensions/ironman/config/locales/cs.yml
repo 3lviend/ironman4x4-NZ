@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,22 @@ cs:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Přidat Blog Post
+            create_new_news_item: Přidat News Item
+            create_new_event: Přidat Event
+            reorder: Řadit Posts
+            reorder_done: Konec řazení Posts
+          records:
+            title: Posts
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Posts. Zvolte "Přidat Post"
+              pro přidání prvního post.
+          post:
+            view_live_html: Zobrazit náhled post<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit post
+            delete: Smazat post
         vehicles:
           actions:
             create_new: Přidat Vehicle
@@ -51,6 +69,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      posts:
+        show:
+          other: Další Posts
       vehicles:
         show:
           other: Další Vehicles
@@ -62,6 +83,24 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

@@ -1,6 +1,8 @@
 en:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,29 @@ en:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Add new Blog Post
+            create_new_news_item: Add new News Item
+            create_new_event: Add new Event
+            reorder: Reorder Posts
+            reorder_done: Done Reordering Posts
+          records:
+            title: Posts
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Posts yet. Click "Add New Post" to add your
+              first post.
+          post:
+            view_live_html: View this post live <br/><em>(opens in a new window)</em>
+            edit: Edit this post
+            delete: Remove this post forever
+          form:
+            author: Author
+            author_help: Set which user this post will show as the author.
+            post_types:
+              blog_post: 'Blog Post'
+              news_item: 'News Item'
+              event: 'Event'
         vehicles:
           actions:
             create_new: Add New Vehicle
@@ -51,47 +76,68 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      posts:
+        show:
+          other: Other Posts
       vehicles:
         show:
           other: Other Vehicles
-
       categories:
         show:
           other: Other Categories
-          page_header: '%{category} Info'
+          page_header: ! '%{category} Info'
           buttons:
-            back: 'Back to %{parent}'
-            view_product_listing: 'View Product Listing'
+            back: Back to %{parent}
+            view_product_listing: View Product Listing
         index:
-          page_header: 'Products'
-          default_category_description: 'Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum'
+          page_header: Products
+          default_category_description: Product category overview...Ebit, inciur?
+            Ri di corum labor re veritas estinul lessint miliquam, atur moluptio.
+            Itationet estrum
           buttons:
-            view_product_range: 'View Product Range'
-            view_category_info: 'View Category Info'
-            view_product_listing: 'View Product Listing'
+            view_product_range: View Product Range
+            view_category_info: View Category Info
+            view_product_listing: View Product Listing
         filters:
           category:
-            label: 'Product Category'
-            prompt: 'Select'
+            label: Product Category
+            prompt: Select
           subcategory:
-            label: 'Subcategory'
-            prompt: 'Select'
+            label: Subcategory
+            prompt: Select
           subsubcategory:
-            label: 'Subcategory'
-            prompt: 'Select'
-
+            label: Subcategory
+            prompt: Select
       products:
         show:
           other: Other Products
         index:
-          page_header: 'Products'
+          page_header: Products
           buttons:
-            view_product: 'View Product'
-            add_to_wishlist: 'Add to Wishlist'
-          inc_gst: ' (RRP inc GST)'
-          no_products_found: 'No products were found'
+            view_product: View Product
+            add_to_wishlist: Add to Wishlist
+          inc_gst: ! ' (RRP inc GST)'
+          no_products_found: No products were found
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

@@ -1,0 +1,35 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(post) -%>">
+  <span class='title'>
+    <%= post.published_at.strftime '%d/%m/%Y' %>
+    -
+    <% post_types = {
+        Refinery::Ironman::BlogPost.to_s => t('refinery.ironman.admin.posts.form.post_types.blog_post'),
+        Refinery::Ironman::NewsItem.to_s => t('refinery.ironman.admin.posts.form.post_types.news_item'),
+        Refinery::Ironman::Event.to_s => t('refinery.ironman.admin.posts.form.post_types.event')
+    } %>
+    <%= post_types[post.type] %>
+    -
+    <%= post.title %>
+
+  </span>
+  <span class='actions'>
+    <%
+        class_name = post.class.to_s.split('::').last.underscore
+        view_path = refinery.send("ironman_post_path", post)
+        edit_path = refinery.send("edit_ironman_admin_#{class_name}_path", post)
+        delete_path = refinery.send("ironman_admin_#{class_name}_path", post)
+    %>
+    
+    <%= link_to refinery_icon_tag("application_go.png"), view_path,
+        :title => t('.view_live_html'),
+        :target => "_blank" %>
+    
+    <%= link_to refinery_icon_tag("application_edit.png"), edit_path,
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), delete_path,
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => post.title)},
+        :method => :delete %>
+  </span>
+</li>

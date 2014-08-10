@@ -1,3 +1,5 @@
 require 'refinery/products'
 require 'refinery/categories'
 require 'refinery/vehicles'
+require 'refinery/posts'
+require 'refinery/posts'

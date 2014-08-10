@@ -1,0 +1,33 @@
+<ul>
+  <% if ::Refinery::Ironman::Admin::PostsController.searchable? %>
+    <li>
+      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_posts_path %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to t('.create_new_blog_post'), refinery.new_ironman_admin_blog_post_path,
+                 :class => "add_icon" %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_news_item'), refinery.new_ironman_admin_news_item_path,
+                 :class => "add_icon" %>
+  </li>
+  <li>
+    <%= link_to t('.create_new_event'), refinery.new_ironman_admin_event_path,
+                 :class => "add_icon" %>
+  </li>
+<% if !searching? && ::Refinery::Ironman::Admin::PostsController.sortable? && ::Refinery::Ironman::Post.many? %>
+  <li>
+    <%= link_to t('.reorder', :what => "Posts"),
+                 refinery.ironman_admin_posts_path,
+                 :id => "reorder_action",
+                 :class => "reorder_icon" %>
+
+    <%= link_to t('.reorder_done', :what => "Posts"),
+                 refinery.ironman_admin_posts_path,
+                 :id => "reorder_action_done",
+                 :style => "display: none;",
+                 :class => "reorder_icon" %>
+  </li>
+<% end %>
+</ul>

@@ -1,6 +1,8 @@
 zh-CN:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,21 @@ zh-CN:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: 建立新的 Post
+            create_new_news_item: 建立新的 Post
+            create_new_event: 建立新的 Post
+            reorder: 对 Posts 重新排序
+            reorder_done: 对 Posts 的重新排序结束
+          records:
+            title: Posts
+            sorry_no_results: 对不起，未找到结果。
+            no_items_yet: 目前没有 Posts . 点击 "Add New Post" 创建一个post.
+          post:
+            view_live_html: 查看 post 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 post
+            delete: 永久删除 post
         vehicles:
           actions:
             create_new: 建立新的 Vehicle
@@ -48,6 +65,9 @@ zh-CN:
             view_live_html: 查看 product 的最新内容.<br/><em>(新窗口中打开)</em>
             edit: 编辑 product
             delete: 永久删除 product
+      posts:
+        show:
+          other: 其他 Posts
       vehicles:
         show:
           other: 其他 Vehicles
@@ -59,6 +79,24 @@ zh-CN:
           other: 其他 Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

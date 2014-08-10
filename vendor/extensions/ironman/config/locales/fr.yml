@@ -1,6 +1,8 @@
 fr:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,22 @@ fr:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Créer un(e) nouve(au/l/lle) Post
+            create_new_news_item: Créer un(e) nouve(au/l/lle) Post
+            create_new_event: Créer un(e) nouve(au/l/lle) Post
+            reorder: Réordonner les Posts
+            reorder_done: Fin de réordonnancement des Posts
+          records:
+            title: Posts
+            sorry_no_results: Désolé ! Aucun résultat.
+            no_items_yet: Il n'y a actuellement aucun(e) Post. Cliquer sur "Créer
+              un(e) nouve(au/l/lle) Post" pour créer votre premi(er/ère) post.
+          post:
+            view_live_html: Voir ce(t/tte) post <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) post
+            delete: Supprimer définitivement ce(t/tte) post
         vehicles:
           actions:
             create_new: Créer un(e) nouve(au/l/lle) Vehicle
@@ -51,6 +69,9 @@ fr:
             view_live_html: Voir ce(t/tte) product <br/><em>(Ouvre une nouvelle fenêtre)</em>
             edit: Modifier ce(t/tte) product
             delete: Supprimer définitivement ce(t/tte) product
+      posts:
+        show:
+          other: Autres Posts
       vehicles:
         show:
           other: Autres Vehicles
@@ -62,6 +83,24 @@ fr:
           other: Autres Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

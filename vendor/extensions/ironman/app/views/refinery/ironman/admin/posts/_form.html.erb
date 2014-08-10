@@ -1,0 +1,120 @@
+<%= form_for [refinery, :ironman_admin, @post] do |f| -%>
+  <%= render '/refinery/admin/error_messages',
+              :object => @post,
+              :include_object_name => true %>
+
+  <div class='field'>
+    <%= f.label :title -%>
+    <%= f.text_field :title, :class => 'larger widest' -%>
+  </div>
+
+  <% if @post.new_record? and $post.instance_of?(Refinery::Ironman::Post) %>
+  <div class='field'>
+    <%= f.label :type -%>
+    <% post_types = {
+        t('.post_types.blog_post') => Refinery::Ironman::BlogPost.to_s,
+        t('.post_types.news_item') => Refinery::Ironman::NewsItem.to_s,
+        t('.post_types.event') => Refinery::Ironman::Event.to_s
+    } %>
+    <%= f.select :type, options_for_select(post_types, @post.type) %>
+  </div>
+  <% end %>
+  <% if @post.new_record? and not $post.instance_of?(Refinery::Ironman::Post) %>
+    <%= f.hidden_field :type %>
+  <% end %>
+
+  <div class='field'>
+    <%= render '/refinery/admin/wysiwyg',
+                :f => f,
+                :fields => [:teaser, :body],
+                :object => "ironman/post" -%>
+  </div>
+
+  <div class='field'>
+    <span class='label_with_help'>
+      <%= f.label :user_id, t('.author') %>
+      <%= refinery_help_tag t('.author_help') %>
+      <br/>
+      <%= f.collection_select :user_id, Refinery::User.all, :id, :username %>
+    </span>
+  </div>
+
+  <% if @post.instance_of?(Refinery::Ironman::Event) %>
+  <div class='field'>
+    <%= f.label :start -%>
+    <%= f.text_field :start, :'data-role' => 'datepicker', :value => d(@post.start) -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :end -%>
+    <%= f.text_field :end, :'data-role' => 'datepicker', :value => d(@post.end) -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :latitude -%>
+    <%= f.number_field :latitude -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :longitude -%>
+    <%= f.number_field :longitude -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :location -%>
+    <%= f.text_field :location -%>
+  </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :index_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :index_image_id,
+      :image => f.object.index_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hero_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :hero_image_id,
+      :image => f.object.hero_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <% if not @post.new_record? %>
+  <div class='field'>
+    <%= f.label :published_at -%>
+    <%= f.text_field :published_at, :'data-role' => 'datetimepicker', :value => d(@post.published_at) -%>
+  </div>
+  <% end %>
+
+  <div class='field'>
+    <%= f.label :expire_at -%>
+    <%= f.text_field :expire_at, :'data-role' => 'datetimepicker', :value => d(@post.expire_at) -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :draft -%>
+    <%= f.check_box :draft, :checked => @post[:draft] -%>
+  </div>
+
+  <%= render '/refinery/admin/form_actions', :f => f,
+             :continue_editing => false,
+             :delete_title => t('delete', :scope => 'refinery.ironman.admin.posts.post'),
+             :delete_confirmation => t('message', :scope => 'refinery.admin.delete', :title => @post.title) -%>
+<% end -%>
+
+<% content_for :javascripts do -%>
+  <script>
+    $(document).ready(function(){
+      page_options.init(false, '', '');
+    });
+  </script>
+<% end -%>

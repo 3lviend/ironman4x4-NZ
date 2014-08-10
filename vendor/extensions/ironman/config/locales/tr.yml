@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,23 @@ tr:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Yeni Ekle Post
+            create_new_news_item: Yeni Ekle Post
+            create_new_event: Yeni Ekle Post
+            reorder: Tekrar sirala Posts
+            reorder_done: Tekrar siralama tamamlandiPosts
+          records:
+            title: Posts
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Posts yok henuz.  Tikla "Yeni Ekle Post" eklemek
+              senin ilk post.
+          post:
+            view_live_html: Bunu canlu post goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle post
+            delete: Bunu Sil post sonsuza dek
         vehicles:
           actions:
             create_new: Yeni Ekle Vehicle
@@ -54,6 +73,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      posts:
+        show:
+          other: Diger Posts
       vehicles:
         show:
           other: Diger Vehicles
@@ -65,6 +87,24 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name

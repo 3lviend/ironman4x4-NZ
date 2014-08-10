@@ -44,4 +44,14 @@ Refinery::I18n.frontend_locales.each do |lang|
   #     page.parts.build title: part, body: nil, position: index
   #   end
   # end if defined?(Refinery::Page)
+
+  # Refinery::Page.where(link_url: (url = "/ironman/posts")).first_or_create!(
+  #   title: 'Posts',
+  #   deletable: false,
+  #   menu_match: "^#{url}(\/|\/.+?|)$"
+  # ) do |page|
+  #   Refinery::Pages.default_parts.each_with_index do |part, index|
+  #     page.parts.build title: part, body: nil, position: index
+  #   end
+  # end if defined?(Refinery::Page)
 end

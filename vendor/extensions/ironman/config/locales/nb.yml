@@ -1,6 +1,8 @@
 nb:
   refinery:
     plugins:
+      ironman_posts:
+        title: Posts
       ironman_vehicles:
         title: Vehicles
       ironman_categories:
@@ -9,6 +11,23 @@ nb:
         title: Products
     ironman:
       admin:
+        posts:
+          actions:
+            create_new_blog_post: Lag en ny Post
+            create_new_news_item: Lag en ny Post
+            create_new_event: Lag en ny Post
+            reorder: Endre rekkefølgen på Posts
+            reorder_done: Ferdig å endre rekkefølgen Posts
+          records:
+            title: Posts
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Posts enda. Klikk på "Lag en ny Post" for å
+              legge til din første post.
+          post:
+            view_live_html: Vis hvordan denne post ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne post
+            delete: Fjern denne post permanent
         vehicles:
           actions:
             create_new: Lag en ny Vehicle
@@ -54,6 +73,9 @@ nb:
               i et nytt vindu)</em>
             edit: Rediger denne product
             delete: Fjern denne product permanent
+      posts:
+        show:
+          other: Andre Posts
       vehicles:
         show:
           other: Andre Vehicles
@@ -65,6 +87,24 @@ nb:
           other: Andre Products
   activerecord:
     attributes:
+      refinery/ironman/event_detail:
+        post_id: Post
+        start: Start
+        end: End
+        location: Location
+        latitude: Latitude
+        longitude: Longitude
+      refinery/ironman/post:
+        title: Title
+        type: Type
+        teaser: Teaser
+        body: Body
+        user_id: User
+        index_image_id: Index Image
+        hero_image_id: Hero Image
+        published_at: Published At
+        expire_at: Expire At
+        draft: Draft
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name
