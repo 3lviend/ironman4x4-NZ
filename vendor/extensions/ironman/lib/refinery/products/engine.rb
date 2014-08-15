@@ -15,7 +15,7 @@ module Refinery
             :class_name => :'refinery/ironman/product',
             :title => 'product_no'
           }
-          plugin.menu_match = %r{refinery/ironman/products(/.*)?$}
+          plugin.menu_match = %r{refinery/ironman/(products|categories)(/.*)?$}
         end
       end
 

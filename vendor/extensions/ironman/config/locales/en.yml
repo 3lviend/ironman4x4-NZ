@@ -194,6 +194,7 @@ en:
             delete: Remove this category forever
         products:
           actions:
+            categories: Product Categories
             create_new: Add New Product
             reorder: Reorder Products
             reorder_done: Done Reordering Products
