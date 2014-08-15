@@ -26,6 +26,17 @@
   </div>
 
   <div class='field'>
+    <%= f.label :thumbnail_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :thumbnail_image_id,
+      :image => f.object.thumbnail_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
     <%= f.label :sort_order -%>
     <%= f.number_field :sort_order -%>
   </div>

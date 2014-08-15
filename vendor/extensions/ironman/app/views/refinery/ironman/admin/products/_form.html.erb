@@ -53,6 +53,17 @@
   </div>
 
   <div class='field'>
+    <%= f.label :thumbnail_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :thumbnail_image_id,
+      :image => f.object.thumbnail_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
     <%= f.label :quantity_required -%>
     <%= f.number_field :quantity_required -%>
   </div>
