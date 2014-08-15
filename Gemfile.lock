@@ -16,6 +16,15 @@ GIT
       refinerycms-pages (~> 3.0.0)
 
 GIT
+  remote: git://github.com/asgeo1/refinerycms-page-resources.git
+  revision: 2fc946a13b8086c2d3c3b1c80f227c25d78194fa
+  branch: page-resources
+  specs:
+    refinerycms-page-resources (3.0.0.dev)
+      decorators (~> 1.0.0)
+      refinerycms-pages (~> 3.0.0)
+
+GIT
   remote: git://github.com/asgeo1/refinerycms.git
   revision: 4549606d40fc1916684a221047c6471c0a40614f
   branch: myfork
@@ -380,6 +389,7 @@ DEPENDENCIES
   refinerycms-i18n!
   refinerycms-ironman!
   refinerycms-page-images!
+  refinerycms-page-resources!
   refinerycms-search!
   refinerycms-settings!
   refinerycms-wymeditor!

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810082122) do
+ActiveRecord::Schema.define(version: 20140811080625) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -330,6 +330,28 @@ ActiveRecord::Schema.define(version: 20140810082122) do
   add_index "refinery_pages", ["lft"], name: "index_refinery_pages_on_lft", using: :btree
   add_index "refinery_pages", ["parent_id"], name: "index_refinery_pages_on_parent_id", using: :btree
   add_index "refinery_pages", ["rgt"], name: "index_refinery_pages_on_rgt", using: :btree
+
+  create_table "refinery_resource_page_translations", force: true do |t|
+    t.integer  "refinery_resource_page_id", null: false
+    t.string   "locale",                    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "caption"
+  end
+
+  add_index "refinery_resource_page_translations", ["locale"], name: "index_refinery_resource_page_translations_on_locale", using: :btree
+  add_index "refinery_resource_page_translations", ["refinery_resource_page_id"], name: "index_96d59e5a025b567101f44e9f540ed00ba8cfd578", using: :btree
+
+  create_table "refinery_resource_pages", force: true do |t|
+    t.integer "resource_id"
+    t.integer "page_id"
+    t.integer "position"
+    t.text    "caption"
+    t.string  "page_type",   default: "page"
+  end
+
+  add_index "refinery_resource_pages", ["page_id"], name: "index_refinery_resource_pages_on_page_id", using: :btree
+  add_index "refinery_resource_pages", ["resource_id"], name: "index_refinery_resource_pages_on_resource_id", using: :btree
 
   create_table "refinery_resources", force: true do |t|
     t.string   "file_mime_type"
