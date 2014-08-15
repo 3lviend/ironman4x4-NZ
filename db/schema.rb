@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815231536) do
+ActiveRecord::Schema.define(version: 20140815234348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20140815231536) do
     t.string   "slug"
     t.string   "short_description"
     t.integer  "thumbnail_image_id"
+    t.boolean  "featured"
   end
 
   add_index "refinery_ironman_categories", ["slug"], name: "index_refinery_ironman_categories_on_slug", using: :btree

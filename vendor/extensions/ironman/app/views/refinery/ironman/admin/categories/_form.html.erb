@@ -62,6 +62,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :featured -%>
+    <%= f.check_box :featured, :checked => @category[:featured] -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :visible -%>
     <%= f.check_box :visible, :checked => @category[:visible] -%>
   </div>
