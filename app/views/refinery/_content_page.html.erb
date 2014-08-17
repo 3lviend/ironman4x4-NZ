@@ -1,5 +1,5 @@
 <% content_for :photo_slideshow do %>
-  <% if @page.images.present? %>
+  <% if @page.present? and @page.images.present? %>
   <div u="slides" class='gallery<%= ' multiple' if @page.images.size > 1 %>'>
     <% @page.images.each do |image| %>
     <div class="slide"><%= image_tag(image.thumbnail(geometry: "1920x480").url, u:'image') %></div>
@@ -15,7 +15,7 @@
   <span u="arrowright" class="jssora02r"></span>
   <% end %>
 
- <% end %>
+  <% end %>
 <% end %>
 
 <div class="container">
