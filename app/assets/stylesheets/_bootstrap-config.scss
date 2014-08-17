@@ -1,22 +1,56 @@
 @import "bootstrap/variables";
 
+@import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=2350f2e5-1c72-4072-af5f-c12f7059b2ee");
+
+@font-face{
+  font-family:"HelveticaNeueW02-65Medi";
+  src:font-url("HelveticaNeueW02-65Medi.eot?#iefix");
+  src:font-url("HelveticaNeueW02-65Medi.eot?#iefix") format("eot"),
+      font-url("HelveticaNeueW02-65Medi.woff") format("woff"),
+      font-url("HelveticaNeueW02-65Medi.ttf") format("truetype"),
+      font-url("HelveticaNeueW02-65Medi.svg#58ab5075-53ea-46e6-9783-cbb335665f88") format("svg");
+}
+
+@font-face{
+  font-family:"HelveticaNeueW02-45Ligh";
+  src:font-url("HelveticaNeueW02-45Ligh.eot?#iefix");
+  src:font-url("HelveticaNeueW02-45Ligh.eot?#iefix") format("eot"),
+      font-url("HelveticaNeueW02-45Ligh.woff") format("woff"),
+      font-url("HelveticaNeueW02-45Ligh.ttf") format("truetype"),
+      font-url("HelveticaNeueW02-45Ligh.svg#48d599a6-92b5-4d43-a4ac-8959f6971853") format("svg");
+}
+
+@font-face{
+  font-family:"HelveticaNeueW02-XBlkCn739235";
+  src:font-url("HelveticaNeueW02-XBlkCn739235.eot?#iefix");
+  src:font-url("HelveticaNeueW02-XBlkCn739235.eot?#iefix") format("eot"),
+      font-url("HelveticaNeueW02-XBlkCn739235.woff") format("woff"),
+      font-url("HelveticaNeueW02-XBlkCn739235.ttf") format("truetype"),
+      font-url("HelveticaNeueW02-XBlkCn739235.svg#e8ebd7d3-2124-459c-9041-2464aba86bfe") format("svg");
+}
+
+$green: #9EBB24;
 $white: #FFFFFF;
 $black: #000000;
-$dark-grey: #808080;
+$dark-grey: #4D4D4D;
+
 $medium-grey: #999999;
 $grey: #B3B3B3;
 $light-grey: #CCCCCC;
 $lighter-grey: #E6E6E6;
 $off-white: #F2F2F2;
 
-$navbar-default-bg: $dark-grey;
-$navbar-default-border: $dark-grey;
-$navbar-default-link-color: $black;
-$navbar-default-link-hover-color: $white;
+$font-size-smallish: ceil(($font-size-base * 0.90)); // ~13px
+
+$font-family-sans-serif: 'HelveticaNeueW02-45Ligh', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-base: $font-family-sans-serif;
+
+$navbar-default-bg: $green;
+$navbar-default-border: $green;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: $black;
 $navbar-border-radius: 0;
 
 /* Put bootstrap customizations here: */
 /*$grid-gutter-width: 24px;*/
 /*$grid-float-breakpoint: $screen-md;*/
-
-@import "bootstrap";

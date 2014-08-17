@@ -17,6 +17,7 @@
  */
 
 @import "bootstrap-config";
+@import "bootstrap";
 
 .navbar-default {
   .navbar-nav {
@@ -52,13 +53,37 @@
 }
 
 #layout-first-nav {
+  font-size: $font-size-smallish;
+
+  .navbar-input-group {
+    &.navbar-form {
+      padding-right: 0;
+    }
+
+    input.form-control {
+      border-radius: 0;
+      border-color: $dark-grey;
+      background-color: $white;
+      font-size: $font-size-smallish;
+    }
+
+    .btn {
+      background-color: $dark-grey;
+      border-color: $dark-grey;
+      color: $white;
+    }
+  }
+}
+
+#layout-top-navigation {
+  padding-right: 0;
 }
 
 #second-nav {
   .logo {
-    width: 305px;
-    height: 134px;
-    background-color: $medium-grey;
+    width: 244px;
+    height: 116px;
+    background-color: $white;
     text-indent: -99999px;
     background-image: image-url('nav_logo.png');
     display: inline-block;
