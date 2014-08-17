@@ -35,10 +35,10 @@ $white: #FFFFFF;
 $black: #000000;
 $dark-grey: #4D4D4D;
 $light-grey: #B3B3B3;
+$lighter-grey: #E6E6E6;
 
 $medium-grey: #999999;
 $grey: #B3B3B3;
-$lighter-grey: #E6E6E6;
 $off-white: #F2F2F2;
 
 $text-color: $dark-grey;
@@ -47,6 +47,8 @@ $font-size-smallish: ceil(($font-size-base * 0.90)); // ~13px
 
 $font-family-sans-serif: 'HelveticaNeueW02-45Ligh', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: $font-family-sans-serif;
+$font-family-bold: 'HelveticaNeueW02-65Medi', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-extra-bold: 'HelveticaNeueW02-XBlkCn739235', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 $navbar-default-bg: $green;
 $navbar-default-border: $green;

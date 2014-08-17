@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- * require refinery/formatting
- * require refinery/theme
- * require_self
- * require products
+ *= require refinery/formatting
+ *= require refinery/theme
+ *= require_self
+ *= require products
  */
 
 @import "bootstrap-config";
@@ -454,7 +454,7 @@
 }
 
 #layout-categories {
-  background-color: $off-white;
+  background-color: $lighter-grey;
 
   .categories {
     margin-top: $line-height-computed*1.5;
@@ -494,27 +494,45 @@
       display: inline-block;
       width: 100%;
 
+      a {
+        color: $dark-grey;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
       .top-level {
-        font-weight: bold;
+        font-family: $font-family-bold;
       }
     }
   }
 }
 
 #layout-footer {
-  background-color: $dark-grey;
+  background-color: $green;
+  color: $white;
   padding-top: $line-height-computed;
 
   dl {
     vertical-align: top;
-  }
 
-  a {
-    color: $black;
+    dt {
+      font-family: $font-family-bold;
+    }
+
+    a {
+      color: $white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
 #layout-acknowledgements {
+  background-color: $white;
+  color: $dark-grey;
+
   min-height: 64px;
   line-height: 64px;
 
@@ -534,11 +552,15 @@
   background-color: $lighter-grey;
 
   .page-header {
+    font-family: $font-family-extra-bold;
+    font-size: 30px;
+    text-transform: uppercase;
     display: inline-block;
     padding-bottom: 0;
     margin: 0;
     line-height: 112px;
     border: none;
+    color: $green;
   }
 
   .icons {
@@ -549,12 +571,30 @@
     padding: 0;
 
     .icon {
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      background-size: cover;
       display: inline-block;
-      background-color: $grey;
       width: 36px;
       height: 36px;
-      margin-left: 36px;
+      margin-left: 20px;
       text-indent: -99999px;
+
+      &.facebook {
+        background-image: image-url('icon_social_facebook.png');
+      }
+
+      &.pinterest {
+        background-image: image-url('icon_social_pinterest.png');
+      }
+
+      &.twitter {
+        background-image: image-url('icon_social_twitter.png');
+      }
+
+      &.youtube {
+        background-image: image-url('icon_social_youtube.png');
+      }
     }
   }
 }
