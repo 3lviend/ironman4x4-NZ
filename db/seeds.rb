@@ -6,6 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+#load 'vendor/extensions/ironman/db/seeds/01_users.rb'
+#load 'vendor/extensions/ironman/db/seeds/02_vehicles.rb'
+#load 'vendor/extensions/ironman/db/seeds/03_categories.rb'
+#load 'vendor/extensions/ironman/db/seeds/04_accessory_products.rb'
+#load 'vendor/extensions/ironman/db/seeds/05_suspension_products.rb'
+
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
 
