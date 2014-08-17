@@ -1,18 +1,14 @@
   <div id="layout-fit-my-car">
     <div class="container">
       <div class="icon">
-        <%= image_tag 'nav_icon_wishlist.png' %>
-      </div>
-
-      <div class="description">
-        <h3><%= t('.heading') %></h3>
-        <div><%= t('.description') %></div>
+        <%= image_tag 'logo_fit_my_car.png' %>
       </div>
 
       <div class="vehicle-selector">
-        <div class="selector make"></div><!--
-        --><div class="selector model"></div><!--
-        --><div class="selector series"></div>
+        <select class="form-control selector make"></select><!--
+        --><select class="form-control selector model"></select><!--
+        --><select class="form-control selector series"></select><!--
+        --><button type="form-control submit" class="selector go"><%= t('.go') %></button>
       </div>
     </div>
   </div>

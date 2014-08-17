@@ -57,8 +57,7 @@ en:
         placeholder: 'Postcode/Suburb'
         button: 'Submit'
     fit_my_car:
-      heading: 'Fit My Car'
-      description: 'Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit.'
+      go: 'Go'
     footer_links:
       support:
         description: 'Support'

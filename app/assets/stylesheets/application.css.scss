@@ -260,50 +260,47 @@
 }
 
 #layout-fit-my-car {
-  min-height: 114px;
+  min-height: 88px;
   background-color: $dark-grey;
+  background-image: image-url('bg_fit_my_car.png');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
 
   .icon {
     display: inline-block;
     vertical-align: top;
-    margin-top: 19px;
-  }
-
-  .description {
-    margin-left: 20px;
-    margin-top: 19px;
-    width: 193px;
-    display: inline-block;
-
-    h3 {
-      margin: 0;
-      text-transform: uppercase;
-    }
-
-    div {
-      line-height: 96%;
-    }
+    margin-top: 23px;
   }
 
   .vehicle-selector {
-    margin-top: 32px;
+    margin-top: 24px;
     display: inline-block;
-    vertical-align: top;
     float: right;
 
     .selector {
       display: inline-block;
-      height: 51px;
+      height: 41px;
       box-sizing: border-box;
       background-color: $white;
       border: 1px solid $black;
+      vertical-align: top;
+
+      &.go {
+        background-color: $green;
+        color: $white;
+        border-radius: 4px;
+        text-transform: uppercase;
+      }
     }
 
     @media (max-width: $screen-xs-max) {
       display: block;
       float: none;
 
-      .selector {
+      .selector, .go {
+        width: 100%;
         display: block;
         margin-bottom: $grid-gutter-width / 4;
       }
@@ -323,6 +320,11 @@
 
       .series {
         width: 104px;
+        margin-right: 16px;
+      }
+
+      .go {
+        width: 54px;
       }
     }
 
@@ -340,6 +342,11 @@
 
       .series {
         width: 104px;
+        margin-right: 16px;
+      }
+
+      .go {
+        width: 54px;
       }
     }
 
@@ -357,6 +364,11 @@
 
       .series {
         width: 104px;
+        margin-right: 16px;
+      }
+
+      .go {
+        width: 54px;
       }
     }
   }
