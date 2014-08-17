@@ -90,6 +90,17 @@
   </div>
 
   <div class='field'>
+    <%= f.label :fitting_instructions_resource_id %>
+    <%= render :partial => "/refinery/admin/resource_picker", :locals =>
+      {
+        :f => f,
+        :field => :fitting_instructions_resource_id,
+        :resource => f.object.fitting_instructions_resource
+      }
+    %>
+  </div>
+
+  <div class='field'>
     <%= f.label :quantity_required -%>
     <%= f.number_field :quantity_required -%>
   </div>

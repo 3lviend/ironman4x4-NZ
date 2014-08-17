@@ -13,6 +13,7 @@ module Refinery
       has_and_belongs_to_many :categories, :join_table => 'refinery_ironman_categories_products', touch: true
       has_and_belongs_to_many :vehicles, :join_table => 'refinery_ironman_vehicles_products', touch: true
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
+      belongs_to :fitting_instructions_resource, :class_name => '::Refinery::Resource'
       has_many :specifications, :class_name => '::Refinery::Ironman::ProductSpecification'
 
       alias_attribute :title, :name
