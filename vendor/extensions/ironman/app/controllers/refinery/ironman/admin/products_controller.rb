@@ -9,9 +9,12 @@ module Refinery
 
       protected
         def product_params
-          p = params.require(:product).permit(:product_no, :name, :description, :notes,
-            :quantity_required, :product_attribs, :price, :position, :locale,
-            :short_description, images_attributes: [:id])
+          p = params.require(:product).permit(
+            :product_no, :name, :description, :notes, :quantity_required,
+            :product_attribs, :price, :position, :locale, :short_description,
+            :thumbnail_image_id, images_attributes: [:id],
+            resources_attributes: [:id],
+            specifications_attributes: [:id, :_destroy, :title, :value])
 
           if p[:product_attribs].blank?
             p[:product_attribs] = nil

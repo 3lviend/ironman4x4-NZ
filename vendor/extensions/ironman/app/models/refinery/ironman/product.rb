@@ -13,12 +13,15 @@ module Refinery
       has_and_belongs_to_many :categories, :join_table => 'refinery_ironman_categories_products', touch: true
       has_and_belongs_to_many :vehicles, :join_table => 'refinery_ironman_vehicles_products', touch: true
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
+      has_many :specifications, :class_name => '::Refinery::Ironman::ProductSpecification'
 
       alias_attribute :title, :name
 
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no
       validates_presence_of :product_no, :name, :thumbnail_image, :quantity_required
+
+      accepts_nested_attributes_for :specifications, :allow_destroy => true
 
       after_initialize do
         if self.new_record?

@@ -27,6 +27,9 @@
         <li class='ui-state-default'>
           <%= link_to t('notes', :scope => 'activerecord.attributes.refinery/ironman/product'), "#page_part_notes" %>
         </li>
+        <li class='ui-state-default'>
+          <%= link_to t('specifications', :scope => 'activerecord.attributes.refinery/ironman/product'), "#page_part_specifications" %>
+        </li>
         <% Refinery::Products.tabs.each_with_index do |tab, tab_index| %>
           <li class='ui-state-default' id="custom_<%= tab.name %>_tab">
             <%= link_to tab.name.titleize, "#custom_tab_#{tab_index}" %>
@@ -41,6 +44,29 @@
 
           <div class='page_part' id='page_part_notes'>
             <%= f.text_area :notes, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+
+          <div class='page_part' id='page_part_specifications'>
+            <div class="wym_skin_refinery page_part" id="page_specifications" data-input-type="wym" style="opacity: 1; padding-bottom: 5px;">
+              <table>
+              <%= f.fields_for :specifications do |s| %>
+                <tr class="spec_value">
+                  <td>
+                  <%= s.object.title %>
+                  </td>
+                  <td>
+                    <%= s.object.value %>
+                  </td>
+                  <td class="actions">
+                    <%= s.hidden_field :id %>
+                    <%= s.hidden_field :title %>
+                    <%= s.hidden_field :value %>
+                    <img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />
+                  </td>
+                </tr>
+              <% end %>
+              </table>
+            </div>
           </div>
 
         <% Refinery::Products.tabs.each_with_index do |tab, tab_index| %>

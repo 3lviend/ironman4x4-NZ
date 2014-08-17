@@ -393,6 +393,7 @@ en:
         name: Name
         description: Description
         notes: Notes
+        specifications: Specifications
         quantity_required: Quantity Required
         product_attribs: Product Attributes
         price: Price

@@ -1,0 +1,62 @@
+$(document).on 'page:load ready', ->
+  $('#page_specifications table').prepend(
+    '<tr class="add_new">' +
+    '<td><label for="product_specification_title">Title</label><input type="text" name="product_specification_title" /></td>' +
+    '<td><label for="product_specification_value">Value</label><input type="text" name="product_specification_value" /></td>' +
+    '<td><input type="button" value="Add" class="wymupdate button" /></td>' +
+    '</tr>'
+  )
+
+  $('#page_specifications .add_new input.button').on 'click', ->
+    $title = $('#page_specifications .add_new input[name=product_specification_title]')
+    $value = $('#page_specifications .add_new input[name=product_specification_value]')
+    title = $title.val()
+    value = $value.val()
+
+    if !(title && value)
+      alert 'You must enter both a specification title and value'
+      return
+
+    last = $('#page_specifications table .spec_value').last()
+
+    if last.length
+      matches = $('input[name*=title]', last).attr('name').match(/product\[specifications_attributes\]\[([0-9]+)\]/)
+      index = Number(matches[1]) + 1
+    else
+      index = 0
+
+    $('#page_specifications table ' + (if index then '.spec_value' else '.add_new')).after(
+      '<tr class="spec_value">' +
+        '<td>' + title + '</td>' +
+        '<td>' + value + '</td>' +
+        '<td class="actions">' +
+          '<input type="hidden" name="product[specifications_attributes][' + index + '][title]" value="' + title + '" />' +
+          '<input type="hidden" name="product[specifications_attributes][' + index + '][value]" value="' + value + '" />' +
+          '<img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />' +
+        '</td>' +
+      '</tr>'
+    )
+
+    $title.val('')
+    $value.val('')
+    $title.get(0).focus()
+
+  $('#page_specifications').on 'click', '.delete', ->
+    id = $('input[name*=id]', $(this).closest('.actions'))
+
+    if id.length
+      matches = id.attr('name').match(/product\[specifications_attributes\]\[([0-9]+)\]/)
+      index = Number(matches[1])
+      id.after '<input type="hidden" name="product[specifications_attributes][' + index + '][_destroy]" value="1" />'
+      $(this).closest('tr').hide()
+    else
+      $(this).closest('tr').remove()
+
+  $('#page_specifications .add_new input[type=text]').on 'keypress', (e) ->
+    e = e || event
+    allowKeypress = (e.keyCode || e.which || e.charCode || 0) != 13
+
+    if !allowKeypress
+      $('#page_specifications .add_new input.button').click()
+
+    return allowKeypress

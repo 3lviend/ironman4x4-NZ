@@ -1,0 +1,36 @@
+#page_specifications {
+  td {
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+
+    input[type=text] {
+      font-size: 11px;
+      font-family: 'Lucida Grande';
+      padding: 3.8px 4.7px;
+      line-height: 20px;
+    }
+  }
+  tr.add_new {
+    vertical-align: bottom;
+
+    input.button {
+      margin-bottom: 3px;
+    }
+
+    td {
+      padding-bottom: 20px;
+    }
+  }
+  tr.spec_value {
+    td {
+      padding-left: 5px;
+    }
+
+    .actions {
+      .edit, .delete {
+        cursor: pointer;
+        margin-right: 10px;
+      }
+    }
+  }
+}

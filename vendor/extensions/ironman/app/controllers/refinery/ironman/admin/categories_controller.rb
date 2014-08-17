@@ -10,8 +10,8 @@ module Refinery
       protected
         def category_params
           params.require(:category).permit(:parent_id, :name,
-            :short_description, :description, :sort_order, :visible, :id,
-            :locale)
+            :short_description, :description, :sort_order, :visible, :featured,
+            :id, :locale, images_attributes: [:id], :thumbnail_image_id)
         end
       end
     end
