@@ -6,7 +6,7 @@
 -->
 
 <%= render :partial => 'layouts/fit_my_car' if @layout_fit_my_car.present? and @layout_fit_my_car == 'below' %>
-<%= render :partial => 'layouts/social' if @layout_social.nil? or @layout_social or content_for?(:social) %>
+<%= render :partial => 'layouts/social' if @layout_social.present? %>
 <%= render :partial => 'layouts/categories' if @layout_categories.nil? or @layout_categories %>
 <%= render :partial => 'layouts/footer_links' if @layout_footer_links.nil? or @layout_footer_links %>
 <%= render :partial => 'layouts/acknowledgements' if @layout_acknowledgements.nil? or @layout_acknowledgements %>

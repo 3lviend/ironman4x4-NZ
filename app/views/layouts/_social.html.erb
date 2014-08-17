@@ -1,17 +1,22 @@
-<% if content_for?(:social) %>
-  <div id="layout-social">
-    <div class="container">
-      <ul class="icons">
-        <li class="icon facebook"><%= t('.links.facebook') %></li><!--
-        --><li class="icon twitter"><%= t('.links.twitter') %></li><!--
-        --><li class="icon pinterest"><%= t('.links.pinterest') %></li><!--
-        --><li class="icon youtube"><%= t('.links.youtube') %></li>
-      </ul>
+<div id="layout-social">
+  <div class="container">
+    <ul class="icons">
+      <li class="icon facebook"><%= t('.links.facebook') %></li><!--
+      --><li class="icon pinterest"><%= t('.links.pinterest') %></li><!--
+      --><li class="icon twitter"><%= t('.links.twitter') %></li><!--
+      --><li class="icon youtube"><%= t('.links.youtube') %></li>
+    </ul>
 
-      <form>
-        <div class="description"><%= t('.newsletter.description') %></div>
-        <input type="text" placeholder="<%= t('.newsletter.placeholder') %>" />
-      </form>
-    </div>
+    <form class="form-search">
+      <div class="description"><%= t('.newsletter.description') %></div>
+      <div class="form-group">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="<%= t('.newsletter.placeholder') %>" />
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-search selector go"><%= t('.newsletter.go') %></button>
+          </span>
+        </div>
+      </div>
+    </form>
   </div>
-<% end %>
+</div>

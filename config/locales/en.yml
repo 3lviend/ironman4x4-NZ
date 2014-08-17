@@ -32,6 +32,7 @@ en:
       newsletter:
         description: 'Subscribe to our newsletter, latest products, events and promotions.'
         placeholder: 'Enter Email Address'
+        go: 'Go'
     first_nav:
       toggle_navigation: 'Toggle navigation'
       menu:
