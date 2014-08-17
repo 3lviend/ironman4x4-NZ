@@ -305,5 +305,4 @@ sk:
         description: Description
         notes: Notes
         quantity_required: Quantity Required
-        product_attribs: Product Attributes
         price: Price
