@@ -53,6 +53,9 @@ en:
         stores: 'Stockists'
         technical: 'Technical'
         wish_list: 'Wish List'
+      search_form:
+        placeholder: 'Postcode/Suburb'
+        button: 'Submit'
     fit_my_car:
       heading: 'Fit My Car'
       description: 'Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit.'

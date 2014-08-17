@@ -1,40 +1,48 @@
-  <div id="second-nav">
+  <div id="layout-second-nav">
     <div class="container">
       <div class="logo">
         <h1><%= t('.logo.title') %></h1>
       </div>
 
-      <ul class="sections">
-        <li>
-          <%= link_to refinery.ironman_products_path do %>
-            <%= image_tag 'nav_icon_products.png' %>
-            <div class="link-text"><%= t('.nav.products') %><div>
+      <div class="clearfix">
+        <ul class="sections">
+          <li>
+            <%= link_to refinery.ironman_products_path do %>
+              <%= t('.nav.products') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to refinery.root_path do %>
+              <%= t('.nav.fitmycar') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to refinery.root_path do %>
+              <%= t('.nav.stores') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to refinery.root_path do %>
+              <%= t('.nav.technical') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to refinery.root_path do %>
+              <%= t('.nav.wish_list') %>
+            <% end %>
+          </li>
+        </ul>
+
+        <%= form_tag refinery.search_path, class: 'navbar-form navbar-right navbar-input-group', role:'search' do -%>
+          <div class="form-group">
+            <%= text_field_tag :query, {}, {:class => 'form-control',
+              :type => 'search', :placeholder => t('.search_form.placeholder'),
+              :value => (params[:query] if params[:query])} %>
+          </div>
+          <%= button_tag type:'submit', class:'btn btn-default' do %>
+            <span class="glyphicon glyphicon-search"></span>
           <% end %>
-        </li>
-        <li>
-          <%= link_to refinery.root_path do %>
-            <%= image_tag 'nav_icon_fitmycar.png' %>
-            <div class="link-text"><%= t('.nav.fitmycar') %><div>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to refinery.root_path do %>
-            <%= image_tag 'nav_icon_stores.png' %>
-            <div class="link-text"><%= t('.nav.stores') %><div>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to refinery.root_path do %>
-            <%= image_tag 'nav_icon_technical.png' %>
-            <div class="link-text"><%= t('.nav.technical') %><div>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to refinery.root_path do %>
-            <%= image_tag 'nav_icon_wishlist.png' %>
-            <div class="link-text"><%= t('.nav.wish_list') %><div>
-          <% end %>
-        </li>
-      </ul>
+        <% end %>
+      </div>
     </div>
   </div>

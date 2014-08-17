@@ -17,8 +17,8 @@
 #= require categories
 
 $(document).on 'page:load ready', ->
-  $('.tooltip-label').tooltip()
-  $('.popover-label').popover()
+  #$('.tooltip-label').tooltip()
+  #$('.popover-label').popover()
 
   $('select[data-option-dependent=true]').each (i) ->
     observer_dom_id = $(this).attr('id')

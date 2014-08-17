@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap/variables";
 
 @import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=2350f2e5-1c72-4072-af5f-c12f7059b2ee");
@@ -33,12 +34,14 @@ $green: #9EBB24;
 $white: #FFFFFF;
 $black: #000000;
 $dark-grey: #4D4D4D;
+$light-grey: #B3B3B3;
 
 $medium-grey: #999999;
 $grey: #B3B3B3;
-$light-grey: #CCCCCC;
 $lighter-grey: #E6E6E6;
 $off-white: #F2F2F2;
+
+$text-color: $dark-grey;
 
 $font-size-smallish: ceil(($font-size-base * 0.90)); // ~13px
 

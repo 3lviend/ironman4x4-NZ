@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require refinery/formatting
- *= require refinery/theme
- *= require_self
- *= require products
+ * require refinery/formatting
+ * require refinery/theme
+ * require_self
+ * require products
  */
 
 @import "bootstrap-config";
@@ -24,6 +24,32 @@
     > li > a {
       text-transform: uppercase;
     }
+  }
+}
+
+@mixin search-input {
+  &::-webkit-input-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &:-moz-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &:-ms-input-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
   }
 }
 
@@ -54,6 +80,7 @@
 
 #layout-first-nav {
   font-size: $font-size-smallish;
+  margin-bottom: 0;
 
   .navbar-input-group {
     &.navbar-form {
@@ -61,6 +88,8 @@
     }
 
     input.form-control {
+      @include search-input;
+
       border-radius: 0;
       border-color: $dark-grey;
       background-color: $white;
@@ -68,6 +97,7 @@
     }
 
     .btn {
+      border-radius: 0;
       background-color: $dark-grey;
       border-color: $dark-grey;
       color: $white;
@@ -79,52 +109,62 @@
   padding-right: 0;
 }
 
-#second-nav {
+#layout-second-nav {
+  margin-bottom: 0;
+
   .logo {
     width: 244px;
     height: 116px;
     background-color: $white;
     text-indent: -99999px;
     background-image: image-url('nav_logo.png');
-    display: inline-block;
     vertical-align: top;
-    float: left;
   }
 
   ul.sections {
-    margin-top: 38px;
+    margin-top: 10px;
     margin-bottom: 0;
     list-style-type: none;
     padding: 0;
-    display: inline-block;
-    float: right;
-    height: 96px;
+    float: left;
 
     li {
       display: inline-block;
       text-align: center;
-      width: 84px;
-
-      .link-text {
-        text-transform: uppercase;
-        margin-top: $line-height-computed/2;
-      }
+      width: 104px;
+      text-transform: uppercase;
+      font-size: 16px;
 
       a {
         display: block;
-
-        img {
-          margin-left: auto;
-          margin-right: auto;
-          display:block;
-          width: 66px;
-          height: 66px;
+        color: $dark-grey;
+        &:hover {
+          text-decoration: underline;
         }
       }
     }
   }
 
-  margin-bottom: $line-height-computed;
+  .navbar-form {
+    float: right;
+    margin-bottom: 10px;
+
+    input.form-control {
+      @include search-input;
+
+      border-radius: 0;
+      border-color: $dark-grey;
+      background-color: $white;
+      font-size: $font-size-smallish;
+    }
+
+    .btn {
+      border-radius: 0;
+      background-color: $green;
+      border-color: $dark-grey;
+      color: $white;
+    }
+  }
 }
 
 #layout-photo-slideshow {
