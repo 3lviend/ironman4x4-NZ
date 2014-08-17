@@ -4,8 +4,8 @@ $(document).on 'page:load ready', ->
     subcategory = $('#category_2nd_id')
     sub_subcategory = $('#category_3rd_id')
 
-    subcategory_exists = subcategory.find('option').not('[value=]').length
-    sub_subcategory_exists = sub_subcategory.find('option').not('[value=]').length
+    subcategory_exists = subcategory.find('option').not('[value=""]').length
+    sub_subcategory_exists = sub_subcategory.find('option').not('[value=""]').length
 
     e = originalEvent ? event
 
