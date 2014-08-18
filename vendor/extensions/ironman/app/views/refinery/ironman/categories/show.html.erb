@@ -36,8 +36,8 @@
   </div>
 
   <div class="buttons text-center">
-    <%= link_to t('.buttons.back', parent:@category.parent.name), list_url, class:'btn btn-default' %>
-    <%= link_to t('.buttons.view_product_listing'), product_url, class:'btn btn-default' if product_url.present? %>
+    <%= link_to t('.buttons.back', parent:@category.parent.name), list_url, class:'btn btn-primary' %>
+    <%= link_to t('.buttons.view_product_listing'), product_url, class:'btn btn-primary' if product_url.present? %>
   </div>
 </div>
 <% end %>

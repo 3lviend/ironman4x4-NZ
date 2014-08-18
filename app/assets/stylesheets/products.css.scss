@@ -40,6 +40,7 @@
         padding-right: 12px;
 
         h3 {
+          color: $green;
           margin-top: 12px;
           margin-bottom: 12px;
         }
@@ -66,6 +67,8 @@
             padding-left: 0;
             padding-right: 0;
             margin-top: $grid-gutter-width/2;
+            background-color: $green;
+            color: $white;
           }
         }
 

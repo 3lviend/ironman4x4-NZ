@@ -67,10 +67,10 @@
           <% end %>
         </div>
         <% if @this_category.nil? %>
-        <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-default btn-block' %>
+        <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-primary btn-block' %>
         <% else %>
-        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-default btn-block' %>
-        <%= link_to t('.buttons.view_product_listing'), list_url, class: 'btn btn-default btn-block' %>
+        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-primary btn-block' %>
+        <%= link_to t('.buttons.view_product_listing'), list_url, class: 'btn btn-primary btn-block' %>
         <% end %>
       </div>
     </div>
