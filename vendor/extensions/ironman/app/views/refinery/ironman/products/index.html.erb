@@ -31,7 +31,7 @@
 
     <div class="product">
       <div class="photo"><!--
-        --><%= image_tag 'product_list_photo_default.png' %><!--
+        --><%= if product.thumbnail_image.present? then image_tag product.thumbnail_image.thumbnail(geometry: "302x193").url else image_tag 'product_list_photo_default.jpg' end %><!--
       --></div>
       <div class="content">
         <h3><%= product.name %></h3>

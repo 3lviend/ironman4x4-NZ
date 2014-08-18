@@ -15,8 +15,11 @@
     display: block;
 
     .category, .product {
-      border: 2px solid $black;
-      color: $black;
+      box-shadow: 2px 2px 10px 2px $light-grey;
+      .no-boxshadow & {
+        border: 1px solid $light-grey;
+      }
+      color: $dark-grey;
       display: block;
 
       &:hover {
@@ -26,7 +29,6 @@
       .photo {
         overflow: hidden;
         box-sizing: content-box;
-        border-bottom: 2px solid $black;
 
         img {
           width: 100%;
