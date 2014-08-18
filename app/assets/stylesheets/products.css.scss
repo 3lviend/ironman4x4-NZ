@@ -88,10 +88,27 @@
       }
     }
 
+    /* mobile devices */
+    @media (max-width: $screen-xs-max) {
+      & {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
     /* Small devices (tablets, 768px and up) */
     @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      &:first-child {
+        padding-left: 0;
+      }
+
       &:nth-child(2n+3) {
         clear: left;
+        padding-left: 0;
+      }
+
+      &:nth-child(2n+2) {
+        padding-right: 0;
       }
 
       .category {
@@ -103,8 +120,17 @@
 
     /* Medium devices (desktops, 992px and up) */
     @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      &:first-child {
+        padding-left: 0;
+      }
+
       &:nth-child(3n+4) {
         clear: left;
+        padding-left: 0;
+      }
+
+      &:nth-child(3n+3) {
+        padding-right: 0;
       }
 
       .category {
@@ -116,8 +142,17 @@
 
     /* Large devices (large desktops, 1200px and up) */
     @media (min-width: $screen-lg-min) {
+      &:first-child {
+        padding-left: 0;
+      }
+
       &:nth-child(4n+5) {
         clear: left;
+        padding-left: 0;
+      }
+
+      &:nth-child(4n+4) {
+        padding-right: 0;
       }
 
       .category {
