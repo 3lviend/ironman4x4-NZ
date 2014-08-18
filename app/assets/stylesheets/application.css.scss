@@ -19,6 +19,17 @@
 @import "bootstrap-config";
 @import "bootstrap";
 
+a {
+  color: $link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: none;
+  }
+}
+
 .navbar-default {
   .navbar-nav {
     > li > a {
@@ -384,7 +395,7 @@
   color: $white;
 
   .icons {
-    margin-top: 32px;
+    margin-top: 20px;
     display: inline-block;
     list-style-type: none;
     padding: 0;
@@ -419,8 +430,7 @@
   form {
     display: inline-block;
     float: right;
-    margin-top: 20px;
-    margin-bottom: $line-height-computed;
+    margin-top: 10px;
 
     .description {
       text-align: left;
@@ -523,7 +533,7 @@
     a {
       color: $white;
       &:hover {
-        text-decoration: underline;
+        color: $black;
       }
     }
   }
