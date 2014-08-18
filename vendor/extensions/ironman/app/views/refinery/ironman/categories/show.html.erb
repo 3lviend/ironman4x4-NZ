@@ -1,11 +1,8 @@
 <% @layout_fit_my_car = 'below' %>
+<% @slideshow_images = @category.images %>
 
 <% content_for :page_header do %>
   <%= t('.page_header', category:@category.name) %>
-<% end %>
-
-<% content_for :photo_slideshow do %>
-  hello
 <% end %>
 
 <% content_for :body do %>
@@ -32,7 +29,23 @@
 
 <div id="page-category-info">
   <div class="content">
+    <% if @category.description.present? %>
     <%= raw @category.description %>
+    <% else %>
+    <%= raw t('.default_category_description') %>
+    <div class="category_images_default">
+      <div class="row">
+        <div class="col-sm-6"><%= image_tag 'category_default_large1.jpg' %></div>
+        <div class="col-sm-6"><%= image_tag 'category_default_large2.jpg' %></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-3"><%= image_tag 'category_default_small1.jpg' %></div>
+        <div class="col-sm-3"><%= image_tag 'category_default_small2.jpg' %></div>
+        <div class="col-sm-3"><%= image_tag 'category_default_small3.jpg' %></div>
+        <div class="col-sm-3"><%= image_tag 'category_default_small4.jpg' %></div>
+      </div>
+    </div>
+    <% end %>
   </div>
 
   <div class="buttons text-center">

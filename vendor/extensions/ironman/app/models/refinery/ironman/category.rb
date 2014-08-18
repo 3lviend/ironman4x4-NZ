@@ -10,7 +10,7 @@ module Refinery
       has_and_belongs_to_many :products, :join_table => 'refinery_ironman_categories_products', :dependent => :destroy
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
 
-      validates_presence_of :name, :thumbnail_image, :visible, :featured
+      validates_presence_of :name, :thumbnail_image
       validates_uniqueness_of :name, scope: :parent_id
 
       after_initialize do

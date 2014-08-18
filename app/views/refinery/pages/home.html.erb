@@ -1,4 +1,5 @@
 <% @layout_heading = false %>
 <% @layout_fit_my_car = 'above' %>
 <% @layout_social = true %>
+<% @slideshow_images = @page.images if @page.present? %>
 <%= render '/refinery/content_page' %>

@@ -1,5 +1,18 @@
-<% if content_for?(:photo_slideshow) %>
-  <div id="layout-photo-slideshow">
-    <%= yield :photo_slideshow %>
+<% if @slideshow_images.present? %>
+<div id="layout-photo-slideshow">
+  <div u="slides" class='gallery<%= ' multiple' if @slideshow_images.size > 1 %>'>
+    <% @slideshow_images.each do |image| %>
+    <div class="slide"><%= image_tag(image.thumbnail(geometry: "1920x480").url, u:'image') %></div>
+    <% end %>
   </div>
+
+  <% if @slideshow_images.size > 1 %>
+  <div u="navigator" class="jssorb16">
+      <div u="prototype"></div>
+  </div>
+
+  <span u="arrowleft" class="jssora02l"></span>
+  <span u="arrowright" class="jssora02r"></span>
+  <% end %>
+</div>
 <% end %>

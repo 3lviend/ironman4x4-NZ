@@ -604,17 +604,17 @@
     padding-left: 0;
     background-color: $white;
     font-size: 70%;
-    color: $dark-grey;
+    color: $medium-grey;
 
     &> li + li:before {
       /*content: "/\00a0";*/
       /*padding: 0 5px;*/
       content: "\2192";
-      color: $dark-grey;
+      color: $medium-grey;
     }
 
     a {
-      color: $dark-grey;
+      color: $medium-grey;
     }
   }
 }
