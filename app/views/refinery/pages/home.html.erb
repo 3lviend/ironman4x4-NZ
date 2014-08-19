@@ -8,11 +8,27 @@
 <% post = Refinery::Ironman::Post.limit(1).order("RANDOM()").first() %>
 
 <div id="home">
-  <div>
-    <%= render '/refinery/content_page' %>
-    <div class="find-local-stockist">
+  <div class="container first-row clearfix">
+    <div class="content col-sm-8">
+      <%= render '/refinery/content_page' %>
+    </div>
+
+    <div class="find-local-stockist col-sm-4">
+      <h3>Find your local stockist</h3>
+      <div class="map" style="background-image:url(<%= image_path 'homepage_map_australia.jpg' %>)"></div>
+      <%= form_tag refinery.search_path, class: 'postcode-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
+        <div class="form-group">
+          <%= text_field_tag :query, {}, {:class => 'form-control',
+            :type => 'search', :placeholder => t('layouts.second_nav.search_form.placeholder'),
+            :value => (params[:query] if params[:query])} %>
+        </div>
+        <%= button_tag type:'submit', class:'btn btn-default' do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+      <% end %>
     </div>
   </div>
+
   <div class="container products clearfix">
     <% products.each do |product| %>
     <div class="product col-sm-4">

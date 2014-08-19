@@ -30,6 +30,11 @@ a {
   }
 }
 
+h1, h2, h3, h4, h5, h5 {
+  color: $green;
+  font-family: $font-family-extra-bold;
+}
+
 .navbar-default {
   .navbar-nav {
     > li > a {
@@ -102,6 +107,29 @@ a {
      color: $light-grey;
      text-transform: uppercase;
      text-align: center;
+  }
+}
+
+.postcode-search {
+  &.navbar-form {
+    float: right;
+    margin-bottom: 10px;
+
+    input.form-control {
+      @include search-input;
+
+      border-radius: 0;
+      border-color: $dark-grey;
+      background-color: $white;
+      font-size: $font-size-smallish;
+    }
+
+    .btn {
+      border-radius: 0;
+      background-color: $green;
+      border-color: $dark-grey;
+      color: $white;
+    }
   }
 }
 
@@ -194,27 +222,6 @@ a {
           text-decoration: underline;
         }
       }
-    }
-  }
-
-  .navbar-form {
-    float: right;
-    margin-bottom: 10px;
-
-    input.form-control {
-      @include search-input;
-
-      border-radius: 0;
-      border-color: $dark-grey;
-      background-color: $white;
-      font-size: $font-size-smallish;
-    }
-
-    .btn {
-      border-radius: 0;
-      background-color: $green;
-      border-color: $dark-grey;
-      color: $white;
     }
   }
 }
@@ -677,6 +684,54 @@ a {
 }
 
 #home {
+  .first-row {
+    margin-bottom: $line-height-computed;
+  }
+
+  .content {
+    padding-left: 0;
+
+    .container {
+      width: auto;
+      padding: 0;
+
+      p {
+        font-size: 17px;
+      }
+    }
+  }
+
+  .find-local-stockist {
+    padding-right: 0;
+
+    h3 {
+      text-transform: uppercase;
+    }
+
+    .map {
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      height: 193px;
+    }
+
+    .postcode-search {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      .flexbox & {
+        display: flex;
+        .form-group {
+          &, input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
   .products {
     margin-bottom: $line-height-computed;
 
@@ -703,6 +758,7 @@ a {
       h3 {
         font-family: $font-family-extra-bold;
         color: $green;
+        text-transform: uppercase;
       }
 
       .photo {

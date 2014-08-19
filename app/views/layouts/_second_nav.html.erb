@@ -35,7 +35,7 @@
           </li>
         </ul>
 
-        <%= form_tag refinery.search_path, class: 'navbar-form navbar-right navbar-input-group', role:'search' do -%>
+        <%= form_tag refinery.search_path, class: 'postcode-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
           <div class="form-group">
             <%= text_field_tag :query, {}, {:class => 'form-control',
               :type => 'search', :placeholder => t('.search_form.placeholder'),
