@@ -59,6 +59,9 @@ gem 'refinerycms-page-resources', :github => 'asgeo1/refinerycms-page-resources'
 
 gem 'refinerycms-ironman', path: 'vendor/extensions'
 
+# amazon s3 uploads
+gem 'fog', group: [:production, :staging]
+
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: [:production, :staging]
 gem 'dotenv-rails' #loads .env files into ENV
