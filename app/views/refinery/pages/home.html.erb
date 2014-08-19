@@ -14,7 +14,7 @@
     </div>
 
     <div class="find-local-stockist col-sm-4">
-      <h3>Find your local stockist</h3>
+      <h3><%= t('.find_stockist') %></h3>
       <div class="map" style="background-image:url(<%= image_path 'homepage_map_australia.jpg' %>)"></div>
       <%= form_tag refinery.search_path, class: 'postcode-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
         <div class="form-group">

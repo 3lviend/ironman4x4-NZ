@@ -83,6 +83,11 @@ en:
       copyright: 'Copyright Ironman 4x4 2014'
       designed_by: 'Wesbsite by 1bdesign'
 
+  refinery:
+    pages:
+      home:
+        find_stockist: Find your local stockist
+
   breadcrumbs:
     home: 'Home'
     products: 'Products'
