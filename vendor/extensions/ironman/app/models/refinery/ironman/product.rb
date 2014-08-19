@@ -20,7 +20,7 @@ module Refinery
 
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no
-      validates_presence_of :product_no, :name, :thumbnail_image, :quantity_required
+      validates_presence_of :product_no, :name, :quantity_required
 
       accepts_nested_attributes_for :specifications, :allow_destroy => true
 
