@@ -5,61 +5,49 @@
 <% end %>
 
 <% content_for :body do %>
-  <section>
-    <h1>Product No</h1>
-    <p>
-      <%=raw @product.product_no %>
-    </p>
-  </section>
-  <section>
-    <h1>Name</h1>
-    <p>
-      <%=raw @product.name %>
-    </p>
-  </section>
-  <section>
-    <h1>Description</h1>
-    <p>
-      <%=raw @product.description %>
-    </p>
-  </section>
-  <section>
-    <h1>Notes</h1>
-    <p>
-      <%=raw @product.notes %>
-    </p>
-  </section>
-  <section>
-    <h1>Quantity Required</h1>
-    <p>
-      <%=raw @product.quantity_required %>
-    </p>
-  </section>
-  <section>
-    <h1>Product Specifications</h1>
-    <p>
-      <%=raw @product.specifications %>
-    </p>
-  </section>
-  <section>
-    <h1>Price</h1>
-    <p>
-      <%=raw @product.price %>
-    </p>
-  </section>
-<% end %>
+<div class="clearfix">
+  <div class="col-sm-7">
+    <% if @product.images.size >= 1 %>
+    <ul id="glasscase" class="gc-start">
+    <% @product.images.each do |image| %>
+    <li><%= image_tag(image.thumbnail(geometry: "560x360").url, alt:@product.name) %></li>
+    <% end %>
+    <ul>
+    <% end %>
+  </div>
+  <div class="col-sm-5">
+    <%= @product.price %>
+    <%= @product.product_no %>
+    <%= raw @product.short_description %>
+  </div>
+</div>
 
-<% content_for :side_body do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="products">
-      <% @products.each do |product| %>
-        <li>
-          <%= link_to product.product_no, refinery.ironman_product_path(product) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
+<div>
+  <ul>
+    <li>Description</li>
+    <li>Specifications</li>
+    <li>Fitting</li>
+    <li>Warranty</li>
+  </ul>
+  <button class="btn btn-default view-all">View All</button>
+  <button class="btn btn-default close-all">Close All</button>
+</div>
+
+<div class="">
+  <h3>Description</h3>
+  <%= raw @product.description %>
+  <hr />
+  <h3>Specifications</h3>
+  <%= @product.notes %>
+  <%= @product.quantity_required %>
+  <%= @product.specifications %>
+  <hr />
+  <h3>Fitting</h3>
+  <hr />
+  <h3>Warranty</h3>
+  <hr />
+  <h3>Related Products</h3>
+</div>
 <% end %>
 
 <%= render '/refinery/content_page' %>

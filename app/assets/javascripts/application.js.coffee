@@ -19,6 +19,7 @@
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider
+#= require glasscase/jquery.glasscase
 
 $(document).on 'page:load ready', ->
   #$('.tooltip-label').tooltip()
@@ -93,3 +94,10 @@ $(document).on 'page:load ready', ->
     }
 
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
+
+  $('#glasscase')?.glassCase({
+    widthDisplay: 560,
+    heightDisplay: 360,
+    isDownloadEnabled: false,
+    nrThumbsPerRow: 5
+  })
