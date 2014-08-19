@@ -8,8 +8,8 @@
 
 #load 'db/seeds/01_users.rb'
 #load 'db/seeds/a_vehicles.rb'
-load 'db/seeds/b_categories.rb'
-load 'db/seeds/c_accessory_products.rb'
+#load 'db/seeds/b_categories.rb'
+#load 'db/seeds/c_accessory_products.rb'
 #load 'db/seeds/d_suspension_products.rb'
 
 # Added by Refinery CMS Pages extension
@@ -49,12 +49,11 @@ Refinery::Setting.set(:date_format, '%d/%m/%Y')
 # end
 
 if defined?(Refinery::Page)
-  tech_support_page = Refinery::Page.where(:link_url => '/technical-support').first
+  tech_support_page = Refinery::Page.where(:slug => 'technical-support').first
 
   unless tech_support_page
     tech_support_page = ::Refinery::Page.create({
       :title => "Technical Support",
-      :link_url => "/technical-support",
       :deletable => false
     })
     tech_support_page.parts.create({
@@ -70,12 +69,11 @@ if defined?(Refinery::Page)
   end
 
 
-  faq_page = Refinery::Page.where(:link_url => '/faq').first
+  faq_page = Refinery::Page.where(:slug => 'frequently-asked-questions').first
 
   unless faq_page
     faq_page = ::Refinery::Page.create({
       :title => "Frequently Asked Questions",
-      :link_url => "/faq",
       :deletable => false
     })
     faq_page.parts.create({
@@ -91,12 +89,11 @@ if defined?(Refinery::Page)
   end
 
 
-  warranty_page = Refinery::Page.where(:link_url => '/warranty').first
+  warranty_page = Refinery::Page.where(:slug => 'warranty-terms').first
 
   unless warranty_page
     warranty_page = ::Refinery::Page.create({
       :title => "Warranty Terms",
-      :link_url => "/warranty-terms",
       :deletable => false
     })
     warranty_page.parts.create({
@@ -113,12 +110,11 @@ if defined?(Refinery::Page)
 
 
 
-  claims_page = Refinery::Page.where(:link_url => '/claims-procedure').first
+  claims_page = Refinery::Page.where(:slug => 'claims-procedure').first
 
   unless claims_page
     claims_page = ::Refinery::Page.create({
       :title => "Claims Procedure",
-      :link_url => "/claims-procedure",
       :deletable => false
     })
     claims_page.parts.create({
@@ -135,12 +131,11 @@ if defined?(Refinery::Page)
 
 
 
-  terms_page = Refinery::Page.where(:link_url => '/terms-conditions').first
+  terms_page = Refinery::Page.where(:slug => 'terms-conditions').first
 
   unless terms_page
     terms_page = ::Refinery::Page.create({
       :title => "Terms & Conditions",
-      :link_url => "/terms-conditions",
       :deletable => false
     })
     terms_page.parts.create({

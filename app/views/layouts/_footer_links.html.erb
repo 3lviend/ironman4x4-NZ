@@ -12,7 +12,7 @@
   end
 
   begin
-    faq_page = ::Refinery::Page.friendly.find('faq')
+    faq_page = ::Refinery::Page.friendly.find('frequently-asked-questions')
   rescue ActiveRecord::RecordNotFound
     faq_page = nil
   end
