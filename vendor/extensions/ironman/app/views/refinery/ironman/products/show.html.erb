@@ -28,8 +28,12 @@
       <ul class="links clearfix">
         <li><a href="#description">Description</a></li>
         <li><a href="#specifications">Specifications</a></li>
+        <% if @product.fitting_instructions_resource.present? %>
         <li><a href="#fitting">Fitting</a></li>
+        <% end %>
+        <% if @product.warranty.present? %>
         <li><a href="#warranty">Warranty</a></li>
+        <% end %>
       </ul>
       <button class="btn btn-link view-all">View All</button>
       <button class="btn btn-link close-all">Close All</button>
@@ -65,10 +69,23 @@
     <% end %>
     </div>
     <hr />
+
+    <% if @product.fitting_instructions_resource.present? %>
+    <div class="fitting">
     <h3 id="fitting">Fitting</h3>
+    <%= image_tag('icon_pdf.png') if @product.fitting_instructions_resource.mime_type == 'application/pdf' %>
+    <%= link_to @product.fitting_instructions_resource.file_name, @product.fitting_instructions_resource.url %>
+    <span class="file-size"><%= number_to_human_size @product.fitting_instructions_resource.file_size %></span>
+    </div>
     <hr />
+    <% end %>
+
+    <% if @product.warranty.present? %>
     <h3 id="warranty">Warranty</h3>
+    <%= raw @product.warranty %>
     <hr />
+    <% end %>
+
     <h3>Related Products</h3>
   </div>
 </div>

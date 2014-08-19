@@ -402,6 +402,7 @@ en:
         name: Name
         description: Description
         notes: Notes
+        warranty: Warranty
         specifications: Specifications
         quantity_required: Quantity Required
         price: Price

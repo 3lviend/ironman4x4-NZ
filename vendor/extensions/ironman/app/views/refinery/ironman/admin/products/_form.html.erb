@@ -10,12 +10,12 @@
 
   <div class='field'>
     <%= f.label :name -%>
-    <%= f.text_field :name -%>
+    <%= f.text_field :name, :class => 'widest' -%>
   </div>
 
   <div class='field'>
     <%= f.label :short_description -%>
-    <%= f.text_area :short_description -%>
+    <%= f.text_area :short_description, :class => 'widest' -%>
   </div>
 
   <div class='field'>
@@ -26,6 +26,9 @@
         </li>
         <li class='ui-state-default'>
           <%= link_to t('notes', :scope => 'activerecord.attributes.refinery/ironman/product'), "#page_part_notes" %>
+        </li>
+        <li class='ui-state-default'>
+          <%= link_to t('warranty', :scope => 'activerecord.attributes.refinery/ironman/product'), "#page_part_warranty" %>
         </li>
         <li class='ui-state-default'>
           <%= link_to t('specifications', :scope => 'activerecord.attributes.refinery/ironman/product'), "#page_part_specifications" %>
@@ -44,6 +47,10 @@
 
           <div class='page_part' id='page_part_notes'>
             <%= f.text_area :notes, :rows => 20, :class => 'wymeditor widest' -%>
+          </div>
+
+          <div class='page_part' id='page_part_warranty'>
+            <%= f.text_area :warranty, :rows => 20, :class => 'wymeditor widest' -%>
           </div>
 
           <div class='page_part' id='page_part_specifications'>
