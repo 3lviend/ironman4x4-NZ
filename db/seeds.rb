@@ -24,3 +24,135 @@ Refinery::Search::Engine.load_seed
 Refinery::Setting.set(:time_zone, 'Melbourne')
 Refinery::Setting.set(:datetime_format, '%d/%m/%Y %H:%M')
 Refinery::Setting.set(:date_format, '%d/%m/%Y')
+
+
+# if defined?(Refinery::Page)
+#   about_us_page = Refinery::Page.where(:link_url => '/about').first
+# 
+#   unless about_us_page
+#     about_us_page = ::Refinery::Page.create({
+#       :title => "About",
+#       :link_url => "/about",
+#       :deletable => false
+#     })
+#     about_us_page.parts.create({
+#       :title => "Body",
+#       :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+#       :position => 0
+#     })
+#     about_us_page.parts.create({
+#       :title => "Side Body",
+#       :body => "",
+#       :position => 1
+#     })
+#   end
+# end
+
+if defined?(Refinery::Page)
+  tech_support_page = Refinery::Page.where(:link_url => '/technical-support').first
+
+  unless tech_support_page
+    tech_support_page = ::Refinery::Page.create({
+      :title => "Technical Support",
+      :link_url => "/technical-support",
+      :deletable => false
+    })
+    tech_support_page.parts.create({
+      :title => "Body",
+      :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+      :position => 0
+    })
+    tech_support_page.parts.create({
+      :title => "Side Body",
+      :body => "",
+      :position => 1
+    })
+  end
+
+
+  faq_page = Refinery::Page.where(:link_url => '/faq').first
+
+  unless faq_page
+    faq_page = ::Refinery::Page.create({
+      :title => "Frequently Asked Questions",
+      :link_url => "/faq",
+      :deletable => false
+    })
+    faq_page.parts.create({
+      :title => "Body",
+      :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+      :position => 0
+    })
+    faq_page.parts.create({
+      :title => "Side Body",
+      :body => "",
+      :position => 1
+    })
+  end
+
+
+  warranty_page = Refinery::Page.where(:link_url => '/warranty').first
+
+  unless warranty_page
+    warranty_page = ::Refinery::Page.create({
+      :title => "Warranty Terms",
+      :link_url => "/warranty-terms",
+      :deletable => false
+    })
+    warranty_page.parts.create({
+      :title => "Body",
+      :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+      :position => 0
+    })
+    warranty_page.parts.create({
+      :title => "Side Body",
+      :body => "",
+      :position => 1
+    })
+  end
+
+
+
+  claims_page = Refinery::Page.where(:link_url => '/claims-procedure').first
+
+  unless claims_page
+    claims_page = ::Refinery::Page.create({
+      :title => "Claims Procedure",
+      :link_url => "/claims-procedure",
+      :deletable => false
+    })
+    claims_page.parts.create({
+      :title => "Body",
+      :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+      :position => 0
+    })
+    claims_page.parts.create({
+      :title => "Side Body",
+      :body => "",
+      :position => 1
+    })
+  end
+
+
+
+  terms_page = Refinery::Page.where(:link_url => '/terms-conditions').first
+
+  unless terms_page
+    terms_page = ::Refinery::Page.create({
+      :title => "Terms & Conditions",
+      :link_url => "/terms-conditions",
+      :deletable => false
+    })
+    terms_page.parts.create({
+      :title => "Body",
+      :body => "<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>",
+      :position => 0
+    })
+    terms_page.parts.create({
+      :title => "Side Body",
+      :body => "",
+      :position => 1
+    })
+  end
+
+end

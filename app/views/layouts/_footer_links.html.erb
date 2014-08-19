@@ -1,29 +1,89 @@
+<%
+  begin
+    tech_support_page = ::Refinery::Page.friendly.find('technical-support')
+  rescue ActiveRecord::RecordNotFound
+    tech_support_page = nil
+  end
+
+  begin
+    warranty_page = ::Refinery::Page.friendly.find('warranty-terms')
+  rescue ActiveRecord::RecordNotFound
+    warranty_page = nil
+  end
+
+  begin
+    faq_page = ::Refinery::Page.friendly.find('faq')
+  rescue ActiveRecord::RecordNotFound
+    faq_page = nil
+  end
+
+  begin
+    claims_page = ::Refinery::Page.friendly.find('claims-procedure')
+  rescue ActiveRecord::RecordNotFound
+    claims_page = nil
+  end
+
+  begin
+    contact_page = ::Refinery::Page.friendly.find('contact')
+  rescue ActiveRecord::RecordNotFound
+    contact_page = nil
+  end
+
+  begin
+    privacy_page = ::Refinery::Page.friendly.find('privacy-policy')
+  rescue ActiveRecord::RecordNotFound
+    privacy_page = nil
+  end
+
+  begin
+    terms_page = ::Refinery::Page.friendly.find('terms-conditions')
+  rescue ActiveRecord::RecordNotFound
+    terms_page = nil
+  end
+
+%>
   <div id="layout-footer">
     <div class="container">
       <div class="row">
         <dl class="col-sm-3">
           <dt><%= t('.support.description') %>
           <dd><%= link_to t('.support.fitting_information'), refinery.root_path %></li>
-          <dd><%= link_to t('.support.technical_information'), refinery.root_path %></li>
-          <dd><%= link_to t('.support.faqs'), '/frequently-asked-questions-faqs' %></li>
+          <% if tech_support_page.present? %>
+          <dd><%= link_to t('.support.technical_information'), refinery.marketable_page_path(tech_support_page) %></li>
+          <% end %>
+          <% if faq_page.present? %>
+          <dd><%= link_to t('.support.faqs'), refinery.marketable_page_path(faq_page) %></li>
+          <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.warranty.description') %>
-          <dd><%= link_to t('.warranty.terms'), '/warranty-terms' %></li>
-          <dd><%= link_to t('.warranty.claims_procedure'), refinery.root_path %></li>
+          <% if warranty_page.present? %>
+          <dd><%= link_to t('.warranty.terms'), refinery.marketable_page_path(warranty_page) %></li>
+          <% end %>
+          <% if claims_page.present? %>
+          <dd><%= link_to t('.warranty.claims_procedure'), refinery.marketable_page_path(claims_page) %></li>
+          <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.contact.description') %>
-          <dd><%= link_to t('.contact.head_office'), refinery.root_path %></li>
-          <dd><%= link_to t('.contact.international_distributors_contact'), refinery.root_path %></li>
+          <% if contact_page.present? %>
+          <dd><%= link_to t('.contact.head_office'), refinery.marketable_page_path(contact_page) %></li>
+          <% end %>
+          <% if contact_page.present? %>
+          <dd><%= link_to t('.contact.international_distributors_contact'), refinery.marketable_page_path(contact_page) %></li>
+          <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.legal.description') %>
-          <dd><%= link_to t('.legal.privacy_policy'), '/privacy' %></li>
-          <dd><%= link_to t('.legal.terms_conditions'), '/terms-conditions' %></li>
+          <% if privacy_page.present? %>
+          <dd><%= link_to t('.legal.privacy_policy'), refinery.marketable_page_path(privacy_page) %></li>
+          <% end %>
+          <% if terms_page.present? %>
+          <dd><%= link_to t('.legal.terms_conditions'), refinery.marketable_page_path(terms_page) %></li>
+          <% end %>
         </dl>
 
         <!--

@@ -51,9 +51,9 @@ en:
       nav:
         products: 'Products'
         fitmycar: 'Fit My Car'
-        stores: 'Stockists'
         technical: 'Technical'
         wish_list: 'Wish List'
+        stockists: 'Find Store'
       search_form:
         placeholder: 'Postcode/Suburb'
         button: 'Submit'

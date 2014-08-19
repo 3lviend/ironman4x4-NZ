@@ -18,19 +18,28 @@
               <%= t('.nav.fitmycar') %>
             <% end %>
           </li>
+          <%
+            begin
+              tech_support_page = ::Refinery::Page.friendly.find('technical-support')
+            rescue ActiveRecord::RecordNotFound
+              tech_support_page = nil
+            end
+          %>
+          <% if tech_support_page.present? %>
           <li>
-            <%= link_to refinery.root_path do %>
-              <%= t('.nav.stores') %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to refinery.root_path do %>
+            <%= link_to refinery.marketable_page_path(tech_support_page) do %>
               <%= t('.nav.technical') %>
             <% end %>
           </li>
+          <% end %>
           <li>
             <%= link_to refinery.root_path do %>
               <%= t('.nav.wish_list') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to refinery.ironman_stockists_path do %>
+              <%= t('.nav.stockists') %>
             <% end %>
           </li>
         </ul>

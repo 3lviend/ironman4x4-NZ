@@ -23,7 +23,7 @@ Refinery::Core::Engine.routes.draw do
 
 
   # Frontend routes
-  namespace :ironman do
+  namespace :ironman, :path => '' do
     resources :products, :only => [:index, :show]
     resources :categories, :only => [:index, :show]
     resources :vehicles, :only => [:index, :show]

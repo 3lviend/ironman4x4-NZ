@@ -22,13 +22,22 @@
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
         <% end %>
+        <%
+          begin
+            about_page = ::Refinery::Page.friendly.find('about')
+          rescue ActiveRecord::RecordNotFound
+            about_page = nil
+          end
+        %>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><%= t('.menu.about') %></a></li>
+          <% if about_page.present? %>
+          <li><%= link_to t('.menu.about'), refinery.marketable_page_path(about_page) %></li>
+          <% end %>
           <li><%= link_to t('.menu.blog'), refinery.ironman_blog_posts_path %></li>
-          <li><a href="#"><%= t('.menu.catalogue') %></a></li>
+          <li><%= link_to t('.menu.catalogue'), refinery.ironman_catalogues_path %></li>
           <li><%= link_to t('.menu.news'), refinery.ironman_posts_path %></li>
-          <li><a href="#"><%= t('.menu.media') %></a></li>
-          <li><a href="#"><%= t('.menu.contact') %></a></li>
+          <li><%= link_to t('.menu.media'), refinery.ironman_media_releases_path %></li>
+          <li><%= link_to t('.menu.contact'), refinery.ironman_new_enquiry_path %></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
