@@ -271,6 +271,8 @@ en:
       products:
         show:
           other: Other Products
+          buttons:
+            add_to_wishlist: Add to Wishlist
         index:
           page_header: Products
           buttons:

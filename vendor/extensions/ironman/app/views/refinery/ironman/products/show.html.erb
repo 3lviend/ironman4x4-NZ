@@ -4,50 +4,71 @@
   <%= @product.name %>
 <% end %>
 
-<% content_for :body do %>
-<div class="clearfix">
-  <div class="col-sm-7">
-    <% if @product.images.size >= 1 %>
-    <ul id="glasscase" class="gc-start">
-    <% @product.images.each do |image| %>
-    <li><%= image_tag(image.thumbnail(geometry: "560x360").url, alt:@product.name) %></li>
-    <% end %>
-    <ul>
-    <% end %>
+<div id="page-product">
+  <div class="container clearfix">
+    <div class="col-sm-7 photos">
+      <% if @product.images.size >= 1 %>
+      <ul id="glasscase" class="gc-start">
+      <% @product.images.each do |image| %>
+      <li><%= image_tag(image.thumbnail(geometry: "635x360").url, alt:@product.name) %></li>
+      <% end %>
+      <ul>
+      <% end %>
+    </div>
+    <div class="col-sm-5 product-overview">
+      <div class="price"><%= number_to_currency @product.price if @product.price.present? %></div>
+      <div class="product-no"><%= @product.product_no %></div>
+      <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary add-to-wishlist' %>
+      <div class="short-description"><%= raw @product.short_description %></div>
+    </div>
   </div>
-  <div class="col-sm-5">
-    <%= @product.price %>
-    <%= @product.product_no %>
-    <%= raw @product.short_description %>
+
+  <div class="menu">
+    <div class="container clearfix">
+      <ul class="links clearfix">
+        <li><a href="#description">Description</a></li>
+        <li><a href="#specifications">Specifications</a></li>
+        <li><a href="#fitting">Fitting</a></li>
+        <li><a href="#warranty">Warranty</a></li>
+      </ul>
+      <button class="btn btn-link view-all">View All</button>
+      <button class="btn btn-link close-all">Close All</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3 id="description">Description</h3>
+    <%= raw @product.description %>
+    <hr />
+    <h3 id="specifications">Specifications</h3>
+    <div class="specifications">
+    <% if @product.quantity_required.present? %>
+    <div class="row">
+      <div class="col-sm-3 col-lg-2 title">Quantity Required</div>
+      <div class="col-sm-9 col-lg-10 value"><%= @product.quantity_required %></div>
+    </div>
+    <% end %>
+
+    <% if @product.specifications.present? %>
+    <% @product.specifications.each do |spec| %>
+    <div class="row">
+      <div class="col-sm-3 col-lg-2 title"><%= spec.title %></div>
+      <div class="col-sm-9 col-lg-10 value"><%= spec.value %></div>
+    </div>
+    <% end %>
+    <% end %>
+    <% if @product.notes.present? %>
+    <div class="row">
+      <div class="col-sm-3 col-lg-2 title">Notes</div>
+      <div class="col-sm-9 col-lg-10 value"><%= raw @product.notes %></div>
+    </div>
+    <% end %>
+    </div>
+    <hr />
+    <h3 id="fitting">Fitting</h3>
+    <hr />
+    <h3 id="warranty">Warranty</h3>
+    <hr />
+    <h3>Related Products</h3>
   </div>
 </div>
-
-<div>
-  <ul>
-    <li>Description</li>
-    <li>Specifications</li>
-    <li>Fitting</li>
-    <li>Warranty</li>
-  </ul>
-  <button class="btn btn-default view-all">View All</button>
-  <button class="btn btn-default close-all">Close All</button>
-</div>
-
-<div class="">
-  <h3>Description</h3>
-  <%= raw @product.description %>
-  <hr />
-  <h3>Specifications</h3>
-  <%= @product.notes %>
-  <%= @product.quantity_required %>
-  <%= @product.specifications %>
-  <hr />
-  <h3>Fitting</h3>
-  <hr />
-  <h3>Warranty</h3>
-  <hr />
-  <h3>Related Products</h3>
-</div>
-<% end %>
-
-<%= render '/refinery/content_page' %>

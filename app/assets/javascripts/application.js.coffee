@@ -96,8 +96,9 @@ $(document).on 'page:load ready', ->
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
 
   $('#glasscase')?.glassCase({
-    widthDisplay: 560,
+    widthDisplay: 635,
     heightDisplay: 360,
     isDownloadEnabled: false,
-    nrThumbsPerRow: 5
+    nrThumbsPerRow: 5,
+    isZoomEnabled: false
   })
