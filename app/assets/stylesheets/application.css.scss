@@ -38,6 +38,47 @@ a {
   }
 }
 
+
+
+.col-xs-5ths,
+.col-sm-5ths,
+.col-md-5ths,
+.col-lg-5ths {
+  position: relative;
+  min-height: 1px;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.col-xs-5ths {
+  width: 20%;
+  float: left;
+}
+
+@media (min-width: 768px) {
+.col-sm-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-md-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+@media (min-width: 1200px) {
+  .col-lg-5ths {
+    width: 20%;
+    float: left;
+  }
+}
+
+
+
+
 @mixin search-input {
   &::-webkit-input-placeholder {
      color: $light-grey;
@@ -632,5 +673,85 @@ a {
 #layout-main {
   @media (min-width: $screen-sm-min) {
     min-height: 250px;
+  }
+}
+
+#home {
+  .products {
+    margin-bottom: $line-height-computed;
+
+    .product {
+      &:first-child {
+        padding-left: 0;
+      }
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .post {
+      padding-left: 20px;
+      padding-right: 0;
+    }
+
+    .product, .post {
+      overflow: hidden;
+
+      a, a:hover {
+        color: $dark-grey;
+      }
+
+      h3 {
+        font-family: $font-family-extra-bold;
+        color: $green;
+      }
+
+      .photo {
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 193px;
+      }
+    }
+  }
+
+  .categories {
+    background-color: $lightest-grey;
+    margin-bottom: $line-height-computed;
+
+    .container {
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+
+    .category {
+      overflow: hidden;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      .photo {
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 120px;
+        position: relative;
+
+        .name {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background: rgba($dark-grey, 0.7);
+          width: 100%;
+          font-family: $font-family-bold;
+          text-transform: uppercase;
+          text-align: center;
+          color: white;
+          line-height: 25px;
+        }
+      }
+    }
   }
 }

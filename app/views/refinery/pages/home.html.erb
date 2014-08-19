@@ -2,4 +2,89 @@
 <% @layout_fit_my_car = 'above' %>
 <% @layout_social = true %>
 <% @slideshow_images = @page.images if @page.present? %>
-<%= render '/refinery/content_page' %>
+
+<% products = Refinery::Ironman::Product.limit(2).order("RANDOM()") %>
+<% categories = Refinery::Ironman::Category.limit(5).order("RANDOM()") %>
+<% post = Refinery::Ironman::Post.limit(1).order("RANDOM()").first() %>
+
+<div id="home">
+  <div>
+    <%= render '/refinery/content_page' %>
+    <div class="find-local-stockist">
+    </div>
+  </div>
+  <div class="container products clearfix">
+    <% products.each do |product| %>
+    <div class="product col-sm-4">
+      <%
+      category = product.categories.first
+      if category.present?
+        if category.depth == 0
+          url = refinery.products_category_product_path(category, product)
+        elsif category.depth == 1
+          url = refinery.products_subcategory_product_path(category.parent, category, product)
+        else
+          url = refinery.products_sub_subcategory_product_path(category.parent.parent, category.parent, category, product)
+        end
+      else
+        url = product_path(product)
+      end
+      %>
+      <%= link_to url do %>
+      <div class="photo" style="background-image:url(<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
+      <div class="content">
+        <h3><%= product.name %></h3>
+        <div class="description">
+          <% if product.short_description.present? %>
+          <%= product.short_description %>
+          <% else %>
+          <%= t('refinery.ironman.products.index.default_product_description') %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+
+    <% if post.present? %>
+    <div class="post col-sm-4">
+      <%= link_to refinery.ironman_post_path(post) do %>
+      <div class="photo" style="background-image:url(<%= if post.index_image.present? then post.index_image.thumbnail(geometry: "302x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
+      <div class="content">
+        <h3><%= post.title %></h3>
+        <div class="description">
+          <% if post.teaser.present? %>
+          <%= raw post.teaser %>
+          <% else %>
+          <%= t('refinery.ironman.posts.default_post_teaser') %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="categories">
+    <div class="container clearfix">
+      <% categories.each do |category| %>
+      <div class="category col-sm-5ths">
+        <%
+        if category.depth == 0
+          url = refinery.product_categories_path(category)
+        elsif category.depth == 1
+          url = refinery.product_subcategories_path(category.parent, category)
+        else
+          url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category)
+        end
+        %>
+        <%= link_to url do %>
+        <div class="photo" style="background-image:url(<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_path 'category_list_photo_default.jpg' end %>)">
+          <div class="name"><%= category.name %></div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

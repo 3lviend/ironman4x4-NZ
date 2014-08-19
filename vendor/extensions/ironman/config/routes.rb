@@ -2,18 +2,22 @@ Refinery::Core::Engine.routes.draw do
 
   get 'categories/:id/children' => 'ironman/categories#children', :as => 'category_children', :format => :json
 
+  # index pages of categories
   get 'product-categories/:id' => 'ironman/categories#index', as: :product_categories
   get 'product-categories/:category_id/:id' => 'ironman/categories#index', as: :product_subcategories
   get 'product-categories/:category_id/:subcategory_id/:id' => 'ironman/categories#index', as: :product_sub_subcategories
 
+  # index pages of products for a given category
   get 'category-products/:id' => 'ironman/products#index', as: :category_products
   get 'category-products/:category_id/:id' => 'ironman/products#index', as: :subcategory_products
   get 'category-products/:category_id/:subcategory_id/:id' => 'ironman/products#index', as: :sub_subcategory_products
 
+  # product show pages nested under specific categories
   get 'products/:category_id/:id' => 'ironman/products#show', as: :products_category_product
   get 'products/:category_id/:subcategory_id/:id' => 'ironman/products#show', as: :products_subcategory_product
   get 'products/:category_id/:subcategory_id/:sub_subcategory_id/:id' => 'ironman/products#show', as: :products_sub_subcategory_product
 
+  # category show pages
   get 'categories/:category_id/:id' => 'ironman/categories#show', as: :subcategory
   get 'categories/:category_id/:subcategory_id/:id' => 'ironman/categories#show', as: :sub_subcategory
 
