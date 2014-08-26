@@ -25,7 +25,7 @@ $(document).on 'page:load ready', ->
     else
       index = 0
 
-    $('#page_specifications table ' + (if index then '.spec_value' else '.add_new')).after(
+    $('#page_specifications table ' + (if index then '.spec_value:last' else '.add_new')).after(
       '<tr class="spec_value">' +
         '<td>' + title + '</td>' +
         '<td>' + value + '</td>' +
