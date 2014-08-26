@@ -1,7 +1,7 @@
-<section id='records'>
+<section id='records' class="tree">
   <%= render 'records' %>
 </section>
 <aside id='actions'>
   <%= render 'actions' %>
 </aside>
-<%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::Ironman::Admin::VehiclesController.sortable? and ::Refinery::Ironman::Vehicle.many? %>
+<%= render '/refinery/admin/make_sortable', options: {tree: true, replaceContentsAfterUpdate: true} if !searching? and ::Refinery::Ironman::Admin::VehiclesController.sortable? and ::Refinery::Ironman::Vehicle.many? %>
