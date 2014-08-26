@@ -5,7 +5,11 @@
 
   <div class='field'>
     <%= f.label :parent_id -%>
-    <%= f.number_field :parent_id -%>
+    <%= f.select :parent_id,
+      Refinery::Ironman::Vehicle.hash_tree.flatten_nested.reject { |v| v.id == f.object.id }.map { |v| ['- ' * v.depth + v.name, v.id] },
+      { include_blank: true },
+      { class: 'chosen-select' }
+    %>
   </div>
 
   <div class='field'>
