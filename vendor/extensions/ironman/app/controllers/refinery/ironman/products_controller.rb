@@ -60,7 +60,7 @@ module Refinery
     protected
 
       def find_all_products
-        @products = Product.order('position ASC')
+        @products = Product.order('product_no ASC')
       end
 
       def find_page
