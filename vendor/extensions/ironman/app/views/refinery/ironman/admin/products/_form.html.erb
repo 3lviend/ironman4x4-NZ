@@ -96,6 +96,16 @@
   </div>
 
   <div class='field'>
+    <%= f.label :vehicles -%>
+    <%= f.collection_select :vehicle_ids,
+      Refinery::Ironman::Vehicle.hash_tree.flatten_nested,
+      :id, Proc.new { |c| '- ' * c.depth + c.name},
+      { include_blank: true },
+      { class: 'chosen-select', multiple:true }
+    %>
+  </div>
+
+  <div class='field'>
     <%= f.label :thumbnail_image %>
     <%= render :partial => "/refinery/admin/image_picker", :locals => {
       :f => f,
