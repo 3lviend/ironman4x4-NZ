@@ -1,9 +1,4 @@
 <ul>
-  <% if ::Refinery::Ironman::Admin::ProductsController.searchable? %>
-    <li>
-      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_products_path %>
-    </li>
-  <% end %>
   <li>
     <%= link_to t('.categories'), refinery.ironman_admin_categories_path,
                  :class => "go_icon" %>

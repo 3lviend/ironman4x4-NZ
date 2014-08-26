@@ -1,7 +1,7 @@
-<section id='records'>
+<section id='records' class='products'>
   <%= render 'records' %>
 </section>
-<aside id='actions'>
+<aside id='actions' class='products'>
   <%= render 'actions' %>
 </aside>
 <%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::Ironman::Admin::ProductsController.sortable? and ::Refinery::Ironman::Product.many? %>

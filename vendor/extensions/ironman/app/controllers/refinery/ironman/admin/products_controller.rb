@@ -5,7 +5,8 @@ module Refinery
 
         crudify :'refinery/ironman/product',
                 :title_attribute => 'product_no',
-                :xhr_paging => true
+                :xhr_paging => true,
+                :sortable => false
 
       protected
         def product_params

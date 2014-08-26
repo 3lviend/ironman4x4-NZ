@@ -2,3 +2,20 @@
 //= require jquery.ui.slider
 //= require jquery-ui-timepicker-addon
 //= require refinery/ironman/products
+
+#records {
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: separate;
+
+    td.actions {
+      min-width: 100px;
+      position: static;
+      right: auto;
+      top: auto;
+      width: auto;
+      display: table-cell;
+    }
+  }
+}
