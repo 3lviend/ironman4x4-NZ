@@ -36,11 +36,16 @@
 }
 
 #actions.products {
-  width: 20.7%;
+  width: 15.7%;
 }
 
 #records.products {
-  width: 77.7%
+  width: 82.7%;
+
+  .image {
+    vertical-align: middle;
+    padding-left: 10px;
+  }
 }
 
 .products .search_form .button {
