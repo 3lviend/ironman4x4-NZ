@@ -30,3 +30,7 @@ Refinery::AdminController.class_eval do
     Date.format = date_format if date_format.present?
   end
 end
+
+class Hash
+  def flatten_nested; flat_map{|k, v| [k, *v.flatten_nested]} end
+end

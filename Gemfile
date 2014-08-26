@@ -70,6 +70,7 @@ gem 'gretel', github: 'asgeo1/gretel', branch:'make_breadcrumb_key_public'
 
 gem 'modernizr-rails'
 gem 'bootstrap-sass'
+gem 'chosen-rails'
 
 # Development gems
 #gem 'rack-mini-profiler'

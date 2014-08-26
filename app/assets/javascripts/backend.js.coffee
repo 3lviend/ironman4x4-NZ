@@ -1,4 +1,5 @@
 #= require jquery-ui-timepicker-addon
+#= require chosen-jquery
 #= require refinery/ironman/admin
 
 $(document).on 'page:load ready', ->
@@ -10,3 +11,9 @@ $(document).on 'page:load ready', ->
   $('input[data-role=datetimepicker]').datetimepicker(options)
   $('input[data-role=datepicker]').datepicker(options)
   $('input[data-role=timepicker]').timepicker(options)
+
+  # enable chosen js
+  $('.chosen-select').chosen
+    allow_single_deselect: true
+    no_results_text: 'No results matched'
+    width: '200px'

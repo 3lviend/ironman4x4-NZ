@@ -162,6 +162,12 @@ GEM
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
+    chosen-rails (1.1.0)
+      coffee-rails (>= 3.2)
+      compass-rails (>= 1.1.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
+    chunky_png (1.3.1)
     closure_tree (4.6.2)
       activerecord (>= 3.2.0)
       with_advisory_lock (>= 0.0.9)
@@ -172,6 +178,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.1)
+    compass (0.12.7)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.2.19)
+    compass-rails (2.0.0)
+      compass (>= 0.12.2)
     daemons (1.1.9)
     date_parity (0.1.2)
       activesupport (~> 4.0, >= 4.0.0)
@@ -225,6 +237,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
+    fssm (0.2.10)
     globalize (4.0.2)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
@@ -370,6 +383,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass
+  chosen-rails
   closure_tree
   coffee-rails (~> 4.0.0)
   date_parity
