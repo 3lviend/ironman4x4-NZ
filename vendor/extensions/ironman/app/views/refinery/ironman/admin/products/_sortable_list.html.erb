@@ -1,5 +1,17 @@
 <table id='sortable_list'>
+  <thead>
+    <tr>
+      <th></th>
+      <th class="col"><%= link_to 'SKU', refinery.url_for(params.merge(:order => 'product_no', :direction => (params[:order] == 'product_no' && params[:direction] == 'asc' ? 'desc' : 'asc'))) %></th>
+      <th class="col"><%= link_to 'Title', refinery.url_for(params.merge(:order => 'title', :direction => (params[:order] == 'title' && params[:direction] == 'asc' ? 'desc' : 'asc'))) %></th>
+      <th class="col"><%= link_to 'Category', refinery.url_for(params.merge(:order => 'category', :direction => (params[:order] == 'category' && params[:direction] == 'asc' ? 'desc' : 'asc'))) %></th>
+      <th class="col"><%= link_to 'Price', refinery.url_for(params.merge(:order => 'price', :direction => (params[:order] == 'price' && params[:direction] == 'asc' ? 'desc' : 'asc'))) %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <%= render :partial => 'product', :collection => @products %>
+  </tbody>
 </table>
 <%= render '/refinery/admin/sortable_list',
             :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true %>
