@@ -2,20 +2,20 @@
   <td class="image">
     <%= image_tag 'refinery/icons/img.png' if product.images.present? %>
   </td>
-  <td class='title'>
+  <td class="col title">
     <%= product.product_no %>
   </td>
-  <td>
+  <td class="col">
     <%= product.title %>
   </td>
-  <td>
+  <td class="col">
     <% c = product.categories.first %>
     <%= c.name if c.present? %>
   </td>
-  <td>
+  <td class="col">
     <%= number_to_currency product.price %>
   </td>
-  <td class='actions'>
+  <td class="actions">
     
     <%= link_to refinery_icon_tag("application_go.png"), refinery.ironman_product_path(product),
         :title => t('.view_live_html'),

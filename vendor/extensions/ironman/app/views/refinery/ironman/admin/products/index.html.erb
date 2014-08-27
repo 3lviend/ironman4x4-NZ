@@ -1,7 +1,15 @@
+<section class="header">
+  <aside id="search" class="products">
+    <%= render 'refinery/admin/search_header', :url => refinery.ironman_admin_products_path %>
+    <% if ::Refinery::Ironman::Admin::ProductsController.searchable? %>
+      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_products_path %>
+    <% end %>
+  </aside>
+  <aside id='actions' class='products'>
+    <%= render 'actions' %>
+  </aside>
+</section>
 <section id='records' class='products'>
   <%= render 'records' %>
 </section>
-<aside id='actions' class='products'>
-  <%= render 'actions' %>
-</aside>
 <%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::Ironman::Admin::ProductsController.sortable? and ::Refinery::Ironman::Product.many? %>

@@ -35,15 +35,34 @@
   }
 }
 
+#search.products {
+  width: 40%;
+  display: inline-block;
+  float:left;
+  border: none;
+}
+
 #actions.products {
-  width: 15.7%;
+  width: 40%;
+  display: inline-block;
+  float:right;
+  ul {
+    margin: 0;
+    float: right;
+    li {
+      display: inline-block;
+    }
+  }
 }
 
 #records.products {
-  width: 82.7%;
+  width: 100%;
 
   .image {
     vertical-align: middle;
+  }
+
+  .col {
     padding-left: 10px;
   }
 }
