@@ -16,6 +16,11 @@ module Refinery
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
       #
       #   acts_as_indexed :fields => [:title]
+
+      after_save do
+        # need to explicity save - something to do with how nested attributes work
+        details.save() if details.changed?
+      end
     end
   end
 end
