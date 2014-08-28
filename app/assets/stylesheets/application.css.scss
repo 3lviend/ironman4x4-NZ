@@ -161,6 +161,20 @@ h1, h2, h3, h4, h5, h5 {
   }
 }
 
+#site_bar_content {
+  @media (max-width: $screen-xs-max) {
+    width: 100% ! important;
+
+    #editor_switch {
+      padding-left: 10px;
+    }
+
+    #site_bar_branding {
+      padding-right: 10px;
+    }
+  }
+}
+
 #layout-first-nav {
   font-size: $font-size-smallish;
   margin-bottom: 0;
