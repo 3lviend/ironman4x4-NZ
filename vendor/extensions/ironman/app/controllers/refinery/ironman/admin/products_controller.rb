@@ -12,7 +12,7 @@ module Refinery
                 :order => 'refinery_ironman_categories.name, refinery_ironman_products.product_no'
 
       protected
-        def find_all_products(conditions = '')
+        def find_all_products(conditions = {})
           direction = (params[:direction] == 'desc' ? 'desc' : 'asc')
 
           orders = {
@@ -21,6 +21,11 @@ module Refinery
             :category => 'refinery_ironman_categories.name ' + direction,
             :price => 'refinery_ironman_products.price ' + direction
           }.with_indifferent_access
+
+          if params[:category_id].present?
+            if conditions == '' then conditions = {} end
+            conditions = conditions.merge({refinery_ironman_categories: {id: params[:category_id]}})
+          end
 
           order = orders[params[:order]] ||= 'refinery_ironman_categories.name, refinery_ironman_products.product_no'
 

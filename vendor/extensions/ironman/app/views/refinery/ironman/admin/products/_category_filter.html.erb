@@ -1,0 +1,6 @@
+<%= select_tag :category_id,
+      options_for_select(
+        Refinery::Ironman::Category.hash_tree.flatten_nested.map { |c| ['- ' * c.depth + c.name, c.id] },
+        params[:category_id]
+      ), { include_blank: true, class: 'category-filter chosen-select', :'data-placeholder' => 'Filter by category' }
+%>

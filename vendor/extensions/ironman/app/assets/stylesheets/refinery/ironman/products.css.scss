@@ -36,14 +36,24 @@
 }
 
 #search.products {
-  width: 40%;
+  width: 35%;
   display: inline-block;
   float:left;
   border: none;
 }
 
+#category-filter.products {
+  width:25%;
+  display: inline-block;
+  text-align: right;
+
+  .chosen-container{
+    text-align: left;
+  }
+}
+
 #actions.products {
-  width: 40%;
+  width: 35%;
   display: inline-block;
   float:right;
   ul {
