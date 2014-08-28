@@ -89,6 +89,7 @@ en:
         find_stockist: Find your local stockist
 
   breadcrumbs:
+    blog_posts: 'Blog'
     home: 'Home'
     products: 'Products'
     categories: 'Products'

@@ -1,8 +1,39 @@
+<% breadcrumb :blog_posts %>
+<% content_for :page_header do %>
+  <%= t('.page_header') %>
+<% end %>
+
 <% content_for :body do %>
   <ul id="posts">
     <% @posts.each do |post| %>
-      <li>
-        <%= link_to post.title, refinery.ironman_post_path(post) %>
+      <li class="row post">
+        <div class="side col-sm-3">
+        <%= link_to refinery.ironman_post_path(post) do %>
+        <% if post.index_image.present? %>
+          <div class="image" style="background-image:url(<%= post.index_image.thumbnail(geometry: "263x263").url %>)"></div>
+        <% end %>
+        <% end %>
+        </div>
+
+        <div class="main col-sm-9">
+          <div class="heading clearfix">
+            <h3><%= link_to post.title, refinery.ironman_post_path(post) %></h3>
+            <ul class="icons">
+              <li class="icon facebook"><%= t('layouts.social.links.facebook') %></li><!--
+              --><li class="icon pinterest"><%= t('layouts.social.links.pinterest') %></li><!--
+              --><li class="icon twitter"><%= t('layouts.social.links.twitter') %></li><!--
+              --><li class="icon youtube"><%= t('layouts.social.links.youtube') %></li>
+            </ul>
+          </div>
+          <div class="teaser">
+            <% if post.teaser.present? %>
+            <%= raw post.teaser %>
+            <% else %>
+            <p><%= t('.default_post_teaser') %></p>
+            <% end %>
+            [<%= link_to t('.read_more'), refinery.ironman_post_path(post) %>]
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>
