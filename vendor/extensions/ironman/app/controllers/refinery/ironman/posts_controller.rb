@@ -12,7 +12,7 @@ module Refinery
       end
 
       def show
-        @post = Post.friendly.find(params[:id])
+        @post = Post.active.friendly.find(params[:id])
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @post in the line below:
@@ -41,7 +41,7 @@ module Refinery
           conditions[:published_at] = published_month.beginning_of_month..published_month.end_of_month
         end
 
-        @posts = Post.where(conditions).order('published_at DESC')
+        @posts = Post.active.where(conditions).order('published_at DESC')
       end
 
       def find_page

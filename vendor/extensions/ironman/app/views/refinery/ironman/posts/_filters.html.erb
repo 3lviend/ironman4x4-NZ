@@ -20,7 +20,7 @@
     conditions[:type] = @type
   end
 
-  items = Refinery::Ironman::Post.all.where(conditions).order("published_at DESC").group_by { |post| post.published_at.beginning_of_month }.map { |month, posts| ["#{month.strftime('%b %Y')} (#{posts.size})", month.strftime('%Y-%m')] }
+  items = Refinery::Ironman::Post.current.where(conditions).order("published_at DESC").group_by { |post| post.published_at.beginning_of_month }.map { |month, posts| ["#{month.strftime('%b %Y')} (#{posts.size})", month.strftime('%Y-%m')] }
 %>
 <%= select_tag :published_month, options_for_select(items, params[:published_month]), :prompt => t('.prompts.published_month'), :class => 'form-control input-sm' if items.present? %>
 </div>

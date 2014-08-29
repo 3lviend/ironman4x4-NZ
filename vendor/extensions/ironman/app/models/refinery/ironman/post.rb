@@ -16,6 +16,8 @@ module Refinery
 
       belongs_to :author, proc { readonly(true) }, :class_name => Refinery::User.to_s, :foreign_key => :user_id
 
+      scope :active, -> { where(draft: false).where('expire_at is null or expire_at > ?', Time.zone.now) }
+
       # Add an association to the Refinery::Image class, so we
       # can take advantage of the magic that the class provides
       belongs_to :index_image, :class_name => '::Refinery::Image'
