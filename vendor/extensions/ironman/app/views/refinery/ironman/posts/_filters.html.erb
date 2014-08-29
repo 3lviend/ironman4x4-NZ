@@ -1,0 +1,25 @@
+<div id="post-filters">
+<%= form_tag refinery.search_path, class: 'post-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
+  <div class="form-group">
+    <%= text_field_tag :query, {}, {:class => 'form-control input-sm',
+      :type => 'search', :placeholder => t('.search_form.placeholder'),
+      :value => (params[:query] if params[:query])} %>
+  </div>
+  <%= button_tag type:'submit', class:'btn btn-default btn-sm' do %>
+    <span class="glyphicon glyphicon-search"></span>
+  <% end %>
+<% end %>
+
+<%= select_tag :category, options_for_select([[t('.categories.blog_posts'), 'blog_post'], [t('.categories.news_item'), 'news_item'], [t('.categories.event'), 'event']], params[:category]), :prompt => t('.prompts.category'), :class => 'form-control input-sm' %>
+
+<%
+  conditions = {}
+  if @type.present?
+    conditions[:type] = @type
+  end
+
+  items = Refinery::Ironman::Post.all.where(conditions).order("published_at DESC").group_by { |post| post.published_at.beginning_of_month }.map { |month, posts| ["#{month.strftime('%b %Y')} (#{posts.size})", month.strftime('%Y-%m')] }
+%>
+<%= select_tag :published_month, options_for_select(items, params[:published_month]), :prompt => t('.prompts.published_month'), :class => 'form-control input-sm' if items.present? %>
+</div>
+<hr />

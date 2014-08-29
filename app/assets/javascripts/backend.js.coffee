@@ -1,5 +1,6 @@
 #= require jquery-ui-timepicker-addon
 #= require chosen-jquery
+#= require utils
 #= require refinery/ironman/admin
 
 $(document).on 'page:load ready', ->

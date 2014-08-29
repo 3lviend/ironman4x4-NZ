@@ -4,6 +4,9 @@
 <% end %>
 
 <% content_for :body do %>
+  <%= render 'filters' %>
+
+  <% if @posts.present? %>
   <ul id="posts">
     <% @posts.each do |post| %>
       <li class="row post">
@@ -59,6 +62,9 @@
       </li>
     <% end %>
   </ul>
+  <% else %>
+    <p class="not-found"><%= t('.not-found') %></p>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

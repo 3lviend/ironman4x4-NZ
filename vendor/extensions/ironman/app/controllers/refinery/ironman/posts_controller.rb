@@ -22,7 +22,26 @@ module Refinery
     protected
 
       def find_all_posts
-        @posts = Post.order('published_at DESC')
+        conditions = {}
+
+        if params[:category].present?
+          case params[:category]
+          when 'blog_post'
+            @type = Refinery::Ironman::BlogPost
+          when 'news_item'
+            @type = Refinery::Ironman::NewsItem
+          when 'event'
+            @type = Refinery::Ironman::BlogPost
+          end
+          conditions[:type] = @type if @type.present?
+        end
+
+        if params[:published_month].present?
+          published_month = Time.strptime(params[:published_month], '%Y-%m').in_time_zone(Time.zone)
+          conditions[:published_at] = published_month.beginning_of_month..published_month.end_of_month
+        end
+
+        @posts = Post.where(conditions).order('published_at DESC')
       end
 
       def find_page

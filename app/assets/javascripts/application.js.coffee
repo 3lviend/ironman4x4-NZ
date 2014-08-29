@@ -15,6 +15,7 @@
 #= require jquery_ujs
 #= require turbolinks
 # require bootstrap
+#= require utils
 #= require categories
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
@@ -102,3 +103,13 @@ $(document).on 'page:load ready', ->
     nrThumbsPerRow: 5,
     isZoomEnabled: false
   })
+
+  $('#post-filters select[name=category]').change ->
+    document.location.href = Ironman.utils.updateQueryStringParameter(
+      document.location.href, 'category', $(this).val()
+    )
+
+  $('#post-filters select[name=published_month]').change ->
+    document.location.href = Ironman.utils.updateQueryStringParameter(
+      document.location.href, 'published_month', $(this).val()
+    )

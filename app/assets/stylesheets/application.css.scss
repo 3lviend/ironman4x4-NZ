@@ -85,34 +85,6 @@ h1, h2, h3, h4, h5, h5 {
 }
 
 
-
-
-@mixin search-input {
-  &::-webkit-input-placeholder {
-     color: $light-grey;
-     text-transform: uppercase;
-     text-align: center;
-  }
-
-  &:-moz-placeholder {
-     color: $light-grey;
-     text-transform: uppercase;
-     text-align: center;
-  }
-
-  &::-moz-placeholder {  /* Firefox 19+ */
-     color: $light-grey;
-     text-transform: uppercase;
-     text-align: center;
-  }
-
-  &:-ms-input-placeholder {
-     color: $light-grey;
-     text-transform: uppercase;
-     text-align: center;
-  }
-}
-
 .postcode-search {
   &.navbar-form {
     float: right;

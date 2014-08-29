@@ -62,3 +62,30 @@ $font-family-extra-bold: 'HelveticaNeueW02-XBlkCn739235', "Helvetica Neue", Helv
 /* Put bootstrap customizations here: */
 /*$grid-gutter-width: 24px;*/
 /*$grid-float-breakpoint: $screen-md;*/
+
+
+@mixin search-input {
+  &::-webkit-input-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &:-moz-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+
+  &:-ms-input-placeholder {
+     color: $light-grey;
+     text-transform: uppercase;
+     text-align: center;
+  }
+}
