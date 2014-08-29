@@ -10,7 +10,9 @@
   <% end %>
 <% end %>
 
+<% if controller_name != 'blog_posts' %>
 <%= select_tag :category, options_for_select([[t('.categories.blog_posts'), 'blog_post'], [t('.categories.news_item'), 'news_item'], [t('.categories.event'), 'event']], params[:category]), :prompt => t('.prompts.category'), :class => 'form-control input-sm' %>
+<% end %>
 
 <%
   conditions = {}
