@@ -1,3 +1,6 @@
+<% @slideshow_images = [@post.hero_image] if @post.hero_image.present? %>
+<% breadcrumb :post, @post %>
+
 <% content_for :body_content_title do %>
   <%= @post.title %>
 <% end %>

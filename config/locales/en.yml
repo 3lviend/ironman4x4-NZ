@@ -90,6 +90,7 @@ en:
 
   breadcrumbs:
     blog_posts: 'Blog'
+    posts: 'News'
     home: 'Home'
     products: 'Products'
     categories: 'Products'

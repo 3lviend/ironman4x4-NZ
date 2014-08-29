@@ -10,6 +10,19 @@ crumb :blog_posts do
   link t('breadcrumbs.blog_posts'), refinery.ironman_blog_posts_path
 end
 
+crumb :posts do
+  link t('breadcrumbs.posts'), refinery.ironman_posts_path
+end
+
+crumb :post do |post|
+  link post.title, refinery.ironman_post_path(post)
+  if post.instance_of?(Refinery::Ironman::BlogPost)
+    parent :blog_posts
+  else
+    parent :posts
+  end
+end
+
 crumb :category do |category|
   if category.depth == 0
     url = refinery.product_categories_path(category)
