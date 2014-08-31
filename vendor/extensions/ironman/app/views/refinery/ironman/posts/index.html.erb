@@ -13,25 +13,7 @@
         <div class="side col-sm-3">
         <%= link_to refinery.ironman_post_path(post) do %>
           <% if post.instance_of?(Refinery::Ironman::Event) %>
-            <div class="event">
-              <% if post.start == post.end %>
-                <div class="month"><%= post.start.strftime('%B') %></div>
-                <div class="day"><%= post.start.day.ordinalize %></div>
-              <% elsif post.start.month == post.end.month %>
-                <div class="month"><%= post.start.strftime('%B') %></div>
-                <div class="day"><%= "#{post.start.day.ordinalize} - #{post.end.day.ordinalize}" %></div>
-              <% else %>
-                <div class="inline">
-                  <div class="month"><%= post.start.strftime('%b') %></div>
-                  <div class="day"><%= post.start.day.ordinalize %></div>
-                </div>
-                -
-                <div class="inline">
-                  <div class="month"><%= post.end.strftime('%b') %></div>
-                  <div class="day"><%= post.end.day.ordinalize %></div>
-                </div>
-              <% end %>
-            </div>
+            <%= render 'event_box', post:post %>
           <% else %>
             <% if post.index_image.present? %>
               <div class="image" style="background-image:url(<%= post.index_image.thumbnail(geometry: "263x263").url %>)"></div>

@@ -1,0 +1,19 @@
+<div class="event">
+  <% if post.start == post.end %>
+    <div class="month"><%= post.start.strftime('%B') %></div>
+    <div class="day"><%= post.start.day.ordinalize %></div>
+  <% elsif post.start.month == post.end.month %>
+    <div class="month"><%= post.start.strftime('%B') %></div>
+    <div class="day"><%= "#{post.start.day.ordinalize} - #{post.end.day.ordinalize}" %></div>
+  <% else %>
+    <div class="inline">
+      <div class="month"><%= post.start.strftime('%b') %></div>
+      <div class="day"><%= post.start.day.ordinalize %></div>
+    </div>
+    -
+    <div class="inline">
+      <div class="month"><%= post.end.strftime('%b') %></div>
+      <div class="day"><%= post.end.day.ordinalize %></div>
+    </div>
+  <% end %>
+</div>

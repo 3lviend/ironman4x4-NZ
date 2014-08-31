@@ -18,7 +18,7 @@
 <% end %>
 
 <% content_for :side_body do %>
-  <% related_posts = @posts.first(3) %>
+  <% related_posts = @posts.where('refinery_ironman_posts.id != ?', @post.id).first(3) %>
   <% if related_posts.present? %>
   <hr class="double" />
   <aside id="related-posts">
@@ -27,9 +27,13 @@
       <% related_posts.first(5).each do |post| %>
         <li class="post-container col-sm-4">
           <div class="post">
-            <div class="photo"><!--
-              --><%= if post.index_image.present? then image_tag post.index_image.thumbnail(geometry: "365x250").url else image_tag 'post_list_photo_default.jpg' end %><!--
-            --></div>
+            <% if post.instance_of?(Refinery::Ironman::Event) %>
+            <%= render 'event_box', post:post %>
+            <% else %>
+              <div class="photo"><!--
+                --><%= if post.index_image.present? then image_tag post.index_image.thumbnail(geometry: "365x260").url else image_tag 'post_list_photo_default.jpg' end %><!--
+              --></div>
+            <% end %>
             <div class="content">
               <h4><%= post.title %></h4>
               <%
