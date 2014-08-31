@@ -1,0 +1,70 @@
+<% @slideshow_images = [@post.hero_image] if @post.hero_image.present? %>
+<% breadcrumb :post, @post %>
+
+<% content_for :javascripts do %>
+<%= render 'refinery/google_maps_javascript' %>
+<% end %>
+
+<script type="text/javascript">
+  $(document).on('ready pageload', function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+        disableDefaultUI: true
+        // pass in other Google Maps API options here
+      },
+      internal: {
+        id: 'map'
+      }
+    }, function(){
+      markers = handler.addMarkers(<%=raw @markers.to_json %>);
+
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    });
+  });
+</script>
+
+<% content_for :body do %>
+  <div id="post" class="event">
+    <div class="top clearfix">
+      <div class="starts col-sm-4">
+        <div class="lbl"><%= t('.starts') %></div>
+        <div class="value"><%= @post.start.strftime('%a %d %b %Y') %></div>
+      </div>
+      <div class="ends col-sm-4">
+        <div class="lbl"><%= t('.ends') %></div>
+        <div class="value"><%= @post.end.strftime('%a %d %b %Y') %></div>
+      </div>
+      <% if @post.location.present? %>
+      <div class="location col-sm-4">
+        <div class="lbl"><%= t('.location') %></div>
+        <div class="value"><%= @post.location %></div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="mid clearfix">
+      <div class="body col-sm-8">
+      <%=raw @post.body %>
+      </div>
+
+      <% if @post.latitude and @post.longitude %>
+      <div class="map col-sm-4">
+        <div id="map"></div>
+      </div>
+      <% end %>
+    </div>
+
+    <div class="posted-by">
+      <%= t('.posted_at', author:@post.author.username, published_at: (d @post.published_at.to_date)) %>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :side_body do %>
+  <%= render 'related_posts' %>
+<% end %>
+
+<%= render '/refinery/content_page' %>
+

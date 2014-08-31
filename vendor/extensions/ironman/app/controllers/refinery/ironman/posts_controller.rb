@@ -17,6 +17,15 @@ module Refinery
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @post in the line below:
         present(@post)
+
+        if @post.instance_of?(Refinery::Ironman::Event)
+          @markers = Gmaps4rails.build_markers([@post]) do |post, marker|
+            marker.lat post.latitude
+            marker.lng post.longitude
+          end
+
+          render 'refinery/ironman/events/show'
+        end
       end
 
     protected

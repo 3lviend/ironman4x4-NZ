@@ -147,6 +147,11 @@
 }
 
 #related-posts {
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+
   ul {
     margin: 0;
     padding: 0;
@@ -251,6 +256,83 @@
         .post {
           .photo {
             height: 260px;
+          }
+        }
+      }
+    }
+  }
+}
+
+#post {
+  &.event {
+    @media (max-width: $screen-xs-max) {
+      .top {
+        .starts, .ends, .location {
+          padding-left: 0;
+          padding-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+
+      .mid {
+        .map, .body {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+
+      .posted-by {
+        margin-top: 10px;
+      }
+    }
+
+    .top {
+      .lbl {
+        text-transform: uppercase;
+      }
+
+      .value {
+        text-transform: uppercase;
+        color: $green;
+        font-family: $font-family-bold;
+      }
+
+      .starts {
+        padding-left: 0;
+      }
+
+      .location {
+        padding-right: 0;
+      }
+    }
+
+    .mid {
+      margin-top: 30px;
+
+      .body {
+        padding-left: 0;
+      }
+
+      .map {
+        padding-right: 0;
+
+        #map {
+          width: 100%;
+
+          @media (max-width: $screen-xs-max) {
+            height: 240px;
+          }
+
+          @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+            height: 240px;
+          }
+
+          @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            height: 313px;
+          }
+
+          @media (min-width: $screen-lg-min) {
+            height: 365px;
           }
         }
       }

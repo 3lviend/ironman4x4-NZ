@@ -230,10 +230,17 @@ en:
       media_releases:
         show:
           other: Other Media Releases
+      events:
+        show:
+          posted_at: 'Posted by %{author} on %{published_at}'
+          starts: 'Starts'
+          ends: 'Ends'
+          location: 'Location'
       posts:
         show:
-          other: 'Related events / news / blog posts:'
           posted_at: 'Posted by %{author} on %{published_at}'
+        related_posts:
+          other: 'Related events / news / blog posts:'
           buttons:
             view_blog_post: 'View Blog Post'
             view_event: 'View Event Details'

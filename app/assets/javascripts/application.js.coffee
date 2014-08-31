@@ -16,7 +16,10 @@
 #= require turbolinks
 # require bootstrap
 #= require utils
+#= require underscore
+#= require gmaps/google
 #= require categories
+#= require events
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider
