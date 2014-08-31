@@ -56,14 +56,14 @@
       <% end %>
     </div>
 
-    <div class="posted-by">
-      <%= t('.posted_at', author:@post.author.username, published_at: (d @post.published_at.to_date)) %>
+    <div class="add-event-to-calendar">
+      <%= render 'refinery/ironman/events/add_this_event', event:@post %>
     </div>
   </div>
 <% end %>
 
 <% content_for :side_body do %>
-  <%= render 'related_posts' %>
+  <%= render 'refinery/ironman/posts/related_posts' %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

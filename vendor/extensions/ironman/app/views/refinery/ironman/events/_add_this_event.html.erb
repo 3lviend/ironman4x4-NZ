@@ -1,0 +1,16 @@
+<a href="<%= refinery.ironman_post_path(event) %>" title="<%= t('.add_to_calendar') %>" class="addthisevent">
+  <%= t('.add_to_calendar') %>
+  <span class="_start"><%= event.start.strftime('%d-%m-%Y %H:%M:%S') %></span>
+  <span class="_end"><%= event.end.strftime('%d-%m-%Y %H:%M:%S') %></span>
+  <span class="_zonecode">89</span><!-- +10:00 -->
+  <% if event.teaser.present? %>
+    <span class="_summary"><%= strip_tags event.teaser %></span>
+  <% end %>
+  <% if event.location.present? %>
+  <span class="_description"><%= strip_tags event.body %></span>
+  <% end %>
+  <% if event.location.present? %>
+  <span class="_location"><%= event.location %></span>
+  <% end %>
+  <span class="_date_format">DD/MM/YYYY</span>
+</a>

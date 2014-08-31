@@ -337,5 +337,25 @@
         }
       }
     }
+
+    .addthisevent-drop {
+      margin-top: 10px;
+      display: inline-block;
+      position: relative;
+      background: image-url('icon_calendar.png') no-repeat 0 50%;
+      text-decoration: none!important;
+      border: none;
+      color: $green ! important;
+      font-family: $font-family-bold;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 9px 12px 8px 40px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px;
+    }
+
+    .addthisevent_dropdown span {
+      color: $green;
+    }
   }
 }

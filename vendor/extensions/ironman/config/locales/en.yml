@@ -236,6 +236,8 @@ en:
           starts: 'Starts'
           ends: 'Ends'
           location: 'Location'
+        add_this_event:
+          add_to_calendar: '+ Add to Calendar'
       posts:
         show:
           posted_at: 'Posted by %{author} on %{published_at}'
