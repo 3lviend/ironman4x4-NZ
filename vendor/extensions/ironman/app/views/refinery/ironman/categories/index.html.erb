@@ -1,20 +1,6 @@
 <% @layout_fit_my_car = 'above_heading' %>
 
-<% content_for :page_header do %>
-  <% if @this_category.present? %>
-  <%= @this_category.name %>
-  <% else %>
-  <%= t('.page_header') %>
-  <% end %>
-<% end %>
-
-<% content_for :title do %>
-  <% if @this_category.present? %>
-  <%= @this_category.name %>
-  <% else %>
-  <%= t('.page_header') %>
-  <% end %>
-<% end %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
 
 <% content_for :body do %>
 <% if @this_category.present? %>

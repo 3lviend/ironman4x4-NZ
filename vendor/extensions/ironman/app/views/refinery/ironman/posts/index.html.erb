@@ -1,11 +1,5 @@
 <% breadcrumb :posts %>
-<% content_for :page_header do %>
-  <%= t('.page_header') %>
-<% end %>
-
-<% content_for :title do %>
-<%= t('.page_header') %>
-<% end %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, t('.page_header') } %>
 
 <% content_for :body do %>
   <%= render 'refinery/ironman/posts/filters' %>

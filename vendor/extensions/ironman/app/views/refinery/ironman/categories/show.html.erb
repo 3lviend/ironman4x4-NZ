@@ -1,21 +1,7 @@
 <% @layout_fit_my_car = 'below' %>
 <% @slideshow_images = @category.images %>
 
-<% content_for :page_header do %>
-  <%= t('.page_header', category:@category.name) %>
-<% end %>
-
-<% content_for :title do %>
-  <%= t('.page_header', category:@category.name) %>
-<% end %>
-
-<% content_for :og_description do %>
-<%= strip_tags @category.short_description %>
-<% end %>
-
-<% content_for :og_image_url do %>
-<%= image_url @category.thumbnail_image.url if @category.thumbnail_image.present? %>
-<% end %>
+<% [:page_header, :title].each { |t| content_for t, t('.page_header', category:@category.name) } %>
 
 <% content_for :body do %>
 <% breadcrumb :category_info, @category %>

@@ -1,21 +1,5 @@
 <% @layout_fit_my_car = 'below' %>
 
-<% content_for :page_header do %>
-  <%= @product.name %>
-<% end %>
-
-<% content_for :title do %>
-  <%= @product.name %>
-<% end %>
-
-<% content_for :og_description do %>
-<%= strip_tags @product.short_description %>
-<% end %>
-
-<% content_for :og_image_url do %>
-<%= image_url @product.thumbnail_image.url if @product.thumbnail_image.present? %>
-<% end %>
-
 <div id="page-product">
   <div class="container clearfix">
     <div class="col-sm-7 photos">

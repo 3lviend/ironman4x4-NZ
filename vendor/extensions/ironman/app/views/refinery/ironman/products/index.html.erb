@@ -1,17 +1,10 @@
 <% @layout_fit_my_car = 'above_heading' %>
 
-<% content_for :page_header do %>
-  <% if @this_category.present? %>
-  <%= @this_category.name %>
-  <% breadcrumb :category, @this_category %>
-  <% end %>
+<% if @this_category.present? %>
+<% breadcrumb :category, @this_category %>
 <% end %>
 
-<% content_for :title do %>
-  <% if @this_category.present? %>
-  <%= @this_category.name %>
-  <% end %>
-<% end %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.name if @this_category.present? } %>
 
 <% content_for :body do %>
 <% cache(@this_category) do %>

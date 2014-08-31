@@ -1,17 +1,31 @@
 <meta property="og:site_name" content="<%= Refinery::Core.config.site_name %>"/>
-<meta property="og:title" content="<%= browser_title(yield(:title)).strip %>" />
-<% if content_for?(:og_description) %>
-<meta property="og:description" content="<%= yield(:og_description).strip %>" />
+
+<% if content_for?(:open_graph_title) %>
+<meta property="og:title" content="<%= yield(:open_graph_title).strip %>" />
 <% else %>
-<%= raw %(<meta property="og:description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+<meta property="og:title" content="<%= @meta.open_graph_title.present? ? @meta.open_graph_title : browser_title() %>" />
 <% end %>
-<% if content_for?(:og_type) %>
-<meta property="og:type" content="<%= yield(:og_type).strip %>" />
+
+<% if content_for?(:open_graph_description) %>
+<%= raw %(<meta property="og:description" content="#{yield(:open_graph_description).strip}" />) -%>
+<% elsif @meta.open_graph_description.present? %>
+<%= raw %(<meta property="og:description" content="#{@meta.open_graph_description}" />) -%>
+<% elsif @meta.meta_description.present? %>
+<%= raw %(<meta property="og:description" content="#{@meta.meta_description}" />) -%>
+<% end %>
+
+<% if content_for?(:open_graph_type) %>
+  <meta property="og:type" content="<%= yield(:open_graph_type).strip %>" />
+<% elsif @meta.open_graph_type.present? %>
+  <meta property="og:type" content="<%= @meta.open_graph_type %>" />
 <% else %>
 <meta property="og:type" content="website" />
 <% end %>
-<% if content_for?(:og_image_url) %>
-  <meta property="og:image" content="<%= yield(:og_image_url).strip %>" />
+
+<% if content_for?(:open_graph_image_url) %>
+  <meta property="og:image" content="<%= image_url yield(:open_graph_image_url).strip %>" />
+<% elsif @meta.open_graph_image_url.present? %>
+  <meta property="og:image" content="<%= image_url @meta.open_graph_image_url %>" />
 <% else %>
-  <meta property="og:image" content="<%= image_url('nav_logo') %>" />
+  <meta property="og:image" content="<%= image_url 'nav_logo' %>" />
 <% end %>
