@@ -23,12 +23,6 @@
         <div class="main col-sm-9">
           <div class="heading clearfix">
             <h3><%= link_to post.title, refinery.ironman_post_path(post) %></h3>
-            <ul class="icons">
-              <li class="icon facebook"><%= t('layouts.social.links.facebook') %></li><!--
-              --><li class="icon pinterest"><%= t('layouts.social.links.pinterest') %></li><!--
-              --><li class="icon twitter"><%= t('layouts.social.links.twitter') %></li><!--
-              --><li class="icon youtube"><%= t('layouts.social.links.youtube') %></li>
-            </ul>
           </div>
           <div class="teaser">
             <% if post.teaser.present? %>
