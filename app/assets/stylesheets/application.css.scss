@@ -605,37 +605,10 @@ hr.double {
 
   .icons {
     float: right;
-    margin-top: 25px;
+    margin-top: 27px;
     display: inline-block;
     list-style-type: none;
     padding: 0;
-
-    .icon {
-      background-position: 50% 0;
-      background-repeat: no-repeat;
-      background-size: cover;
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      margin-left: 20px;
-      text-indent: -99999px;
-
-      &.facebook {
-        background-image: image-url('icon_social_facebook.png');
-      }
-
-      &.pinterest {
-        background-image: image-url('icon_social_pinterest.png');
-      }
-
-      &.twitter {
-        background-image: image-url('icon_social_twitter.png');
-      }
-
-      &.youtube {
-        background-image: image-url('icon_social_youtube.png');
-      }
-    }
   }
 }
 
