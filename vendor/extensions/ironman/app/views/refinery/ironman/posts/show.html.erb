@@ -1,8 +1,24 @@
 <% @slideshow_images = [@post.hero_image] if @post.hero_image.present? %>
 <% breadcrumb :post, @post %>
 
+<% content_for :og_description do %>
+<%= strip_tags @post.teaser %>
+<% end %>
+
+<% content_for :og_image_url do %>
+<%= image_url @post.index_image.url %>
+<% end %>
+
+<% content_for :og_type do %>
+<%= 'article' %>
+<% end %>
+
 <% content_for :body_content_title do %>
   <%= @post.title %>
+<% end %>
+
+<% content_for :title do %>
+<%= @post.title %>
 <% end %>
 
 <% content_for :body do %>

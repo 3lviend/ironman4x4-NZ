@@ -1,0 +1,17 @@
+<meta property="og:site_name" content="<%= Refinery::Core.config.site_name %>"/>
+<meta property="og:title" content="<%= browser_title(yield(:title)).strip %>" />
+<% if content_for?(:og_description) %>
+<meta property="og:description" content="<%= yield(:og_description).strip %>" />
+<% else %>
+<%= raw %(<meta property="og:description" content="#{@meta.meta_description}" />) if @meta.meta_description.present? -%>
+<% end %>
+<% if content_for?(:og_type) %>
+<meta property="og:type" content="<%= yield(:og_type).strip %>" />
+<% else %>
+<meta property="og:type" content="website" />
+<% end %>
+<% if content_for?(:og_image_url) %>
+  <meta property="og:image" content="<%= yield(:og_image_url).strip %>" />
+<% else %>
+  <meta property="og:image" content="<%= image_url('nav_logo') %>" />
+<% end %>

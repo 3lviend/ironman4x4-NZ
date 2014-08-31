@@ -3,6 +3,10 @@
   <%= t('.page_header') %>
 <% end %>
 
+<% content_for :title do %>
+<%= t('.page_header') %>
+<% end %>
+
 <% content_for :body do %>
   <%= render 'refinery/ironman/posts/filters' %>
 

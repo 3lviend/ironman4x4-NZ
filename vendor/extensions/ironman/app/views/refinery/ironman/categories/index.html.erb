@@ -8,6 +8,14 @@
   <% end %>
 <% end %>
 
+<% content_for :title do %>
+  <% if @this_category.present? %>
+  <%= @this_category.name %>
+  <% else %>
+  <%= t('.page_header') %>
+  <% end %>
+<% end %>
+
 <% content_for :body do %>
 <% if @this_category.present? %>
   <% breadcrumb :category, @this_category %>

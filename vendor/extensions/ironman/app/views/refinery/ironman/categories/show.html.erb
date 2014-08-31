@@ -5,6 +5,18 @@
   <%= t('.page_header', category:@category.name) %>
 <% end %>
 
+<% content_for :title do %>
+  <%= t('.page_header', category:@category.name) %>
+<% end %>
+
+<% content_for :og_description do %>
+<%= strip_tags @category.short_description %>
+<% end %>
+
+<% content_for :og_image_url do %>
+<%= image_url @category.thumbnail_image.url if @category.thumbnail_image.present? %>
+<% end %>
+
 <% content_for :body do %>
 <% breadcrumb :category_info, @category %>
 

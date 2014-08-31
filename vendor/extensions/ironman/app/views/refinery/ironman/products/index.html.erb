@@ -7,6 +7,12 @@
   <% end %>
 <% end %>
 
+<% content_for :title do %>
+  <% if @this_category.present? %>
+  <%= @this_category.name %>
+  <% end %>
+<% end %>
+
 <% content_for :body do %>
 <% cache(@this_category) do %>
 <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
