@@ -135,37 +135,11 @@
         }
 
         .icons {
-          vertical-align: top;
+          vertical-align: middle;
           float: right;
           display: inline-block;
           list-style-type: none;
           padding: 0;
-
-          .icon {
-            display: inline-block;
-            background-position: 50% 0;
-            background-repeat: no-repeat;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            text-indent: -99999px;
-
-            &.facebook {
-              background-image: image-url('icon_social_facebook_small.png');
-            }
-
-            &.pinterest {
-              background-image: image-url('icon_social_pinterest_small.png');
-            }
-
-            &.twitter {
-              background-image: image-url('icon_social_twitter_small.png');
-            }
-
-            &.youtube {
-              background-image: image-url('icon_social_youtube_small.png');
-            }
-          }
         }
       }
     }
