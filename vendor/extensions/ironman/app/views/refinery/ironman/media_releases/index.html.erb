@@ -1,5 +1,5 @@
 <% breadcrumb :media_releases %>
-<% [:page_header, :title, :open_graph_title].each { |t| content_for t, t('.page_header') } %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
 
 <% content_for :body do %>
   <%= render 'refinery/ironman/media_releases/filters' %>
