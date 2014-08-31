@@ -107,12 +107,12 @@ $(document).on 'page:load ready', ->
     isZoomEnabled: false
   })
 
-  $('#post-filters select[name=category]').change ->
+  $('#post-filters select[name=category], #media-release-filters select[name=category]').change ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
       document.location.href, 'category', $(this).val()
     )
 
-  $('#post-filters select[name=published_month]').change ->
+  $('#post-filters select[name=published_month], #media-release-filters select[name=published_month]').change ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
       document.location.href, 'published_month', $(this).val()
     )

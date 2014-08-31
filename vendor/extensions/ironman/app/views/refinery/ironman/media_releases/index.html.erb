@@ -1,11 +1,43 @@
+<% breadcrumb :media_releases %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, t('.page_header') } %>
+
 <% content_for :body do %>
-  <ul id="media_releases">
+  <%= render 'refinery/ironman/media_releases/filters' %>
+
+  <% if @media_releases.present? %>
+  <ul id="media-releases">
     <% @media_releases.each do |media_release| %>
-      <li>
-        <%= link_to media_release.title, refinery.ironman_media_release_path(media_release) %>
+      <li class="media-release col-sm-6">
+        <div class="side col-sm-4">
+          <%= link_to media_release.priced_resource.url do %>
+          <% if media_release.thumbnail_image.present? %>
+          <div class="image" style="background-image:url(<%= media_release.thumbnail_image.thumbnail(geometry: "170x223").url %>)"></div>
+          <% else %>
+          <div class="image" style="background-image:url(<%= image_url('media_release_photo_default.jpg') %>)"></div>
+          <% end %>
+          <% end %>
+        </div>
+        <div class="main col-sm-8">
+          <div class="heading clearfix">
+            <%= link_to media_release.priced_resource.url do %>
+            <h3><%= media_release.title %></h3>
+            <h4><%= "#{media_release.publication} #{media_release.published_at.strftime('%d/%m/%y') if media_release.published_at.present?}" %></h4>
+            <% end %>
+          </div>
+          <div class="description">
+            <% if media_release.description.present? %>
+            <%= raw media_release.description %>
+            <% else %>
+            <p><%= t('.default_media_release_description') %></p>
+            <% end %>
+          </div>
+        </div>
       </li>
     <% end %>
   </ul>
+  <% else %>
+    <p class="not-found"><%= t('.not-found') %></p>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

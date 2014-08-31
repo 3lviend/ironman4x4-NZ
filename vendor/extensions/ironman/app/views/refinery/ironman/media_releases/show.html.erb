@@ -1,81 +1,30 @@
-<% content_for :body_content_title do %>
-  <%= @media_release.title %>
-<% end %>
+<% breadcrumb :media_release, @media_release %>
 
 <% content_for :body do %>
-  <section>
-    <h1>Title</h1>
-    <p>
-      <%=raw @media_release.title %>
-    </p>
-  </section>
-  <section>
-    <h1>Category</h1>
-    <p>
-      <%=raw @media_release.category %>
-    </p>
-  </section>
-  <section>
-    <h1>Publication</h1>
-    <p>
-      <%=raw @media_release.publication %>
-    </p>
-  </section>
-  <section>
-    <h1>Published At</h1>
-    <p>
-      <%=raw @media_release.published_at %>
-    </p>
-  </section>
-  <section>
-    <h1>Description</h1>
-    <p>
-      <%=raw @media_release.description %>
-    </p>
-  </section>
-  <section>
-    <h1>Priced Resource</h1>
-    <p>
-      <%=raw @media_release.priced_resource_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Unpriced Resource</h1>
-    <p>
-      <%=raw @media_release.unpriced_resource_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Thumbnail Image</h1>
-    <p>
-      <%=raw @media_release.thumbnail_image_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Posted At</h1>
-    <p>
-      <%=raw @media_release.posted_at %>
-    </p>
-  </section>
-  <section>
-    <h1>Draft</h1>
-    <p>
-      <%=raw @media_release.draft %>
-    </p>
-  </section>
-<% end %>
-
-<% content_for :side_body do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="media_releases">
-      <% @media_releases.each do |media_release| %>
-        <li>
-          <%= link_to media_release.title, refinery.ironman_media_release_path(media_release) %>
-        </li>
+  <div id="media-release" class="media-release col-sm-6">
+    <div class="side col-sm-4">
+      <%= link_to @media_release.priced_resource.url do %>
+      <% if @media_release.thumbnail_image.present? %>
+      <div class="image" style="background-image:url(<%= @media_release.thumbnail_image.thumbnail(geometry: "170x223").url %>)"></div>
+      <% else %>
+      <div class="image" style="background-image:url(<%= image_url('media_release_photo_default.jpg') %>)"></div>
       <% end %>
-    </ul>
-  </aside>
+      <% end %>
+    </div>
+    <div class="main col-sm-8">
+      <div class="heading clearfix">
+        <%= link_to @media_release.priced_resource.url do %>
+        <h3><%= @media_release.title %></h3>
+        <h4><%= "#{@media_release.publication} #{@media_release.published_at.strftime('%d/%m/%y') if @media_release.published_at.present?}" %></h4>
+        <% end %>
+      </div>
+      <div class="description">
+        <% if @media_release.description.present? %>
+        <%= raw @media_release.description %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
 <%= render '/refinery/content_page' %>

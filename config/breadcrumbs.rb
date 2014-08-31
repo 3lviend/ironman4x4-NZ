@@ -23,6 +23,15 @@ crumb :post do |post|
   end
 end
 
+crumb :media_releases do
+  link t('breadcrumbs.media_releases'), refinery.ironman_media_releases_path
+end
+
+crumb :media_release do |media_release|
+  link media_release.title, refinery.ironman_media_release_path(media_release)
+  parent :media_releases
+end
+
 crumb :category do |category|
   if category.depth == 0
     url = refinery.product_categories_path(category)

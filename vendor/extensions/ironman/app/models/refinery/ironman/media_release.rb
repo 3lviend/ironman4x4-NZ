@@ -15,6 +15,8 @@ module Refinery
       validates_presence_of :publication, if: 'published_at.present?'
       validates_presence_of :published_at, if: 'publication.present?'
 
+      scope :active, -> { where(draft: false) }
+
       after_initialize do
         if self.new_record?
           self.draft = false if self.draft.nil?

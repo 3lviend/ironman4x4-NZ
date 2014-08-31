@@ -12,17 +12,28 @@ module Refinery
       end
 
       def show
-        @media_release = MediaRelease.find(params[:id])
+        @media_release = MediaRelease.active.find(params[:id])
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @media_release in the line below:
-        present(@page)
+        present(@media_release)
       end
 
     protected
 
       def find_all_media_releases
-        @media_releases = MediaRelease.order('position ASC')
+        conditions = {}
+
+        if params[:category].present?
+          conditions[:category] = params[:category]
+        end
+
+        if params[:published_month].present?
+          published_month = Time.strptime(params[:published_month], '%Y-%m').in_time_zone(Time.zone)
+          conditions[:published_at] = published_month.beginning_of_month..published_month.end_of_month
+        end
+
+        @media_releases = MediaRelease.active.where(conditions).order('published_at DESC')
       end
 
       def find_page

@@ -230,6 +230,18 @@ en:
       media_releases:
         show:
           other: Other Media Releases
+        index:
+          page_header: Media & Press Releases
+          default_media_release_description: Document descriptor text or overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum re cus, officius expero to quatum faceaquamus dolla aute prestrumqui ommodiam elisinctur? Accus asped que sin et, ommo tempore ptibus dolorerchil inullaut as in prati veliqui anistisit ut qeditat ionsectum, odi abo. Et liam voluptatist, vellaborio et es acimet quaero estin porum volest pernam rem resed maiosam, qui doluptibus ipicia dolor am hilit quo berio veriatem latiae remporrumque vidissit accae  uunt, quibustis sint audisseque peditat ionsectum, odi abo. Et liam voluptatist, Blog text preview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum re cus, officius expero to quatum faceaquamus dolla aute prestrumqui ommodiam elisinctur? Accus asped que sin et, ommo tempore ptibus dolorerchil inullaut as in prati veliqui anistisit ut qeditat ionsectum, odi abo. Et liam voluptatist, vellaborio et es acimet quaero estin porum volest pernam rem resed maiosam, qui doluptibus ipicia dolor am hilit quo berio veriatem latiae remporrumque vidissit accae  uunt, quibustis sint audisseque peditat ionsectum, odi abo. Et liam voluptatist
+          not-found: Sorry, no media releases could be found.
+        filters:
+          prompts:
+            category: 'Filter by category'
+            published_month: 'Filter by month'
+          search_form:
+            label: 'Keyword Search'
+            placeholder: 'Enter Search Keyword'
+            button: 'Submit'
       events:
         show:
           posted_at: 'Posted by %{author} on %{published_at}'

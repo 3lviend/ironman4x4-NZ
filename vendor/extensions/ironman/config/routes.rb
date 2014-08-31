@@ -37,6 +37,7 @@ Refinery::Core::Engine.routes.draw do
   namespace :ironman, :path => '' do
     resources :posts, :path => '/news', :only => [:index, :show]
     resources :blog_posts, :path => '/blog', :only => [:index, :show]
+    resources :events, :path => '/news', :only => [:index, :show]
 
     get '/contact', :to => 'enquiries#new', :as => 'new_enquiry'
 
