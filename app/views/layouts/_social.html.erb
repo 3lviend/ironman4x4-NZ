@@ -1,10 +1,26 @@
 <div id="layout-social">
   <div class="container">
     <ul class="icons">
-      <li class="icon facebook"><%= t('.links.facebook') %></li><!--
-      --><li class="icon pinterest"><%= t('.links.pinterest') %></li><!--
-      --><li class="icon twitter"><%= t('.links.twitter') %></li><!--
-      --><li class="icon youtube"><%= t('.links.youtube') %></li>
+      <li class="icon facebook">
+        <%= link_to 'https://www.facebook.com/Ironman4x4au' do %>
+          <%= image_tag('icon_social_facebook.png') %>
+        <% end %>
+      </li><!--
+      --><li class="icon pinterest">
+        <%= link_to 'http://instagram.com/ironman4x4' do %>
+          <%= image_tag('icon_social_pinterest.png') %>
+        <% end %>
+      </li><!--
+      --><li class="icon twitter">
+        <%= link_to 'https://twitter.com/ironman4x4au' do %>
+          <%= image_tag('icon_social_twitter.png') %>
+        <% end %>
+      </li><!--
+      --><li class="icon youtube">
+        <%= link_to 'https://www.youtube.com/user/ironman4x4au' do %>
+          <%= image_tag('icon_social_youtube.png') %>
+        <% end %>
+      </li>
     </ul>
 
     <form class="form-search">

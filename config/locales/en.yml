@@ -24,11 +24,6 @@ en:
 
   layouts:
     social:
-      links:
-        facebook: 'Facebook'
-        twitter: 'Twitter'
-        pinterest: 'Pinterest'
-        youtube: 'YouTube'
       newsletter:
         description: 'Subscribe to our newsletter, latest products, events and promotions.'
         placeholder: 'Enter Email Address'
