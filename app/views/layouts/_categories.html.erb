@@ -14,7 +14,7 @@
           </li>
           <% top_category.children.each do |subcategory| %>
           <li>
-            <% if top_category.leaf? %>
+            <% if subcategory.leaf? %>
             <%= link_to subcategory.name, refinery.subcategory_products_path(subcategory.parent, subcategory) %>
             <% else %>
             <%= link_to subcategory.name, refinery.product_subcategories_path(subcategory.parent, subcategory) %>
