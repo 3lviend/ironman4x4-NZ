@@ -6,79 +6,50 @@
 <% end %>
 
 <% content_for :body do %>
-  <section>
-    <h1>Title</h1>
-    <p>
-      <%=raw @post.title %>
-    </p>
-  </section>
-  <section>
-    <h1>Type</h1>
-    <p>
-      <%=raw @post.type %>
-    </p>
-  </section>
-  <section>
-    <h1>Teaser</h1>
-    <p>
-      <%=raw @post.teaser %>
-    </p>
-  </section>
-  <section>
-    <h1>Body</h1>
-    <p>
-      <%=raw @post.body %>
-    </p>
-  </section>
-  <section>
-    <h1>User</h1>
-    <p>
-      <%=raw @post.user_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Index Image</h1>
-    <p>
-      <%=raw @post.index_image_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Hero Image</h1>
-    <p>
-      <%=raw @post.hero_image_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Published At</h1>
-    <p>
-      <%=raw @post.published_at %>
-    </p>
-  </section>
-  <section>
-    <h1>Expire At</h1>
-    <p>
-      <%=raw @post.expire_at %>
-    </p>
-  </section>
-  <section>
-    <h1>Draft</h1>
-    <p>
-      <%=raw @post.draft %>
-    </p>
-  </section>
+  <div id="post">
+    <div class="body">
+    <%=raw @post.body %>
+    </div>
+
+    <div class="posted-by">
+      <%= t('.posted_at', author:@post.author.username, published_at: (d @post.published_at.to_date)) %>
+    </div>
+  </div>
 <% end %>
 
 <% content_for :side_body do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="posts">
-      <% @posts.each do |post| %>
-        <li>
-          <%= link_to post.title, refinery.ironman_post_path(post) %>
+  <% related_posts = @posts.first(3) %>
+  <% if related_posts.present? %>
+  <hr class="double" />
+  <aside id="related-posts">
+    <h4><%= t('.other') %></h4>
+    <ul class="clearfix">
+      <% related_posts.first(5).each do |post| %>
+        <li class="post-container col-sm-4">
+          <div class="post">
+            <div class="photo"><!--
+              --><%= if post.index_image.present? then image_tag post.index_image.thumbnail(geometry: "365x250").url else image_tag 'post_list_photo_default.jpg' end %><!--
+            --></div>
+            <div class="content">
+              <h4><%= post.title %></h4>
+              <%
+                case post.type
+                  when 'Refinery::Ironman::BlogPost'
+                    button_text = t('.buttons.view_blog_post')
+                  when 'Refinery::Ironman::NewsItem'
+                    button_text = t('.buttons.view_news_item')
+                  when 'Refinery::Ironman::Event'
+                    button_text = t('.buttons.view_event')
+                end
+              %>
+              <%= link_to button_text, refinery.ironman_post_path(post), class: 'btn btn-primary btn-block' %>
+            </div>
+          </div>
         </li>
       <% end %>
     </ul>
   </aside>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

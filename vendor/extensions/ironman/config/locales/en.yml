@@ -232,7 +232,12 @@ en:
           other: Other Media Releases
       posts:
         show:
-          other: Other Posts
+          other: 'Related events / news / blog posts:'
+          posted_at: 'Posted by %{author} on %{published_at}'
+          buttons:
+            view_blog_post: 'View Blog Post'
+            view_event: 'View Event Details'
+            view_news_item: 'View News Item'
         index:
           page_header: Ironman 4x4 Blog
           read_more: Read More...

@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, h5 {
   }
 }
 
+hr.double {
+  border-bottom: 1px solid $hr-border;
+  height: 5px;
+}
 
 
 .col-xs-5ths,
