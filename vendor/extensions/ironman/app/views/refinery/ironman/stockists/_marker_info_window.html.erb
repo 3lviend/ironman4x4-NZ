@@ -1,4 +1,8 @@
-<%= image_tag 'stockists_map_logo.jpg', size:'146x70' %>
+<% if object.logo_image.present? %>
+  <%= image_tag object.logo_image.thumbnail(geometry: '146x70').url, height:'70' %>
+<% else %>
+  <%= image_tag 'stockists_map_logo.jpg', size:'146x70' %>
+<% end %>
 <div class="title"><strong><%= object.name %></strong></div>
 <div class="details">
   <%= object.address %><br />
