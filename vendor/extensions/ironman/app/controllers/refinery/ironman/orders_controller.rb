@@ -22,7 +22,7 @@ module Refinery
     protected
 
       def find_all_orders
-        @orders = Order.order('position ASC')
+        @orders = Order.order('created_at ASC')
       end
 
       def find_page

@@ -3,6 +3,7 @@ require 'filters_spam'
 module Refinery
   module Ironman
     class Enquiry < Refinery::Core::BaseModel
+      acts_as_indexed :fields => [:name, :email, :message]
 
       filters_spam message_field:    :message,
                    email_field:      :email,

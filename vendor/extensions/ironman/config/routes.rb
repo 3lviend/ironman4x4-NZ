@@ -49,11 +49,7 @@ Refinery::Core::Engine.routes.draw do
   # Admin routes
   namespace :ironman, :path => '' do
     namespace :admin, :path => "#{Refinery::Core.backend_route}/ironman" do
-      resources :products, :except => :show do
-        collection do
-          post :update_positions
-        end
-      end
+      resources :products, :except => :show
 
       resources :categories, :except => :show do
         collection do
@@ -67,43 +63,17 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
-      resources :stockists, :except => :show do
-        collection do
-          post :update_positions
-        end
-      end
+      resources :stockists, :except => :show
 
       resources :posts, :except => :show do
         collection do
-          # NOTE: there is no position column on these models, but still need
-          # this for some reason...
-          post :update_positions
-
-          resources :blog_posts, :except => :show do
-            collection do
-              post :update_positions
-            end
-          end
-
-          resources :events, :except => :show do
-            collection do
-              post :update_positions
-            end
-          end
-
-          resources :news_items, :except => :show do
-            collection do
-              post :update_positions
-            end
-          end
+          resources :blog_posts, :except => :show
+          resources :events, :except => :show
+          resources :news_items, :except => :show
         end
       end
 
-      resources :media_releases, :except => :show do
-        collection do
-          post :update_positions
-        end
-      end
+      resources :media_releases, :except => :show
 
       resources :warehouses, :except => :show do
         collection do
@@ -117,11 +87,7 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
-      resources :orders, :except => :show do
-        collection do
-          post :update_positions
-        end
-      end
+      resources :orders, :except => :show
 
       resources :enquiries, :only => [:index, :show, :destroy] do
         get :spam, :on => :collection

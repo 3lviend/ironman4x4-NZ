@@ -5,7 +5,8 @@ module Refinery
 
         crudify :'refinery/ironman/warehouse',
                 :title_attribute => 'name',
-                :xhr_paging => true
+                :xhr_paging => true,
+                :searching => false
 
       protected
         def warehouse_params

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902034645) do
+ActiveRecord::Schema.define(version: 20140902052645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,7 +108,6 @@ ActiveRecord::Schema.define(version: 20140902034645) do
     t.text     "message"
     t.boolean  "receive_news"
     t.boolean  "spam"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,7 +134,6 @@ ActiveRecord::Schema.define(version: 20140902034645) do
     t.integer  "thumbnail_image_id"
     t.date     "posted_at"
     t.boolean  "draft"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,7 +167,6 @@ ActiveRecord::Schema.define(version: 20140902034645) do
     t.decimal  "total_amount"
     t.decimal  "tax_amount"
     t.boolean  "spam"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -232,7 +229,6 @@ ActiveRecord::Schema.define(version: 20140902034645) do
     t.string   "email"
     t.integer  "logo_image_id"
     t.boolean  "visible"
-    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

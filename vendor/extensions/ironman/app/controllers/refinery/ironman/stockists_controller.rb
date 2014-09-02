@@ -22,7 +22,7 @@ module Refinery
     protected
 
       def find_all_stockists
-        @stockists = Stockist.order('position ASC')
+        @stockists = Stockist.order('name ASC')
       end
 
       def find_page

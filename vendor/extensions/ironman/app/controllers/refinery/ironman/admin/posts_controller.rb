@@ -4,14 +4,11 @@ module Refinery
       class PostsController < ::Refinery::AdminController
 
         crudify :'refinery/ironman/post',
-                :xhr_paging => true
+                :xhr_paging => true,
+                :sortable => false
 
         def new
           @post = ::Refinery::Ironman::Post.new(:author => current_refinery_user)
-        end
-
-        def self.sortable?
-          false
         end
 
       protected
