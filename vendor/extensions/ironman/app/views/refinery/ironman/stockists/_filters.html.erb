@@ -1,15 +1,5 @@
 <div id="stockists-filters">
-<%= form_tag refinery.search_path, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
-  <div class="form-group">
-    <%= text_field_tag :query, {}, {:class => 'form-control input-sm',
-      :type => 'search', :placeholder => t('.search_form.placeholder'),
-      :value => (params[:query] if params[:query])} %>
-  </div>
-  <%= button_tag type:'submit', class:'btn btn-default btn-sm' do %>
-    <span class="glyphicon glyphicon-search"></span>
-  <% end %>
-<% end %>
-
-<%= select_tag :store_type, options_for_select(Refinery::Ironman::Stockist.active.collect {|r| r.store_type }.uniq.reject(&:blank?), params[:store_type]), :prompt => t('.prompts.store_type'), :class => 'form-control input-sm' %>
+  <%= render 'search_form' %>
+  <%= select_tag :store_type, options_for_select(Refinery::Ironman::Stockist.active.collect {|r| r.store_type }.uniq.reject(&:blank?), params[:store_type]), :prompt => t('.prompts.store_type'), :class => 'form-control input-sm' %>
 </div>
 <hr />

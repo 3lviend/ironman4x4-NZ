@@ -238,10 +238,8 @@ en:
         filters:
           prompts:
             store_type: 'Filter by store type'
-          search_form:
-            label: 'Search Location'
-            placeholder: 'Enter Postcode/Suburb'
-            button: 'Submit'
+        search_form:
+          placeholder: 'Postcode/Suburb'
       media_releases:
         show:
           other: Other Media Releases

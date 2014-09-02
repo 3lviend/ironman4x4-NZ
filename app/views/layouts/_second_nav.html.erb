@@ -44,16 +44,7 @@
           </li>
         </ul>
 
-        <%= form_tag refinery.search_path, class: 'postcode-search navbar-form navbar-right navbar-input-group', role:'search' do -%>
-          <div class="form-group">
-            <%= text_field_tag :query, {}, {:class => 'form-control',
-              :type => 'search', :placeholder => t('.search_form.placeholder'),
-              :value => (params[:query] if params[:query])} %>
-          </div>
-          <%= button_tag type:'submit', class:'btn btn-default' do %>
-            <span class="glyphicon glyphicon-search"></span>
-          <% end %>
-        <% end %>
+        <%= render 'refinery/ironman/stockists/search_form' %>
       </div>
     </div>
   </div>

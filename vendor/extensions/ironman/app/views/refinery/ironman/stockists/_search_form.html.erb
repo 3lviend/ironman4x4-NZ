@@ -1,0 +1,14 @@
+<%= form_tag refinery.ironman_stockists_path, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search', method: :get do -%>
+  <div class="form-group">
+    <%= text_field_tag :stockist_query, {}, {:class => 'form-control input-sm',
+      :type => 'search', :placeholder => t('.placeholder'),
+      :value => (params[:stockist_query] if params[:stockist_query])} %>
+  </div>
+  <%= button_tag type:'submit', class:'btn btn-default btn-sm' do %>
+    <span class="glyphicon glyphicon-search"></span>
+  <% end %>
+  <% request.query_parameters.except(:stockist_query, :button, :utf8).each do |key, value| %>
+  <%= hidden_field_tag key, value %>
+  <% end %>
+<% end %>
+

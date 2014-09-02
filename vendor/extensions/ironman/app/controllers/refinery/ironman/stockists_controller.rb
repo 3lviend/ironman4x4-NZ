@@ -29,6 +29,7 @@ module Refinery
         end
 
         @stockists = Stockist.active.where(conditions).order('name ASC')
+        @stockists = @stockists.with_query(params[:stockist_query]) if params[:stockist_query].present?
       end
 
       def find_page

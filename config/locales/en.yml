@@ -49,9 +49,6 @@ en:
         technical: 'Technical'
         wish_list: 'Wish List'
         stockists: 'Find Store'
-      search_form:
-        placeholder: 'Postcode/Suburb'
-        button: 'Submit'
     fit_my_car:
       go: 'Go'
     footer_links:
