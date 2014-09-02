@@ -1,5 +1,6 @@
-<% @layout_map = true %>
+<% @layout_map = true if @stockists.present? %>
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
+<% if @stockists.present? %>[
 <%
   markers = Gmaps4rails.build_markers(@stockists) do |stockist, marker|
     marker.title stockist.name
@@ -52,10 +53,12 @@
     });
   });
 </script>
+<% end %>
 
 <% content_for :body do %>
   <%= render 'refinery/ironman/stockists/filters' %>
 
+  <% if @stockists.present? %>
   <ul id="stockists" class="clearfix">
     <% @stockists.each_with_index do |stockist, index| %>
       <li class="stockist col-sm-6 col-lg-4">
@@ -90,6 +93,9 @@
       </li>
     <% end %>
   </ul>
+  <% else %>
+    <p class="not-found"><%= t('.not-found') %></p>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

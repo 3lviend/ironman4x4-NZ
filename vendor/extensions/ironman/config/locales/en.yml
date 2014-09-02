@@ -235,6 +235,7 @@ en:
           other: Other Stockists
         index:
           page_header: Store Locator
+          not-found: Sorry, no stores could be found.
         filters:
           prompts:
             store_type: 'Filter by store type'
