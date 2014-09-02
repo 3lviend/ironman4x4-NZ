@@ -32,8 +32,8 @@ module Refinery
       def find_all_stockists
         conditions = {}
 
-        if params[:category].present?
-          conditions[:category] = params[:category]
+        if params[:store_type].present?
+          conditions[:store_type] = params[:store_type]
         end
 
         @stockists = Stockist.active.where(conditions).order('name ASC')
