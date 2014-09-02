@@ -285,6 +285,23 @@ en:
       vehicles:
         show:
           other: Other Vehicles
+      fitting_instructions:
+        index:
+          page_header: Fitting Instructions
+          page_header_with_category: 'Fitting Instructions: %{category}'
+          not-found: Sorry, no fitting instructions could be found.
+          buttons:
+            view_instructions: 'View Instructions'
+        filters:
+          category:
+            label: Product Category
+            prompt: Select
+          subcategory:
+            label: Subcategory
+            prompt: Select
+          subsubcategory:
+            label: Subcategory
+            prompt: Select
       categories:
         show:
           other: Other Categories

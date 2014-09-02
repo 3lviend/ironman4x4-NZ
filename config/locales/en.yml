@@ -57,7 +57,7 @@ en:
     footer_links:
       support:
         description: 'Support'
-        fitting_information: 'Fitting Information'
+        fitting_instructions: 'Fitting Instructions'
         technical_information: 'Technical Support'
         faqs: 'FAQs'
       warranty:

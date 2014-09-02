@@ -1,0 +1,35 @@
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? t('.page_header_with_category', category:@this_category.name) : t('.page_header') } %>
+
+<% content_for :body do %>
+<div class="fitting-instructions-filters">
+<%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
+</div>
+
+<% if @products.present? %>
+<ul id="page-product-list" class="clearfix fitting-instructions">
+  <% @products.each do |product| %>
+  <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+    <div class="product">
+      <div class="photo"><!--
+        --><%= if product.thumbnail_image.present? then image_tag product.thumbnail_image.thumbnail(geometry: "302x193").url else image_tag 'product_list_photo_default.jpg' end %><!--
+      --></div>
+      <div class="content">
+        <h3><%= product.name %></h3>
+        <div class="buttons clearfix">
+          <div class="view-fitting-instructions">
+            <% if product.fitting_instructions_resource.present? %>
+            <%= link_to t('.buttons.view_instructions'), product.fitting_instructions_resource.url, class: 'btn btn-primary btn-block' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
+<% else %>
+<p class="not-found"><%= t('.not-found') %></p>
+<% end %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

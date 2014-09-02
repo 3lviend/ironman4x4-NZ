@@ -1,5 +1,9 @@
 @import "bootstrap-config";
 
+.fitting-instructions-filters {
+  margin-top: $grid-gutter-width * 0.75;
+}
+
 .product-category-filters {
   .form-group {
     margin-right: 20px;
@@ -9,6 +13,24 @@
 #page-product-categories, #page-product-list {
   margin: 0;
   padding: 0;
+
+  &.fitting-instructions {
+    .product-container {
+      .product {
+        .content {
+          h3 {
+            font-family: $font-family-bold;
+          }
+
+          .buttons {
+            .view-fitting-instructions {
+              margin-top: $grid-gutter-width;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .category-container, .product-container {
     padding-bottom: $grid-gutter-width;

@@ -21,6 +21,12 @@ Refinery::Core::Engine.routes.draw do
   get 'categories/:category_id/:id' => 'ironman/categories#show', as: :subcategory
   get 'categories/:category_id/:subcategory_id/:id' => 'ironman/categories#show', as: :sub_subcategory
 
+  # fitting instructions - index pages of products for a given category
+  get 'fitting-instructions' => 'ironman/fitting_instructions#index', as: :fitting_instructions
+  get 'fitting-instructions/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_category_products
+  get 'fitting-instructions/:category_id/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_subcategory_products
+  get 'fitting-instructions/:category_id/:subcategory_id/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_sub_subcategory_products
+
 
   # Frontend routes
   namespace :ironman, :path => '' do

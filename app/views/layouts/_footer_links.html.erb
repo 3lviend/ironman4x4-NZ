@@ -47,7 +47,7 @@
       <div class="row">
         <dl class="col-sm-3">
           <dt><%= t('.support.description') %>
-          <dd><%= link_to t('.support.fitting_information'), refinery.root_path %></li>
+          <dd><%= link_to t('.support.fitting_instructions'), refinery.fitting_instructions_path %></li>
           <% if tech_support_page.present? %>
           <dd><%= link_to t('.support.technical_information'), refinery.marketable_page_path(tech_support_page) %></li>
           <% end %>
