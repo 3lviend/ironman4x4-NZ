@@ -1,0 +1,16 @@
+<%= image_tag 'stockists_map_logo.jpg', size:'146x70' %>
+<div class="title"><strong><%= object.name %></strong></div>
+<div class="details">
+  <%= object.address %><br />
+  <%= [object.suburb, object.state, object.postcode].reject(&:blank?).join(', ') %><br />
+  <%= object.country %><br />
+  <% if object.phone.present? %>
+  <%= object.phone %><br />
+  <% end %>
+  <% if object.website.present? %>
+  <%= object.website %><br />
+  <% end %>
+</div>
+<div class="directions">
+  <%= link_to 'Directions', "http://maps.google.com/maps?saddr=#{u object.full_street_address}" %>
+</div>

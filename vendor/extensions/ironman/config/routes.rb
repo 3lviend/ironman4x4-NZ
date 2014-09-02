@@ -34,7 +34,7 @@ Refinery::Core::Engine.routes.draw do
     resources :categories, :only => [:index, :show]
     resources :vehicles, :only => [:index, :show]
     resources :media_releases, :only => [:index, :show]
-    resources :stockists, :only => [:index, :show]
+    resources :stockists, :only => [:index, :show], :path => '/store-locator'
     resources :warehouses, :only => [:index, :show]
     resources :catalogues, :only => [:index, :show]
     resources :orders, :only => [:index, :show]

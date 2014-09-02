@@ -238,6 +238,7 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     fssm (0.2.10)
+    geocoder (1.2.4)
     globalize (4.0.2)
       activemodel (>= 4.0.0, < 5)
       activerecord (>= 4.0.0, < 5)
@@ -391,6 +392,7 @@ DEPENDENCIES
   date_parity
   dotenv-rails
   fog
+  geocoder
   gmaps4rails
   gretel!
   jbuilder (~> 2.0)

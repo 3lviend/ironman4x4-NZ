@@ -1,0 +1,77 @@
+@import "bootstrap-config";
+
+@mixin stockist {
+  &:first-child {
+    padding-left: 0;
+  }
+
+  @media (max-width: $screen-xs-max) {
+    & {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  /* Small devices (tablets, 768px and up) */
+  @media (min-width: $screen-sm-min) and (max-width: $screen-md-max) {
+    padding-right: 40px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:nth-child(2n+3) {
+      clear: left;
+      padding-left: 0;
+    }
+
+    &:nth-child(2n+2) {
+    }
+  }
+
+  @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+    padding-right: 50px;
+  }
+
+  @media (min-width: $screen-lg-min) {
+    padding-right: 50px;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:nth-child(3n+4) {
+      clear: left;
+      padding-left: 0;
+    }
+
+    &:nth-child(3n+3) {
+    }
+  }
+
+  margin-bottom: $grid-gutter-width;
+  font-size: $font-size-medium;
+
+  .heading {
+    color: $green;
+    cursor: pointer;
+  }
+
+  .field {
+  }
+}
+
+#stockists {
+  list-style-type: none;
+  padding: 0;
+
+  .stockist {
+    @include stockist;
+  }
+}
+
+#stockist {
+  &.stockist {
+    @include stockist;
+  }
+}

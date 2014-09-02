@@ -58,6 +58,16 @@
     <%= f.text_field :email -%>
   </div>
 
+  <div class='field'>
+    <%= f.label :latitude -%>
+    <%= f.number_field :latitude, :step => 'any' -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :longitude -%>
+    <%= f.number_field :longitude, :step => 'any' -%>
+  </div>
+
   <div class="field">
     <%= f.label :logo_image %>
     <%= render :partial => "/refinery/admin/image_picker", :locals => {

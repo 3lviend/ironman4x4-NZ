@@ -17,6 +17,7 @@
  *= require blog
  *= require media_releases
  *= require catalogues
+ *= require stockists
  *= require glasscase/glasscase
  */
 
@@ -211,7 +212,7 @@ hr.double {
       text-align: center;
       width: 104px;
       text-transform: uppercase;
-      font-size: 16px;
+      font-size: $font-size-medium;
 
       a {
         display: block;
@@ -773,4 +774,8 @@ hr.double {
       }
     }
   }
+}
+
+#map {
+  height: 334px;
 }

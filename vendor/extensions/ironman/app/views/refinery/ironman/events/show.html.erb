@@ -1,13 +1,9 @@
 <% @slideshow_images = [@post.hero_image] if @post.hero_image.present? %>
 <% breadcrumb :post, @post %>
 
-<% content_for :javascripts do %>
-<%= render 'refinery/google_maps_javascript' %>
-<% end %>
-
 <script type="text/javascript">
-  $(document).on('ready pageload', function() {
-    handler = Gmaps.build('Google');
+  $(document).on('ready page:load', function() {
+    var handler = Gmaps.build('Google');
     handler.buildMap({
       provider: {
         disableDefaultUI: true
@@ -17,7 +13,7 @@
         id: 'map'
       }
     }, function(){
-      markers = handler.addMarkers(<%=raw @markers.to_json %>);
+      var markers = handler.addMarkers(<%=raw @markers.to_json %>);
 
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();

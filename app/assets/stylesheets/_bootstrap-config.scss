@@ -55,6 +55,7 @@ $navbar-border-radius: 0;
 @import "bootstrap/variables";
 
 $font-size-smallish: ceil(($font-size-base * 0.90)); // ~13px
+$font-size-medium: 16px;
 
 $font-family-sans-serif: 'HelveticaNeueW02-45Ligh', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $font-family-base: $font-family-sans-serif;

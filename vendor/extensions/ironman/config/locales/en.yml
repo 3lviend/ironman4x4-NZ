@@ -233,6 +233,8 @@ en:
       stockists:
         show:
           other: Other Stockists
+        index:
+          page_header: Store Locator
       media_releases:
         show:
           other: Other Media Releases
