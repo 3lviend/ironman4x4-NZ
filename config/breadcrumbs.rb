@@ -32,6 +32,15 @@ crumb :media_release do |media_release|
   parent :media_releases
 end
 
+crumb :catalogues do
+  link t('breadcrumbs.catalogues'), refinery.ironman_catalogues_path
+end
+
+crumb :catalogue do |catalogue|
+  link catalogue.title, refinery.ironman_catalogue_path(catalogue)
+  parent :catalogues
+end
+
 crumb :category do |category|
   if category.depth == 0
     url = refinery.product_categories_path(category)

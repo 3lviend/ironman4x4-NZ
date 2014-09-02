@@ -1,11 +1,30 @@
+<% breadcrumb :catalogues %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
+
 <% content_for :body do %>
-  <ul id="catalogues">
+  <% if @catalogues.present? %>
+  <ul id="catalogues" class="clearfix">
     <% @catalogues.each do |catalogue| %>
-      <li>
-        <%= link_to catalogue.title, refinery.ironman_catalogue_path(catalogue) %>
+      <li class="catalogue col-sm-6">
+        <%= link_to catalogue.priced_resource.url, :class => :cover do %>
+          <div class="image" style="background-image: url(<%= catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
+        <% end %>
+        <div class="title">
+          <h4><%= catalogue.title %></h4>
+        </div>
+        <div class="buttons">
+          <%= link_to t('.buttons.download_pdf'), catalogue.priced_resource.url, class: 'btn btn-primary btn-block' %>
+          <%= link_to t('.buttons.view_products_online'), catalogue.products_link, class: 'btn btn-primary btn-block' %>
+        </div>
+        <div class="description">
+          <%= raw catalogue.description %>
+        </div>
       </li>
     <% end %>
   </ul>
+  <% else %>
+    <p class="not-found"><%= t('.not-found') %></p>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

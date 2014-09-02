@@ -213,6 +213,12 @@ en:
       catalogues:
         show:
           other: Other Catalogues
+        index:
+          page_header: Catalogues
+          not-found: Sorry, no catalogues could be found.
+          buttons:
+            download_pdf: 'Download PDF'
+            view_products_online: 'View Products Online'
       warehouses:
         show:
           other: Other Warehouses

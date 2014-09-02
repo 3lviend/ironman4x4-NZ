@@ -1,51 +1,21 @@
-<% content_for :body_content_title do %>
-  <%= @catalogue.title %>
-<% end %>
+<% breadcrumb :catalogue, @catalogue %>
 
 <% content_for :body do %>
-  <section>
-    <h1>Title</h1>
-    <p>
-      <%=raw @catalogue.title %>
-    </p>
-  </section>
-  <section>
-    <h1>Description</h1>
-    <p>
-      <%=raw @catalogue.description %>
-    </p>
-  </section>
-  <section>
-    <h1>Priced Resource</h1>
-    <p>
-      <%=raw @catalogue.priced_resource_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Unpriced Resource</h1>
-    <p>
-      <%=raw @catalogue.unpriced_resource_id %>
-    </p>
-  </section>
-  <section>
-    <h1>Products Link</h1>
-    <p>
-      <%=raw @catalogue.products_link %>
-    </p>
-  </section>
-<% end %>
-
-<% content_for :side_body do %>
-  <aside>
-    <h2><%= t('.other') %></h2>
-    <ul id="catalogues">
-      <% @catalogues.each do |catalogue| %>
-        <li>
-          <%= link_to catalogue.title, refinery.ironman_catalogue_path(catalogue) %>
-        </li>
-      <% end %>
-    </ul>
-  </aside>
+  <div id="catalogue" class="catalogue col-sm-6">
+    <%= link_to @catalogue.priced_resource.url, :class => :cover do %>
+      <div class="image" style="background-image: url(<%= @catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
+    <% end %>
+    <div class="title">
+      <h4><%= @catalogue.title %></h4>
+    </div>
+    <div class="buttons">
+      <%= link_to t('refinery.ironman.catalogues.index.buttons.download_pdf'), @catalogue.priced_resource.url, class: 'btn btn-primary btn-block' %>
+      <%= link_to t('refinery.ironman.catalogues.index.buttons.view_products_online'), @catalogue.products_link, class: 'btn btn-primary btn-block' %>
+    </div>
+    <div class="description">
+      <%= raw @catalogue.description %>
+    </div>
+  </div>
 <% end %>
 
 <%= render '/refinery/content_page' %>

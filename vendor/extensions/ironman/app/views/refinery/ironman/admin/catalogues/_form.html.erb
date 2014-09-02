@@ -16,6 +16,17 @@
   </div>
 
   <div class='field'>
+    <%= f.label :cover_image %>
+    <%= render :partial => "/refinery/admin/image_picker", :locals => {
+      :f => f,
+      :field => :cover_image_id,
+      :image => f.object.cover_image,
+      :toggle_image_display => false
+    }
+    %>
+  </div>
+
+  <div class='field'>
     <%= f.label :priced_resource_id %>
     <%= render :partial => "/refinery/admin/resource_picker", :locals =>
       {

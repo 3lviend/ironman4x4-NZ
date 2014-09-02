@@ -4,15 +4,15 @@ module Refinery
       class CataloguesController < ::Refinery::AdminController
 
         crudify :'refinery/ironman/catalogue',
-                :xhr_paging => true
+                :xhr_paging => true,
+                :searchable => false,
+                :sortable => false
 
       protected
         def catalogue_params
-          p = params.require(:catalogue).permit(:title, :description,
+          params.require(:catalogue).permit(:title, :description,
             :priced_resource_id, :unpriced_resource_id, :products_link,
-            :position, :locale)
-
-          p = massage_params p
+            :cover_image_id, :position, :locale)
         end
       end
     end
