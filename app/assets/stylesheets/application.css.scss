@@ -606,6 +606,9 @@ hr.double {
     line-height: 88px;
     border: none;
     color: $green;
+    @media (max-width: $screen-xs-max) {
+      line-height: normal;
+    }
   }
 
   .icons {
