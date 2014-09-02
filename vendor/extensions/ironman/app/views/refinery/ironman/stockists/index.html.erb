@@ -1,5 +1,20 @@
 <% @layout_map = true %>
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
+<%
+  markers = Gmaps4rails.build_markers(@stockists) do |stockist, marker|
+    marker.title stockist.name
+    marker.lat stockist.latitude
+    marker.lng stockist.longitude
+    marker.picture({
+      url: image_url('stockists_map_marker_green.png'),
+      width: 25,
+      height: 47
+    })
+    marker.infowindow render('refinery/ironman/stockists/marker_info_window', :object => stockist).gsub(/\n/, '')
+    marker.json({ :id => stockist.id })
+  end
+%>
+
 
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
@@ -13,7 +28,7 @@
         id: 'map'
       }
     }, function(){
-      var markers = <%=raw @markers.to_json %>;
+      var markers = <%=raw markers.to_json %>;
       Gmaps.store = Gmaps.store || {};
       Gmaps.store.markers = markers.map(function(m) {
         var marker = handler.addMarker(m);
@@ -28,7 +43,6 @@
     $('#stockists .stockist .heading').on('click', function() {
       var stockistId = $(this).data('stockist-id');
       $.each(Gmaps.store.markers, function() {
-        console.log(this);
         if (this.serviceObject.id == stockistId) {
           this.panTo();
           this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
