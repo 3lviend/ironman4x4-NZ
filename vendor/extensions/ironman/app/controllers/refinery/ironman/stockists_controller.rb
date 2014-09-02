@@ -30,7 +30,13 @@ module Refinery
     protected
 
       def find_all_stockists
-        @stockists = Stockist.active.order('name ASC')
+        conditions = {}
+
+        if params[:category].present?
+          conditions[:category] = params[:category]
+        end
+
+        @stockists = Stockist.active.where(conditions).order('name ASC')
       end
 
       def find_page

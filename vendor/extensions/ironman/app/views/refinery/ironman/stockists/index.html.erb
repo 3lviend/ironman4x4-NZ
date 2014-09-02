@@ -40,6 +40,8 @@
 </script>
 
 <% content_for :body do %>
+  <%= render 'refinery/ironman/stockists/filters' %>
+
   <ul id="stockists" class="clearfix">
     <% @stockists.each_with_index do |stockist, index| %>
       <li class="stockist col-sm-6 col-lg-4">

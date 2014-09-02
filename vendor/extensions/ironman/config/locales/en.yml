@@ -235,6 +235,13 @@ en:
           other: Other Stockists
         index:
           page_header: Store Locator
+        filters:
+          prompts:
+            store_type: 'Filter by store type'
+          search_form:
+            label: 'Search Location'
+            placeholder: 'Enter Postcode/Suburb'
+            button: 'Submit'
       media_releases:
         show:
           other: Other Media Releases

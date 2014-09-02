@@ -1,5 +1,45 @@
 @import "bootstrap-config";
 
+#stockists-filters {
+  margin-top: $grid-gutter-width/2;
+
+  select {
+    display: inline-block;
+    width: auto;
+
+    @media (min-width: $screen-sm-min) {
+      margin-left: 30px;
+    }
+  }
+
+  form {
+    display: inline-block;
+    float: none ! important;
+    padding: 0;
+    margin: 0;
+
+    input.form-control {
+      @include search-input;
+
+      @media (min-width: $screen-sm-min) {
+        min-width: 200px;
+      }
+
+      border-radius: 0;
+      border-color: $dark-grey;
+      background-color: $white;
+      font-size: $font-size-smallish;
+    }
+
+    .btn {
+      border-radius: 0;
+      background-color: $green;
+      border-color: $dark-grey;
+      color: $white;
+    }
+  }
+}
+
 @mixin stockist {
   &:first-child {
     padding-left: 0;
