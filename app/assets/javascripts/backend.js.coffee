@@ -2,6 +2,7 @@
 #= require chosen-jquery
 #= require utils
 #= require refinery/ironman/admin
+#= require refinery/admin/resources
 
 $(document).on 'page:load ready', ->
   options = {

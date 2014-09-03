@@ -1,0 +1,48 @@
+<%= s3_uploader_form post: (@url_override || (@resource.persisted? ? refinery.admin_resource_path(@resource) : refinery.admin_resources_path)),
+  as: "resource[file_uid]",
+  app_dialog: @app_dialog,
+  field: @field,
+  update_resource: @update_resource,
+  update_text: @update_text,
+  thumbnail: @thumbnail,
+  callback: @callback,
+  conditions: @conditions,
+  current_link: @current_link,
+  patch: (not @resource.new_record?) do %>
+  <%= render '/refinery/admin/error_messages',
+             :object => @resource,
+             :include_object_name => false %>
+
+  <div class="field">
+    <% if action_name =~ /(edit)|(update)/ %>
+      <%= link_to t('.download_current'), @resource.url,
+                  :title => @resource.title %>
+      <em><%= t('.or')%></em><%= t('.replace') %>
+      <%= file_field_tag :file %>
+    <% else %>
+      <% # we must only hint at multiple when it's a *new* record otherwise update fails. %>
+      <%= file_field_tag :file, :multiple => (true unless @resource.persisted?) %>
+    <% end %>
+  </div>
+
+  <div class="field" id="maximum_file_size">
+    <label>
+      <%= t('.maximum_file_size', :bytes => number_to_human_size(Refinery::Resources.max_file_size)) %>
+    </label>
+  </div>
+<% end %>
+
+<script id="template-upload" type="text/x-tmpl">
+<div class="upload">
+  {%=o.name%}
+  <div class="progress"><div class="bar" style="width: 0%"></div></div>
+</div>
+</script>
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function(){
+      link_dialog.init();
+    });
+  </script>
+<% end if from_dialog? %>

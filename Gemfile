@@ -74,6 +74,7 @@ gem 'bootstrap-sass'
 gem 'chosen-rails'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'jquery-fileupload-rails'
 
 # Development gems
 #gem 'rack-mini-profiler'

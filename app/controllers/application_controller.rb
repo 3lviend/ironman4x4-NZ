@@ -31,6 +31,39 @@ Refinery::AdminController.class_eval do
   end
 end
 
+Refinery::Admin::ResourcesController.class_eval do
+  # Your new methods here
+  def create
+    @resource = Refinery::Resource.create(resource_params)
+
+    unless params[:insert]
+      if @resource.valid?
+        flash.notice = t('created', :scope => 'refinery.crudify', :what => @resource.title)
+        if from_dialog?
+          @dialog_successful = true
+          render :template => "/refinery/admin/dialog_success", :layout => true
+        else
+          redirect_to refinery.admin_resources_path
+        end
+      else
+        self.new # important for dialogs
+        render :action => 'new'
+      end
+    else
+      if @resource.valid?
+        @resource_id = @resource.id
+        @resource = nil
+
+        self.insert
+      end
+    end
+  end
+
+  def resource_params
+    params.require(:resource).permit(:file, :file_type, :file_uid, :file_name, :file_size)
+  end
+end
+
 class Hash
   def flatten_nested; flat_map{|k, v| [k, *v.flatten_nested]} end
 end
