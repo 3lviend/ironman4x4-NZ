@@ -16,11 +16,20 @@ module Refinery
         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
       }, length: { maximum: 255 }
       validates :message, presence: true
+      validates_presence_of :address1, :suburb, :postcode, :state, :country,
+        :email, :phone
+      belongs_to :vehicle, :class_name => '::Refinery::Ironman::Vehicle'
 
       default_scope { order('created_at DESC') }
 
       def self.latest(number = 7, include_spam = false)
         include_spam ? limit(number) : ham.limit(number)
+      end
+
+      def vehicle_name_full
+        if vehicle.present?
+          vehicle.self_and_ancestors.reverse.map {|v| v.name}.join(' ')
+        end
       end
 
     end

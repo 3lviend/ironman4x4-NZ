@@ -18,6 +18,7 @@
  *= require media_releases
  *= require catalogues
  *= require stockists
+ *= require enquiries
  *= require glasscase/glasscase
  */
 
@@ -39,6 +40,10 @@ h1, h2, h3, h4, h5, h5 {
   color: $green;
   font-family: $font-family-extra-bold;
   text-transform: uppercase;
+}
+
+label {
+  font-family: $font-family-bold;
 }
 
 .navbar-default {
@@ -92,6 +97,14 @@ hr.double {
     width: 20%;
     float: left;
   }
+}
+
+.green {
+  color: $green;
+}
+
+.uppercase {
+  text-transform: uppercase;
 }
 
 

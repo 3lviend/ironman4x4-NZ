@@ -65,6 +65,42 @@
       </td>
     </tr>
     <tr>
+      <td>
+        <strong><%= t('.address') %></strong>
+      </td>
+      <td>
+        <%= [@enquiry.address1, @enquiry.address2, @enquiry.suburb, @enquiry.postcode, @enquiry.state, @enquiry.country].reject(&:blank?).join(', ') %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.enquiry_type') %></strong>
+      </td>
+      <td>
+        <%= @enquiry.enquiry_type %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.receive_news') %></strong>
+      </td>
+      <td>
+        <%= (@enquiry.receive_news ? t('.yes') : t('.no')) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.vehicle') %></strong>
+      </td>
+      <td>
+        <% if @enquiry.vehicle.present? %>
+        <%= @enquiry.vehicle_name_full %>
+        <% else %>
+        <%= t('.na') %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
       <td valign='top'>
         <strong><%= t('.message') %></strong>
       </td>

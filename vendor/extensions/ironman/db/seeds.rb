@@ -121,7 +121,7 @@ Refinery::I18n.frontend_locales.each do |lang|
       })
       contact_us_page.parts.create({
         :title => "Body",
-        :body => "<p>Get in touch with us. Just use the form below and we'll get back to you as soon as we can.</p>",
+        :body => "",
         :position => 0
       })
       contact_us_page.parts.create({

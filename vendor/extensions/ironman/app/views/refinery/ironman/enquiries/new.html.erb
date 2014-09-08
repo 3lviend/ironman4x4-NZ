@@ -1,42 +1,146 @@
+<%
+  begin
+    terms_page = ::Refinery::Page.friendly.find('terms-conditions')
+  rescue ActiveRecord::RecordNotFound
+    terms_page = nil
+  end
+%>
+
 <% content_for :body do %>
   <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
-  
-  <div class='enquiries'>
-    <%= form_for [refinery, :ironman, @enquiry] do |f| %>
+
+  <div id="submit-enquiry" class='enquiries'>
+    <div class="clearfix call">
+      <div class="pull-left green uppercase"><%= t('.australian_call') %></div>
+      <div class="pull-right green uppercase"><%= t('.international_call') %></div>
+    </div>
+
+    <%= form_for [refinery, :ironman, @enquiry], class: 'form-horizontal' do |f| %>
       <%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @enquiry,
                    :include_object_name => true
                  } %>
-      <div class="field">
-        <%= f.required_label :name, :class => 'placeholder-fallback' %>
-        <%= f.text_field :name, :class => 'text', :required => 'required',
-          :placeholder => (t('name', :scope => 'activerecord.attributes.refinery/ironman/enquiry') if Refinery::Ironman.show_placeholders) %>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :name, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :name, :class => 'text form-control', :required => 'required' %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.required_label :email, :class => 'placeholder-fallback' %>
-        <%= f.email_field :email, :class => 'text email', :required => 'required',
-          :placeholder => (t('email', :scope => 'activerecord.attributes.refinery/ironman/enquiry') if Refinery::Ironman.show_placeholders) %>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :address1, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :address1, :class => 'text form-control', :required => 'required' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.label :address2, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :address2, :class => 'text form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :suburb, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :suburb, :class => 'text form-control', :required => 'required' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :postcode, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :postcode, :class => 'text form-control', :required => 'required' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :state, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :state, :class => 'text form-control', :required => 'required' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :country, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_field :country, :class => 'text form-control', :required => 'required' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix">
+        <%= f.required_label :email, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.email_field :email, :class => 'text email form-control', :required => 'required' %>
+        </div>
       </div>
 
       <% if Refinery::Ironman.show_phone_number_field %>
-        <div class="field">
-          <%= f.label :phone, :class => 'placeholder-fallback' %>
-          <%= f.text_field :phone, :class => 'text phone',
-            :placeholder => (t('phone', :scope => 'activerecord.attributes.refinery/ironman/enquiry') if Refinery::Ironman.show_placeholders) %>
+        <div class="form-group clearfix">
+          <%= f.required_label :phone, :class => 'control-label col-sm-3 col-md-2' %>
+          <div class="col-sm-9 col-md-10">
+            <%= f.text_field :phone, :class => 'text phone form-control', :required => 'required' %>
+          </div>
         </div>
       <% end %>
 
-      <div class='field message_field'>
-        <%= f.required_label :message, :class => 'placeholder-fallback' %>
-        <%= f.text_area :message, :rows => 8, :required => 'required',
-          :placeholder => (t('message', :scope => 'activerecord.attributes.refinery/ironman/enquiry') if Refinery::Ironman.show_placeholders) %>
+      <div class="form-group clearfix">
+        <%= f.label :enquiry_type, :class => 'control-label col-sm-3 col-md-2' %>
+
+        <div class="col-sm-4 col-md-3 col-lg-2">
+          <%= f.label :enquiry_type, for: :enquiry_type_vehicle_specific do %>
+            <%= f.check_box :enquiry_type, id: :enquiry_type_vehicle_specific, value: t('.enquiry_type.vehicle_specific') %>
+            <%= t('.enquiry_type.vehicle_specific') %>
+          <% end %>
+        </div>
+
+        <div class="col-sm-5 col-md-3 col-lg-2">
+          <%= f.label :enquiry_type, for: :enquiry_type_general do %>
+            <%= f.check_box :enquiry_type, id: :enquiry_type_general, value: t('.enquiry_type.general') %>
+            <%= t('.enquiry_type.general') %>
+          <% end %>
+        </div>
       </div>
-      <div class="actions">
-        <%= f.submit t('.send') %>
-        <%= link_to t('.privacy_policy'), "/pages/privacy-policy", :id => "privacy_link" if Refinery::Ironman.show_contact_privacy_link %>
+
+      <div class='form-group clearfix message_field'>
+        <%= f.label :message, :class => 'control-label col-sm-3 col-md-2' %>
+        <div class="col-sm-9 col-md-10">
+          <%= f.text_area :message, :rows => 8, :class => 'form-control' %>
+        </div>
+      </div>
+
+      <div class="form-group clearfix receive-news">
+        <div class="checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+          <%= f.label :receive_news do %>
+            <%= f.check_box :receive_news %>
+            <%= t('.receive_news') %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if terms_page.present? %>
+      <div class="form-group clearfix">
+        <div class="checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+          <%= label_tag :terms_conditions do %>
+            <%= check_box_tag :terms_conditions %>
+            <%= t('.accept') %>
+            <%= link_to t('.terms_conditions'), refinery.marketable_page_path(terms_page) %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="form-group clearfix">
+        <div class="actions col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+          <%= f.submit t('.send'), class: 'btn btn-primary' %>
+        </div>
       </div>
     <% end %>
   </div>
+
+  <hr />
 <% end %>
 <%= render "/refinery/content_page" %>

@@ -106,12 +106,19 @@ en:
             spam: Spam
             spam_yes: 'yes'
             enquiry: Enquiry
+            enquiry_type: Enquiry Type
+            receive_news: Receive News?
+            yes: Yes
+            no: No
             to: To
             from: From
+            address: Address
+            vehicle: Vehicle
+            na: N/A
             click_to_email: Click to email this address
             phone: Phone
             date: Date
-            message: Message
+            message: Comments
         stockists:
           actions:
             create_new: Add New Stockist
@@ -226,8 +233,16 @@ en:
         from_name: ! '%{name} [%{site_name}]'
       enquiries:
         new:
-          send: Send message
+          send: Submit Enquiry
           privacy_policy: We value your privacy
+          enquiry_type:
+            vehicle_specific: Vehicle Specific
+            general: General
+          receive_news: Receive news & promotions from Ironman 4x4
+          accept: Accept
+          terms_conditions: Terms & Conditions
+          australian_call: Australia Wide Local Call 1300 731 137
+          international_call: International Call +61 (0) 3 9532 1111
         show:
           other: Other Enquiries
       stockists:
@@ -403,17 +418,17 @@ en:
         longitude: Longitude
       refinery/ironman/enquiry:
         name: Name
-        address1: Address1
-        address2: Address2
+        address1: Address Line 1
+        address2: Address Line 2
         suburb: Suburb
         postcode: Postcode
         state: State
         country: Country
-        email: Email
-        phone: Phone
+        email: Email Address
+        phone: Phone/Mobile
         enquiry_type: Enquiry Type
         vehicle_id: Vehicle
-        message: Message
+        message: Comments
         receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
