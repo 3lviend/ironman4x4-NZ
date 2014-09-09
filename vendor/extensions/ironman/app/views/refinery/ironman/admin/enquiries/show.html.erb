@@ -69,7 +69,7 @@
         <strong><%= t('.address') %></strong>
       </td>
       <td>
-        <%= [@enquiry.address1, @enquiry.address2, @enquiry.suburb, @enquiry.postcode, @enquiry.state, @enquiry.country].reject(&:blank?).join(', ') %>
+        <%= @enquiry.full_street_address ') %>
       </td>
     </tr>
     <tr>

@@ -32,7 +32,7 @@ module Refinery
       end
 
       def from_mail
-        "#{Refinery::Enquiries.from_name}@#{@request.domain}"
+        "#{Refinery::Ironman.from_name}@#{@request.domain}"
       end
     end
   end

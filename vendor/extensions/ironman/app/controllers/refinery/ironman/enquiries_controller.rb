@@ -16,7 +16,7 @@ module Refinery
         @enquiry = Enquiry.new(enquiry_params)
 
         if @enquiry.save
-          if @enquiry.ham? || Enquiries.send_notifications_for_enquiries_marked_as_spam
+          if @enquiry.ham? || Refinery::Ironman.send_notifications_for_enquiries_marked_as_spam
             begin
               Refinery::Ironman::EnquiryMailer.notification(@enquiry, request).deliver
             rescue

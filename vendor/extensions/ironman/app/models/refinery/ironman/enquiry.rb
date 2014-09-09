@@ -37,6 +37,10 @@ module Refinery
         end
       end
 
+      def full_street_address
+        [address1, address2, suburb, postcode, state, country].reject(&:blank?).join(', ')
+      end
+
     end
   end
 end

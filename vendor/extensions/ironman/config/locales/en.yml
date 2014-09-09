@@ -387,6 +387,9 @@ en:
           email: Email
           phone: Phone
           message: Message
+          enquiry_type: Enquiry Type
+          vehicle: Vehicle
+          address: Address
           closing_line: Kind Regards
           ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery
             should you ever want to view it later there.
