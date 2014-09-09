@@ -12,6 +12,10 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      def country=(s)
+        super s.titleize
+      end
+
       def full_street_address
         [address1, address2, suburb, state, postcode, country].reject(&:blank?).join(', ')
       end
