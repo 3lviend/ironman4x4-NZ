@@ -34,11 +34,15 @@
       collapsible: true,
       active: false
     });
+
+    $('#warehouses h3:first').trigger('click');
   });
 </script>
 
 <div id="warehouses">
-  <% @warehouses.each do |country, warehouses| %>
+  <% australia = @warehouses.slice('Australia') %>
+  <% warehouses = australia.merge(@warehouses.except('Australia')) %>
+  <% warehouses.each do |country, warehouses| %>
     <h3><%= country %></h3>
     <div>
       <ul>
