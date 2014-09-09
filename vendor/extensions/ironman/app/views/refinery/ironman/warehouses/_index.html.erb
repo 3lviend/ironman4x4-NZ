@@ -75,10 +75,10 @@
             <div class="contact"><%= warehouse.contact %></div>
             <% end %>
             <% if warehouse.phone.present? %>
-            <div class="phone"><%= warehouse.phone %></div>
+            <div class="phone">Ph: <%= warehouse.phone %></div>
             <% end %>
             <% if warehouse.fax.present? %>
-            <div class="fax"><%= warehouse.fax %></div>
+            <div class="fax">Fax: <%= warehouse.fax %></div>
             <% end %>
             <% if warehouse.email.present? %>
             <div class="email"><%= mail_to warehouse.email %></div>
