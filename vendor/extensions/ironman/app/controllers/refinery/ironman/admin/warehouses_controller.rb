@@ -6,7 +6,9 @@ module Refinery
         crudify :'refinery/ironman/warehouse',
                 :title_attribute => 'name',
                 :xhr_paging => true,
-                :searching => false
+                :searching => false,
+                :sortable => false,
+                :order => 'refinery_ironman_warehouses.country, refinery_ironman_warehouses.name'
 
       protected
         def warehouse_params
