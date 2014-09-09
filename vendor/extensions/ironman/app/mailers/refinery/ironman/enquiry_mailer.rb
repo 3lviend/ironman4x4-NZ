@@ -26,7 +26,7 @@ module Refinery
 
       def from_name
         ::I18n.t('from_name',
-                :scope => 'refinery.enquiries.config',
+                :scope => 'refinery.ironman.config',
                 :site_name => Refinery::Core.site_name,
                 :name => @enquiry.name)
       end
