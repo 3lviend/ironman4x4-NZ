@@ -15,7 +15,7 @@
       <div class="pull-right green uppercase"><%= t('.international_call') %></div>
     </div>
 
-    <%= form_for [refinery, :ironman, @enquiry], class: 'form-horizontal' do |f| %>
+    <%= form_for [refinery, :ironman, @enquiry], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
       <%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @enquiry,
@@ -24,56 +24,56 @@
 
       <div class="form-group clearfix">
         <%= f.required_label :name, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :name, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :address1, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :address1, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.label :address2, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :address2, :class => 'text form-control' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :suburb, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :suburb, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :postcode, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :postcode, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :state, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :state, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :country, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_field :country, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :email, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.email_field :email, :class => 'text email form-control', :required => 'required' %>
         </div>
       </div>
@@ -81,7 +81,7 @@
       <% if Refinery::Ironman.show_phone_number_field %>
         <div class="form-group clearfix">
           <%= f.required_label :phone, :class => 'control-label col-sm-3 col-md-2' %>
-          <div class="col-sm-9 col-md-10">
+          <div class="control single col-sm-9 col-md-10">
             <%= f.text_field :phone, :class => 'text phone form-control', :required => 'required' %>
           </div>
         </div>
@@ -90,30 +90,70 @@
       <div class="form-group clearfix">
         <%= f.label :enquiry_type, :class => 'control-label col-sm-3 col-md-2' %>
 
-        <div class="col-sm-4 col-md-3 col-lg-2">
-          <%= f.label :enquiry_type, for: :enquiry_type_vehicle_specific do %>
-            <%= f.check_box :enquiry_type, id: :enquiry_type_vehicle_specific, value: t('.enquiry_type.vehicle_specific') %>
+        <div class="control first col-sm-4 col-md-3 col-lg-2">
+          <%= label_tag :enquiry_type_vehicle_specific, for: :enquiry_type_vehicle_specific do %>
+            <%= check_box_tag :enquiry_type_vehicle_specific, t('.enquiry_type.vehicle_specific'), params[:enquiry_type_vehicle_specific], {id: :enquiry_type_vehicle_specific} %>
             <%= t('.enquiry_type.vehicle_specific') %>
           <% end %>
         </div>
 
-        <div class="col-sm-5 col-md-3 col-lg-2">
-          <%= f.label :enquiry_type, for: :enquiry_type_general do %>
-            <%= f.check_box :enquiry_type, id: :enquiry_type_general, value: t('.enquiry_type.general') %>
+        <div class="control last col-sm-5 col-md-3 col-lg-2">
+          <%= label_tag :enquiry_type_general, for: :enquiry_type_general do %>
+            <%= check_box_tag :enquiry_type_general, t('.enquiry_type.general'), params[:enquiry_type_general], {id: :enquiry_type_general} %>
             <%= t('.enquiry_type.general') %>
           <% end %>
         </div>
       </div>
 
+      <%
+        vehicle_make = nil
+        vehicle_model = nil
+        vehicle_series = nil
+
+        vehicle_make = Refinery::Ironman::Vehicle.find(params[:vehicle_1st_id]) if params[:vehicle_1st_id].present?
+        vehicle_model = Refinery::Ironman::Vehicle.find(params[:vehicle_2nd_id]) if params[:vehicle_2nd_id].present?
+        vehicle_series = Refinery::Ironman::Vehicle.find(params[:vehicle_3rd_id]) if params[:vehicle_3rd_id].present?
+      %>
+
+      <div class="form-group clearfix vehicle-select">
+        <%= label_tag :vehicle_1st_id, t('.vehicle_make.label'), :class => 'control-label col-sm-3 col-md-2' %>
+
+        <div class="control first col-sm-3 col-md-2">
+          <%= select_tag :vehicle_1st_id, options_from_collection_for_select(Refinery::Ironman::Vehicle.roots, 'id', 'name', (vehicle_make.id if vehicle_make.present?)), :prompt => t('.vehicle_make.prompt'), :class => 'form-control' %>
+        </div>
+
+        <div class="control col-sm-3 col-md-2">
+        <%= select_tag :vehicle_2nd_id, options_from_collection_for_select(if vehicle_make.present? then vehicle_make.children else [] end, 'id', 'name', (vehicle_model.id if vehicle_model.present?)),
+                       'data-option-dependent' => true,
+                       'data-option-observed' => 'vehicle_1st_id',
+                       'data-option-url' => '/vehicles/:vehicle_1st_id:/children.json',
+                       'data-option-key-method' => :id,
+                       'data-option-value-method' => :name,
+                       :prompt => t('.vehicle_model.prompt'),
+                       :class => 'form-control' %>
+        </div>
+
+        <div class="control last col-sm-3 col-md-2">
+        <%= select_tag :vehicle_3rd_id, options_from_collection_for_select(if vehicle_model.present? then vehicle_model.children else [] end, 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
+                       'data-option-dependent' => true,
+                       'data-option-observed' => 'vehicle_2nd_id',
+                       'data-option-url' => '/vehicles/:vehicle_2nd_id:/children.json',
+                       'data-option-key-method' => :id,
+                       'data-option-value-method' => :name,
+                       :prompt => t('.vehicle_series.prompt'),
+                       :class => 'form-control' %>
+        </div>
+      </div>
+
       <div class='form-group clearfix message_field'>
         <%= f.label :message, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-10">
           <%= f.text_area :message, :rows => 8, :class => 'form-control' %>
         </div>
       </div>
 
       <div class="form-group clearfix receive-news">
-        <div class="checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
           <%= f.label :receive_news do %>
             <%= f.check_box :receive_news %>
             <%= t('.receive_news') %>
@@ -123,19 +163,19 @@
 
       <% if terms_page.present? %>
       <div class="form-group clearfix">
-        <div class="checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
           <%= label_tag :terms_conditions do %>
-            <%= check_box_tag :terms_conditions %>
+            <%= check_box_tag :terms_conditions, :required => 'required' %>
             <%= t('.accept') %>
-            <%= link_to t('.terms_conditions'), refinery.marketable_page_path(terms_page) %>
+            <%= link_to t('.terms_conditions.label'), refinery.marketable_page_path(terms_page) %>
           <% end %>
         </div>
       </div>
       <% end %>
 
       <div class="form-group clearfix">
-        <div class="actions col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
-          <%= f.submit t('.send'), class: 'btn btn-primary' %>
+        <div class="actions col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10 clearfix">
+          <%= f.submit t('.send'), class: 'btn btn-primary pull-right' %>
         </div>
       </div>
     <% end %>

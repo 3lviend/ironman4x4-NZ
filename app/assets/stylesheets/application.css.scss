@@ -107,6 +107,9 @@ hr.double {
   text-transform: uppercase;
 }
 
+#errorExplanation {
+  margin-bottom: $grid-gutter-width/2;
+}
 
 .stockists-search {
   &.navbar-form {

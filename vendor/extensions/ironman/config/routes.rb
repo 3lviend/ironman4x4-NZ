@@ -1,6 +1,7 @@
 Refinery::Core::Engine.routes.draw do
 
   get 'categories/:id/children' => 'ironman/categories#children', :as => 'category_children', :format => :json
+  get 'vehicles/:id/children' => 'ironman/vehicles#children', :as => 'vehicle_children', :format => :json
 
   # index pages of categories
   get 'product-categories/:id' => 'ironman/categories#index', as: :product_categories

@@ -51,9 +51,16 @@ module Refinery
       private
 
       def enquiry_params
-        params.require(:enquiry).permit(:name, :address1, :address2, :suburb,
+        p = params.require(:enquiry).permit(:name, :address1, :address2, :suburb,
             :postcode, :state, :country, :email, :phone, :enquiry_type,
             :vehicle_id, :message, :receive_news)
+
+        vehicle_id = [params[:vehicle_1st_id], params[:vehicle_2nd_id], params[:vehicle_3rd_id]].reject(&:blank?).last
+
+        p[:vehicle_id] = vehicle_id if vehicle_id.present?
+        p[:enquiry_type] = [params[:enquiry_type_vehicle_specific], params[:enquiry_type_general]].reject(&:blank?).last
+
+        p
       end
 
     end

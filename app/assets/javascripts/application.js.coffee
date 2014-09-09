@@ -20,6 +20,7 @@
 #= require gmaps/google
 #= require categories
 #= require events
+#= require enquiries
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider

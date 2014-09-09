@@ -15,7 +15,6 @@ module Refinery
       validates :email, format: {
         with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
       }, length: { maximum: 255 }
-      validates :message, presence: true
       validates_presence_of :address1, :suburb, :postcode, :state, :country,
         :email, :phone
       belongs_to :vehicle, :class_name => '::Refinery::Ironman::Vehicle'
@@ -24,6 +23,12 @@ module Refinery
 
       def self.latest(number = 7, include_spam = false)
         include_spam ? limit(number) : ham.limit(number)
+      end
+
+      after_initialize do
+        if self.new_record?
+          self.receive_news = true if self.receive_news.nil?
+        end
       end
 
       def vehicle_name_full

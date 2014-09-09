@@ -240,9 +240,18 @@ en:
             general: General
           receive_news: Receive news & promotions from Ironman 4x4
           accept: Accept
-          terms_conditions: Terms & Conditions
+          terms_conditions:
+            label: Terms & Conditions
+            warning: You must agree to the terms and conditions
           australian_call: Australia Wide Local Call 1300 731 137
           international_call: International Call +61 (0) 3 9532 1111
+          vehicle_make:
+            label: Vehicle Details
+            prompt: Select Make
+          vehicle_model:
+            prompt: Select Model
+          vehicle_series:
+            prompt: Select Series
         show:
           other: Other Enquiries
       stockists:
@@ -417,7 +426,7 @@ en:
         latitude: Latitude
         longitude: Longitude
       refinery/ironman/enquiry:
-        name: Name
+        name: Full Name
         address1: Address Line 1
         address2: Address Line 2
         suburb: Suburb

@@ -5,6 +5,10 @@ module Refinery
       before_filter :find_all_vehicles
       before_filter :find_page
 
+      def children
+        @vehicles = Vehicle.find(params[:id]).children
+      end
+
       def index
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @vehicle in the line below:
