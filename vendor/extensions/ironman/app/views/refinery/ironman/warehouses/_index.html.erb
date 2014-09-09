@@ -1,6 +1,7 @@
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
     var warehouses = <%=raw Hash[*Refinery::Ironman::Warehouse.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
+    var loaded = false;
     var handleAccordion = function(event, ui) {
       $('li:not(.map-added)', ui.newPanel).each(function() {
         var handler = Gmaps.build('Google');
@@ -23,9 +24,15 @@
             handler.fitMapToBounds();
             handler.getMap().setZoom(16);
           }
+
           li.addClass('map-added');
         });
       });
+
+      if (loaded) {
+        $(window).scrollTop(ui.newHeader.offset().top);
+      }
+      loaded = true;
     };
 
     $('#warehouses').accordion({
