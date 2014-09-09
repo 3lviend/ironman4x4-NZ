@@ -1,0 +1,52 @@
+@import "bootstrap-config";
+
+#warehouses {
+  .ui-accordion-header {
+    border-top: 1px solid $light-grey;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+    .ui-accordion-header-icon {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      margin-top: -4px;
+      width: 8px;
+      height: 8px;
+      background: image-url('warehouses_arrow_down.png') no-repeat;
+    }
+
+    &.ui-state-active {
+      .ui-accordion-header-icon {
+        background: image-url('warehouses_arrow_right.png') no-repeat;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin-bottom: $grid-gutter-width;
+      list-style-type: none;
+
+      h4 {
+        margin-top: 20px;
+        margin-bottom: 5px;
+      }
+
+      .map {
+        height: 210px;
+      }
+    }
+  }
+}

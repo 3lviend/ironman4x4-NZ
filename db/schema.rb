@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902094339) do
+ActiveRecord::Schema.define(version: 20140909083002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -218,7 +218,7 @@ ActiveRecord::Schema.define(version: 20140902094339) do
   create_table "refinery_ironman_stockists", force: true do |t|
     t.string   "name"
     t.string   "store_type"
-    t.string   "address"
+    t.string   "address1"
     t.string   "suburb"
     t.string   "postcode"
     t.string   "state"
@@ -233,6 +233,7 @@ ActiveRecord::Schema.define(version: 20140902094339) do
     t.datetime "updated_at"
     t.decimal  "latitude"
     t.decimal  "longitude"
+    t.string   "address2"
   end
 
   create_table "refinery_ironman_vehicle_hierarchies", id: false, force: true do |t|
@@ -262,7 +263,7 @@ ActiveRecord::Schema.define(version: 20140902094339) do
 
   create_table "refinery_ironman_warehouses", force: true do |t|
     t.string   "name"
-    t.string   "address"
+    t.string   "address1"
     t.string   "suburb"
     t.string   "postcode"
     t.string   "state"
@@ -274,6 +275,11 @@ ActiveRecord::Schema.define(version: 20140902094339) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "business_name"
+    t.string   "email"
+    t.string   "website"
+    t.string   "address2"
+    t.string   "contact"
   end
 
   create_table "refinery_page_part_translations", force: true do |t|

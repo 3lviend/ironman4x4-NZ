@@ -10,6 +10,7 @@ module Refinery
 
       def new
         @enquiry = Enquiry.new
+        @warehouses = Warehouse.all.order('country asc, position ASC').group_by(&:country)
       end
 
       def create

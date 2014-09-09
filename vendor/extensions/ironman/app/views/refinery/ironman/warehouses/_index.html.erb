@@ -1,0 +1,84 @@
+<script type="text/javascript">
+  $(document).on('ready page:load', function() {
+    var warehouses = <%=raw Hash[*Refinery::Ironman::Warehouse.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
+    var handleAccordion = function(event, ui) {
+      $('li:not(.map-added)', ui.newPanel).each(function() {
+        var handler = Gmaps.build('Google');
+        var warehouseId = $(this).data('warehouse');
+        var li = $(this);
+
+        handler.buildMap({
+          provider: {
+            disableDefaultUI: true
+            // pass in other Google Maps API options here
+          },
+          internal: {
+            id: ('map' + warehouseId)
+          }
+        }, function(){
+          var warehouse = warehouses[warehouseId];
+          if (warehouse.latitude != null && warehouse.longitude != null) {
+            var m = handler.addMarkers([{lat: warehouse.latitude, lng: warehouse.longitude}]);
+            handler.bounds.extendWith(m);
+            handler.fitMapToBounds();
+            handler.getMap().setZoom(16);
+          }
+          li.addClass('map-added');
+        });
+      });
+    };
+
+    $('#warehouses').accordion({
+      heightStyle: 'content',
+      activate: handleAccordion,
+      collapsible: true,
+      active: false
+    });
+  });
+</script>
+
+<div id="warehouses">
+  <% @warehouses.each do |country, warehouses| %>
+    <h3><%= country %></h3>
+    <div>
+      <ul>
+      <% warehouses.each do |warehouse| %>
+        <li class="row" data-warehouse="<%= warehouse.id %>">
+          <div class="col-sm-8">
+            <div id="<%= "map#{warehouse.id}" %>" class="map"></div>
+          </div>
+          <div class="col-sm-4">
+            <h4><%= warehouse.name %></h4>
+            <% if warehouse.business_name.present? %>
+            <div class="business-name"><%= warehouse.business_name %></div>
+            <% end %>
+            <div class="address"><%= warehouse.address1 %></div>
+            <% if warehouse.address2.present? %>
+            <div class="address"><%= warehouse.address2 %></div>
+            <% end %>
+            <div class="address"><%= [warehouse.suburb, warehouse.state, warehouse.postcode].reject(&:blank?).join(', ') %></div>
+            <% if warehouse.country.present? %>
+            <div class="country"><%= warehouse.country %></div>
+            <% end %>
+            <% if warehouse.contact.present? %>
+            <div class="contact"><%= warehouse.contact %></div>
+            <% end %>
+            <% if warehouse.phone.present? %>
+            <div class="phone"><%= warehouse.phone %></div>
+            <% end %>
+            <% if warehouse.fax.present? %>
+            <div class="fax"><%= warehouse.fax %></div>
+            <% end %>
+            <% if warehouse.email.present? %>
+            <div class="email"><%= mail_to warehouse.email %></div>
+            <% end %>
+            <% if warehouse.website.present? %>
+            <div class="website"><%= link_to warehouse.website %></div>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>

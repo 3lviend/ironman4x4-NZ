@@ -419,7 +419,8 @@ en:
         products_link: Products Link
       refinery/ironman/warehouse:
         name: Name
-        address: Address
+        address1: Address Line 1
+        address2: Address Line 2
         suburb: Suburb
         postcode: Postcode
         state: State
@@ -445,7 +446,8 @@ en:
       refinery/ironman/stockist:
         name: Name
         store_type: Store Type
-        address: Address
+        address1: Address Line 1
+        address2: Address Line 2
         suburb: Suburb
         postcode: Postcode
         state: State

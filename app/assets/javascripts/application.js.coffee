@@ -24,6 +24,7 @@
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider
+#= require jquery.ui.accordion
 #= require glasscase/jquery.glasscase
 
 $(document).on 'page:load ready', ->

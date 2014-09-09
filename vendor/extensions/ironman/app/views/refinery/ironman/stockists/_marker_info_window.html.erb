@@ -5,7 +5,10 @@
 <% end %>
 <div class="title"><strong><%= object.name %></strong></div>
 <div class="details">
-  <%= object.address %><br />
+  <%= object.address1 %><br />
+  <% if object.address2.present? %>
+  <%= object.address2 %><br />
+  <% end %>
   <%= [object.suburb, object.state, object.postcode].reject(&:blank?).join(', ') %><br />
   <%= object.country %><br />
   <% if object.phone.present? %>

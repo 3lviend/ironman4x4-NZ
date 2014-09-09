@@ -9,7 +9,7 @@ module Refinery
 
       belongs_to :logo_image, :class_name => '::Refinery::Image'
 
-      validates_presence_of :name, :address, :suburb, :postcode, :state, :country
+      validates_presence_of :name, :address1, :suburb, :postcode, :state, :country
       validates_uniqueness_of :name
 
       scope :active, -> { where(visible: true) }
@@ -25,7 +25,7 @@ module Refinery
       end
 
       def full_street_address
-        [address, suburb, state, postcode, country].reject(&:blank?).join(', ')
+        [address1, address2, suburb, state, postcode, country].reject(&:blank?).join(', ')
       end
     end
   end
