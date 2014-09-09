@@ -13,8 +13,12 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  # Don't care if the mailer can't send.
   if config.respond_to?(:action_mailer)
+    # for use with mailcatcher
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+
+    # Don't care if the mailer can't send.
     config.action_mailer.raise_delivery_errors = false
   end
 
