@@ -26,7 +26,14 @@ module Refinery
           end
 
           if @category.leaf?
-            @products = category.products
+            if cookies[:fit_my_4x4].present?
+              @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+              vehicle_ids = @vehicle_filter.values
+              @products = category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
+            else
+              @products = category.products
+            end
+
             render 'refinery/ironman/products/index'
           end
         else
