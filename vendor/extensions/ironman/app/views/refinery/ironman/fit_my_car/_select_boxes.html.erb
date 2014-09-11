@@ -1,0 +1,35 @@
+<%
+  vehicle_make = nil
+  vehicle_model = nil
+  vehicle_series = nil
+
+  vehicle_make = Refinery::Ironman::Vehicle.find(params[:vehicle_1st_id]) if params[:vehicle_1st_id].present?
+  vehicle_model = Refinery::Ironman::Vehicle.find(params[:vehicle_2nd_id]) if params[:vehicle_2nd_id].present?
+  vehicle_series = Refinery::Ironman::Vehicle.find(params[:vehicle_3rd_id]) if params[:vehicle_3rd_id].present?
+%>
+
+<div class="control first col-sm-3 col-md-2">
+  <%= select_tag :vehicle_1st_id, options_from_collection_for_select(Refinery::Ironman::Vehicle.roots, 'id', 'name', (vehicle_make.id if vehicle_make.present?)), :prompt => t('.vehicle_make.prompt'), :class => 'form-control' %>
+</div>
+
+<div class="control col-sm-3 col-md-2">
+  <%= select_tag :vehicle_2nd_id, options_from_collection_for_select(if vehicle_make.present? then vehicle_make.children else [] end, 'id', 'name', (vehicle_model.id if vehicle_model.present?)),
+                 'data-option-dependent' => true,
+                 'data-option-observed' => 'vehicle_1st_id',
+                 'data-option-url' => '/vehicles/:vehicle_1st_id:/children.json',
+                 'data-option-key-method' => :id,
+                 'data-option-value-method' => :name,
+                 :prompt => t('.vehicle_model.prompt'),
+                 :class => 'form-control' %>
+</div>
+
+<div class="control last col-sm-3 col-md-2">
+  <%= select_tag :vehicle_3rd_id, options_from_collection_for_select(if vehicle_model.present? then vehicle_model.children else [] end, 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
+                 'data-option-dependent' => true,
+                 'data-option-observed' => 'vehicle_2nd_id',
+                 'data-option-url' => '/vehicles/:vehicle_2nd_id:/children.json',
+                 'data-option-key-method' => :id,
+                 'data-option-value-method' => :name,
+                 :prompt => t('.vehicle_series.prompt'),
+                 :class => 'form-control' %>
+</div>

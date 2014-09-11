@@ -231,6 +231,14 @@ en:
           other: Other Warehouses
       config:
         from_name: ! '%{name} [%{site_name}]'
+      fit_my_car:
+        select_boxes:
+          vehicle_make:
+            prompt: Select Make
+          vehicle_model:
+            prompt: Select Model
+          vehicle_series:
+            prompt: Select Series
       enquiries:
         new:
           send: Submit Enquiry
@@ -247,11 +255,6 @@ en:
           international_call: International Call +61 (0) 3 9532 1111
           vehicle_make:
             label: Vehicle Details
-            prompt: Select Make
-          vehicle_model:
-            prompt: Select Model
-          vehicle_series:
-            prompt: Select Series
         show:
           other: Other Enquiries
       stockists:

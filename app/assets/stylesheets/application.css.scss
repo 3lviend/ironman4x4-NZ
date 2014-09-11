@@ -160,6 +160,13 @@ hr.double {
   }
 }
 
+#body {
+  .inner {
+    margin-top: $grid-gutter-width/2;
+    margin-bottom: $grid-gutter-width/2;
+  }
+}
+
 #site_bar_content {
   @media (max-width: $screen-xs-max) {
     width: 100% ! important;
@@ -334,7 +341,7 @@ hr.double {
   .jssora02rdn { background-position: -63px -33px; }
 }
 
-#layout-fit-my-car {
+#layout-fit-my-4x4 {
   min-height: 88px;
   background-color: $dark-grey;
   background-image: image-url('bg_fit_my_4x4.jpg');
@@ -343,107 +350,42 @@ hr.double {
   background-size: cover;
   color: $white;
 
-  .icon {
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 23px;
-  }
-
   .vehicle-selector {
     margin-top: 24px;
-    display: inline-block;
-    float: right;
 
-    .selector {
+    .icon {
       display: inline-block;
-      height: 41px;
-      box-sizing: border-box;
-      background-color: $white;
-      border: 1px solid $black;
       vertical-align: top;
+    }
 
-      &.go {
-        background-color: $green;
-        color: $white;
-        border-radius: 4px;
-        text-transform: uppercase;
-      }
+    select.form-control {
+      margin-top: 5px;
+      display: block ! important;
     }
 
     @media (max-width: $screen-xs-max) {
-      display: block;
-      float: none;
-
-      .selector, .go {
-        width: 100%;
-        display: block;
-        margin-bottom: $grid-gutter-width / 4;
+      .control, .icon {
+        padding-left: 0;
+        padding-right: 0;
       }
     }
 
-    /* Small devices (tablets, 768px and up) */
     @media (min-width: $screen-sm-min) {
-      .make {
-        width: 100px;
-        margin-right: 16px;
-      }
-
-      .model {
-        width: 181px;
-        margin-right: 16px;
-      }
-
-      .series {
-        width: 104px;
-        margin-right: 16px;
-      }
-
-      .go {
-        width: 54px;
+      .control, .icon {
+        padding-left: 0;
       }
     }
 
-    /* Medium devices (desktops, 992px and up) */
-    @media (min-width: $screen-md-min) {
-      .make {
-        width: 190px;
-        margin-right: 16px;
-      }
-
-      .model {
-        width: 301px;
-        margin-right: 16px;
-      }
-
-      .series {
-        width: 104px;
-        margin-right: 16px;
-      }
+    .button {
+      padding-left: 0;
+      padding-right: 0;
 
       .go {
-        width: 54px;
-      }
-    }
-
-    /* Large devices (large desktops, 1200px and up) */
-    @media (min-width: $screen-lg-min) {
-      .make {
-        width: 207px;
-        margin-right: 16px;
-      }
-
-      .model {
-        width: 371px;
-        margin-right: 16px;
-      }
-
-      .series {
-        width: 104px;
-        margin-right: 16px;
-      }
-
-      .go {
-        width: 54px;
+        background-color: $green;
+        color: $white;
+        //border-radius: 4px;
+        text-transform: uppercase;
+        margin-top: 5px;
       }
     }
   }

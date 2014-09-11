@@ -158,5 +158,23 @@ Refinery::I18n.frontend_locales.each do |lang|
         :position => 0
       })
     end
+
+
+    fit_my_4x4_page = Refinery::Page.where(:link_url => '/fit-my-4x4').first
+
+    unless fit_my_4x4_page
+      fit_my_4x4_page = ::Refinery::Page.create({
+        :title => "Fit My 4x4",
+        :link_url => "/fit-my-4x4",
+        :menu_match => "^/(fit-my-4x4).*$",
+        :deletable => false
+      })
+      fit_my_4x4_page.parts.create({
+        :title => "Body",
+        :body => "",
+        :position => 0
+      })
+    end
+
   end
 end

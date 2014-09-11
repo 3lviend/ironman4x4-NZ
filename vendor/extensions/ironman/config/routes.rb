@@ -28,6 +28,8 @@ Refinery::Core::Engine.routes.draw do
   get 'fitting-instructions/:category_id/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_subcategory_products
   get 'fitting-instructions/:category_id/:subcategory_id/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_sub_subcategory_products
 
+  get 'fit-my-4x4' => 'ironman/fit_my_car#index', as: :fit_my_4x4
+
 
   # Frontend routes
   namespace :ironman, :path => '' do

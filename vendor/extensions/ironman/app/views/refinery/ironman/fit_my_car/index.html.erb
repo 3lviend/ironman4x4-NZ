@@ -1,0 +1,13 @@
+<% content_for :body do %>
+  <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? and @page.present? %>
+
+  <div class="fit_my_4x4">
+    <div class="form-group clearfix vehicle-selector">
+      <%= render 'refinery/ironman/fit_my_car/select_boxes' %>
+    </div>
+  </div>
+
+<% end %>
+
+<%= render "/refinery/content_page" %>
+
