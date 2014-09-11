@@ -35,6 +35,7 @@ module Refinery
 
           redirect_to refinery.thank_you_ironman_enquiries_path
         else
+          @warehouses = Warehouse.all.order('country asc, position ASC').group_by(&:country)
           render :action => 'new'
         end
       end
