@@ -10,8 +10,12 @@
 <% cache(@this_category) do %>
 <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
 
-<% if @products.present? and @products.empty? %>
+<% if not @products.present? %>
+  <% if @vehicle_filter.present? %>
+  <p><%= t('.no_products_found_with_filter_applied') %></p>
+  <% else %>
   <p><%= t('.no_products_found') %></p>
+  <% end %>
 <% end %>
 
 <% if @products.present? %>

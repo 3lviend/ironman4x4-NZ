@@ -232,6 +232,7 @@ en:
       config:
         from_name: ! '%{name} [%{site_name}]'
       fit_my_car:
+        save_and_view: Save and View Products
         select_boxes:
           vehicle_make:
             prompt: Select Make
@@ -379,6 +380,7 @@ en:
             add_to_wishlist: Add to Wishlist
           inc_gst: ! ' (RRP inc GST)'
           no_products_found: No products were found
+          no_products_found_with_filter_applied: No products were found for your vehicle
           default_product_description: Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum
       enquiry_mailer:
         notification:

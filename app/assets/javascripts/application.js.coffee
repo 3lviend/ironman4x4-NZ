@@ -13,6 +13,7 @@
 #= require modernizr/modernizr.custom.min
 #= require jquery
 #= require jquery_ujs
+#= require jquery.cookie
 #= require turbolinks
 # require bootstrap
 #= require utils
@@ -21,6 +22,7 @@
 #= require categories
 #= require events
 #= require enquiries
+#= require fit_my_4x4
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider

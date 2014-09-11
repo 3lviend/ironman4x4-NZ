@@ -13,7 +13,14 @@ module Refinery
           # TODO: is there a way to cache this, so we're not creating multiple db
           # calls here?
           @this_category = Category.friendly.find(params[:id])
-          @products = @this_category.products
+
+          if cookies[:fit_my_4x4].present?
+            @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+            vehicle_ids = @vehicle_filter.values
+            @products = @this_category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
+          else
+            @products = @this_category.products
+          end
 
           if @this_category.depth == 0
             @category = @this_category
