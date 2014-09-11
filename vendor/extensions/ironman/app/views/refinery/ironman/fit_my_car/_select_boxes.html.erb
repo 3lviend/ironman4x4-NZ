@@ -3,9 +3,21 @@
   vehicle_model = nil
   vehicle_series = nil
 
-  vehicle_make = Refinery::Ironman::Vehicle.find(params[:vehicle_1st_id]) if params[:vehicle_1st_id].present?
-  vehicle_model = Refinery::Ironman::Vehicle.find(params[:vehicle_2nd_id]) if params[:vehicle_2nd_id].present?
-  vehicle_series = Refinery::Ironman::Vehicle.find(params[:vehicle_3rd_id]) if params[:vehicle_3rd_id].present?
+  if params[:vehicle_1st_id].present? or params[:vehicle_2nd_id].present? or params[:vehicle_3rd_id].present?
+    make_id = params[:vehicle_1st_id]
+    model_id = params[:vehicle_2nd_id]
+    series_id = params[:vehicle_3rd_id]
+
+  elsif cookies[:fit_my_4x4].present?
+    vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+    make_id = vehicle_filter[:vehicle_make_id]
+    model_id = vehicle_filter[:vehicle_model_id]
+    series_id = vehicle_filter[:vehicle_series_id]
+  end
+
+  vehicle_make = Refinery::Ironman::Vehicle.find(make_id) if make_id.present? and make_id != 0
+  vehicle_model = Refinery::Ironman::Vehicle.find(model_id) if model_id.present? and model_id != 0
+  vehicle_series = Refinery::Ironman::Vehicle.find(series_id) if series_id.present? and series_id != 0
 %>
 
 <div class="control first col-sm-3 col-md-2">
