@@ -8,4 +8,8 @@ $(document).on 'page:load ready', ->
       vehicle_series_id: Number $('#vehicle_3rd_id').val()
     }
 
+    if data.vehicle_make_id is 0 or data.vehicle_model_id is 0 or data.vehicle_series_id is 0
+      alert('<%= I18n.t('layouts.fit_my_4x4.warning') %>')
+      return
+
     $.cookie 'fit_my_4x4', JSON.stringify(data), {expires:7, path: '/'}

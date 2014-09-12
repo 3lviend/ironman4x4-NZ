@@ -51,6 +51,7 @@ en:
         stockists: 'Find Store'
     fit_my_4x4:
       go: 'Go'
+      warning: 'You must select a value for make, model and series'
     footer_links:
       support:
         description: 'Support'
