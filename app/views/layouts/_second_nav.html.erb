@@ -7,6 +7,8 @@
       <% end %>
 
       <div class="clearfix">
+
+        <% cache(:second_nav_links, expires_in: 1.hour) do %>
         <ul class="sections">
           <li>
             <%= link_to refinery.ironman_products_path do %>
@@ -43,6 +45,7 @@
             <% end %>
           </li>
         </ul>
+        <% end %>
 
         <%= render 'refinery/ironman/stockists/search_form' %>
       </div>

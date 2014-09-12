@@ -15,6 +15,13 @@
     series_id = vehicle_filter[:vehicle_series_id]
   end
 
+  cache_key = [cache_key_for_vehicles]
+
+  if vehicle_filter.present?
+    cache_key.push vehicle_filter
+  end
+
+  cache(cache_key) do
   vehicle_make = Refinery::Ironman::Vehicle.find(make_id) if make_id.present? and make_id != 0
   vehicle_model = Refinery::Ironman::Vehicle.find(model_id) if model_id.present? and model_id != 0
   vehicle_series = Refinery::Ironman::Vehicle.find(series_id) if series_id.present? and series_id != 0
@@ -45,3 +52,4 @@
                  :prompt => t('.vehicle_series.prompt'),
                  :class => 'form-control' %>
 </div>
+<% end %>

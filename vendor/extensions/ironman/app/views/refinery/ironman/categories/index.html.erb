@@ -12,7 +12,11 @@
 <% if @this_category.present? %>
   <% cache_key = [@category, @subcategory, @sub_subcategory] %>
 <% else %>
-  <% cache_key = cache_key_for_categories %>
+  <% cache_key = [cache_key_for_categories] %>
+<% end %>
+
+<% if @vehicle_filter.present? %>
+  <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
 <% cache(cache_key) do %>

@@ -6,7 +6,13 @@
 <% content_for :body do %>
 <% breadcrumb :category_info, @category %>
 
-<% cache(@category) do %>
+<% cache_key = [@category] %>
+
+<% if @vehicle_filter.present? %>
+  <% cache_key = cache_key.push @vehicle_filter %>
+<% end %>
+
+<% cache(cache_key) do %>
 
 <% if @category.depth == 0 %>
   <% if @category.leaf? %>

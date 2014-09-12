@@ -23,6 +23,7 @@
           <% end %>
         <% end %>
         <%
+          cache(:first_nav_links, expires_in: 1.hour) do
           begin
             about_page = ::Refinery::Page.friendly.find('about')
           rescue ActiveRecord::RecordNotFound
@@ -39,6 +40,7 @@
           <li><%= link_to t('.menu.media'), refinery.ironman_media_releases_path %></li>
           <li><%= link_to t('.menu.contact'), refinery.ironman_new_enquiry_path %></li>
         </ul>
+        <% end %>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </div>

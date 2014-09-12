@@ -1,4 +1,6 @@
 <%
+cache(:footer_links, expires_in: 1.hour) do
+
   begin
     tech_support_page = ::Refinery::Page.friendly.find('technical-support')
   rescue ActiveRecord::RecordNotFound
@@ -94,3 +96,4 @@
       </div>
     </div>
   </div>
+<% end %>

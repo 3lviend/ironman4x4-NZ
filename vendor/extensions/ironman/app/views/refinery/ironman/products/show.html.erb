@@ -1,5 +1,6 @@
 <% @layout_fit_my_4x4 = 'below' %>
 
+<% cache(@product) do %>
 <div id="page-product">
   <div class="container clearfix">
     <div class="col-sm-7 photos">
@@ -85,3 +86,4 @@
     <h3>Related Products</h3>
   </div>
 </div>
+<% end %>
