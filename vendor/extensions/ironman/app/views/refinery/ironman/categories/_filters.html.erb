@@ -1,7 +1,15 @@
+<%
+  if @vehicle_filter.present?
+    categories = Refinery::Ironman::Category.roots.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+  else
+    categories = Refinery::Ironman::Category.roots
+  end
+%>
+
 <%= form_tag refinery.ironman_products_path, {:method => :get, :class => 'form-inline product-category-filters'} do %>
   <div class="form-group">
     <%= label_tag :category_1st_id, t('.category.label') %>
-    <%= select_tag :category_1st_id, options_from_collection_for_select(Refinery::Ironman::Category.roots, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'form-control input-sm' %>
+    <%= select_tag :category_1st_id, options_from_collection_for_select(categories, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'form-control input-sm' %>
   </div>
 
   <div class="form-group">
