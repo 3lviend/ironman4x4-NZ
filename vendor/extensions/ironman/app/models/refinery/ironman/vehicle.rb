@@ -1,7 +1,7 @@
 module Refinery
   module Ironman
     class Vehicle < Refinery::Core::BaseModel
-      acts_as_tree name_column: 'name', order: 'sort_order', touch: true
+      acts_as_tree name_column: 'name', order: 'refinery_ironman_vehicles.sort_order', touch: true
 
       validates_presence_of :name, :visible
       validates_uniqueness_of :name, scope: :parent_id

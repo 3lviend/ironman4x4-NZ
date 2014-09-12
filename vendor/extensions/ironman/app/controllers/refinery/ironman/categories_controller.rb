@@ -6,13 +6,16 @@ module Refinery
       before_filter :find_page
 
       def children
-        @categories = Category.friendly.find(params[:id]).children
+        @categories = filter_by_vehicle Category.friendly.find(params[:id]).children
       end
 
       def index
+        if cookies[:fit_my_4x4].present?
+          @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+        end
+
         if params[:id].present?
           @this_category = Category.friendly.find(params[:id])
-          @categories = Category.friendly.find(params[:id]).children
 
           if @this_category.depth == 0
             @category = @this_category
@@ -26,8 +29,7 @@ module Refinery
           end
 
           if @category.leaf?
-            if cookies[:fit_my_4x4].present?
-              @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+            if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
               @products = category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
             else
@@ -35,9 +37,11 @@ module Refinery
             end
 
             render 'refinery/ironman/products/index'
+          else
+            @categories = filter_by_vehicle Category.friendly.find(params[:id]).children
           end
         else
-          @categories = Category.roots
+          @categories = filter_by_vehicle Category.roots
         end
 
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -60,6 +64,14 @@ module Refinery
 
       def find_page
         @page = ::Refinery::Page.where(:link_url => "/categories").first
+      end
+
+      def filter_by_vehicle(categories)
+        if @vehicle_filter.present?
+          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+        else
+          categories
+        end
       end
 
     end

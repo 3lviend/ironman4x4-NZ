@@ -6,18 +6,25 @@ module Refinery
       before_filter :find_page
 
       def index
+        if cookies[:fit_my_4x4].present?
+          @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+        end
+
         if params[:id].nil?
-          @categories = Category.roots
+          if @vehicle_filter.present?
+            @categories = Category.roots.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+          else
+            @categories = Category.roots
+          end
+
           render 'refinery/ironman/categories/index'
         else
           # TODO: is there a way to cache this, so we're not creating multiple db
           # calls here?
           @this_category = Category.friendly.find(params[:id])
 
-          if cookies[:fit_my_4x4].present?
-            @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
-            vehicle_ids = @vehicle_filter.values
-            @products = @this_category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
+          if @vehicle_filter.present?
+            @products = @this_category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
           else
             @products = @this_category.products
           end
