@@ -20,6 +20,7 @@
  *= require stockists
  *= require enquiries
  *= require warehouses
+ *= require fit_my_4x4
  *= require glasscase/glasscase
  */
 
@@ -41,6 +42,10 @@ h1, h2, h3, h4, h5, h5 {
   color: $green;
   font-family: $font-family-extra-bold;
   text-transform: uppercase;
+}
+
+strong {
+  font-family: $font-family-bold;
 }
 
 label {

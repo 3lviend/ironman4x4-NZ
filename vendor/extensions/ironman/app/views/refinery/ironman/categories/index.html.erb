@@ -2,13 +2,13 @@
 
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
 
-<% content_for :body do %>
 <% if @this_category.present? %>
   <% breadcrumb :category, @this_category %>
 <% else %>
   <% breadcrumb :categories %>
 <% end %>
 
+<% content_for :body do %>
 <% if @this_category.present? %>
   <% cache_key = [@category, @subcategory, @sub_subcategory] %>
 <% else %>
@@ -20,6 +20,7 @@
 <% end %>
 
 <% cache(cache_key) do %>
+<%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
 <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
 
 <ul id="page-product-categories" class="clearfix">

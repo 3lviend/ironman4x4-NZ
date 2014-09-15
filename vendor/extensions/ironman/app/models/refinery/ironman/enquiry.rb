@@ -33,7 +33,7 @@ module Refinery
 
       def vehicle_name_full
         if vehicle.present?
-          vehicle.self_and_ancestors.reverse.map {|v| v.name}.join(' ')
+          vehicle.name_full
         end
       end
 

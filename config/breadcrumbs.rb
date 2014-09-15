@@ -82,6 +82,15 @@ crumb :product do |product|
   parent :category, product.categories.first
 end
 
+crumb :fit_my_4x4 do
+  link t('breadcrumbs.fit_my_4x4'), refinery.fit_my_4x4_path
+end
+
+crumb :fit_my_4x4_results do
+  link t('breadcrumbs.fit_my_4x4_results'), refinery.fit_my_4x4_results_path
+  parent :fit_my_4x4
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

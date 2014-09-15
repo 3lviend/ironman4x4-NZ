@@ -90,3 +90,5 @@ en:
     products: 'Products'
     categories: 'Products'
     category_info: "%{category} Info"
+    fit_my_4x4: 'Fit My 4x4'
+    fit_my_4x4_results: 'Results'

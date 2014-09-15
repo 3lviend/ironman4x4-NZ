@@ -13,3 +13,8 @@ $(document).on 'page:load ready', ->
       return
 
     $.cookie 'fit_my_4x4', JSON.stringify(data), {expires:7, path: '/'}
+    document.location.href = $('form', this).attr 'action'
+
+  $('#vehicle-filter-enabled button.disable').on 'click', (event) ->
+    $.removeCookie 'fit_my_4x4'
+    document.location.reload()

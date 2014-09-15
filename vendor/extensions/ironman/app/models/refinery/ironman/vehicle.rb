@@ -15,6 +15,10 @@ module Refinery
           self.visible = true if self.visible.nil?
         end
       end
+
+      def name_full
+        self_and_ancestors.reverse.map {|v| v.name}.join(' ')
+      end
     end
   end
 end

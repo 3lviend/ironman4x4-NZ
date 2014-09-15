@@ -8,6 +8,16 @@ module Refinery
         present(@page)
       end
 
+      def results
+        if cookies[:fit_my_4x4].present?
+          @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+
+          @products = Refinery::Ironman::Product.all.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+        end
+
+        present(@page)
+      end
+
     protected
 
       def find_page

@@ -1,13 +1,23 @@
+<% breadcrumb :fit_my_4x4 %>
+
 <% content_for :body do %>
-  <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? and @page.present? %>
-
   <div id="fit-my-4x4">
-    <%= form_tag refinery.root_path do %>
-      <div class="form-group clearfix vehicle-selector">
-        <%= render 'refinery/ironman/fit_my_car/select_boxes' %>
+    <div class="row">
+      <div class="hidden-xs col-sm-3 col-lg-2">
+        <%= image_tag 'logo_fit_my_4x4_large.png' %>
+      </div>
+      <div class="col-sm-9 col-lg-10">
+        <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? and @page.present? %>
+      </div>
+    </div>
 
-        <div class="col-sm-1 col-md-1 button">
-          <button type="submit" class="form-control go"><%= t('.save_and_view') %></button>
+    <%= form_tag refinery.fit_my_4x4_results_path, class:'form-horizontal' do %>
+      <div class="form-group clearfix vehicle-selector">
+        <div class="col-sm-3 col-md-3 col-lg-2">
+        </div>
+        <%= render 'refinery/ironman/fit_my_car/select_boxes' %>
+        <div class="col-sm-offset-3 col-md-offset-0 col-sm-4 col-md-3 button">
+          <button type="submit" class="btn btn-primary form-control go"><%= t('.save_and_view') %></button>
         </div>
       </div>
     <% end %>
@@ -16,4 +26,3 @@
 <% end %>
 
 <%= render "/refinery/content_page" %>
-

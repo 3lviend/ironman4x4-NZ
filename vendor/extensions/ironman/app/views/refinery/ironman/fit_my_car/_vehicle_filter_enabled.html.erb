@@ -1,0 +1,7 @@
+<% cache([vehicle_filter]) do %>
+<div id="vehicle-filter-enabled">
+  <h5><%= t('.heading') %></h5>
+  <p><%= raw t('.description1', vehicle: Refinery::Ironman::Vehicle.find(vehicle_filter[:vehicle_series_id]).name_full) %></p>
+  <p><%= raw t('.description2') %></p>
+</div>
+<% end %>

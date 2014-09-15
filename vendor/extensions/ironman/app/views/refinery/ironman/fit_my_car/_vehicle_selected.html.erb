@@ -1,0 +1,8 @@
+<% cache([vehicle_filter]) do %>
+<div id="vehicle-selected">
+  <p class="clearfix">
+    <%= raw t('.description', vehicle: Refinery::Ironman::Vehicle.find(vehicle_filter[:vehicle_series_id]).name_full) %>
+    <%= link_to 'Back to Fit My 4x4', refinery.fit_my_4x4_path, class:'btn btn-info pull-right' %>
+  </p>
+</div>
+<% end %>

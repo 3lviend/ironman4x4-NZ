@@ -1,0 +1,8 @@
+<% breadcrumb :fit_my_4x4_results %>
+
+<% content_for :body do %>
+  <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_selected', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
+  <%= render '/refinery/ironman/products/index' %>
+<% end %>
+
+<%= render '/refinery/content_page' %>

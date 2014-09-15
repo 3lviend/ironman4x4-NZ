@@ -1,0 +1,49 @@
+@import "bootstrap-config";
+
+#vehicle-filter-enabled {
+  background-color: $green;
+  color: $white;
+  padding: 1px $grid-gutter-width/2;
+  margin-bottom: $grid-gutter-width;
+  border: 1px solid darken($green, 5%);
+
+  h5 {
+    color: $white;
+  }
+
+  button.disable {
+    color: $white;
+    text-decoration: underline;
+    border: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 4px;
+
+    &:hover {
+      color: darken($white, 10%);
+    }
+  }
+}
+
+#vehicle-selected {
+  background-color: $green;
+  color: $white;
+  padding: $grid-gutter-width/2;
+  padding-bottom: 5px;
+  margin-bottom: $grid-gutter-width;
+  border: 1px solid darken($green, 5%);
+}
+
+#fit-my-4x4 {
+  @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+    .col-sm-4.button {
+      margin-top: $grid-gutter-width;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    select.form-control {
+      margin-bottom: $grid-gutter-width/2;
+    }
+  }
+}

@@ -7,7 +7,7 @@ module Refinery
 
       def index
         if cookies[:fit_my_4x4].present?
-          @vehicle_filter = JSON.parse(cookies[:fit_my_4x4])
+          @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
         end
 
         if params[:id].nil?

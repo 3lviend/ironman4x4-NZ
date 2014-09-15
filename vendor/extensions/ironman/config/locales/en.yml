@@ -232,7 +232,14 @@ en:
       config:
         from_name: ! '%{name} [%{site_name}]'
       fit_my_car:
-        save_and_view: Save and View Products
+        index:
+          save_and_view: Save & View Products
+        vehicle_selected:
+          description: 'Your Selected Vehicle: <strong>%{vehicle}</strong>'
+        vehicle_filter_enabled:
+          heading: Product Filtering Enabled
+          description1: All categories listed below are compatible with your <strong>%{vehicle}</strong>
+          description2: You can <button class="btn btn-link disable">turn product filtering off</button> at any time to browse our full range of products
         select_boxes:
           vehicle_make:
             prompt: Select Make
