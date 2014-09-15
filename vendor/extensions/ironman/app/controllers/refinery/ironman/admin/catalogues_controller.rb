@@ -6,7 +6,7 @@ module Refinery
         crudify :'refinery/ironman/catalogue',
                 :xhr_paging => true,
                 :searchable => false,
-                :sortable => false
+                :sortable => true
 
       protected
         def catalogue_params
