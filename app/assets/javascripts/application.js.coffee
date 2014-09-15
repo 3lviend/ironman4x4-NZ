@@ -103,6 +103,23 @@ $(document).on 'page:load ready', ->
 
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
 
+    # you can remove responsive code if you don't want the slider scales
+    # while window resizes
+    scaleSlider = ->
+      parentWidth = $('#layout-photo-slideshow').parent().width()
+      if parentWidth
+        jssor_slider1.$SetScaleWidth parentWidth
+      else
+        window.setTimeout scaleSlider, 30
+
+    # Scale slider after document ready
+    scaleSlider()
+
+    if !navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)
+      $(window).bind 'resize', scaleSlider
+
+
+
   $('#glasscase')?.glassCase({
     widthDisplay: 635,
     heightDisplay: 360,
