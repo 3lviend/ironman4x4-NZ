@@ -103,22 +103,48 @@ $(document).on 'page:load ready', ->
 
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
 
-    # you can remove responsive code if you don't want the slider scales
-    # while window resizes
     scaleSlider = ->
-      parentWidth = $('#layout-photo-slideshow').parent().width()
-      if parentWidth
-        jssor_slider1.$SetScaleWidth parentWidth
-      else
-        window.setTimeout scaleSlider, 30
+      _SlideWidth = windowWidth = $(window).width()
+      _SlideHeight = $('#layout-photo-slideshow').height()
 
-    # Scale slider after document ready
-    scaleSlider()
+      $('#layout-photo-slideshow').width(_SlideWidth)
+      $('#layout-photo-slideshow > div').width(_SlideWidth)
+      $('#layout-photo-slideshow div[debug-id=slide-board] > div').width(_SlideWidth)
+      $('#layout-photo-slideshow .slide').each ->
+        image = $('img', this).get(0)
+        _ImageItem = $('img', this).get(0)
 
-    if !navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)
-      $(window).bind 'resize', scaleSlider
+        if _ImageItem and image
+          imageWidth = image.width
+          imageHeight = image.height
+          fillWidth = imageWidth
+          fillHeight = imageHeight
+          if imageWidth and imageHeight and options.$FillMode
+            #0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
+            if options.$FillMode & 3 and (not (options.$FillMode & 4) or imageWidth > _SlideWidth or imageHeight > _SlideHeight)
+              fitHeight = false
+              ratio = _SlideWidth / _SlideHeight * imageHeight / imageWidth
+              if options.$FillMode & 1
+                fitHeight = (ratio > 1)
+              else fitHeight = (ratio < 1)  if options.$FillMode & 2
+              fillWidth = (if fitHeight then imageWidth * _SlideHeight / imageHeight else _SlideWidth)
+              fillHeight = (if fitHeight then _SlideHeight else imageHeight * _SlideWidth / imageWidth)
+            $JssorUtils$.$CssWidth _ImageItem, fillWidth
+            $JssorUtils$.$CssHeight _ImageItem, fillHeight
+            $JssorUtils$.$CssTop _ImageItem, (_SlideHeight - fillHeight) / 2
+            $JssorUtils$.$CssLeft _ImageItem, (_SlideWidth - fillWidth) / 2
+          $JssorUtils$.$CssPosition _ImageItem, "absolute"
 
+          $('div', this).height(_SlideHeight)
+          $('div', this).width(_SlideWidth)
+          $(this).height(_SlideHeight)
+          $(this).width(_SlideWidth)
+      jssor_slider1.$SetScaleWidth _SlideWidth
 
+     unless navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)
+       $(window).bind "resize", scaleSlider
+     else
+       $(window).bind "orientationchange", scaleSlider
 
   $('#glasscase')?.glassCase({
     widthDisplay: 635,

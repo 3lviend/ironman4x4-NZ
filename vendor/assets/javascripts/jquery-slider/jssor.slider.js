@@ -2574,13 +2574,16 @@ new function () {
             });
 
             _ScaleRatio = width / $JssorUtils$.$CssWidth(_ScaleWrapper);
+            _StepLengthX = width
+            _StepLength = width
+            _SlideWidth = width
             $JssorUtils$.$SetStyleScale(_ScaleWrapper, _ScaleRatio);
 
             $JssorUtils$.$CssWidth(elmt, width);
             $JssorUtils$.$CssHeight(elmt, _ScaleRatio * $JssorUtils$.$CssHeight(_ScaleWrapper));
 
             $JssorUtils$.$Each(_Navigators, function (navigator) {
-                navigator.$Relocate();
+                navigator.$Relocate(true);
             });
         };
 
@@ -3153,7 +3156,7 @@ var $JssorBulletNavigator$ = window.$JssorBulletNavigator$ = function (elmt, opt
 
     var _Located;
     self.$Relocate = function (force) {
-        if (!_Located || _Options.$Scale == false) {
+        if (!_Located || _Options.$Scale == false || force) {
             if (_Options.$AutoCenter & 1) {
                 $JssorUtils$.$CssLeft(elmt, ($JssorUtils$.$CssWidth($JssorUtils$.$GetParentNode(elmt)) - _Width) / 2);
             }
@@ -3325,7 +3328,7 @@ var $JssorArrowNavigator$ = window.$JssorArrowNavigator$ = function (arrowLeft, 
 
     var _Located;
     self.$Relocate = function (force) {
-        if (!_Located || _Options.$Scale == false) {
+        if (!_Located || _Options.$Scale == false || force) {
 
             var containerWidth = $JssorUtils$.$CssWidth(_ParentNode);
             var containerHeight = $JssorUtils$.$CssHeight(_ParentNode);
