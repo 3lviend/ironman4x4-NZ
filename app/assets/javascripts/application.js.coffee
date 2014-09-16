@@ -43,7 +43,7 @@ $(document).on 'page:load ready', ->
     regexp = /:[0-9a-zA-Z_]+:/g
     observer = $('select#' + observer_dom_id)
     observed = $('#' + observed_dom_id)
-    observer_label = $('label[for=' + observer_dom_id)
+    observer_label = $('label[for=' + observer_dom_id + ']')
 
     if (not observer.val() and observed.size() > 1) or observer.find('option').not('[value=""]').length == 0
       observer.attr 'disabled', true
