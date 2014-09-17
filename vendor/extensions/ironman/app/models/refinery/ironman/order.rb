@@ -18,6 +18,28 @@ module Refinery
         # generate order_no
       end
 
+      after_initialize do
+        if self.new_record?
+          self.total_amount = 0 if self.total_amount.nil?
+          self.tax_amount = 0 if self.tax_amount.nil?
+        end
+
+        calc_total_amount
+      end
+
+      def calc_total_amount
+        total = 0
+
+        if lines.present?
+          lines.each do |line|
+            total += (line.net_amount + line.tax_amount)
+          end
+        end
+
+        self.total_amount = total
+        self.tax_amount = total * 0.1
+      end
+
     end
   end
 end

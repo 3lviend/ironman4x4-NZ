@@ -6,23 +6,23 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab">Review wishlist</a></li>
-    <li><a href="#wishlist-details" role="tab" data-toggle="tab">Customer details</a></li>
-    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab">Select stockist</a></li>
-    <li><a href="#wishlist-submission" role="tab" data-toggle="tab">Submission review</a></li>
+    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><%= t('.tabs.review') %></a></li>
+    <li><a href="#wishlist-details" role="tab" data-toggle="tab"><%= t('.tabs.customer') %></a></li>
+    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab"><%= t('.tabs.stockist') %></a></li>
+    <li><a href="#wishlist-submission" role="tab" data-toggle="tab"><%= t('.tabs.submission') %></a></li>
   </ul>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div class="tab-pane active" id="wishlist-review">
-      <p class="notes">Fdasdgta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus. Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam.</p>
+      <p class="notes"><%= t('.notes') %></p>
 
-      <div class="row header">
-        <div class="col col-xs-4 col-sm-8 product image">Product</div>
-        <div class="col col-xs-2 col-sm-1 rrp">RRP$</div>
-        <div class="col col-xs-2 col-sm-1 qty">Qty</div>
-        <div class="col col-xs-2 col-sm-1 subtotal">Subtotal</div>
-        <div class="col col-xs-2 col-sm-1 remove">Remove</div>
+      <div class="row header border">
+        <div class="col col-xs-4 col-sm-8 product image"><%= t('.items.headers.product') %></div>
+        <div class="col col-xs-2 col-sm-1 rrp"><%= t('.items.headers.rrp') %></div>
+        <div class="col col-xs-2 col-sm-1 qty"><%= t('.items.headers.qty') %></div>
+        <div class="col col-xs-2 col-sm-1 subtotal"><%= t('.items.headers.subtotal') %></div>
+        <div class="col col-xs-2 col-sm-1 remove"><%= t('.items.headers.remove') %></div>
       </div>
 
       <% @order.lines.each do |line, i| %>
@@ -41,13 +41,30 @@
       </div>
       <% end %>
 
-      <div class="clearfix">
-        <%= submit_tag 'Update Wishlist', class:'btn btn-info pull-right' %>
+      <div class="row update border">
+        <div class="price-note col col-xs-8 col-sm-10"><%= t('.price_note') %></div>
+        <div class="col col-xs-4 col-sm-2 update-btn">
+          <%= submit_tag t('.buttons.update_wishlist'), class:'btn btn-info btn-block' %>
+        </div>
       </div>
 
-      <div class="row">
-        <div class=""></div>
+      <div class="row total">
+        <div class="col col-xs-offset-4 col-sm-offset-8 col-xs-4 col-sm-2 title">
+          <%= t('.items.total.title') %>
+        </div>
+        <div class="col col-xs-4 col-sm-2 value">
+          <div class="price"><%= number_to_currency @order.total_amount %></div>
+          <div class="comment"><%= t('.items.total.comment') %></div>
+        </div>
       </div>
+
+      <div class="row update next border-top">
+        <div class="col col-xs-8 col-sm-10"></div>
+        <div class="col col-xs-4 col-sm-2 next-btn">
+          <%= submit_tag t('.buttons.next'), class:'btn btn-primary btn-block' %>
+        </div>
+      </div>
+
     </div>
     <div class="tab-pane" id="wishlist-details">
     </div>
