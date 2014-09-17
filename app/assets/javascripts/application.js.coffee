@@ -16,6 +16,7 @@
 #= require jquery.cookie
 #= require turbolinks
 # require bootstrap
+#= require tab
 #= require utils
 #= require underscore
 #= require gmaps/google
@@ -23,6 +24,7 @@
 #= require events
 #= require enquiries
 #= require fit_my_4x4
+#= require products
 #= require jquery-slider/jssor.core
 #= require jquery-slider/jssor.utils
 #= require jquery-slider/jssor.slider

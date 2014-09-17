@@ -57,7 +57,7 @@
             <%= link_to t('.buttons.view_product'), url, class: 'btn btn-primary btn-block' %>
           </div>
           <div class="add-to-wishlist col-sm-6">
-            <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary btn-block' %>
+            <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary btn-block btn-add-to-wishlist', :'data-product-id' => product.id %>
           </div>
         </div>
       </div>

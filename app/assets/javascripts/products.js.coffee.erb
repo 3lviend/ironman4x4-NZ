@@ -1,0 +1,30 @@
+$(document).on 'page:load ready', ->
+  addedToWishlist = '<%= I18n.t('refinery.ironman.products.index.buttons.added_to_wishlist') %>';
+  getItemsFromWishlist = ->
+    wishlist = $.cookie('wishlist')
+    w = if wishlist? then wishlist.split(',') else []
+    items = {}
+    _.each w, (item) ->
+      a = item.split '|'
+      items[a[0]] = Number a[1]
+    items
+
+  saveItemsToWishlist = (items) ->
+    a = _.map items, (quantity, productId) ->
+      productId + '|' + quantity
+    b = a.join ','
+    $.cookie 'wishlist', b, {expires:7, path: '/'}
+
+  addItemToWishlist = (productId, quantity = 1) ->
+    items = getItemsFromWishlist()
+    items[productId] = (items[productId] ? 0) + quantity
+    saveItemsToWishlist items
+
+  $('#page-product-list .btn-add-to-wishlist').on 'click', ->
+    addItemToWishlist $(@).data('product-id')
+    $(@).text(addedToWishlist).addClass 'disabled added'
+    document.location.reload true
+
+  items = getItemsFromWishlist()
+  _.each items, (quantity, productId) ->
+    $("#page-product-list .btn-add-to-wishlist[data-product-id=#{productId}]").text(addedToWishlist).addClass 'disabled'

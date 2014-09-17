@@ -14,6 +14,10 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      before_save do
+        # generate order_no
+      end
+
     end
   end
 end

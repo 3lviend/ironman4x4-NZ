@@ -1,0 +1,63 @@
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
+
+<% content_for :body do %>
+
+<div id="wishlist">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab">Review wishlist</a></li>
+    <li><a href="#wishlist-details" role="tab" data-toggle="tab">Customer details</a></li>
+    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab">Select stockist</a></li>
+    <li><a href="#wishlist-submission" role="tab" data-toggle="tab">Submission review</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="wishlist-review">
+      <p class="notes">Fdasdgta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus. Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam.</p>
+
+      <div class="row header">
+        <div class="col col-xs-4 col-sm-8 product image">Product</div>
+        <div class="col col-xs-2 col-sm-1 rrp">RRP$</div>
+        <div class="col col-xs-2 col-sm-1 qty">Qty</div>
+        <div class="col col-xs-2 col-sm-1 subtotal">Subtotal</div>
+        <div class="col col-xs-2 col-sm-1 remove">Remove</div>
+      </div>
+
+      <% @order.lines.each do |line, i| %>
+      <div class="row item">
+        <div class="col-xs-hidden col-sm-3 col image"><!--
+          --><div class="photo" style="background-image:url('<%= if line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
+        --></div>
+        <div class="col-xs-4 col-sm-5 col product">
+          <div class="name"><%= link_to line.product.name, refinery.ironman_product_path(line.product) %></div>
+          <div class="sku"><%= line.product.product_no %></div>
+        </div>
+        <div class="col-xs-2 col-sm-1 col rrp"><%= number_to_currency line.product.price || 0 %></div>
+        <div class="col-xs-2 col-sm-1 col qty"><%= text_field_tag "lines_attributes[#{i}][quantity]", line.quantity, class: 'form-control' %></div>
+        <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
+        <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove"></button></div>
+      </div>
+      <% end %>
+
+      <div class="clearfix">
+        <%= submit_tag 'Update Wishlist', class:'btn btn-info pull-right' %>
+      </div>
+
+      <div class="row">
+        <div class=""></div>
+      </div>
+    </div>
+    <div class="tab-pane" id="wishlist-details">
+    </div>
+    <div class="tab-pane" id="wishlist-stockist">
+    </div>
+    <div class="tab-pane" id="wishlist-submission">
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+<%= render '/refinery/content_page' %>

@@ -109,6 +109,14 @@
         }
 
         @media (min-width: $screen-sm-min) {
+          .view-product, .add-to-wishlist {
+            .btn {
+              padding: 6px 2px;
+              font-size: 11px;
+              line-height: 20px;
+            }
+          }
+
           .view-product {
             padding-left: 0;
             padding-right: $grid-gutter-width/8;
@@ -289,6 +297,91 @@
 
     .file-size {
       margin-left: 30px;
+    }
+  }
+}
+
+#wishlist {
+  #wishlist-review {
+    .notes {
+      margin: $grid-gutter-width 0;
+    }
+
+    .row.header, .row.item {
+      @media (max-width: $screen-sm-max) {
+        .col {
+          padding-left: $grid-gutter-width/4;
+          padding-right: $grid-gutter-width/4;
+
+          .form-control {
+            padding-left: 2px;
+            padding-right: 2px;
+          }
+        }
+        .product {
+          padding-left: 0;
+        }
+      }
+
+      @media (min-width: $screen-xs-min) {
+        .image {
+          padding-left: 0;
+        }
+        .remove {
+          padding-right: 0;
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        a {
+          line-height: 34px;
+          font-size: 17px;
+          font-family: $font-family-bold;
+        }
+      }
+    }
+
+    .header {
+      border-bottom: 1px solid $hr-border;
+      border-top: 1px solid $hr-border;
+      line-height: 25px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .row.item {
+      margin: $grid-gutter-width/2 0;
+
+      .qty {
+        .form-control {
+          text-align: center;
+        }
+      }
+
+      .rrp, .subtotal {
+        line-height: 34px;
+      }
+
+      .image {
+        .photo {
+          background-position: 50% 0;
+          background-repeat: no-repeat;
+          background-size: cover;
+
+          @media (max-width: $screen-xs-max) {
+            display: none;
+          }
+          @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+            height: 100px;
+          }
+          @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+            height: 130px;
+          }
+          @media (min-width: $screen-lg-min) {
+            height: 150px;
+          }
+        }
+      }
     }
   }
 }

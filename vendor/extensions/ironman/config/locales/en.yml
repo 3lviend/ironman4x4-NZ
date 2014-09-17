@@ -217,6 +217,8 @@ en:
       orders:
         show:
           other: Other Orders
+        new:
+          page_header: Wishlist - Review
       catalogues:
         show:
           other: Other Catalogues
@@ -380,11 +382,13 @@ en:
           other: Other Products
           buttons:
             add_to_wishlist: Add to Wishlist
+            added_to_wishlist: Added to Wishlist
         index:
           page_header: Products
           buttons:
             view_product: View Product
             add_to_wishlist: Add to Wishlist
+            added_to_wishlist: Added to Wishlist
           inc_gst: ! ' (RRP inc GST)'
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
