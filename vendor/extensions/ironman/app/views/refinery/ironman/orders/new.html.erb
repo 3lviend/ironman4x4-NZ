@@ -4,6 +4,7 @@
 
 <div id="wishlist">
 
+  <% if @order.present? and @order.lines.present? %>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><%= t('.tabs.review') %></a></li>
@@ -73,6 +74,9 @@
     <div class="tab-pane" id="wishlist-submission">
     </div>
   </div>
+  <% else %>
+    <%= t('.wishlist_empty') %>
+  <% end %>
 </div>
 
 <% end %>

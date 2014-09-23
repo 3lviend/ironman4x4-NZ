@@ -239,6 +239,7 @@ en:
               comment: (RRP inc GST)
           page_header: Wishlist - Review
           price_note: 'Note: Please note that all prices do not include fitting & freight charges'
+          wishlist_empty: Wishlist is empty. Try adding some products first.
       catalogues:
         show:
           other: Other Catalogues
