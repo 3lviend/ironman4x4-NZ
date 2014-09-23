@@ -20,6 +20,16 @@ $(document).on 'page:load ready', ->
     items[productId] = (items[productId] ? 0) + quantity
     saveItemsToWishlist items
 
+  updateQuantity = (productId, quantity) ->
+    items = getItemsFromWishlist()
+    items[productId] = quantity
+    saveItemsToWishlist items
+
+  removeItemFromWishlist = (productId) ->
+    items = getItemsFromWishlist()
+    delete items[productId]
+    saveItemsToWishlist items
+
   $('#page-product-list .btn-add-to-wishlist').on 'click', ->
     addItemToWishlist $(@).data('product-id')
     $(@).text(addedToWishlist).addClass 'disabled added'
@@ -28,3 +38,20 @@ $(document).on 'page:load ready', ->
   items = getItemsFromWishlist()
   _.each items, (quantity, productId) ->
     $("#page-product-list .btn-add-to-wishlist[data-product-id=#{productId}]").text(addedToWishlist).addClass 'disabled'
+
+  $('#wishlist .update-wishlist.btn').on 'click', ->
+    $('#wishlist input.quantity').each ->
+      productId = $(@).data('product-id')
+      quantity = parseInt $(@).val()
+      if isNaN(quantity) then quantity = 1
+      if quantity == 0
+        removeItemFromWishlist productId
+      else
+        $(@).val quantity
+        updateQuantity productId, quantity
+    document.location.reload true
+
+  $('#wishlist .remove-item.btn').on 'click', ->
+    productId = $(@).data('product-id')
+    removeItemFromWishlist productId
+    document.location.reload true

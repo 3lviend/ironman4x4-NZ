@@ -46,7 +46,7 @@ module Refinery
           items.each do |item|
             a = item.split '|'
             product_id = a[0]
-            quantity = a[0]
+            quantity = a[1]
             lines << {
               product_id: product_id,
               quantity: quantity

@@ -36,16 +36,16 @@
           <div class="sku"><%= line.product.product_no %></div>
         </div>
         <div class="col-xs-2 col-sm-1 col rrp"><%= number_to_currency line.product.price || 0 %></div>
-        <div class="col-xs-2 col-sm-1 col qty"><%= text_field_tag "lines_attributes[#{i}][quantity]", line.quantity, class: 'form-control' %></div>
+        <div class="col-xs-2 col-sm-1 col qty"><%= text_field_tag "lines_attributes[#{i}][quantity]", line.quantity, class: 'form-control quantity', :'data-product-id' => line.product.id %></div>
         <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
-        <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove"></button></div>
+        <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
       </div>
       <% end %>
 
       <div class="row update border">
         <div class="price-note col col-xs-8 col-sm-10"><%= t('.price_note') %></div>
         <div class="col col-xs-4 col-sm-2 update-btn">
-          <%= submit_tag t('.buttons.update_wishlist'), class:'btn btn-info btn-block' %>
+          <%= button_tag t('.buttons.update_wishlist'), class:'btn btn-info btn-block update-wishlist' %>
         </div>
       </div>
 
