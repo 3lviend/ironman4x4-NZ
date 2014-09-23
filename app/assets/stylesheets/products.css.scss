@@ -302,6 +302,49 @@
 }
 
 #wishlist {
+  ul.nav-tabs {
+    li.completed {
+      a {
+        background-color: $green;
+        color: $white;
+      }
+      a:hover {
+        background-color: darken($green, 10%);
+      }
+      .badge {
+        background-color: $white;
+        color: $green;
+      }
+    }
+
+    li.active {
+      a {
+        color: $green;
+      }
+
+      .badge {
+        background-color: $green;
+        color: $white;
+      }
+    }
+
+    li.incomplete {
+      a {
+        background-color: $lightest-grey;
+        color: $light-grey;
+      }
+
+      a:hover {
+        background-color: darken($lightest-grey, 10%);
+      }
+
+      .badge {
+        background-color: $white;
+        color: $light-grey;
+      }
+    }
+  }
+
   #wishlist-review {
     .notes {
       margin: $grid-gutter-width 0;

@@ -7,10 +7,10 @@
   <% if @order.present? and @order.lines.present? %>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><%= t('.tabs.review') %></a></li>
-    <li><a href="#wishlist-details" role="tab" data-toggle="tab"><%= t('.tabs.customer') %></a></li>
-    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab"><%= t('.tabs.stockist') %></a></li>
-    <li><a href="#wishlist-submission" role="tab" data-toggle="tab"><%= t('.tabs.submission') %></a></li>
+    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><span class="badge">1</span> <%= t('.tabs.review') %></a></li>
+    <li><a href="#wishlist-details" role="tab" data-toggle="tab"><span class="badge">2</span> <%= t('.tabs.customer') %></a></li>
+    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab"><span class="badge">3</span> <%= t('.tabs.stockist') %></a></li>
+    <li><a href="#wishlist-submission" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-ok"></i> <%= t('.tabs.submission') %></a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -62,7 +62,7 @@
       <div class="row update next border-top">
         <div class="col col-xs-8 col-sm-10"></div>
         <div class="col col-xs-4 col-sm-2 next-btn">
-          <%= submit_tag t('.buttons.next'), class:'btn btn-primary btn-block' %>
+          <%= button_tag t('.buttons.next'), class:'btn btn-primary btn-block next', :'data-next-tab' => 'wishlist-details' %>
         </div>
       </div>
 
