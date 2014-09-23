@@ -38,20 +38,23 @@ module Refinery
 
       def order_from_cookie
         @order = Order.new
-        lines = []
 
-        items = cookies[:wishlist].split ','
-        items.each do |item|
-          a = item.split '|'
-          product_id = a[0]
-          quantity = a[0]
-          lines << {
-            product_id: product_id,
-            quantity: quantity
-          }
+        if cookies[:wishlist].present?
+          lines = []
+
+          items = cookies[:wishlist].split ','
+          items.each do |item|
+            a = item.split '|'
+            product_id = a[0]
+            quantity = a[0]
+            lines << {
+              product_id: product_id,
+              quantity: quantity
+            }
+          end
+
+          @order.lines_attributes = lines
         end
-
-        @order.lines_attributes = lines
       end
 
     end
