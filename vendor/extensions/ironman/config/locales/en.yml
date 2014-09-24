@@ -240,6 +240,17 @@ en:
           page_header: Wishlist - Review
           price_note: 'Note: Please note that all prices do not include fitting & freight charges'
           wishlist_empty: Wishlist is empty. Try adding some products first.
+        contact_details:
+          description: Please enter your details so our stockist can contact you regarding your wishlist.
+          vehicle_make:
+            label: Vehicle Details
+          buttons:
+            next: 'Next >>'
+          receive_news: Receive news & promotions from Ironman 4x4
+          terms_conditions:
+            label: Terms & Conditions
+            warning: You must agree to the terms and conditions
+          accept: Accept
       catalogues:
         show:
           other: Other Catalogues
@@ -435,17 +446,17 @@ en:
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist
-        name: Name
-        address1: Address1
-        address2: Address2
+        name: Full Name
+        address1: Address Line 1
+        address2: Address Line 2
         suburb: Suburb
         postcode: Postcode
         state: State
         country: Country
-        email: Email
-        phone: Phone
+        email: Email Address
+        phone: Phone/Mobile
         enquiry_type: Enquiry Type
-        vehicle_id: Vehicle
+        vehicle_id: Vehicle Details
         comments: Comments
         spam: Spam
       refinery/ironman/catalogue:

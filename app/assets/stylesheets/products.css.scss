@@ -345,6 +345,10 @@
     }
   }
 
+  .row.next {
+    padding-top: $grid-gutter-width;
+  }
+
   #wishlist-review {
     .notes {
       margin: $grid-gutter-width 0;
@@ -477,9 +481,48 @@
 
       padding: $grid-gutter-width/2 0;
     }
+  }
 
-    .row.next {
-      padding-top: $grid-gutter-width;
+  #wishlist-details {
+    .notes {
+      margin: $grid-gutter-width 0;
+    }
+
+    .form-group {
+      &.receive-news {
+        margin-bottom: 0;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        &>label, &>.fieldWithErrors>label {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .control {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        &.vehicle-selector {
+          .control {
+            margin-bottom: $grid-gutter-width / 2;
+            &.last {
+              margin-bottom: 0;
+            }
+          }
+        }
+      }
+
+      @media (min-width: $screen-sm-min) {
+        &>label, &>.fieldWithErrors>label {
+          padding-left: 0;
+        }
+
+        .control.single, .control.last {
+          padding-right: 0;
+        }
+      }
     }
   }
 }

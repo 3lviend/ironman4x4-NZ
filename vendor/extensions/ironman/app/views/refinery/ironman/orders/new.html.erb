@@ -5,6 +5,14 @@
 <div id="wishlist">
 
   <% if @order.present? and @order.lines.present? %>
+    <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
+
+      <%= render :partial => "/refinery/admin/error_messages",
+                 :locals => {
+                   :object => @order,
+                   :include_object_name => true
+                 } %>
+
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><span class="badge">1</span> <%= t('.tabs.review') %></a></li>
@@ -62,17 +70,19 @@
       <div class="row update next border-top">
         <div class="col col-xs-8 col-sm-10"></div>
         <div class="col col-xs-4 col-sm-2 next-btn">
-          <%= button_tag t('.buttons.next'), class:'btn btn-primary btn-block next', :'data-next-tab' => 'wishlist-details' %>
+          <%= button_tag t('.buttons.next'), :type => 'button', class:'btn btn-primary btn-block next', :'data-next-tab' => 'wishlist-details' %>
         </div>
       </div>
 
     </div>
     <div class="tab-pane" id="wishlist-details">
+      <%= render :partial => 'contact_details', :locals => {:f => f} %>
     </div>
     <div class="tab-pane" id="wishlist-stockist">
     </div>
     <div class="tab-pane" id="wishlist-submission">
     </div>
+    <% end %>
   </div>
   <% else %>
     <%= t('.wishlist_empty') %>
