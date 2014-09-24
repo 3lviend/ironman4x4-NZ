@@ -228,6 +228,11 @@ en:
             next: 'Next >>'
           page_header: Wishlist - Review
           wishlist_empty: Wishlist is empty. Try adding some products first.
+          headings:
+            wishlist_review: Wishlist - Review
+            wishlist_details: Wishlist - Customer Details
+            wishlist_stockist: Wishlist - Select Stockist
+            wishlist_submission: Wishlist - Submission Complete
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your wishlist.
           vehicle_make:

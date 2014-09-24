@@ -1,4 +1,11 @@
 $(document).on 'page:load ready', ->
+  headings = {
+    '#wishlist-review': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_review') %>'
+    '#wishlist-details': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_details') %>'
+    '#wishlist-stockist': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_stockist') %>'
+    '#wishlist-submission': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_submission') %>'
+  }
+
   $('#wishlist .next.btn').on 'click', ->
     nextTab = $(@).data('next-tab')
     $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
@@ -23,6 +30,7 @@ $(document).on 'page:load ready', ->
   $('#wishlist a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     setClassesForTabs e.target
     $.cookie 'wishlist-tab', e.target.hash
+    $('#layout-heading .page-header').text headings[e.target.hash]
 
   tab = $.cookie 'wishlist-tab'
   if tab? and tab
