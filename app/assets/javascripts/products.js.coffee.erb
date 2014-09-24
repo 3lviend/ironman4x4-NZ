@@ -58,7 +58,7 @@ $(document).on 'page:load ready', ->
 
   $('#wishlist .next.btn').on 'click', ->
     nextTab = $(@).data('next-tab')
-    $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show')
+    $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
 
   setClassesForTabs = (active) ->
     currentIndex = 0
