@@ -27,6 +27,11 @@ $(document).on 'page:load ready', ->
       else
         $(@).removeClass 'incomplete'
 
+  $('#wishlist a[data-toggle="tab"]').on 'click', (e) ->
+    if ($(e.target).closest('li').hasClass('incomplete'))
+      e.preventDefault()
+      e.stopPropagation()
+
   $('#wishlist a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     setClassesForTabs e.target
     $.cookie 'wishlist-tab', e.target.hash

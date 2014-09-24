@@ -329,6 +329,8 @@
     }
 
     li.incomplete {
+      pointer-events: none;
+
       a {
         background-color: $lightest-grey;
         color: $light-grey;
