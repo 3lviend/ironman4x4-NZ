@@ -226,19 +226,7 @@ en:
           buttons:
             update_wishlist: Update Wishlist
             next: 'Next >>'
-          notes: Fdasdgta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus. Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam.
-          items:
-            headers:
-              product: Product
-              rrp: 'RRP$'
-              qty: 'Qty'
-              subtotal: Subtotal
-              remove: Remove
-            total:
-              title: Order Total
-              comment: (RRP inc GST)
           page_header: Wishlist - Review
-          price_note: 'Note: Please note that all prices do not include fitting & freight charges'
           wishlist_empty: Wishlist is empty. Try adding some products first.
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your wishlist.
@@ -251,6 +239,19 @@ en:
             label: Terms & Conditions
             warning: You must agree to the terms and conditions
           accept: Accept
+        cart_contents:
+          price_note: 'Note: Please note that all prices do not include fitting & freight charges'
+          notes: Fdasdgta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus. Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam.
+          items:
+            headers:
+              product: Product
+              rrp: 'RRP$'
+              qty: 'Qty'
+              subtotal: Subtotal
+              remove: Remove
+            total:
+              title: Order Total
+              comment: (RRP inc GST)
       catalogues:
         show:
           other: Other Catalogues
