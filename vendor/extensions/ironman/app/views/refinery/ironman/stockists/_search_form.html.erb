@@ -1,4 +1,5 @@
-<%= form_tag refinery.ironman_stockists_path, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search', method: :get do -%>
+<% url = refinery.ironman_stockists_path if local_assigns[:url].nil? %>
+<%= form_tag url, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search', method: :get do -%>
   <div class="form-group">
     <%= text_field_tag :stockist_query, {}, {:class => 'form-control input-sm',
       :type => 'search', :placeholder => t('.placeholder'),

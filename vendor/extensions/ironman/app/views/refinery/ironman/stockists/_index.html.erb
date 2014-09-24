@@ -1,3 +1,5 @@
+<% stockists_search_url = refinery.ironman_stockists_path if local_assigns[:stockists_search_url].nil? %>
+
 <% if @stockists.present? %>
 <%
   markers = Gmaps4rails.build_markers(@stockists) do |stockist, marker|
@@ -53,7 +55,7 @@
 </script>
 <% end %>
 
-<%= render 'refinery/ironman/stockists/filters' %>
+<%= render :partial => 'refinery/ironman/stockists/filters', :locals => {:url => stockists_search_url} %>
 
 <% if @stockists.present? %>
 <ul id="stockists" class="clearfix">
