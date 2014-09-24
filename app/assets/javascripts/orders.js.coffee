@@ -22,6 +22,13 @@ $(document).on 'page:load ready', ->
 
   $('#wishlist a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     setClassesForTabs e.target
+    $.cookie 'wishlist-tab', e.target.hash
 
-  active = $('#wishlist a[data-toggle="tab"].active').get(0)
-  setClassesForTabs active
+  tab = $.cookie 'wishlist-tab'
+  if tab? and tab
+    $('#wishlist ul[role=tablist] a[href="' + tab + '"]').tab('show').focus().blur()
+    if tab is '#wishlist-review'
+      setClassesForTabs active
+  else
+    active = $('#wishlist a[data-toggle="tab"].active').get(0)
+    setClassesForTabs active
