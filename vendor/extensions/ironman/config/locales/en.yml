@@ -223,9 +223,6 @@ en:
             customer: Customer details
             stockist: Select stockist
             submission: Submission review
-          buttons:
-            update_wishlist: Update Wishlist
-            next: 'Next >>'
           page_header: Wishlist - Review
           wishlist_empty: Wishlist is empty. Try adding some products first.
           headings:
@@ -257,6 +254,9 @@ en:
             total:
               title: Order Total
               comment: (RRP inc GST)
+          buttons:
+            update_wishlist: Update Wishlist
+            next: 'Next >>'
       catalogues:
         show:
           other: Other Catalogues
