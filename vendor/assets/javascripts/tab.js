@@ -43,7 +43,7 @@
     var $target = $(selector)
 
     this.activate($this.closest('li'), $ul)
-    this.activate($target, $target.parent(), function () {
+    this.activate($target, $target.closest('.tab-content'), function () {
       $this.trigger({
         type: 'shown.bs.tab',
         relatedTarget: previous
@@ -52,7 +52,7 @@
   }
 
   Tab.prototype.activate = function (element, container, callback) {
-    var $active    = container.find('> .active')
+    var $active    = container.find('> .active, > form > .active')
     var transition = callback
       && $.support.transition
       && $active.hasClass('fade')

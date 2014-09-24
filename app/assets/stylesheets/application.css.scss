@@ -60,6 +60,14 @@ label {
   }
 }
 
+.tab-content > form > .tab-pane {
+  display: none;
+}
+
+.tab-content > form > .active {
+  display: block;
+}
+
 hr.double {
   border-bottom: 1px solid $hr-border;
   height: 5px;
