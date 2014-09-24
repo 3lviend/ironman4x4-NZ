@@ -9,9 +9,10 @@
       </div>
 
       <% @order.lines.each do |line, i| %>
+        <% if line.product.present? %>
       <div class="row item">
         <div class="col-xs-hidden col-sm-3 col image"><!--
-          --><div class="photo" style="background-image:url('<%= if line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
+          --><div class="photo" style="background-image:url('<%= if line.product.present? and line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
         --></div>
         <div class="col-xs-4 col-sm-5 col product">
           <div class="name"><%= link_to line.product.name, refinery.ironman_product_path(line.product) %></div>
@@ -22,6 +23,7 @@
         <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
         <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
       </div>
+        <% end %>
       <% end %>
 
       <div class="row update border">
