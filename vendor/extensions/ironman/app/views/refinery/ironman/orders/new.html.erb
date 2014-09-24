@@ -20,21 +20,21 @@
   </ul>
 
   <!-- Tab panes -->
-  <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
   <div class="tab-content">
+    <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
     <div class="tab-pane active" id="wishlist-review">
       <%= render :partial => 'cart_contents', :locals => {:f => f} %>
     </div>
     <div class="tab-pane" id="wishlist-details">
       <%= render :partial => 'contact_details', :locals => {:f => f} %>
     </div>
+    <% end %>
     <div class="tab-pane" id="wishlist-stockist">
       <%= render 'refinery/ironman/stockists/index' %>
     </div>
     <div class="tab-pane" id="wishlist-submission">
     </div>
   </div>
-  <% end %>
   <% else %>
     <%= t('.wishlist_empty') %>
   <% end %>
