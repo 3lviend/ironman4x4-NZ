@@ -1,0 +1,95 @@
+<% if @stockists.present? %>
+<%
+  markers = Gmaps4rails.build_markers(@stockists) do |stockist, marker|
+    marker.title stockist.name
+    marker.lat stockist.latitude
+    marker.lng stockist.longitude
+    marker.picture({
+      url: image_url('stockists_map_marker_green.png'),
+      width: 25,
+      height: 47
+    })
+    marker.infowindow render('refinery/ironman/stockists/marker_info_window', :object => stockist).gsub(/\n/, '')
+    marker.json({ :id => stockist.id })
+  end
+%>
+
+
+<script type="text/javascript">
+  $(document).on('ready page:load', function() {
+    var handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: {
+        disableDefaultUI: true
+        // pass in other Google Maps API options here
+      },
+      internal: {
+        id: 'map'
+      }
+    }, function(){
+      var markers = <%=raw markers.to_json %>;
+      Gmaps.store = Gmaps.store || {};
+      Gmaps.store.markers = markers.map(function(m) {
+        var marker = handler.addMarker(m);
+        marker.serviceObject.set('id', m.id);
+        return marker;
+      });
+
+      handler.bounds.extendWith(Gmaps.store.markers);
+      handler.fitMapToBounds();
+    });
+
+    $('#stockists .stockist .heading').on('click', function() {
+      var stockistId = $(this).data('stockist-id');
+      $.each(Gmaps.store.markers, function() {
+        if (this.serviceObject.id == stockistId) {
+          this.panTo();
+          this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+        }
+        else this.serviceObject.setAnimation(null);
+      });
+    });
+  });
+</script>
+<% end %>
+
+<%= render 'refinery/ironman/stockists/filters' %>
+
+<% if @stockists.present? %>
+<ul id="stockists" class="clearfix">
+  <% @stockists.each_with_index do |stockist, index| %>
+    <li class="stockist col-sm-6 col-lg-4">
+      <hr />
+      <div class="heading row" data-stockist-id="<%= stockist.id %>">
+        <div class="num col-xs-1 col-sm-2"><%= (index+1).to_s.rjust(2, '0') %></div>
+        <div class="name col-xs-11 col-sm-10"><%= stockist.name %></div>
+      </div>
+      <% if stockist.store_type.present? %>
+      <div class="row">
+        <div class="field store-type col-sm-offset-2 col-sm-10"><%= stockist.store_type %></div>
+      </div>
+      <% end %>
+      <div class="row">
+        <div class="field address col-sm-offset-2 col-sm-10"><%= stockist.full_street_address %></div>
+      </div>
+      <% if stockist.contact.present? %>
+      <div class="row">
+        <div class="field contact col-sm-offset-2 col-sm-10"><%= stockist.contact %></div>
+      </div>
+      <% end %>
+      <% if stockist.website.present? %>
+      <div class="row">
+        <div class="field website col-sm-offset-2 col-sm-10"><%= link_to stockist.website, stockist.website %></div>
+      </div>
+      <% end %>
+      <% if stockist.email.present? %>
+      <div class="row">
+        <div class="field email col-sm-offset-2 col-sm-10"><%= mail_to stockist.email, stockist.email %></div>
+      </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<% else %>
+  <p class="not-found"><%= t('.not-found') %></p>
+<% end %>

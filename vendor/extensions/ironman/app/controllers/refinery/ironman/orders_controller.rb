@@ -2,6 +2,7 @@ module Refinery
   module Ironman
     class OrdersController < ::ApplicationController
 
+      before_filter :find_all_stockists, :only => [:new]
       before_filter :find_all_orders, :only => [:index, :show]
       before_filter :find_page, :only => [:index, :show]
       before_filter :order_from_cookie, :only => [:new]
@@ -21,12 +22,23 @@ module Refinery
       end
 
       def new
+
       end
 
       def create
       end
 
     protected
+      def find_all_stockists
+        conditions = {}
+
+        if params[:store_type].present?
+          conditions[:store_type] = params[:store_type]
+        end
+
+        @stockists = Stockist.active.where(conditions).order('name ASC')
+        @stockists = @stockists.with_query(params[:stockist_query]) if params[:stockist_query].present?
+      end
 
       def find_all_orders
         @orders = Order.order('created_at ASC')

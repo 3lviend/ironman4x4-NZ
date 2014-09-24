@@ -5,8 +5,6 @@
 <div id="wishlist">
 
   <% if @order.present? and @order.lines.present? %>
-    <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
-
       <%= render :partial => "/refinery/admin/error_messages",
                  :locals => {
                    :object => @order,
@@ -22,6 +20,7 @@
   </ul>
 
   <!-- Tab panes -->
+  <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
   <div class="tab-content">
     <div class="tab-pane active" id="wishlist-review">
       <%= render :partial => 'cart_contents', :locals => {:f => f} %>
@@ -30,11 +29,12 @@
       <%= render :partial => 'contact_details', :locals => {:f => f} %>
     </div>
     <div class="tab-pane" id="wishlist-stockist">
+      <%= render 'refinery/ironman/stockists/index' %>
     </div>
     <div class="tab-pane" id="wishlist-submission">
     </div>
-    <% end %>
   </div>
+  <% end %>
   <% else %>
     <%= t('.wishlist_empty') %>
   <% end %>
