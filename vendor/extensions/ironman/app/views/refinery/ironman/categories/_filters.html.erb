@@ -1,6 +1,6 @@
 <%
   if @vehicle_filter.present?
-    categories = Refinery::Ironman::Category.roots.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+    categories = Refinery::Ironman::Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
   else
     categories = Refinery::Ironman::Category.roots
   end

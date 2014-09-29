@@ -41,7 +41,7 @@ module Refinery
             @categories = filter_by_vehicle Category.friendly.find(params[:id]).children
           end
         else
-          @categories = filter_by_vehicle Category.roots
+          @categories = filter_by_vehicle(Category.all).map(&:root).uniq
         end
 
         # you can use meta fields from your model instead (e.g. browser_title)

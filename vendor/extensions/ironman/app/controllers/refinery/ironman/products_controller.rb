@@ -12,7 +12,7 @@ module Refinery
 
         if params[:id].nil?
           if @vehicle_filter.present?
-            @categories = Category.roots.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+            @categories = Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
           else
             @categories = Category.roots
           end
