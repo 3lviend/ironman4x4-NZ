@@ -113,6 +113,12 @@ hr.double {
   }
 }
 
+.panel.panel-info {
+  background-color: $dark-grey;
+  border-color: $dark-grey;
+  color: white;
+}
+
 .green {
   color: $green;
 }

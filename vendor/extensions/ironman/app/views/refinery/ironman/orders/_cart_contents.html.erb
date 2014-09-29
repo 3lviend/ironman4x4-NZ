@@ -19,7 +19,10 @@
           <div class="sku"><%= line.product.product_no %></div>
         </div>
         <div class="col-xs-2 col-sm-1 col rrp"><%= number_to_currency line.product.price || 0 %></div>
-        <div class="col-xs-2 col-sm-1 col qty"><%= text_field_tag "lines_attributes[#{i}][quantity]", line.quantity, class: 'form-control quantity', :'data-product-id' => line.product.id %></div>
+        <div class="col-xs-2 col-sm-1 col qty">
+          <%= text_field_tag "order[lines_attributes][#{i}][quantity]", line.quantity, class: 'form-control quantity', :'data-product-id' => line.product.id %>
+          <%= hidden_field_tag "order[lines_attributes][#{i}][product_id]", line.product.id %>
+        </div>
         <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
         <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
       </div>

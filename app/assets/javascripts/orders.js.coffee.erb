@@ -2,10 +2,10 @@ $(document).on 'page:load ready', ->
   cookieOptions = {expires:7, path: '/'}
 
   headings = {
-    '#wishlist-review': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_review') %>'
-    '#wishlist-details': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_details') %>'
-    '#wishlist-stockist': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_stockist') %>'
-    '#wishlist-submission': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_submission') %>'
+    '#wishlist-review': '<%= I18n.t('refinery.ironman.orders.form.headings.wishlist_review') %>'
+    '#wishlist-details': '<%= I18n.t('refinery.ironman.orders.form.headings.wishlist_details') %>'
+    '#wishlist-stockist': '<%= I18n.t('refinery.ironman.orders.form.headings.wishlist_stockist') %>'
+    '#wishlist-submission': '<%= I18n.t('refinery.ironman.orders.form.headings.wishlist_submission') %>'
   }
 
   $('#wishlist .next.btn').on 'click', ->
@@ -32,7 +32,7 @@ $(document).on 'page:load ready', ->
               ok = false
 
           if not ok
-            alert '<%= I18n.t('refinery.ironman.orders.new.required_fields_missing') %>'
+            alert '<%= I18n.t('refinery.ironman.orders.form.required_fields_missing') %>'
           else
             if not $('#terms_conditions').is(':checked')
               alert '<%= I18n.t('refinery.ironman.orders.contact_details.terms_conditions.warning') %>'
@@ -90,7 +90,7 @@ $(document).on 'page:load ready', ->
         $(@).removeClass 'incomplete'
 
   $('#wishlist a[data-toggle="tab"]').on 'click', (e) ->
-    if ($(e.target).closest('li').hasClass('incomplete'))
+    if ($(e.target).closest('li').hasClass('incomplete') or $(e.target).closest('li').hasClass('disabled'))
       e.preventDefault()
       e.stopPropagation()
 
@@ -99,28 +99,33 @@ $(document).on 'page:load ready', ->
     $.cookie 'wishlist-tab', e.target.hash
     $('#layout-heading .page-header').text headings[e.target.hash]
 
+  stockistsInit = false
+
   tab = $.cookie 'wishlist-tab'
-  if tab? and tab
+  if tab? and tab and $('#wishlist.form').length
     $('#wishlist ul[role=tablist] a[href="' + tab + '"]').tab('show').focus().blur()
     if tab is '#wishlist-review'
       setClassesForTabs active
+    if tab is '#wishlist-stockist'
+      setTimeout ->
+        window.initStockists() if not stockistsInit
+        stockistsInit = true
+      , 1000
   else
     active = $('#wishlist li.active a[data-toggle="tab"]').get(0)
     setClassesForTabs active
 
-  $('#wishlist-stockist #stockists .stockist').append(
-    '<div class="row">
-      <div class="field contact col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-info btn-sm select-stockist"><%= I18n.t('refinery.ironman.orders.new.buttons.select') %></button>
-      </div>
-    </div>'
-  )
-
-  stockistsInit = false
-
   $('#wishlist a[data-toggle="tab"][href="#wishlist-stockist"]').on 'shown.bs.tab', (e) ->
     window.initStockists() if not stockistsInit
     stockistsInit = true
+
+  $('#wishlist-stockist #stockists .stockist').append(
+    '<div class="row">
+      <div class="field contact col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-info btn-sm select-stockist"><%= I18n.t('refinery.ironman.orders.form.buttons.select') %></button>
+      </div>
+    </div>'
+  )
 
   $('#wishlist-stockist .btn.select-stockist').on 'click', ->
     btn = $(@)
@@ -129,19 +134,19 @@ $(document).on 'page:load ready', ->
 
       $(@).removeClass 'btn-primary'
       $(@).addClass 'btn-info'
-      $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.select') %>'
+      $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
     else
       $('#wishlist-stockist .btn.select-stockist.btn-primary').each ->
         $(@).removeClass 'btn-primary'
         $(@).addClass 'btn-info'
-        $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.select') %>'
+        $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
 
       stockistId = $('.heading.row', $(@).closest('.stockist')).data 'stockist-id'
       $('#order_stockist_id').val stockistId
 
       $(@).removeClass 'btn-info'
       $(@).addClass 'btn-primary'
-      $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.selected') %>'
+      $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
 
     $(@).blur()
 
@@ -149,3 +154,15 @@ $(document).on 'page:load ready', ->
       return
     else
       localStorage.setItem 'wishlist-details', JSON.stringify $('#new_order').serializeObject()
+
+  $('#wishlist-stockist .btn.print').on 'click', ->
+    window.print?()
+
+  $('#wishlist-stockist .btn.email').on 'click', ->
+    if not $('#order_stockist_id').val()
+      alert '<%= I18n.t('refinery.ironman.orders.form.please_select_a_stockist') %>'
+    else
+      $('#new_order').submit()
+
+  $('#new_order input, #new_order select').keypress (event) ->
+    return event.keyCode != 13

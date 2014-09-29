@@ -217,13 +217,25 @@ en:
       orders:
         show:
           other: Other Orders
+        confirmation:
+          page_header: Wishlist - Submission Complete
+          wish_list: Wishlist
+          customer_details: Customer Details
+          selected_stockist: Selected Stockist
+          buttons:
+            email: Resend to your email
+            return: Return to products
+          panel:
+            heading: THANK YOU! YOUR WISHLIST HAS BEEN SUCCESSFULLY SUBMITTED.
+            text: A copy of the submission information below has been automatically emailed to your email address. Your selected stockist will contact you shortly to assist you with more information on the products within your wishlist.
         new:
+          page_header: Wishlist - Review
+        form:
           tabs:
             review: Review wishlist
             customer: Customer details
             stockist: Select stockist
             submission: Submission review
-          page_header: Wishlist - Review
           wishlist_empty: Wishlist is empty. Try adding some products first.
           headings:
             wishlist_review: Wishlist - Review
@@ -231,9 +243,13 @@ en:
             wishlist_stockist: Wishlist - Select Stockist
             wishlist_submission: Wishlist - Submission Complete
           required_fields_missing: Please fill out all required fields marked with an asterisk (*)
+          email_wishlist: Email wishlist to selected stockist
+          please_select_a_stockist: You must select a stockist first
           buttons:
             select: Select
             selected: Selected
+            print: Print Wishlist
+            submit: Submit Email
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your wishlist.
           vehicle_make:

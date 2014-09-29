@@ -328,6 +328,10 @@
       }
     }
 
+    li.disabled {
+      pointer-events: none;
+    }
+
     li.incomplete {
       pointer-events: none;
 
@@ -539,6 +543,17 @@
 
     #map {
       margin-top: $grid-gutter-width/2;
+    }
+
+    .email p {
+      text-align: center;
+    }
+  }
+
+  #wishlist-submission {
+    padding-top: $grid-gutter-width/2;
+    h4 {
+      color: $dark-grey;
     }
   }
 }

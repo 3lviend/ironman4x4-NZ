@@ -26,6 +26,8 @@ module Refinery
           else
             self.net_amount = 0
           end
+        else
+          self.net_amount = 0
         end
       end
 

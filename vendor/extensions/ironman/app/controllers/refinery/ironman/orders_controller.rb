@@ -26,9 +26,37 @@ module Refinery
       end
 
       def create
+        @order = Order.create(order_params)
+        if @order.valid?
+          flash.notice = t(
+            'refinery.crudify.created',
+            :what => @order.order_no
+          )
+
+          render :confirmation
+        else
+          find_all_stockists()
+          render 'new'
+        end
       end
 
     protected
+      def order_params
+        p = params.require(:order).permit(:order_no, :stockist_id, :name,
+          :address1, :address2, :suburb, :postcode, :state, :country, :email,
+          :phone, :enquiry_type, :vehicle_id, :comments, :receive_news, :spam,
+          :locale, lines_attributes: [
+            :product_id, :quantity, :net_amount, :tax_amount, :position,
+            :id, :_destroy, :line_type, :order
+          ])
+
+        vehicle_id = [params[:vehicle_1st_id], params[:vehicle_2nd_id], params[:vehicle_3rd_id]].reject(&:blank?).last
+
+        p[:vehicle_id] = vehicle_id if vehicle_id.present?
+
+        p
+      end
+
       def find_all_stockists
         conditions = {}
 

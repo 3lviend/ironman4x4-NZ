@@ -1,0 +1,133 @@
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
+
+<% content_for :body do %>
+  <div id="wishlist" class="confirmation">
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="disabled"><a href="#wishlist-review" role="tab" data-toggle="tab"><span class="badge">1</span> <%= t('refinery.ironman.orders.form.tabs.review') %></a></li>
+      <li class="disabled"><a href="#wishlist-details" role="tab" data-toggle="tab"><span class="badge">2</span> <%= t('refinery.ironman.orders.form.tabs.customer') %></a></li>
+      <li class="disabled"><a href="#wishlist-stockist" role="tab" data-toggle="tab"><span class="badge">3</span> <%= t('refinery.ironman.orders.form.tabs.stockist') %></a></li>
+      <li class="active"><a href="#wishlist-submission" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-ok"></i> <%= t('refinery.ironman.orders.form.tabs.submission') %></a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="wishlist-submission">
+
+        <div class="panel panel-info">
+          <div class="panel-body">
+            <p><strong><%= t('.panel.heading') %></strong></p>
+            <p><%= t('.panel.text') %></p>
+          </div>
+        </div>
+
+        <h4><%= t('.wish_list') %></h4>
+        <% @order.lines.each do |line| %>
+          <div class="row">
+            <div class="col-xs-12 col-sm-3"><%= line.product.name %></div>
+            <div class="col-xs-6 col-sm-2">Qty: <%= line.quantity %></div>
+            <div class="col-xs-6 col-sm-2"><%= number_to_currency line.net_amount %></div>
+          </div>
+        <% end %>
+
+        <h4><%= t('.customer_details') %></h4>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.name') %></div>
+          <div class="col-xs-6"><%= @order.name %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.address1') %></div>
+          <div class="col-xs-6"><%= @order.address1 %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.address2') %></div>
+          <div class="col-xs-6"><%= @order.address2 %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.suburb') %></div>
+          <div class="col-xs-6"><%= @order.suburb %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.postcode') %></div>
+          <div class="col-xs-6"><%= @order.postcode %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.state') %></div>
+          <div class="col-xs-6"><%= @order.state %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.country') %></div>
+          <div class="col-xs-6"><%= @order.country %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.email') %></div>
+          <div class="col-xs-6"><%= @order.email %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.phone') %></div>
+          <div class="col-xs-6"><%= @order.phone %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.vehicle_id') %></div>
+          <div class="col-xs-6"><%= @order.vehicle_name_full %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/order.comments') %></div>
+          <div class="col-xs-6"><%= @order.comments %></div>
+        </div>
+
+
+        <h4><%= t('.selected_stockist') %></h4>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.name') %></div>
+          <div class="col-xs-6"><%= @order.stockist.name %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.address1') %></div>
+          <div class="col-xs-6"><%= @order.stockist.address1 %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.address2') %></div>
+          <div class="col-xs-6"><%= @order.stockist.address2 %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.suburb') %></div>
+          <div class="col-xs-6"><%= @order.stockist.suburb %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.postcode') %></div>
+          <div class="col-xs-6"><%= @order.stockist.postcode %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.state') %></div>
+          <div class="col-xs-6"><%= @order.stockist.state %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.country') %></div>
+          <div class="col-xs-6"><%= @order.stockist.country %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.email') %></div>
+          <div class="col-xs-6"><%= @order.stockist.email %></div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 col-sm-3"><%= t('activerecord.attributes.refinery/ironman/stockist.phone') %></div>
+          <div class="col-xs-6"><%= @order.stockist.phone %></div>
+        </div>
+
+
+        <br />
+        <div class="row">
+          <div class="col-sm-6 col-lg-4 email">
+          <!--
+            <%= button_tag t('.buttons.email'), :type => 'button', class:'btn btn-primary btn-block btn-lg email' %>
+          -->
+          </div>
+          <div class="col-sm-6 col-lg-4 return">
+            <%= link_to t('.buttons.return'), refinery.ironman_products_path, class:'btn btn-primary btn-block btn-lg return' %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= render '/refinery/content_page' %>

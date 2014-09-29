@@ -1,0 +1,48 @@
+<div id="wishlist" class="form">
+
+  <% if @order.present? and @order.lines.present? %>
+      <%= render :partial => "/refinery/admin/error_messages",
+                 :locals => {
+                   :object => @order,
+                   :include_object_name => true
+                 } %>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#wishlist-review" role="tab" data-toggle="tab"><span class="badge">1</span> <%= t('.tabs.review') %></a></li>
+    <li><a href="#wishlist-details" role="tab" data-toggle="tab"><span class="badge">2</span> <%= t('.tabs.customer') %></a></li>
+    <li><a href="#wishlist-stockist" role="tab" data-toggle="tab"><span class="badge">3</span> <%= t('.tabs.stockist') %></a></li>
+    <li><a href="#wishlist-submission" role="tab" data-toggle="tab"><i class="glyphicon glyphicon-ok"></i> <%= t('.tabs.submission') %></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <%= form_for [refinery, :ironman, @order], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
+    <div class="tab-pane active" id="wishlist-review">
+      <%= render :partial => 'cart_contents', :locals => {:f => f} %>
+    </div>
+    <div class="tab-pane" id="wishlist-details">
+      <%= render :partial => 'contact_details', :locals => {:f => f} %>
+    </div>
+    <% end %>
+    <div class="tab-pane" id="wishlist-stockist">
+      <div id="map"></div>
+      <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
+      <div class="row">
+        <div class="col-sm-6 col-lg-offset-4 col-lg-4 print">
+          <p>&nbsp;</p>
+          <%= button_tag t('.buttons.print'), :type => 'button', class:'btn btn-primary btn-block btn-lg print' %>
+        </div>
+        <div class="col-sm-6 col-lg-4 email">
+          <p><%= t('.email_wishlist') %></p>
+          <%= button_tag t('.buttons.submit'), :type => 'button', class:'btn btn-primary btn-block btn-lg email' %>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane" id="wishlist-submission">
+    </div>
+  </div>
+  <% else %>
+    <%= t('.wishlist_empty') %>
+  <% end %>
+</div>
