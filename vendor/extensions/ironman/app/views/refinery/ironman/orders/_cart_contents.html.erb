@@ -24,7 +24,7 @@
           <%= hidden_field_tag "order[lines_attributes][#{i}][product_id]", line.product.id %>
         </div>
         <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
-        <div class="col-xs-2 col-sm-1 col remove"><button class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
+        <div class="col-xs-2 col-sm-1 col remove"><button type="button" class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
       </div>
         <% end %>
       <% end %>
