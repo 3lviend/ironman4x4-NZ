@@ -527,4 +527,18 @@
       }
     }
   }
+
+  #wishlist-stockist {
+    #stockists {
+      .stockist {
+        .btn.select-stockist {
+          margin-top: 10px;
+        }
+      }
+    }
+
+    #map {
+      margin-top: $grid-gutter-width/2;
+    }
+  }
 }

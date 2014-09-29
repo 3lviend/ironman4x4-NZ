@@ -19,38 +19,45 @@
 
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
-    var handler = Gmaps.build('Google');
-    handler.buildMap({
-      provider: {
-        disableDefaultUI: true
-        // pass in other Google Maps API options here
-      },
-      internal: {
-        id: 'map'
-      }
-    }, function(){
-      var markers = <%=raw markers.to_json %>;
-      Gmaps.store = Gmaps.store || {};
-      Gmaps.store.markers = markers.map(function(m) {
-        var marker = handler.addMarker(m);
-        marker.serviceObject.set('id', m.id);
-        return marker;
-      });
-
-      handler.bounds.extendWith(Gmaps.store.markers);
-      handler.fitMapToBounds();
-    });
-
-    $('#stockists .stockist .heading').on('click', function() {
-      var stockistId = $(this).data('stockist-id');
-      $.each(Gmaps.store.markers, function() {
-        if (this.serviceObject.id == stockistId) {
-          this.panTo();
-          this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+    window.initStockists = function() {
+      var handler = Gmaps.build('Google');
+      handler.buildMap({
+        provider: {
+          disableDefaultUI: true
+          // pass in other Google Maps API options here
+        },
+        internal: {
+          id: 'map'
         }
-        else this.serviceObject.setAnimation(null);
+      }, function(){
+        var markers = <%=raw markers.to_json %>;
+        Gmaps.store = Gmaps.store || {};
+        Gmaps.store.markers = markers.map(function(m) {
+          var marker = handler.addMarker(m);
+          marker.serviceObject.set('id', m.id);
+          return marker;
+        });
+
+        handler.bounds.extendWith(Gmaps.store.markers);
+        handler.fitMapToBounds();
       });
-    });
+
+      $('#stockists .stockist .heading').on('click', function() {
+        var stockistId = $(this).data('stockist-id');
+        $.each(Gmaps.store.markers, function() {
+          if (this.serviceObject.id == stockistId) {
+            this.panTo();
+            this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+          }
+          else this.serviceObject.setAnimation(null);
+        });
+      });
+    };
+
+    // don't auto init for wishlist page
+    if (!document.location.href.match('wishlist')) {
+      initStockists();
+    }
   });
 </script>
 <% end %>

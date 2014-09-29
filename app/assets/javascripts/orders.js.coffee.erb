@@ -46,7 +46,7 @@ $(document).on 'page:load ready', ->
       nextTab = $(@).data('next-tab')
       $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
 
-  $('#wishlist-details :input').not(':button:hidden').on 'change', ->
+  $('#wishlist-details :input').on 'change', ->
     vehicleData = {
       vehicle_make_id: Number $('#vehicle_1st_id').val()
       vehicle_model_id: Number $('#vehicle_2nd_id').val()
@@ -59,7 +59,7 @@ $(document).on 'page:load ready', ->
     if not window.localStorage?
       return
     else
-      localStorage.setItem 'wishlist-details', JSON.stringify $(@).closest('form').not(':hidden').serializeObject()
+      localStorage.setItem 'wishlist-details', JSON.stringify $(@).closest('form').serializeObject()
 
   if window.localStorage?
     data = JSON.parse(localStorage.getItem('wishlist-details') ? '{}')
@@ -107,3 +107,45 @@ $(document).on 'page:load ready', ->
   else
     active = $('#wishlist li.active a[data-toggle="tab"]').get(0)
     setClassesForTabs active
+
+  $('#wishlist-stockist #stockists .stockist').append(
+    '<div class="row">
+      <div class="field contact col-sm-offset-2 col-sm-10">
+        <button type="button" class="btn btn-info btn-sm select-stockist"><%= I18n.t('refinery.ironman.orders.new.buttons.select') %></button>
+      </div>
+    </div>'
+  )
+
+  stockistsInit = false
+
+  $('#wishlist a[data-toggle="tab"][href="#wishlist-stockist"]').on 'shown.bs.tab', (e) ->
+    window.initStockists() if not stockistsInit
+    stockistsInit = true
+
+  $('#wishlist-stockist .btn.select-stockist').on 'click', ->
+    btn = $(@)
+    if btn.hasClass 'btn-primary'
+      $('#order_stockist_id').val ''
+
+      $(@).removeClass 'btn-primary'
+      $(@).addClass 'btn-info'
+      $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.select') %>'
+    else
+      $('#wishlist-stockist .btn.select-stockist.btn-primary').each ->
+        $(@).removeClass 'btn-primary'
+        $(@).addClass 'btn-info'
+        $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.select') %>'
+
+      stockistId = $('.heading.row', $(@).closest('.stockist')).data 'stockist-id'
+      $('#order_stockist_id').val stockistId
+
+      $(@).removeClass 'btn-info'
+      $(@).addClass 'btn-primary'
+      $(@).text '<%= I18n.t('refinery.ironman.orders.new.buttons.selected') %>'
+
+    $(@).blur()
+
+    if not window.localStorage?
+      return
+    else
+      localStorage.setItem 'wishlist-details', JSON.stringify $('#new_order').serializeObject()
