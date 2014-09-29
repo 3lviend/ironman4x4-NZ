@@ -1,4 +1,6 @@
 $(document).on 'page:load ready', ->
+  cookieOptions = {expires:7, path: '/'}
+
   headings = {
     '#wishlist-review': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_review') %>'
     '#wishlist-details': '<%= I18n.t('refinery.ironman.orders.new.headings.wishlist_details') %>'
@@ -14,16 +16,27 @@ $(document).on 'page:load ready', ->
       '#wishlist-details': ->
         ok = true
 
-        $('input[required=required],textarea[required=required],select[required=required]', active).each ->
-          if not $(@).val()
-            ok = false
+        vehicleData = {
+          vehicle_make_id: Number $('#vehicle_1st_id').val()
+          vehicle_model_id: Number $('#vehicle_2nd_id').val()
+          vehicle_series_id: Number $('#vehicle_3rd_id').val()
+        }
 
-        if not ok
-          alert '<%= I18n.t('refinery.ironman.orders.new.required_fields_missing') %>'
+        if vehicleData.vehicle_make_id isnt 0 and (vehicleData.vehicle_model_id is 0 or vehicleData.vehicle_series_id is 0)
+          alert('<%= I18n.t('layouts.fit_my_4x4.warning') %>')
+          ok = false
+
         else
-          if not $('#terms_conditions').is(':checked')
-            alert '<%= I18n.t('refinery.ironman.orders.contact_details.terms_conditions.warning') %>'
-            ok = false
+          $('input[required=required],textarea[required=required],select[required=required]', active).each ->
+            if not $(@).val()
+              ok = false
+
+          if not ok
+            alert '<%= I18n.t('refinery.ironman.orders.new.required_fields_missing') %>'
+          else
+            if not $('#terms_conditions').is(':checked')
+              alert '<%= I18n.t('refinery.ironman.orders.contact_details.terms_conditions.warning') %>'
+              ok = false
 
         return ok
       '#wishlist-stockist': -> true
@@ -32,6 +45,32 @@ $(document).on 'page:load ready', ->
     if not validations[active]? or validations[active]()
       nextTab = $(@).data('next-tab')
       $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
+
+  $('#wishlist-details :input').not(':button:hidden').on 'change', ->
+    vehicleData = {
+      vehicle_make_id: Number $('#vehicle_1st_id').val()
+      vehicle_model_id: Number $('#vehicle_2nd_id').val()
+      vehicle_series_id: Number $('#vehicle_3rd_id').val()
+    }
+
+    if not (vehicleData.vehicle_make_id is 0 or vehicleData.vehicle_model_id is 0 or vehicleData.vehicle_series_id is 0)
+      $.cookie 'vehicle_details', JSON.stringify(vehicleData), cookieOptions
+
+    if not window.localStorage?
+      return
+    else
+      localStorage.setItem 'wishlist-details', JSON.stringify $(@).closest('form').not(':hidden').serializeObject()
+
+  if window.localStorage?
+    data = JSON.parse(localStorage.getItem('wishlist-details') ? '{}')
+    _.each data, (value, key) ->
+      if key.match('order|terms_conditions')
+        el = $("[name=\"#{key}\"]")
+        if el.not('[type=hidden]').length
+          if el.is(':checkbox')
+            el.prop 'checked', (value isnt '0')
+          else
+            el.val value
 
   setClassesForTabs = (active) ->
     currentIndex = 0

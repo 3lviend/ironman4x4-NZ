@@ -8,11 +8,26 @@
     model_id = params[:vehicle_2nd_id]
     series_id = params[:vehicle_3rd_id]
 
-  elsif cookies[:fit_my_4x4].present?
-    vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+  elsif cookies[:fit_my_4x4].present? or cookies[:vehicle_details].present?
+
+    if cookies[:fit_my_4x4].present? and cookies[:vehicle_details].present?
+      if request[:controller] == 'refinery/ironman/orders'
+        vehicle_filter = JSON.parse(cookies[:vehicle_details]).with_indifferent_access
+      else
+        vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+      end
+
+    elsif cookies[:fit_my_4x4].present?
+      vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+
+    elsif cookies[:vehicle_details].present?
+      vehicle_filter = JSON.parse(cookies[:vehicle_details]).with_indifferent_access
+    end
+
     make_id = vehicle_filter[:vehicle_make_id]
     model_id = vehicle_filter[:vehicle_model_id]
     series_id = vehicle_filter[:vehicle_series_id]
+
   end
 
   cache_key = [cache_key_for_vehicles]
