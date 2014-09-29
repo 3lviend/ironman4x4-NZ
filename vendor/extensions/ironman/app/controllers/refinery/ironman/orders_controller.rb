@@ -27,11 +27,24 @@ module Refinery
 
       def create
         @order = Order.create(order_params)
+
         if @order.valid?
           flash.notice = t(
             'refinery.crudify.created',
             :what => @order.order_no
           )
+
+          begin
+            Refinery::Ironman::OrderMailer.notification(@order, request).deliver
+          rescue
+            logger.warn "There was an error delivering an order notification.\n#{$!}\n"
+          end
+
+          begin
+            Refinery::Ironman::OrderMailer.confirmation(@enquiry, request).deliver
+          rescue
+            logger.warn "There was an error delivering an order confirmation:\n#{$!}\n"
+          end
 
           if cookies[:wishlist].present?
             cookies.delete :wishlist

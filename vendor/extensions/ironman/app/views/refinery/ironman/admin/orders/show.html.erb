@@ -1,0 +1,133 @@
+<div id='actions'>
+  <h2><%= t('.details')%></h2>
+  <p>
+    <strong><%= t('.age') %>:</strong> <%= time_ago_in_words(@order.created_at) %>
+  </p>
+  <% if @order.spam? %>
+    <p>
+      <strong><%= t('.spam') %>:</strong> <%= t('.spam_yes') %>
+    </p>
+  <% end %>
+  <h2><%= t('.actions') %></h2>
+  <ul>
+    <li>
+      <%= link_to t('.back_to_all_orders'),
+                  refinery.ironman_admin_orders_path,
+                  :class => "back_icon" %>
+    </li>
+    <li>
+      <%= link_to t('refinery.ironman.admin.orders.delete'),
+                  refinery.ironman_admin_order_path(@order),
+                  :class => 'delete_icon no-tooltip confirm-delete',
+                  :title => t('refinery.ironman.admin.orders.delete'),
+                  :data => {
+                    :confirm => t('refinery.admin.delete.message', :title => "Order no #{@order.order_no}")
+                  },
+                  :method => :delete %>
+    </li>
+  </ul>
+</div>
+<div id='records'>
+  <h2><%= t('.order') %></h2>
+  <table id='order'>
+    <tr>
+      <td>
+        <strong><%= t('.to') %></strong>
+      </td>
+      <td>
+        <%= Refinery::Core.config.site_name %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.from') %></strong>
+      </td>
+      <td>
+        <%= @order.name %> [<%= mail_to @order.email, @order.email, {:title => t('.click_to_email')} %>]
+      </td>
+    </tr>
+    <% unless @order.phone.blank? %>
+      <tr>
+        <td>
+          <strong><%= t('.phone') %></strong>
+        </td>
+        <td>
+          <%= @order.phone %>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>
+        <strong><%= t('.date') %></strong>
+      </td>
+      <td>
+        <%= l(Date.parse(@order.created_at.to_s), :format => :long) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.address') %></strong>
+      </td>
+      <td>
+        <%= @order.full_street_address %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.receive_news') %></strong>
+      </td>
+      <td>
+        <%= (@order.receive_news ? t('.yes') : t('.no')) %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.vehicle') %></strong>
+      </td>
+      <td>
+        <% if @order.vehicle.present? %>
+        <%= @order.vehicle_name_full %>
+        <% else %>
+        <%= t('.na') %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.stockist') %></strong>
+      </td>
+      <td>
+        <% if @order.stockist.present? %>
+        <%= @order.stockist.name %>
+        <% else %>
+        <%= t('.na') %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td valign='top'>
+        <strong><%= t('.message') %></strong>
+      </td>
+      <td>
+        <%= simple_format strip_tags(@order.comments), :style => 'margin-top: 0' %>
+      </td>
+    </tr>
+
+    <tr>
+      <td valign='top'>
+        <strong><%= t('.products') %></strong>
+      </td>
+      <td>
+        <table>
+        <% @order.lines.each do |line| %>
+          <tr>
+            <td><%= link_to line.product.name, refinery.ironman_admin_products_path(line.product) %></td>
+            <td>Qty: <%= line.quantity %></td>
+            <td><%= number_to_currency line.net_amount %></td>
+          </tr>
+        <% end %>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -24,6 +24,11 @@ en:
     ironman:
       admin:
         orders:
+          order:
+            read_order: Read the order
+            said: said
+            mark_as_spam: Mark as spam
+            mark_as_ham: Move to inbox
           actions:
             create_new: Add New Order
             reorder: Reorder Orders
@@ -37,6 +42,29 @@ en:
             view_live_html: View this order live <br/><em>(opens in a new window)</em>
             edit: Edit this order
             delete: Remove this order forever
+          show:
+            details: Details
+            age: Age
+            actions: Actions
+            back_to_all_orders: Back to all Orders
+            spam: Spam
+            spam_yes: 'yes'
+            order: Order
+            receive_news: Receive News?
+            yes: Yes
+            no: No
+            to: To
+            from: From
+            products: Products
+            address: Address
+            vehicle: Vehicle
+            stockist: Stockist
+            na: N/A
+            click_to_email: Click to email this address
+            phone: Phone
+            date: Date
+            message: Comments
+          delete: Delete
         catalogues:
           actions:
             create_new: Add New Catalogue

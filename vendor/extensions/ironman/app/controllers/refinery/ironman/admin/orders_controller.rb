@@ -6,7 +6,8 @@ module Refinery
         crudify :'refinery/ironman/order',
                 :title_attribute => 'order_no',
                 :xhr_paging => true,
-                :sortable => false
+                :sortable => false,
+                :order => 'refinery_ironman_orders.created_at desc'
 
       protected
         def order_params

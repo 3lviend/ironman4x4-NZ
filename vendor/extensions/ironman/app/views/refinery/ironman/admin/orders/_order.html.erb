@@ -1,20 +1,19 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(order) -%>">
   <span class='title'>
-    <%= order.order_no %>
-
+    <%= link_to order.order_no, refinery.ironman_admin_order_path(order) %>
+    <span class="preview"><%= order.name -%></span>,
+    <span class="preview"><%= d order.created_at -%></span>,
+    <span class="preview"><%= number_to_currency order.total_amount -%></span>
   </span>
   <span class='actions'>
     
-    <%= link_to refinery_icon_tag("application_go.png"), refinery.ironman_order_path(order),
-        :title => t('.view_live_html'),
-        :target => "_blank" %>
-    
-    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_ironman_admin_order_path(order),
-         :title => t('.edit') %>
     <%= link_to refinery_icon_tag("delete.png"), refinery.ironman_admin_order_path(order),
         :class => "cancel confirm-delete",
         :title => t('.delete'),
         :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => order.order_no)},
         :method => :delete %>
+
+    <%= link_to refinery_icon_tag('zoom.png'), refinery.ironman_admin_order_path(order),
+                :title => t('.read_order') -%>
   </span>
 </li>

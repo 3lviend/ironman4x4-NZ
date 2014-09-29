@@ -97,7 +97,7 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
-      resources :orders, :except => :show
+      resources :orders
 
       resources :enquiries, :only => [:index, :show, :destroy] do
         get :spam, :on => :collection
