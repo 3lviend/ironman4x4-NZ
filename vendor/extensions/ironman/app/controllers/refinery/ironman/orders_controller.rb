@@ -58,11 +58,13 @@ module Refinery
           items.each do |item|
             a = item.split '|'
             product_id = a[0]
-            quantity = a[1]
-            lines << {
-              product_id: product_id,
-              quantity: quantity
-            }
+            quantity = a[1].to_i
+            if not product_id.nil? and quantity >= 1
+              lines << {
+                product_id: product_id,
+                quantity: quantity
+              }
+            end
           end
 
           @order.lines_attributes = lines
