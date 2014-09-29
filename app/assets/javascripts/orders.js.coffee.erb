@@ -7,8 +7,31 @@ $(document).on 'page:load ready', ->
   }
 
   $('#wishlist .next.btn').on 'click', ->
-    nextTab = $(@).data('next-tab')
-    $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
+    active = $('#wishlist li.active a[data-toggle="tab"]').attr('href')
+
+    validations = {
+      '#wishlist-review': -> true
+      '#wishlist-details': ->
+        ok = true
+
+        $('input[required=required],textarea[required=required],select[required=required]', active).each ->
+          if not $(@).val()
+            ok = false
+
+        if not ok
+          alert '<%= I18n.t('refinery.ironman.orders.new.required_fields_missing') %>'
+        else
+          if not $('#terms_conditions').is(':checked')
+            alert '<%= I18n.t('refinery.ironman.orders.contact_details.terms_conditions.warning') %>'
+            ok = false
+
+        return ok
+      '#wishlist-stockist': -> true
+    }
+
+    if not validations[active]? or validations[active]()
+      nextTab = $(@).data('next-tab')
+      $('#wishlist ul[role=tablist] a[href="#' + nextTab + '"]').tab('show').focus().blur()
 
   setClassesForTabs = (active) ->
     currentIndex = 0
@@ -43,5 +66,5 @@ $(document).on 'page:load ready', ->
     if tab is '#wishlist-review'
       setClassesForTabs active
   else
-    active = $('#wishlist a[data-toggle="tab"].active').get(0)
+    active = $('#wishlist li.active a[data-toggle="tab"]').get(0)
     setClassesForTabs active

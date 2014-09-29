@@ -230,6 +230,7 @@ en:
             wishlist_details: Wishlist - Customer Details
             wishlist_stockist: Wishlist - Select Stockist
             wishlist_submission: Wishlist - Submission Complete
+          required_fields_missing: Please fill out all required fields marked with an asterisk (*)
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your wishlist.
           vehicle_make:
