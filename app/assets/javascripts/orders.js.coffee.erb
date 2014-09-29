@@ -119,13 +119,22 @@ $(document).on 'page:load ready', ->
     window.initStockists() if not stockistsInit
     stockistsInit = true
 
-  $('#wishlist-stockist #stockists .stockist').append(
-    '<div class="row">
-      <div class="field contact col-sm-offset-2 col-sm-10">
-        <button type="button" class="btn btn-info btn-sm select-stockist"><%= I18n.t('refinery.ironman.orders.form.buttons.select') %></button>
-      </div>
-    </div>'
-  )
+  $('#wishlist-stockist #stockists .stockist').each ->
+    style = 'btn-info'
+    text = '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
+
+    stockistId = data['order[stockist_id]']
+    if stockistId and Number(stockistId) is Number($('.heading', @).data('stockist-id'))
+      style = 'btn-primary'
+      text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
+
+    $(@).append(
+      '<div class="row">
+        <div class="field contact col-sm-offset-2 col-sm-10">
+          <button type="button" class="btn ' + style + ' btn-sm select-stockist">' + text + '</button>
+        </div>
+      </div>'
+    )
 
   $('#wishlist-stockist .btn.select-stockist').on 'click', ->
     btn = $(@)
