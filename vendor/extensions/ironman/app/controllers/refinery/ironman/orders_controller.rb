@@ -41,7 +41,7 @@ module Refinery
           end
 
           begin
-            Refinery::Ironman::OrderMailer.confirmation(@enquiry, request).deliver
+            Refinery::Ironman::OrderMailer.confirmation(@order, request).deliver
           rescue
             logger.warn "There was an error delivering an order confirmation:\n#{$!}\n"
           end

@@ -479,6 +479,21 @@ en:
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
           default_product_description: Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum
+      order_mailer:
+        notification:
+          greeting: Hi there
+          you_recieved_new_order: You just received a new wishlist submission from Ironman 4x4
+          order_starts: ! '--- order starts ---'
+          order_ends: ! '--- order ends ---'
+          from: From
+          email: Email
+          phone: Phone
+          comments: Comments
+          vehicle: Vehicle
+          address: Address
+          closing_line: Kind Regards
+          ps: P.S. All your orders are stored in the "Orders" section of Refinery
+            should you ever want to view it later there.
       enquiry_mailer:
         notification:
           greeting: Hi there

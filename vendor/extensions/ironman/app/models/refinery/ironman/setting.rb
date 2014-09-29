@@ -40,6 +40,45 @@ module Refinery
           end
         end
 
+
+        #=======
+
+        def order_confirmation_body
+          find_or_set(:order_confirmation_body,
+            "Thank you for your enquiry %name%,\n\nThis email is a receipt to confirm we have received your enquiry and we'll be in touch shortly.\n\nThanks."
+          )
+        end
+
+        def order_confirmation_subject(locale='en')
+          find_or_set(:"order_confirmation_subject_#{locale}",
+            "Thank you for your order",
+            scoping: "orders"
+          )
+        end
+
+        def order_confirmation_subject=(locales_subjects)
+          locales_subjects.each do |locale, subject|
+            set(:"order_confirmation_subject_#{locale}", {
+              value: subject,
+              scoping: "orders"
+            })
+          end
+        end
+
+        def order_confirmation_message(locale='en')
+          find_or_set(:"order_confirmation_message_#{locale}", order_confirmation_body, scoping: "orders")
+        end
+
+        def order_confirmation_message=(locales_messages)
+          locales_messages.each do |locale, message|
+            set(:"order_confirmation_message_#{locale}", {
+              value: message,
+              scoping: "orders"
+            })
+          end
+        end
+
+
         def notification_recipients
           recipients = ((Role[:refinery].users.first.email rescue nil) if defined?(Role)).to_s
           find_or_set(:enquiry_notification_recipients, recipients, scoping: "enquiries")
@@ -54,6 +93,10 @@ module Refinery
 
         def notification_subject
           find_or_set(:enquiry_notification_subject, "New enquiry from your website", scoping: "enquiries")
+        end
+
+        def order_notification_subject
+          find_or_set(:order_notification_subject, "New order from Ironman 4x4", scoping: "orders")
         end
 
         def send_confirmation?
