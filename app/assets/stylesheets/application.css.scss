@@ -263,6 +263,15 @@ hr.double {
         &:hover {
           text-decoration: underline;
         }
+        position: relative;
+
+        .badge {
+          position: absolute;
+          background-color: $green;
+          color: $white;
+          top: -9px;
+          right: -1px;
+        }
       }
     }
   }

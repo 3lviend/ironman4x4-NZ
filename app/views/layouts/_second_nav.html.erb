@@ -8,7 +8,10 @@
 
       <div class="clearfix">
 
-        <% cache(:second_nav_links, expires_in: 1.hour) do %>
+        <% cache_key = [:second_nav_links] %>
+        <% num = num_items_in_cart %>
+        <% cache_key.push num if num.present? and num > 0 %>
+        <% cache(cache_key, expires_in: 1.hour) do %>
         <ul class="sections">
           <li>
             <%= link_to refinery.ironman_products_path do %>
@@ -37,6 +40,9 @@
           <li>
             <%= link_to refinery.new_ironman_order_path do %>
               <%= t('.nav.wish_list') %>
+              <% if num.present? and num > 0 %>
+                <span class="badge badge-primary"><%= num %></span>
+              <% end %>
             <% end %>
           </li>
           <li>
