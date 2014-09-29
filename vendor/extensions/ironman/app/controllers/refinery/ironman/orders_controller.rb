@@ -33,6 +33,10 @@ module Refinery
             :what => @order.order_no
           )
 
+          if cookies[:wishlist].present?
+            cookies.delete :wishlist
+          end
+
           render :confirmation
         else
           find_all_stockists()
