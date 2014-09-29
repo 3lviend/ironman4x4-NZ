@@ -1,4 +1,6 @@
 $(document).on 'page:load ready', ->
+  cookieOptions = {expires:7, path: '/'}
+
   $('#fit-my-4x4, #layout-fit-my-4x4').on 'submit', (event) ->
     event.preventDefault()
 
@@ -12,9 +14,9 @@ $(document).on 'page:load ready', ->
       alert('<%= I18n.t('layouts.fit_my_4x4.warning') %>')
       return
 
-    $.cookie 'fit_my_4x4', JSON.stringify(data), {expires:7, path: '/'}
+    $.cookie 'fit_my_4x4', JSON.stringify(data), cookieOptions
     document.location.href = $('form', this).attr 'action'
 
   $('#vehicle-filter-enabled button.disable').on 'click', (event) ->
-    $.removeCookie 'fit_my_4x4'
+    $.removeCookie 'fit_my_4x4', cookieOptions
     document.location.reload()
