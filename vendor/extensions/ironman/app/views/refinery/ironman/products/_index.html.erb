@@ -32,7 +32,7 @@
     <% elsif @category.present? %>
     <% url = refinery.products_category_product_path(@category, product) %>
     <% else %>
-    <% url = refinery.ironman_products_path %>
+    <% url = refinery.ironman_product_path(product) %>
     <% end %>
 
     <div class="product">
