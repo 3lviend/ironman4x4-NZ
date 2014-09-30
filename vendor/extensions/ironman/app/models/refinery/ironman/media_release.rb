@@ -24,6 +24,9 @@ module Refinery
         end
       end
 
+      def draft?
+        draft
+      end
     end
   end
 end

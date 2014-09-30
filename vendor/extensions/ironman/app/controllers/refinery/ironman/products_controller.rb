@@ -12,21 +12,21 @@ module Refinery
 
         if params[:id].nil?
           if @vehicle_filter.present?
-            @categories = Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
+            @categories = Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
           else
-            @categories = Category.roots
+            @categories = Category.roots.active
           end
 
           render 'refinery/ironman/categories/index'
         else
           # TODO: is there a way to cache this, so we're not creating multiple db
           # calls here?
-          @this_category = Category.friendly.find(params[:id])
+          @this_category = Category.active.friendly.find(params[:id])
 
           if @vehicle_filter.present?
-            @products = @this_category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
           else
-            @products = @this_category.products
+            @products = @this_category.products.active
           end
 
           if @this_category.depth == 0
@@ -47,7 +47,7 @@ module Refinery
       end
 
       def show
-        @product = Product.friendly.find(params[:id])
+        @product = Product.active.friendly.find(params[:id])
         @category = Category.friendly.find(params[:category_id]) if params[:category_id].present?
         @subcategory = Category.friendly.find(params[:subcategory_id]) if params[:subcategory_id].present?
         @sub_subcategory = Category.friendly.find(params[:sub_subcategory_id]) if params[:sub_subcategory_id].present?
@@ -74,7 +74,7 @@ module Refinery
     protected
 
       def find_all_products
-        @products = Product.order('product_no ASC')
+        @products = Product.active.order('product_no ASC')
       end
 
       def find_page

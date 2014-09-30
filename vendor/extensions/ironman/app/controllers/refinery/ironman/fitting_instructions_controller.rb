@@ -12,7 +12,7 @@ module Refinery
           @this_category = Category.leaves.first
         end
 
-        @products = @this_category.leaves.map { |c| c.products.where('fitting_instructions_resource_id is not null') }.flatten
+        @products = @this_category.leaves.map { |c| c.products.active.where('fitting_instructions_resource_id is not null') }.flatten
 
         if @this_category.depth == 0
           @category = @this_category
@@ -31,7 +31,7 @@ module Refinery
     protected
 
       def find_all_products
-        @products = Product.order('product_no ASC')
+        @products = Product.active.order('product_no ASC')
       end
 
       def find_page

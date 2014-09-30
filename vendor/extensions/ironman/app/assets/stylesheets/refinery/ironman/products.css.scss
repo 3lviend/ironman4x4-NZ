@@ -75,6 +75,11 @@
   .col {
     padding-left: 10px;
   }
+
+  .record.draft {
+    font-style: italic;
+    color: grey;
+  }
 }
 
 .products .search_form .button {

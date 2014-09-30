@@ -13,6 +13,8 @@ module Refinery
       validates_presence_of :name
       validates_uniqueness_of :name, scope: :parent_id
 
+      scope :active, -> { where(visible: true) }
+
       after_initialize do
         if self.new_record?
           self.visible = true if self.visible.nil?

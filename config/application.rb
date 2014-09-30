@@ -30,10 +30,10 @@ module Ironman4x4
     config.to_prepare do
       Refinery.searchable_models = [
         Refinery::Page,
-        Refinery::Ironman::Product,
-        Refinery::Ironman::Category,
-        Refinery::Ironman::MediaRelease,
-        Refinery::Ironman::Post
+        Refinery::Ironman::Product.active,
+        Refinery::Ironman::Category.active,
+        Refinery::Ironman::MediaRelease.active,
+        Refinery::Ironman::Post.active
       ]
     end
   end

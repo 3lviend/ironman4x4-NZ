@@ -1,4 +1,4 @@
-<tr class='record <%= cycle("on", "on-hover") %>' id="<%= dom_id(product) -%>">
+<tr class='record <%= cycle("on", "on-hover") %> <%= 'draft' if product.draft? %>' id="<%= dom_id(product) -%>">
   <td class="image">
     <%= image_tag 'refinery/icons/img.png' if product.images.present? %>
   </td>

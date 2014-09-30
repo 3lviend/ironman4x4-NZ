@@ -18,6 +18,8 @@ module Refinery
 
       alias_attribute :title, :name
 
+      scope :active, -> { where(draft: false) }
+
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no
       validates_presence_of :product_no, :name, :quantity_required
@@ -26,6 +28,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
+          self.draft = false if self.draft.nil?
           self.quantity_required = 0 if self.quantity_required.nil?
         end
       end
@@ -36,6 +39,10 @@ module Refinery
 
       def vehicle
         vehicles.first if not vehicles.empty?
+      end
+
+      def draft?
+        draft
       end
     end
   end

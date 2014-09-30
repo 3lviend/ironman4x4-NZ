@@ -6,7 +6,7 @@ module Refinery
       before_filter :find_page
 
       def children
-        @categories = filter_by_vehicle Category.friendly.find(params[:id]).children
+        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children
       end
 
       def index
@@ -15,7 +15,7 @@ module Refinery
         end
 
         if params[:id].present?
-          @this_category = Category.friendly.find(params[:id])
+          @this_category = Category.active.friendly.find(params[:id])
 
           if @this_category.depth == 0
             @category = @this_category
@@ -31,17 +31,17 @@ module Refinery
           if @category.leaf?
             if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
-              @products = category.products.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
+              @products = category.products.active.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
             else
-              @products = category.products
+              @products = category.products.active
             end
 
             render 'refinery/ironman/products/index'
           else
-            @categories = filter_by_vehicle Category.friendly.find(params[:id]).children
+            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children
           end
         else
-          @categories = filter_by_vehicle(Category.all).map(&:root).uniq
+          @categories = filter_by_vehicle(Category.active).map(&:root).uniq
         end
 
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -50,7 +50,7 @@ module Refinery
       end
 
       def show
-        @category = Category.friendly.find(params[:id])
+        @category = Category.active.friendly.find(params[:id])
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @category in the line below:
@@ -59,7 +59,7 @@ module Refinery
 
     protected
       def find_all_categories
-        @categories = Category.order('position ASC')
+        @categories = Category.active.order('position ASC')
       end
 
       def find_page
