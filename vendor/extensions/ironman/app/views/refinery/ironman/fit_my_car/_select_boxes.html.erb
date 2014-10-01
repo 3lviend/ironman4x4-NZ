@@ -37,9 +37,10 @@
   end
 
   cache(cache_key) do
-  vehicle_make = Refinery::Ironman::Vehicle.find(make_id) if make_id.present? and make_id != 0
-  vehicle_model = Refinery::Ironman::Vehicle.find(model_id) if model_id.present? and model_id != 0
-  vehicle_series = Refinery::Ironman::Vehicle.find(series_id) if series_id.present? and series_id != 0
+  # find_by_id doesn't raise an exception if id doesn't exist
+  vehicle_make = Refinery::Ironman::Vehicle.find_by_id(make_id) if make_id.present? and make_id != 0
+  vehicle_model = Refinery::Ironman::Vehicle.find_by_id(model_id) if model_id.present? and model_id != 0
+  vehicle_series = Refinery::Ironman::Vehicle.find_by_id(series_id) if series_id.present? and series_id != 0
 %>
 
 <div class="control first col-sm-3 col-md-2">

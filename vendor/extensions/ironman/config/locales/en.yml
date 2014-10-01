@@ -324,10 +324,12 @@ en:
           save_and_view: Save & View Products
         vehicle_selected:
           description: 'Your Selected Vehicle: <strong>%{vehicle}</strong>'
+          unknown_vehicle: unknown vehicle
         vehicle_filter_enabled:
           heading: Product Filtering Enabled
           description1: All categories listed below are compatible with your <strong>%{vehicle}</strong>
           description2: You can <button class="btn btn-link disable">turn product filtering off</button> at any time to browse our full range of products
+          unknown_vehicle: unknown vehicle
         select_boxes:
           vehicle_make:
             prompt: Select Make

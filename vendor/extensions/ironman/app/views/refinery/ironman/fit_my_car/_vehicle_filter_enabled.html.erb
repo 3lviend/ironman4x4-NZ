@@ -1,7 +1,9 @@
 <% cache([vehicle_filter]) do %>
+<% # note: if the vehicle_filter cookie returns an invalid vehicle id (perhaps it was deleted?), then the vehicle won't exist here %>
+<% vehicle = Refinery::Ironman::Vehicle.find_by_id(vehicle_filter[:vehicle_series_id]) %>
 <div id="vehicle-filter-enabled">
   <h5><%= t('.heading') %></h5>
-  <p><%= raw t('.description1', vehicle: Refinery::Ironman::Vehicle.find(vehicle_filter[:vehicle_series_id]).name_full) %></p>
+  <p><%= raw t('.description1', vehicle: (vehicle.present? ? vehicle.name_full : t('.unknown_vehicle'))) %></p>
   <p><%= raw t('.description2') %></p>
 </div>
 <% end %>
