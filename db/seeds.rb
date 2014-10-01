@@ -9,8 +9,8 @@
 #load 'db/seeds/01_users.rb'
 #load 'db/seeds/a_vehicles.rb'
 #load 'db/seeds/b_categories.rb'
-#load 'db/seeds/c_accessory_products.rb'
-#load 'db/seeds/d_suspension_products.rb'
+load 'db/seeds/c_accessory_products.rb'
+load 'db/seeds/d_suspension_products.rb'
 
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
