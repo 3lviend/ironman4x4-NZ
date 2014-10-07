@@ -2,10 +2,12 @@ $(document).on 'page:load ready', ->
   $('#enquiry_type_vehicle_specific').on 'change', ->
     if $('#enquiry_type_vehicle_specific').is(':checked')
       $('#enquiry_type_general').prop 'checked', false
+      $('#enquiry-vehicle-selector').show()
 
   $('#enquiry_type_general').on 'change', ->
     if $('#enquiry_type_general').is(':checked')
       $('#enquiry_type_vehicle_specific').prop 'checked', false
+      $('#enquiry-vehicle-selector').hide()
 
   $('#submit-enquiry form').on 'submit', (e) ->
     if not $('#terms_conditions').is(':checked')
