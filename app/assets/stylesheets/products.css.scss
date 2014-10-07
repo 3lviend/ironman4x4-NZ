@@ -49,20 +49,17 @@
       }
 
       .photo {
-        overflow: hidden;
-        box-sizing: content-box;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 193px;
 
-        img {
-          width: 100%;
-          height: auto;
-
-          @media (max-width: $screen-xs-max) {
-            max-width: 260px;
-            margin: 10px 10px 0 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-          }
+        @media (max-width: $screen-xs-max) {
+          max-width: 260px;
+          margin: 10px 10px 0 10px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
         }
       }
 
