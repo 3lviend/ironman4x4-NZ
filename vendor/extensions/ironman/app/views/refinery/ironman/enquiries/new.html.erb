@@ -92,7 +92,7 @@
 
         <div class="control first col-sm-4 col-md-3 col-lg-2">
           <%= label_tag :enquiry_type_vehicle_specific, for: :enquiry_type_vehicle_specific do %>
-            <%= check_box_tag :enquiry_type_vehicle_specific, t('.enquiry_type.vehicle_specific'), params[:enquiry_type_vehicle_specific], {id: :enquiry_type_vehicle_specific} %>
+            <%= check_box_tag :enquiry_type_vehicle_specific, t('.enquiry_type.vehicle_specific'), (not params[:enquiry_type_general]), {id: :enquiry_type_vehicle_specific} %>
             <%= t('.enquiry_type.vehicle_specific') %>
           <% end %>
         </div>
