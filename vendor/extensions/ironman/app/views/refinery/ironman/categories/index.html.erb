@@ -53,11 +53,9 @@
     <% end %>
 
     <div class="category">
-      <div class="photo"><!--
-        --><%= if category.thumbnail_image.present? then image_tag category.thumbnail_image.thumbnail(geometry: "302x193").url else image_tag 'category_list_photo_default.jpg' end %><!--
-      --></div>
+      <div class="photo" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')"></div>
       <div class="content">
-        <h3><%= category.name %></h3>
+        <h3 class="two-lines"><%= category.name %></h3>
         <div class="description">
           <% if category.short_description.present? %>
           <%= category.short_description %>

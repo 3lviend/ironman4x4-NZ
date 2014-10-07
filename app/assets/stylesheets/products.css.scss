@@ -77,7 +77,12 @@
           margin-top: 12px;
           margin-bottom: 12px;
 
-          @include line-clamp($font-size-h3, $headings-line-height, 3);
+          &.three-lines {
+            @include line-clamp($font-size-h3, $headings-line-height, 3);
+          }
+          &.two-lines {
+            @include line-clamp($font-size-h3, $headings-line-height, 2);
+          }
         }
 
         .description {
