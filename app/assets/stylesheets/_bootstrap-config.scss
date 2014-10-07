@@ -95,3 +95,35 @@ $font-family-extra-bold: 'HelveticaNeueW02-XBlkCn739235', "Helvetica Neue", Helv
      text-align: center;
   }
 }
+
+@mixin line-clamp($font-size, $line-height, $lines-to-show) {
+  overflow: hidden;
+  height: $font-size*$line-height*$lines-to-show;
+  position: relative;
+
+  /* for browsers which don't have line-clamp */
+  &:after {
+    content: "";
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    height: $font-size;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  }
+
+  /* line clamp */
+  @supports (-webkit-line-clamp: $lines-to-show) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines-to-show;
+    -webkit-box-orient: vertical;
+    //max-height: $font-size*$line-height*$lines-to-show;
+    //height: auto;
+
+    &:after {
+      display: none;
+    }
+  }
+}
+

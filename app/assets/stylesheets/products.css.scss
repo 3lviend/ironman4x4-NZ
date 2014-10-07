@@ -79,11 +79,15 @@
           color: $green;
           margin-top: 12px;
           margin-bottom: 12px;
+
+          @include line-clamp($font-size-h3, $headings-line-height, 3);
         }
 
         .description {
           margin-top: 12px;
           margin-bottom: 12px;
+
+          @include line-clamp($font-size-base, $line-height-base, 3);
         }
       }
     }
