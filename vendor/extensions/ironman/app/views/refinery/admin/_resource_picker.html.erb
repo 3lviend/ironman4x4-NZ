@@ -29,11 +29,12 @@
                 "#{resource.url if resource}",
                 :id => "current_resource_#{field}",
                 :target => '_blank' %>
+
+    <%= link_to t('.remove_current'), '',
+                :id => "remove_resource_#{field}",
+                :class => "remove_picked_resource",
+                :style => "#{'display:none;' unless resource}" %>
   </div>
-  <br/>
-  <%= link_to t('.remove_current'), '',
-              :id => "remove_resource_#{field}",
-              :style => "#{'display:none;' unless resource}" %>
 </div>
 
 <% content_for :javascripts do %>

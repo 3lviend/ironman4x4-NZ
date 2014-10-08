@@ -26,3 +26,22 @@
     color: grey;
   }
 }
+
+.remove_picked_image, .remove_picked_resource {
+  background-image: image-url('refinery/icons/delete.png');
+  width: 16px;
+  height: 16px;
+  text-indent: -9999px;
+  border-bottom: none !important;
+  margin-left: 10px;
+  margin-top: 0;
+  display: inline-block;
+}
+
+.remove_picked_image {
+  vertical-align: top;
+}
+
+.remove_picked_resource {
+  vertical-align: middle;
+}
