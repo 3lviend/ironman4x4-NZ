@@ -25,6 +25,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
+          self.draft = false if self.draft.nil?
           self.published_at = Time.zone.now if self.published_at.nil?
         end
       end
@@ -46,6 +47,10 @@ module Refinery
           def_delegators association_name,
             :"#{attribute_name}", :"#{attribute_name}=", :"#{attribute_name}?"
         end
+      end
+
+      def draft?
+        draft
       end
     end
   end
