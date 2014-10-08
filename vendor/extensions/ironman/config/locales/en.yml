@@ -383,7 +383,7 @@ en:
             button: 'Submit'
       events:
         show:
-          posted_at: 'Posted by %{author} on %{published_at}'
+          posted_at: 'Posted on %{published_at}'
           starts: 'Starts'
           ends: 'Ends'
           location: 'Location'
@@ -391,7 +391,7 @@ en:
           add_to_calendar: '+ Add to Calendar'
       posts:
         show:
-          posted_at: 'Posted by %{author} on %{published_at}'
+          posted_at: 'Posted on %{published_at}'
         related_posts:
           other: 'Related events / news / blog posts:'
           buttons:
