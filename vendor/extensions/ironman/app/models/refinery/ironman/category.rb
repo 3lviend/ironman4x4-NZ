@@ -21,6 +21,10 @@ module Refinery
           self.featured = false if self.featured.nil?
         end
       end
+
+      def visible?
+        visible
+      end
     end
   end
 end

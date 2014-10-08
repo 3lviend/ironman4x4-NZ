@@ -19,6 +19,10 @@ module Refinery
       def name_full
         self_and_ancestors.reverse.map {|v| v.name}.join(' ')
       end
+
+      def visible?
+        visible
+      end
     end
   end
 end

@@ -20,4 +20,9 @@
       display: table-cell;
     }
   }
+
+  .record.draft {
+    font-style: italic;
+    color: grey;
+  }
 }

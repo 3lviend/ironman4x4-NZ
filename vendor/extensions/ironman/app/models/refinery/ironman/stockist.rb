@@ -27,6 +27,10 @@ module Refinery
       def full_street_address
         [address1, address2, suburb, state, postcode, country].reject(&:blank?).join(', ')
       end
+
+      def visible?
+        visible
+      end
     end
   end
 end

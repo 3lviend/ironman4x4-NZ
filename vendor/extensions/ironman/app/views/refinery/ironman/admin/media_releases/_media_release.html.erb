@@ -1,4 +1,4 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(media_release) -%>">
+<li class='clearfix record <%= cycle("on", "on-hover") %> <%= 'draft' if media_release.draft? %>' id="<%= dom_id(media_release) -%>">
   <span class='title'>
     <%= media_release.title %>
 

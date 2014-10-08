@@ -1,4 +1,4 @@
-<li class='clearfix record' id="<%= dom_id(vehicle) -%>">
+<li class='clearfix record <%= 'draft' if not vehicle.visible? %>' id="<%= dom_id(vehicle) -%>">
   <div class="item">
     <span class='title'>
       <%= vehicle.name %>
