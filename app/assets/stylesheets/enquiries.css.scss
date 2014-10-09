@@ -49,5 +49,10 @@
     }
 
     margin-bottom: $grid-gutter-width;
+
+    > div {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }

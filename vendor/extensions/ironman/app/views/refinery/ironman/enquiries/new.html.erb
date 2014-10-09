@@ -9,10 +9,12 @@
 <% content_for :body do %>
   <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? %>
 
-  <div id="submit-enquiry" class='enquiries'>
+  <div id="submit-enquiry" class="enquiries">
     <div class="clearfix call">
-      <div class="pull-left green uppercase"><%= t('.australian_call') %></div>
-      <div class="pull-right green uppercase"><%= t('.international_call') %></div>
+      <div class="col-md-8">
+        <div class="pull-left green uppercase"><%= t('.australian_call') %></div>
+        <div class="pull-right green uppercase"><%= t('.international_call') %></div>
+      </div>
     </div>
 
     <%= form_for [refinery, :ironman, @enquiry], class: 'form-horizontal', :html => {:'novalidate' => 'novalidate'} do |f| %>
@@ -24,56 +26,56 @@
 
       <div class="form-group clearfix">
         <%= f.required_label :name, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :name, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :address1, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :address1, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.label :address2, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :address2, :class => 'text form-control' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :suburb, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :suburb, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :postcode, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :postcode, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :state, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :state, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :country, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_field :country, :class => 'text form-control', :required => 'required' %>
         </div>
       </div>
 
       <div class="form-group clearfix">
         <%= f.required_label :email, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.email_field :email, :class => 'text email form-control', :required => 'required' %>
         </div>
       </div>
@@ -81,7 +83,7 @@
       <% if Refinery::Ironman.show_phone_number_field %>
         <div class="form-group clearfix">
           <%= f.required_label :phone, :class => 'control-label col-sm-3 col-md-2' %>
-          <div class="control single col-sm-9 col-md-10">
+          <div class="control single col-sm-9 col-md-6">
             <%= f.text_field :phone, :class => 'text phone form-control', :required => 'required' %>
           </div>
         </div>
@@ -112,13 +114,13 @@
 
       <div class='form-group clearfix message_field'>
         <%= f.label :message, :class => 'control-label col-sm-3 col-md-2' %>
-        <div class="control single col-sm-9 col-md-10">
+        <div class="control single col-sm-9 col-md-6">
           <%= f.text_area :message, :rows => 8, :class => 'form-control' %>
         </div>
       </div>
 
       <div class="form-group clearfix receive-news">
-        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-6">
           <%= f.label :receive_news do %>
             <%= f.check_box :receive_news %>
             <%= t('.receive_news') %>
@@ -128,7 +130,7 @@
 
       <% if terms_page.present? %>
       <div class="form-group clearfix">
-        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10">
+        <div class="control single checkbox col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-6">
           <%= label_tag :terms_conditions do %>
             <%= check_box_tag :terms_conditions, 1, nil, :required => 'required' %>
             <%= t('.accept') %>
@@ -139,7 +141,7 @@
       <% end %>
 
       <div class="form-group clearfix">
-        <div class="actions col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-10 clearfix">
+        <div class="actions col-sm-offset-3 col-md-offset-2 col-sm-9 col-md-6 clearfix">
           <%= f.submit t('.send'), class: 'btn btn-primary pull-right' %>
         </div>
       </div>
