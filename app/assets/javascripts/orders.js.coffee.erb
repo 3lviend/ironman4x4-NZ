@@ -65,7 +65,7 @@ $(document).on 'page:load ready', ->
     data = JSON.parse(localStorage.getItem('wishlist-details') ? '{}')
     _.each data, (value, key) ->
       if key.match('order|terms_conditions')
-        el = $("[name=\"#{key}\"]")
+        el = $("#wishlist [name=\"#{key}\"]")
         if el.not('[type=hidden]').length
           if el.is(':checkbox')
             el.prop 'checked', (value isnt '0')
