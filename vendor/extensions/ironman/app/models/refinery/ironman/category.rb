@@ -19,11 +19,20 @@ module Refinery
         if self.new_record?
           self.visible = true if self.visible.nil?
           self.featured = false if self.featured.nil?
+          self.show_info = true if self.show_info.nil?
         end
       end
 
       def visible?
         visible
+      end
+
+      def featured?
+        featured
+      end
+
+      def show_info?
+        show_info
       end
     end
   end

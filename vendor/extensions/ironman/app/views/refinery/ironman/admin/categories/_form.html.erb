@@ -70,6 +70,11 @@
     <%= f.check_box :visible, :checked => @category[:visible] -%>
   </div>
 
+  <div class='field'>
+    <%= f.label :show_info -%>
+    <%= f.check_box :show_info, :checked => @category[:show_info] -%>
+  </div>
+
   <%= render '/refinery/admin/form_actions', :f => f,
              :continue_editing => false,
              :delete_title => t('delete', :scope => 'refinery.categories.admin.categories.category'),

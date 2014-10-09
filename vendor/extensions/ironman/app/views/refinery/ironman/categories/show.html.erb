@@ -53,7 +53,11 @@
   </div>
 
   <div class="buttons text-center">
+    <% if @category.parent.present? %>
     <%= link_to t('.buttons.back', parent:@category.parent.name), list_url, class:'btn btn-primary' %>
+    <% else %>
+    <%= link_to t('.buttons.back_to_products'), list_url, class:'btn btn-primary' %>
+    <% end %>
     <%= link_to t('.buttons.view_product_listing'), product_url, class:'btn btn-primary' if product_url.present? %>
   </div>
 </div>

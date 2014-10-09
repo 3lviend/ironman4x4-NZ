@@ -441,6 +441,7 @@ en:
           page_header: ! '%{category} Info'
           buttons:
             back: Back to %{parent}
+            back_to_products: Back to Products
             view_product_listing: View Product Listing
           default_category_description: '<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>
 <p>Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam etureprat laborem quias ratatum quidiae pellabor aut imus ut es eseque nobis rehendant abo.</p>
@@ -576,7 +577,7 @@ en:
         website: Website
         email: Email
         logo_image_id: Logo Image
-        visible: Visible
+        visible: Visible?
       refinery/ironman/media_release:
         title: Title
         category: Category
@@ -587,7 +588,7 @@ en:
         unpriced_resource_id: Unpriced Resource
         thumbnail_image_id: Thumbnail Image
         posted_at: Posted At
-        draft: Draft
+        draft: Draft?
       refinery/ironman/event_detail:
         post_id: Post
         start: Start
@@ -605,18 +606,20 @@ en:
         hero_image_id: Hero Image
         published_at: Published At
         expire_at: Expire At
-        draft: Draft
+        draft: Draft?
       refinery/ironman/vehicle:
         parent_id: Parent
         name: Name
         sort_order: Sort Order
-        visible: Visible
+        visible: Visible?
       refinery/ironman/category:
         parent_id: Parent
         name: Name
         description: Description
         sort_order: Sort Order
-        visible: Visible
+        visible: Visible?
+        features: Featured?
+        show_info: Show Info Page?
       refinery/ironman/product:
         product_no: Product No
         name: Name
@@ -626,3 +629,4 @@ en:
         specifications: Specifications
         quantity_required: Quantity Required
         price: Price
+        draft: Draft?
