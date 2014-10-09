@@ -25,6 +25,7 @@ module Refinery
         if self.new_record?
           self.total_amount = 0 if self.total_amount.nil?
           self.tax_amount = 0 if self.tax_amount.nil?
+          self.receive_news = true if self.receive_news.nil?
         end
 
         calc_total_amount
