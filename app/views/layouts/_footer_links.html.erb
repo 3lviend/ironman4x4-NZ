@@ -74,7 +74,7 @@ cache(:footer_links, expires_in: 1.hour) do
           <dd><%= link_to t('.contact.head_office'), refinery.marketable_page_path(contact_page) %></li>
           <% end %>
           <% if contact_page.present? %>
-          <dd><%= link_to t('.contact.international_distributors_contact'), refinery.marketable_page_path(contact_page) %></li>
+          <dd><%= link_to t('.contact.international_distributors_contact'), "#{refinery.marketable_page_path(contact_page)}#africa" %></li>
           <% end %>
         </dl>
 

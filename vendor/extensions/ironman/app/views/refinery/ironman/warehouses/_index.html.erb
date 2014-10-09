@@ -42,7 +42,14 @@
       active: false
     });
 
-    $('#warehouses h3:first').trigger('click');
+    if ($(document.location.hash).length) {
+      $(document.location.hash).trigger('click');
+      // this will reposition the page, but should not refresh the page
+      document.location.href = document.location.href;
+    }
+    else {
+      $('#warehouses h3:first').trigger('click');
+    }
   });
 </script>
 
@@ -50,7 +57,7 @@
   <% australia = @warehouses.slice('Australia') %>
   <% warehouses = australia.merge(@warehouses.except('Australia')) %>
   <% warehouses.each do |country, warehouses| %>
-    <h3><%= country %></h3>
+    <h3 id="<%= country.parameterize %>"><%= country %></h3>
     <div>
       <ul>
       <% warehouses.each do |warehouse| %>
