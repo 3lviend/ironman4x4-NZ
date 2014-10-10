@@ -366,6 +366,8 @@ en:
             store_type: 'Filter by store type'
         search_form:
           placeholder: 'Postcode/Suburb'
+        marker_info_window:
+          directions: Directions
       media_releases:
         show:
           other: Other Media Releases
