@@ -19,5 +19,5 @@
   <% end %>
 </div>
 <div class="directions">
-  <%= link_to 'Directions', "http://maps.google.com/maps?saddr=#{u object.full_street_address}" %>
+  <%= link_to 'Directions', "http://maps.google.com/maps?saddr=#{u object.full_street_address}", :target => '_blank' %>
 </div>
