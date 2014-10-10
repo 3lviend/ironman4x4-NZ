@@ -764,5 +764,17 @@ hr.double {
 }
 
 #map {
+  margin-top: $grid-gutter-width/2;
   height: 334px;
+
+  /* make a bit taller for non-mobile */
+  @media (min-width: $screen-sm-min) {
+    height: 534px;
+  }
+}
+
+.event {
+  #map {
+    margin-top: 0;
+  }
 }
