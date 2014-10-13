@@ -506,6 +506,17 @@ hr.double {
 #layout-categories {
   background-color: $lighter-grey;
 
+  .btn.btn-link {
+    float: right;
+    color: $dark-grey;
+    background: image-url('selectmenu-caret.png') no-repeat right transparent;
+    padding-right: 18px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
   .categories {
     margin-top: $line-height-computed*1.5;
     margin-bottom: $line-height-computed;

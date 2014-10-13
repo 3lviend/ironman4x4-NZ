@@ -1,8 +1,8 @@
 <% cache(cache_key_for_categories) do %>
   <div id="layout-categories">
-    <div class="container">
-      <div class="toggle"></div>
-      <div class="categories">
+    <div class="container clearfix">
+      <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#category_listing"><%= t('.show_product_range_listing') %></button>
+      <div class="categories collapse" id="category_listing">
       <% Refinery::Ironman::Category.roots.each do |top_category| %>
         <ul class="category">
           <li class="top-level">

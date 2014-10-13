@@ -75,6 +75,8 @@ en:
     acknowledgements:
       copyright: '© Ironman 4x4 2014'
       designed_by: 'Wesbsite by 1bdesign'
+    categories:
+      show_product_range_listing: Show Product Range Listing
 
   refinery:
     pages:

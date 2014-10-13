@@ -16,7 +16,8 @@
 #= require jquery.cookie
 #= require turbolinks
 # require bootstrap
-#= require tab
+#= require bootstrap/collapse
+#= require bootstrap/tab
 #= require utils
 #= require underscore
 #= require gmaps/google
