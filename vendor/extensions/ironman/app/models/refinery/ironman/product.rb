@@ -28,7 +28,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
-          self.draft = false if self.draft.nil?
+          self.draft = true if self.draft.nil?
           self.quantity_required = 0 if self.quantity_required.nil?
         end
       end

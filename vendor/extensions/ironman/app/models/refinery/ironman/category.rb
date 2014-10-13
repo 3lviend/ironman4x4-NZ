@@ -17,7 +17,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
-          self.visible = true if self.visible.nil?
+          self.visible = false if self.visible.nil?
           self.featured = false if self.featured.nil?
           self.show_info = true if self.show_info.nil?
         end

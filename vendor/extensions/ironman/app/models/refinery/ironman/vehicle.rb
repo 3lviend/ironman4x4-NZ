@@ -12,7 +12,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
-          self.visible = true if self.visible.nil?
+          self.visible = false if self.visible.nil?
         end
       end
 

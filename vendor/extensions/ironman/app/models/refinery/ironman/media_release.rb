@@ -19,7 +19,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
-          self.draft = false if self.draft.nil?
+          self.draft = true if self.draft.nil?
           self.posted_at = Time.zone.now if self.posted_at.nil?
         end
       end
