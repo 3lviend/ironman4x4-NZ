@@ -9,7 +9,13 @@
     <% @media_releases.each do |media_release| %>
       <li class="media-release col-sm-6">
         <div class="side col-sm-4">
-          <%= link_to media_release.priced_resource.url do %>
+          <% if media_release.priced_resource.present? %>
+          <% url = media_release.priced_resource.url %>
+          <% else %>
+          <% url = refinery.ironman_media_release_path(media_release) %>
+          <% end %>
+
+          <%= link_to url do %>
           <% if media_release.thumbnail_image.present? %>
           <div class="image" style="background-image:url(<%= media_release.thumbnail_image.thumbnail(geometry: "170x223").url %>)"></div>
           <% else %>
@@ -19,7 +25,7 @@
         </div>
         <div class="main col-sm-8">
           <div class="heading clearfix">
-            <%= link_to media_release.priced_resource.url do %>
+            <%= link_to url do %>
             <h3><%= media_release.title %></h3>
             <h4><%= "#{media_release.publication} #{media_release.published_at.strftime('%d/%m/%y') if media_release.published_at.present?}" %></h4>
             <% end %>

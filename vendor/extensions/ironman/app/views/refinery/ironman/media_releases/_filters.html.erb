@@ -12,7 +12,7 @@
 
 <%= select_tag :category, options_for_select(Refinery::Ironman::MediaRelease.active.collect {|r| r.category }.uniq, params[:category]), :prompt => t('.prompts.category'), :class => 'form-control input-sm' %>
 
-<% items = Refinery::Ironman::MediaRelease.active.order("published_at DESC").group_by { |media_release| media_release.published_at.beginning_of_month }.map { |month, media_releases| ["#{month.strftime('%b %Y')} (#{media_releases.size})", month.strftime('%Y-%m')] } %>
+<% items = Refinery::Ironman::MediaRelease.active.where('published_at is not null').order('published_at DESC').group_by { |media_release| media_release.published_at.beginning_of_month }.map { |month, media_releases| ["#{month.strftime('%b %Y')} (#{media_releases.size})", month.strftime('%Y-%m')] } %>
 <%= select_tag :published_month, options_for_select(items, params[:published_month]), :prompt => t('.prompts.published_month'), :class => 'form-control input-sm' if items.present? %>
 </div>
 <hr />
