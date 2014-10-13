@@ -1,2 +1,3 @@
 <% @layout_fit_my_4x4 = 'below' %>
+<% @slideshow_images = @page.images if @page.present? %>
 <%= render '/refinery/content_page' %>
