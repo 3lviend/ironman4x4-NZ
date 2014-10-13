@@ -11,7 +11,7 @@
 <% end %>
 
 <% if controller_name != 'blog_posts' %>
-<%= select_tag :category, options_for_select([[t('.categories.blog_posts'), 'blog_post'], [t('.categories.news_item'), 'news_item'], [t('.categories.event'), 'event']], params[:category]), :prompt => t('.prompts.category'), :class => 'form-control input-sm' %>
+<%= styled_select_tag :category, options_for_select([[t('.categories.blog_posts'), 'blog_post'], [t('.categories.news_item'), 'news_item'], [t('.categories.event'), 'event']], params[:category]), :prompt => t('.prompts.category'), :class => 'form-control input-sm' %>
 <% end %>
 
 <%
@@ -22,6 +22,6 @@
 
   items = Refinery::Ironman::Post.active.where(conditions).order("published_at DESC").group_by { |post| post.published_at.beginning_of_month }.map { |month, posts| ["#{month.strftime('%b %Y')} (#{posts.size})", month.strftime('%Y-%m')] }
 %>
-<%= select_tag :published_month, options_for_select(items, params[:published_month]), :prompt => t('.prompts.published_month'), :class => 'form-control input-sm' if items.present? %>
+<%= styled_select_tag :published_month, options_for_select(items, params[:published_month]), :prompt => t('.prompts.published_month'), :class => 'form-control input-sm' if items.present? %>
 </div>
 <hr />

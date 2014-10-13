@@ -6,6 +6,9 @@
 
 .product-category-filters {
   .form-group {
+    .styled-select {
+      display: inline-block;
+    }
     margin-right: 20px;
   }
 }

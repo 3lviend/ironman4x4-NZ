@@ -31,4 +31,8 @@ module ApplicationHelper
     number = "+1-#{sets_of_numbers.join('-')}"
     link_to text, "tel:#{number}", options
   end
+
+  def styled_select_tag(name, option_tags = nil, options = {})
+      raw "<div class=\"styled-select\">#{select_tag(name, option_tags, options)}</div>"
+  end
 end

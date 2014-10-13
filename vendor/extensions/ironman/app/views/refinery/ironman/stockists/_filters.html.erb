@@ -1,6 +1,6 @@
 <% url = refinery.ironman_stockists_path if local_assigns[:url].nil? %>
 <div id="stockists-filters">
   <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => url} %>
-  <%= select_tag :store_type, options_for_select(Refinery::Ironman::Stockist.active.collect {|r| r.store_type }.uniq.reject(&:blank?), params[:store_type]), :prompt => t('.prompts.store_type'), :class => 'form-control input-sm' %>
+  <%= styled_select_tag :store_type, options_for_select(Refinery::Ironman::Stockist.active.collect {|r| r.store_type }.uniq.reject(&:blank?), params[:store_type]), :prompt => t('.prompts.store_type'), :class => 'form-control input-sm' %>
 </div>
 <hr />

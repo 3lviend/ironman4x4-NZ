@@ -113,6 +113,28 @@ hr.double {
   }
 }
 
+.styled-select {
+  display: block;
+  vertical-align: bottom;
+  overflow: hidden;
+  background: image-url('selectmenu-caret.png') no-repeat right white;
+  border: 1px solid $dark-grey;
+
+  select {
+    display: block;
+    background: transparent;
+    padding: 0 18px 0 10px;
+    line-height: 1;
+    border: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+
+    &.input-sm {
+      height: ($input-height-small - 2);
+    }
+  }
+}
+
 .panel.panel-info {
   background-color: $dark-grey;
   border-color: $dark-grey;
@@ -386,9 +408,8 @@ hr.double {
       vertical-align: top;
     }
 
-    select.form-control {
+    .styled-select {
       margin-top: 5px;
-      display: block ! important;
     }
 
     @media (max-width: $screen-xs-max) {
