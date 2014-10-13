@@ -20,38 +20,85 @@
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
     window.initStockists = function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({
-        provider: {
-          disableDefaultUI: true
-          // pass in other Google Maps API options here
-        },
-        internal: {
-          id: 'map'
-        }
-      }, function(){
-        var markers = <%=raw markers.to_json %>;
-        Gmaps.store = Gmaps.store || {};
-        Gmaps.store.markers = markers.map(function(m) {
-          var marker = handler.addMarker(m);
-          marker.serviceObject.set('id', m.id);
-          return marker;
-        });
-
-        handler.bounds.extendWith(Gmaps.store.markers);
-        handler.fitMapToBounds();
-      });
-
-      $('#stockists .stockist .heading').on('click', function() {
-        var stockistId = $(this).data('stockist-id');
-        $.each(Gmaps.store.markers, function() {
-          if (this.serviceObject.id == stockistId) {
-            this.panTo();
-            this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+      var loadStockists = function(currentPosition) {
+        var handler = Gmaps.build('Google');
+        handler.buildMap({
+          provider: {
+            disableDefaultUI: true
+            // pass in other Google Maps API options here
+          },
+          internal: {
+            id: 'map'
           }
-          else this.serviceObject.setAnimation(null);
+        }, function(){
+          var markers = <%=raw markers.to_json %>;
+          Gmaps.store = Gmaps.store || {};
+          Gmaps.store.markers = markers.map(function(m) {
+            var marker = handler.addMarker(m);
+            marker.serviceObject.set('id', m.id);
+            return marker;
+          });
+
+          handler.bounds.extendWith(Gmaps.store.markers);
+
+          if (currentPosition != null) {
+            var closest;
+
+            $.each(Gmaps.store.markers, function(){
+              var distance = google.maps.geometry.spherical.computeDistanceBetween(
+                this.serviceObject.getPosition(), new google.maps.LatLng(
+                  currentPosition.coords.latitude,
+                  currentPosition.coords.longitude
+                )
+              );
+
+              if(!closest || closest.distance > distance){
+                closest = {marker:this, distance:distance};
+              }
+            });
+
+            if(closest){
+              handler.map.serviceObject.setCenter(
+                closest.marker.serviceObject.position
+              );
+              handler.map.serviceObject.setZoom(12);
+            }
+          }
+          else {
+            if (document.location.search != '') {
+              handler.fitMapToBounds();
+              handler.map.serviceObject.setZoom(12);
+            }
+            else {
+              handler.map.serviceObject.setCenter(
+                new google.maps.LatLng(-37.813186, 144.9629796)
+              );
+              handler.map.serviceObject.setZoom(10);
+            }
+          }
+
         });
-      });
+
+        $('#stockists .stockist .heading').on('click', function() {
+          var stockistId = $(this).data('stockist-id');
+          $.each(Gmaps.store.markers, function() {
+            if (this.serviceObject.id == stockistId) {
+              this.panTo();
+              this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+            }
+            else this.serviceObject.setAnimation(null);
+          });
+        });
+      };
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(currentPosition) {
+          loadStockists(currentPosition);
+        }, loadStockists);
+      }
+      else {
+        loadStockists();
+      }
     };
 
     // don't auto init for wishlist page
