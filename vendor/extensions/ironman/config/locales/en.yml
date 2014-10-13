@@ -488,6 +488,10 @@ en:
         notification:
           greeting: Hi there
           you_recieved_new_order: You just received a new wishlist submission from Ironman 4x4
+          closing_line: Kind Regards
+          ps: P.S. All your orders are stored in the "Orders" section of Refinery
+            should you ever want to view it later there.
+        order:
           order_starts: ! '--- order starts ---'
           order_ends: ! '--- order ends ---'
           from: From
@@ -496,13 +500,18 @@ en:
           comments: Comments
           vehicle: Vehicle
           address: Address
-          closing_line: Kind Regards
-          ps: P.S. All your orders are stored in the "Orders" section of Refinery
-            should you ever want to view it later there.
+          product:
+            name: Product Name
+            quantity: Qty
+            total: Subtotal
       enquiry_mailer:
         notification:
           greeting: Hi there
           you_recieved_new_enquiry: You just received a new enquiry on your website.
+          closing_line: Kind Regards
+          ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery
+            should you ever want to view it later there.
+        enquiry:
           enquiry_starts: ! '--- enquiry starts ---'
           enquiry_ends: ! '--- enquiry ends ---'
           from: From
@@ -512,9 +521,6 @@ en:
           enquiry_type: Enquiry Type
           vehicle: Vehicle
           address: Address
-          closing_line: Kind Regards
-          ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery
-            should you ever want to view it later there.
   activerecord:
     attributes:
       refinery/ironman/order:

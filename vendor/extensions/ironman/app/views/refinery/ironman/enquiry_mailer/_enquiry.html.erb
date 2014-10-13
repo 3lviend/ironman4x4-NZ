@@ -1,0 +1,12 @@
+<p><%= raw t('.enquiry_starts') %></p>
+
+<p><%= raw t('.from') %>: <%= @enquiry.name %><br />
+<%= raw t('.address') %>: <%= @enquiry.full_street_address %><br />
+<%= raw t('.enquiry_type') %>: <%= @enquiry.enquiry_type %><br />
+<%= raw t('.email') %>: <%= @enquiry.email %><br />
+<%= raw t('.phone') %>: <%= @enquiry.phone %><br />
+<%= raw t('.vehicle') %>: <%= @enquiry.vehicle_name_full %><br />
+<%= raw t('.message') %>:<br />
+<%= raw strip_tags(@enquiry.message) %></p>
+
+<p><%= raw t('.enquiry_ends') %></p>

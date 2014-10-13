@@ -1,0 +1,30 @@
+<p><%= raw t('.order_starts') %></p>
+
+<p><%= raw t('.from') %>: <%= @order.name %><br />
+<%= raw t('.address') %>: <%= @order.full_street_address %><br />
+<%= raw t('.email') %>: <%= @order.email %><br />
+<%= raw t('.phone') %>: <%= @order.phone %><br />
+<%= raw t('.vehicle') %>: <%= @order.vehicle_name_full %><br />
+<%= raw t('.comments') %>:<br />
+<%= raw strip_tags(@order.comments) %></p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th><%= t('.product.name') %></th>
+      <th><%= t('.product.quantity') %></th>
+      <th><%= t('.product.total') %></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @order.lines.each do |line| %>
+    <tr>
+      <td><%= line.product.name %></td>
+      <td><%= line.quantity %></td>
+      <td><%= number_to_currency line.net_amount %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<p><%= raw t('.order_ends') %></p>
