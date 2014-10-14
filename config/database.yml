@@ -19,7 +19,7 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: ironman4x4_production
-  username: ironman4x4
-  password: ironman4x4
+  database: rails
+  username: rails
+  password: whyM1o1U8A
   host: localhost
