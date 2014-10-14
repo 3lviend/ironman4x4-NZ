@@ -12,7 +12,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
 set :domain, '128.199.176.45'
 set :deploy_to, '/home/ironman4x4'
-set :repository, 'https://github.com/1bdesign/ironman4x4.git'
+set :repository, 'git@github.com:1bdesign/ironman4x4.git'
 set :branch, 'master'
 
 # Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
@@ -22,6 +22,7 @@ set :shared_paths, ['config/database.yml', 'log', 'public/system']
 # Optional settings:
 set :user, 'root'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
+set :ssh_options, '-A'
 
 set :rvm_path, '/usr/local/rvm/bin/rvm'
 
