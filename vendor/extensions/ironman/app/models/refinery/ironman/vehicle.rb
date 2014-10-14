@@ -3,7 +3,7 @@ module Refinery
     class Vehicle < Refinery::Core::BaseModel
       acts_as_tree name_column: 'name', order: 'refinery_ironman_vehicles.sort_order', touch: true
 
-      validates_presence_of :name, :visible
+      validates_presence_of :name
       validates_uniqueness_of :name, scope: :parent_id
 
       # To enable admin searching, add acts_as_indexed on searchable fields, for example:
