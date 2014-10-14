@@ -1,3 +1,4 @@
+<% # this is not currently in use, but can be used for direct to S3 uploads %>
 <%= s3_uploader_form post: (@url_override || (@resource.persisted? ? refinery.admin_resource_path(@resource) : refinery.admin_resources_path)),
   as: "resource[file_uid]",
   app_dialog: @app_dialog,
