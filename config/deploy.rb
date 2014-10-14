@@ -20,8 +20,10 @@ set :branch, 'master'
 set :shared_paths, ['config/database.yml', 'log', 'public/system']
 
 # Optional settings:
-set :user, 'rails'    # Username in the server to SSH to.
+set :user, 'root'    # Username in the server to SSH to.
 #   set :port, '30000'     # SSH port number.
+
+set :rvm_path, '/usr/local/rvm/bin/rvm'
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
