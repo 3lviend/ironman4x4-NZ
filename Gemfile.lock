@@ -400,7 +400,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   date_parity
   dotenv-rails
-  fog
   geocoder
   gmaps4rails
   gretel!
