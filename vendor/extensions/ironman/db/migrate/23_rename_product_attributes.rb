@@ -1,11 +1,15 @@
 class RenameProductAttributes < ActiveRecord::Migration
 
   def up
-    rename_column :refinery_ironman_products, :product_attributes, :product_attribs
+    if column_exists? :refinery_ironman_products, :product_attributes
+      rename_column :refinery_ironman_products, :product_attributes, :product_attribs
+    end
   end
 
   def down
-    rename_column :refinery_ironman_products, :product_attribs, :product_attributes
+    if column_exists? :refinery_ironman_products, :product_attribs
+      rename_column :refinery_ironman_products, :product_attribs, :product_attributes
+    end
   end
 
 end

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20141009213825) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
     t.string   "locale",                 null: false
@@ -118,8 +115,8 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.datetime "start"
     t.datetime "end"
     t.string   "location"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.decimal  "latitude",   precision: 10, scale: 0
+    t.decimal  "longitude",  precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,8 +140,8 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "quantity"
-    t.decimal  "net_amount"
-    t.decimal  "tax_amount"
+    t.decimal  "net_amount", precision: 10, scale: 0
+    t.decimal  "tax_amount", precision: 10, scale: 0
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -165,8 +162,8 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.string   "enquiry_type"
     t.integer  "vehicle_id"
     t.text     "comments"
-    t.decimal  "total_amount"
-    t.decimal  "tax_amount"
+    t.decimal  "total_amount", precision: 10, scale: 0
+    t.decimal  "tax_amount",   precision: 10, scale: 0
     t.boolean  "spam"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -205,7 +202,7 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.text     "description"
     t.text     "notes"
     t.integer  "quantity_required"
-    t.decimal  "price"
+    t.decimal  "price",                            precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -234,8 +231,8 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.boolean  "visible"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.decimal  "latitude",      precision: 10, scale: 0
+    t.decimal  "longitude",     precision: 10, scale: 0
     t.string   "address2"
   end
 
@@ -273,8 +270,8 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.string   "country"
     t.string   "phone"
     t.string   "fax"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
+    t.decimal  "latitude",      precision: 10, scale: 0
+    t.decimal  "longitude",     precision: 10, scale: 0
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"

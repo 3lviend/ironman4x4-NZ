@@ -1,7 +1,9 @@
 class RemoveProductAttributes < ActiveRecord::Migration
 
   def up
-    remove_column :refinery_ironman_products, :product_attribs
+    if column_exists? :refinery_ironman_products, :product_attribs
+      remove_column :refinery_ironman_products, :product_attribs
+    end
   end
 
   def down

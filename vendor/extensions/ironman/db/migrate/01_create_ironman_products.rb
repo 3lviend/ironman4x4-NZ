@@ -7,7 +7,9 @@ class CreateIronmanProducts < ActiveRecord::Migration
       t.text :description
       t.text :notes
       t.integer :quantity_required
-      t.json :product_attributes
+      if t.respond_to? :json
+        t.json :product_attributes
+      end
       t.decimal :price
       t.integer :position
 
