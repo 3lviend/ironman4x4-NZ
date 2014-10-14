@@ -77,6 +77,9 @@ gem 'underscore-rails'
 gem 'jquery-fileupload-rails'
 gem 'jquery-cookie-rails'
 
+# deployment
+gem 'mina'
+
 # Development gems
 #gem 'rack-mini-profiler'
 gem 'mailcatcher', group: :development
