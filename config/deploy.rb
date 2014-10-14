@@ -11,7 +11,7 @@ require 'mina/rvm'    # for rvm support. (http://rvm.io)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :domain, '128.199.176.45'
-set :deploy_to, '/home/ironman4x4'
+set :deploy_to, '/home/rails'
 set :repository, 'git@github.com:1bdesign/ironman4x4.git'
 set :branch, 'master'
 
