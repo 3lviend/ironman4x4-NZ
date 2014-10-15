@@ -238,6 +238,9 @@ en:
             sorry_no_results: Sorry! There are no results found.
             no_items_yet: There are no Products yet. Click "Add New Product" to add
               your first product.
+          category_filter:
+            show_featured: Show Only Featured?
+            category_placeholder: Filter by category
           product:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product

@@ -27,6 +27,11 @@ module Refinery
             conditions = conditions.merge({refinery_ironman_categories: {id: params[:category_id]}})
           end
 
+          if params[:show_featured].present? and params[:show_featured] == '1'
+            if conditions == '' then conditions = {} end
+            conditions = conditions.merge({refinery_ironman_products: {featured: true}})
+          end
+
           order = orders[params[:order]] ||= 'refinery_ironman_categories.name, refinery_ironman_products.product_no'
 
           @products = find_product_scope

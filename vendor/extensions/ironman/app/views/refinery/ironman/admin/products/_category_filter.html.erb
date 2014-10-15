@@ -1,6 +1,14 @@
+<div>
 <%= select_tag :category_id,
       options_for_select(
         Refinery::Ironman::Category.hash_tree.flatten_nested.map { |c| ['- ' * c.depth + c.name, c.id] },
         params[:category_id]
-      ), { include_blank: true, class: 'category-filter chosen-select', :'data-placeholder' => 'Filter by category' }
+      ), { include_blank: true, class: 'category-filter chosen-select', :'data-placeholder' => t('.category_placeholder') }
 %>
+</div>
+<div>
+  <%= label_tag '' do %>
+  <%= t('.show_featured') %>
+  <%= check_box_tag :show_featured, '1', (params[:show_featured] == '1') %>
+  <% end %>
+</div>
