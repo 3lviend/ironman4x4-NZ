@@ -629,7 +629,7 @@ en:
         description: Description
         sort_order: Sort Order
         visible: Visible?
-        features: Featured?
+        featured: Featured?
         show_info: Show Info Page?
       refinery/ironman/product:
         product_no: Product No
@@ -641,3 +641,4 @@ en:
         quantity_required: Quantity Required
         price: Price
         draft: Draft?
+        featured: Featured?
