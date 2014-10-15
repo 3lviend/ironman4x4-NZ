@@ -1,8 +1,10 @@
 <li class='clearfix record <%= 'draft' if not category.visible? %>' id="<%= dom_id(category) -%>">
   <div class="item">
     <span class='title'>
+      <% if category.featured? %>
+        <span class="featured">*</span>
+      <% end %>
       <%= category.name %>
-
     </span>
     <span class='actions'>
       
