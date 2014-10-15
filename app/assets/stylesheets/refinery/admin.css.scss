@@ -22,9 +22,18 @@
     }
   }
 
-  .record.draft {
-    font-style: italic;
-    color: grey;
+  .record {
+    &.draft {
+      font-style: italic;
+      color: grey;
+    }
+
+    .featured {
+      color: red;
+      font-weight: bold;
+      font-size: 2em;
+      vertical-align: middle;
+    }
   }
 }
 

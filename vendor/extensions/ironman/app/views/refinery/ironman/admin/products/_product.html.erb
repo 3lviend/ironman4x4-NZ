@@ -3,6 +3,9 @@
     <%= image_tag 'refinery/icons/img.png' if product.images.present? %>
   </td>
   <td class="col title">
+    <% if product.featured? %>
+      <span class="featured">*</span>
+    <% end %>
     <%= product.product_no %>
   </td>
   <td class="col">
