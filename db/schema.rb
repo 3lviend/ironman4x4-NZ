@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009213825) do
+ActiveRecord::Schema.define(version: 20141015070246) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -211,6 +211,7 @@ ActiveRecord::Schema.define(version: 20141009213825) do
     t.integer  "fitting_instructions_resource_id"
     t.text     "warranty"
     t.boolean  "draft"
+    t.boolean  "featured",                                                  default: false
   end
 
   add_index "refinery_ironman_products", ["slug"], name: "index_refinery_ironman_products_on_slug", using: :btree

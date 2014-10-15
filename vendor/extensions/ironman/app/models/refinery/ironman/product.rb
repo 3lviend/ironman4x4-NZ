@@ -29,6 +29,7 @@ module Refinery
       after_initialize do
         if self.new_record?
           self.draft = true if self.draft.nil?
+          self.featured = false if self.featured.nil?
           self.quantity_required = 0 if self.quantity_required.nil?
         end
       end
@@ -43,6 +44,10 @@ module Refinery
 
       def draft?
         draft
+      end
+
+      def featured?
+        featured
       end
     end
   end

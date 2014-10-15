@@ -138,6 +138,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :featured -%>
+    <%= f.check_box :featured, :checked => @product[:featured] -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :draft -%>
     <%= f.check_box :draft, :checked => @product[:draft] -%>
   </div>
