@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/asgeo1/refinerycms-page-images.git
-  revision: 9d25c92df7ac0f0ba982365800f565e9fa9f39dc
+  revision: 561fd2122fed60cf4aeeadb61ffa0334c312c007
   branch: rails-4-strong-parameters2
   specs:
     refinerycms-page-images (3.0.0.dev)
