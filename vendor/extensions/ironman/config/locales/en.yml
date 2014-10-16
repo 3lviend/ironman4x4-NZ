@@ -461,6 +461,8 @@ en:
             view_product_range: View Product Range
             view_category_info: View Category Info
             view_product_listing: View Product Listing
+          product_categories: Product Categories
+          featured_product_cataegories: Featured Product Categories
         filters:
           category:
             label: Product Category

@@ -13,6 +13,17 @@
   }
 }
 
+.featured-categories {
+  margin-top: $grid-gutter-width/2;
+  background-color: $lighter-grey;
+}
+
+.featured-categories, .container.categories {
+  h3 {
+    margin-bottom: $grid-gutter-width/2;
+  }
+}
+
 #page-product-categories, #page-product-list {
   margin: 0;
   padding: 0;
@@ -40,6 +51,7 @@
     display: block;
 
     .category, .product {
+      background-color: $white;
       box-shadow: 2px 2px 10px 2px $light-grey;
       .no-boxshadow & {
         border: 1px solid $light-grey;

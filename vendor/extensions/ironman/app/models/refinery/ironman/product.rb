@@ -19,6 +19,7 @@ module Refinery
       alias_attribute :title, :name
 
       scope :active, -> { where(draft: false) }
+      scope :featured, -> { where(featured: true) }
 
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no

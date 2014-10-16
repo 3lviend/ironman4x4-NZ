@@ -14,6 +14,7 @@ module Refinery
       validates_uniqueness_of :name, scope: :parent_id
 
       scope :active, -> { where(visible: true) }
+      scope :featured, -> { where(featured: true) }
 
       after_initialize do
         if self.new_record?

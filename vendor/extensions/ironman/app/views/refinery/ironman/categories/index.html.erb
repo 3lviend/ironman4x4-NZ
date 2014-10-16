@@ -1,4 +1,5 @@
 <% @layout_fit_my_4x4 = 'above_heading' %>
+<% @no_container = true %>
 
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
 
@@ -19,64 +20,23 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<% cache(cache_key) do %>
+<div class="container">
 <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-<%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory} %>
-
-<ul id="page-product-categories" class="clearfix">
-<% @categories.each do |category| %>
-  <li class="category-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
-    <% if @category.nil? %>
-      <% if category.leaf? %>
-      <% list_url = refinery.category_products_path(category) %>
-      <% info_url = refinery.ironman_category_path(category) %>
-      <% else %>
-      <% list_url = refinery.product_categories_path(category) %>
-      <% info_url = refinery.ironman_category_path(category) %>
-      <% end %>
-    <% elsif category.depth == 1 %>
-      <% if category.leaf? %>
-      <% list_url = refinery.subcategory_products_path(category.parent, category) %>
-      <% info_url = refinery.subcategory_path(category.parent, category) %>
-      <% else %>
-      <% list_url = refinery.product_subcategories_path(category.parent, category) %>
-      <% info_url = nil %>
-      <% end %>
-    <% else %>
-      <% if category.leaf? %>
-      <% list_url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category) %>
-      <% info_url = refinery.sub_subcategory_path(category.parent.parent, category.parent, category) %>
-      <% else %>
-      <% list_url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category) %>
-      <% info_url = nil %>
-      <% end %>
-    <% end %>
-
-    <div class="category">
-      <div class="photo" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')"></div>
-      <div class="content">
-        <h3 class="two-lines"><%= category.name %></h3>
-        <div class="description">
-          <% if category.short_description.present? %>
-          <%= category.short_description %>
-          <% else %>
-          <%= t('.default_category_description') %>
-          <% end %>
-        </div>
-        <% if category.show_info? and info_url.present? %>
-        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-primary btn-block' %>
-        <% end %>
-        <% if @this_category.nil? %>
-        <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-primary btn-block' %>
-        <% else %>
-        <%= link_to t('.buttons.view_product_listing'), list_url, class: 'btn btn-primary btn-block' %>
-        <% end %>
-      </div>
-    </div>
-  </li>
+<%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
+<% if @this_category.present? %>
+<hr />
 <% end %>
-</ul>
+</div>
+
+
+<%= render :partial => 'refinery/ironman/categories/index', :locals => {categories: @featured, cache_key: ['featured', cache_key], featured: true} %>
+<div class="container categories">
+<% if not @this_category.present? %>
+  <h3><%= t('.product_categories') %></h3>
 <% end %>
+<%= render :partial => 'refinery/ironman/categories/index', :locals => {categories: @categories, cache_key: ['categories', cache_key], featured: false} %>
+</div>
+
 <% end %>
 
 <%= render '/refinery/content_page' %>
