@@ -66,7 +66,7 @@ $(document).on 'page:load ready', ->
       document.location.href, 'category_id', $(this).val()
     )
 
-  $('#show_featured').change ->
+  $('#show_on_homepage').change ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
-      document.location.href, 'show_featured', (if $(this).is(':checked') then 1 else 0)
+      document.location.href, 'show_on_homepage', (if $(this).is(':checked') then 1 else 0)
     )

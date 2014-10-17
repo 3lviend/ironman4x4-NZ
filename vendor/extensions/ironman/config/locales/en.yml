@@ -239,7 +239,7 @@ en:
             no_items_yet: There are no Products yet. Click "Add New Product" to add
               your first product.
           category_filter:
-            show_featured: Show Only Featured?
+            show_on_homepage: Show Only Homepage Products?
             category_placeholder: Filter by category
           product:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>

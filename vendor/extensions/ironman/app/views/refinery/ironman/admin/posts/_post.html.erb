@@ -1,5 +1,8 @@
 <li class='clearfix record <%= cycle("on", "on-hover") %> <%= 'draft' if post.draft? %>' id="<%= dom_id(post) -%>">
   <span class='title'>
+    <% if post.show_on_homepage? %>
+      <span class="homepage">*</span>
+    <% end %>
     <%= post.published_at.strftime '%d/%m/%Y' %>
     -
     <% post_types = {

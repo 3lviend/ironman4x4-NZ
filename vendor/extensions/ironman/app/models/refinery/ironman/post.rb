@@ -17,6 +17,7 @@ module Refinery
       belongs_to :author, proc { readonly(true) }, :class_name => Refinery::User.to_s, :foreign_key => :user_id
 
       scope :active, -> { where(draft: false).where('expire_at is null or expire_at > ?', Time.zone.now) }
+      scope :homepage_posts, -> { where(show_on_homepage: true) }
 
       # Add an association to the Refinery::Image class, so we
       # can take advantage of the magic that the class provides
@@ -26,6 +27,7 @@ module Refinery
       after_initialize do
         if self.new_record?
           self.draft = true if self.draft.nil?
+          self.show_on_homepage = false if self.show_on_homepage.nil?
           self.published_at = Time.zone.now if self.published_at.nil?
         end
       end

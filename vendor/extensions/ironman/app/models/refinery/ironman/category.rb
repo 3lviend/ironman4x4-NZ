@@ -15,11 +15,13 @@ module Refinery
 
       scope :active, -> { where(visible: true) }
       scope :featured, -> { where(featured: true) }
+      scope :homepage_categories, -> { where(show_on_homepage: true) }
 
       after_initialize do
         if self.new_record?
           self.visible = false if self.visible.nil?
           self.featured = false if self.featured.nil?
+          self.show_on_homepage = false if self.show_on_homepage.nil?
           self.show_info = true if self.show_info.nil?
         end
       end
@@ -30,6 +32,10 @@ module Refinery
 
       def featured?
         featured
+      end
+
+      def show_on_homepage?
+        show_on_homepage
       end
 
       def show_info?

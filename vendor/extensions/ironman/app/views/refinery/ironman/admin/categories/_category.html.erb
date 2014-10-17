@@ -4,6 +4,9 @@
       <% if category.featured? %>
         <span class="featured">*</span>
       <% end %>
+      <% if category.show_on_homepage? %>
+        <span class="homepage">*</span>
+      <% end %>
       <%= category.name %>
     </span>
     <span class='actions'>

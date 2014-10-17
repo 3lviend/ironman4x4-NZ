@@ -27,9 +27,9 @@ module Refinery
             conditions = conditions.merge({refinery_ironman_categories: {id: params[:category_id]}})
           end
 
-          if params[:show_featured].present? and params[:show_featured] == '1'
+          if params[:show_on_homepage].present? and params[:show_on_homepage] == '1'
             if conditions == '' then conditions = {} end
-            conditions = conditions.merge({refinery_ironman_products: {featured: true}})
+            conditions = conditions.merge({refinery_ironman_products: {show_on_homepage: true}})
           end
 
           order = orders[params[:order]] ||= 'refinery_ironman_categories.name, refinery_ironman_products.product_no'
@@ -42,7 +42,7 @@ module Refinery
         def product_params
           p = params.require(:product).permit(
             :product_no, :name, :description, :notes, :quantity_required,
-            :price, :locale, :short_description, :draft, :featured,
+            :price, :locale, :short_description, :draft, :show_on_homepage,
             {:category_ids => []}, {:vehicle_ids => []}, :thumbnail_image_id,
             :fitting_instructions_resource_id, :warranty,
             images_attributes: [:id], resources_attributes: [:id],

@@ -3,8 +3,8 @@
     <%= image_tag 'refinery/icons/img.png' if product.images.present? %>
   </td>
   <td class="col title">
-    <% if product.featured? %>
-      <span class="featured">*</span>
+    <% if product.show_on_homepage? %>
+      <span class="homepage">*</span>
     <% end %>
     <%= product.product_no %>
   </td>

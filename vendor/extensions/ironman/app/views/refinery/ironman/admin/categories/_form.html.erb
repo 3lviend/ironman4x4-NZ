@@ -66,6 +66,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :show_on_homepage -%>
+    <%= f.check_box :show_on_homepage, :checked => @category[:show_on_homepage] -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :visible -%>
     <%= f.check_box :visible, :checked => @category[:visible] -%>
   </div>

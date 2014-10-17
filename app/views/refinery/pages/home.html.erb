@@ -3,9 +3,9 @@
 <% @layout_social = true %>
 <% @slideshow_images = @page.images if @page.present? %>
 
-<% products = Refinery::Ironman::Product.limit(2).order("RAND()") %>
-<% categories = Refinery::Ironman::Category.limit(5).order("RAND()") %>
-<% post = Refinery::Ironman::Post.limit(1).order("RAND()").first() %>
+<% products = Refinery::Ironman::Product.active.homepage_products.limit(2) %>
+<% categories = Refinery::Ironman::Category.active.homepage_categories.limit(5) %>
+<% post = Refinery::Ironman::Post.active.homepage_posts.limit(1).first() %>
 
 <div id="home">
   <div class="container first-row clearfix">

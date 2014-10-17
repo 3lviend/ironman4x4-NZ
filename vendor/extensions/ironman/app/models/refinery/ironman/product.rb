@@ -19,7 +19,7 @@ module Refinery
       alias_attribute :title, :name
 
       scope :active, -> { where(draft: false) }
-      scope :featured, -> { where(featured: true) }
+      scope :homepage_products, -> { where(show_on_homepage: true) }
 
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no
@@ -30,7 +30,7 @@ module Refinery
       after_initialize do
         if self.new_record?
           self.draft = true if self.draft.nil?
-          self.featured = false if self.featured.nil?
+          self.show_on_homepage = false if self.show_on_homepage.nil?
           self.quantity_required = 0 if self.quantity_required.nil?
         end
       end
@@ -47,8 +47,8 @@ module Refinery
         draft
       end
 
-      def featured?
-        featured
+      def show_on_homepage?
+        show_on_homepage
       end
     end
   end
