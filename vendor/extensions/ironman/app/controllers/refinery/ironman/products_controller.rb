@@ -13,10 +13,10 @@ module Refinery
         if params[:id].nil?
           if @vehicle_filter.present?
             @categories = Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
-            @featured = Category.featured.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+            @featured = Category.featured.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).limit(8)
           else
             @categories = Category.roots.active
-            @featured = Category.featured.active
+            @featured = Category.featured.active.limit(8)
           end
 
           render 'refinery/ironman/categories/index'
