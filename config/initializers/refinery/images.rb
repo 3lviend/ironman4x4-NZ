@@ -1,10 +1,10 @@
 # encoding: utf-8
 Refinery::Images.configure do |config|
   # Configures the maximum allowed upload size (in bytes) for an image
-  # config.max_image_size = 5242880
+  config.max_image_size = 15728640
 
   # Configure how many images per page should be displayed when a dialog is presented that contains images
-  # config.pages_per_dialog = 18
+  config.pages_per_dialog = 36
 
   # Configure how many images per page should be displayed when a dialog is presented that
   # contains images and image resize options
