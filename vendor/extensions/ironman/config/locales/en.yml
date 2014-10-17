@@ -454,9 +454,7 @@ en:
 <p>Ur sam, quasitatur simet anim aut pari aut ut earum quuntio ssitiae cus se peris doluptur maio.</p>'
         index:
           page_header: Products
-          default_category_description: Product category overview...Ebit, inciur?
-            Ri di corum labor re veritas estinul lessint miliquam, atur moluptio.
-            Itationet estrum
+          default_category_description: ''
           buttons:
             view_product_range: View Product Range
             view_category_info: View Category Info
@@ -488,7 +486,7 @@ en:
           inc_gst: ! ' (RRP inc GST)'
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
-          default_product_description: Product category overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum
+          default_product_description: ''
       order_mailer:
         notification:
           greeting: Hi there
