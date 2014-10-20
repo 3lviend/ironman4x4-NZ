@@ -1,5 +1,5 @@
 <% if @slideshow_images.present? %>
-<div id="layout-photo-slideshow">
+<div id="layout-photo-slideshow" class="<%= (@slideshow_image_width.present? ? @slideshow_image_width : 'fixed-width') %>">
   <div u="slides" class='gallery<%= ' multiple' if @slideshow_images.size > 1 %>'>
     <% @slideshow_images.each do |image| %>
     <div class="slide"><%= image_tag(image.thumbnail(geometry: "1920x480").url, u:'image') %></div>
