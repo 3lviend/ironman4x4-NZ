@@ -35,9 +35,14 @@
     <% end %>
 
     <div class="category">
-      <div class="photo" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')"></div>
-      <div class="content">
+      <div class="header">
+        <%= link_to list_url do %>
+        <div class="photo" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')">
+        </div>
         <h3 class="two-lines"><%= category.name %></h3>
+        <% end %>
+      </div>
+      <div class="content">
         <div class="description">
           <% if category.short_description.present? %>
           <%= category.short_description %>

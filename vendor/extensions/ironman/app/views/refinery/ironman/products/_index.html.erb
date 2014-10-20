@@ -37,9 +37,14 @@
     <% end %>
 
     <div class="product">
-      <div class="photo" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')"></div>
+      <div class="header">
+        <%= link_to url do %>
+          <div class="photo" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
+          </div>
+          <h3 class="three-lines"><%= product.name %></h3>
+        <% end %>
+      </div>
       <div class="content">
-        <h3 class="three-lines"><%= product.name %></h3>
         <div class="product_no"><%= product.product_no %></div>
         <% if product.price.present? %>
         <div class="price"><%= number_to_currency product.price %> <span class="inc_gst"><%= t('.inc_gst') %></span></div>
