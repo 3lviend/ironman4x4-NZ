@@ -1,8 +1,8 @@
 <% if @slideshow_images.present? %>
   <% if @slideshow_image_width.present? and @slideshow_image_width == :full %>
-    <% dimensions = '1920x480' %>
+    <% dimensions = '1920x450' %>
   <% else %>
-    <% dimensions = '1140x290' %>
+    <% dimensions = '1140x450' %>
   <% end %>
 <div id="layout-photo-slideshow" class="<%= (@slideshow_image_width.present? ? @slideshow_image_width : 'fixed-width') %>">
   <div u="slides" class='gallery<%= ' multiple' if @slideshow_images.size > 1 %>'>
