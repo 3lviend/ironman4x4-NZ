@@ -104,6 +104,10 @@
           background-position: 50% 0;
           background-repeat: no-repeat;
           background-size: cover;
+          &.contain {
+            background-size: contain;
+            background-position: center;
+          }
           height: 193px;
 
           @media (max-width: $screen-xs-max) {
@@ -482,6 +486,9 @@
           background-position: 50% 0;
           background-repeat: no-repeat;
           background-size: cover;
+          &.contain {
+            background-size: contain;
+          }
 
           @media (max-width: $screen-xs-max) {
             display: none;

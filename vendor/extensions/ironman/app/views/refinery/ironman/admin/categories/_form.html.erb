@@ -61,6 +61,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :thumbnail_display_mode %>
+    <%= f.select :thumbnail_display_mode, ['cover', 'contain'] %>
+  </div>
+
+  <div class='field'>
     <%= f.label :featured -%>
     <%= f.check_box :featured, :checked => @category[:featured] -%>
   </div>

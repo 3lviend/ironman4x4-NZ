@@ -44,8 +44,8 @@ module Refinery
             :product_no, :name, :description, :notes, :quantity_required,
             :price, :locale, :short_description, :draft, :show_on_homepage,
             {:category_ids => []}, {:vehicle_ids => []}, :thumbnail_image_id,
-            :fitting_instructions_resource_id, :warranty,
-            images_attributes: [:id], resources_attributes: [:id],
+            :thumbnail_display_mode, :fitting_instructions_resource_id,
+            :warranty, images_attributes: [:id], resources_attributes: [:id],
             specifications_attributes: [:id, :_destroy, :title, :value])
 
           p

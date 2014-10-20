@@ -37,7 +37,7 @@
     <div class="category">
       <div class="header">
         <%= link_to list_url do %>
-        <div class="photo" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')">
+        <div class="photo <%= category.thumbnail_display_mode %>" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'category_list_photo_default.jpg' end %>')">
         </div>
         <h3 class="two-lines"><%= category.name %></h3>
         <% end %>

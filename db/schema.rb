@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141017123405) do
+ActiveRecord::Schema.define(version: 20141020111400) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(version: 20141017123405) do
     t.string   "short_description"
     t.integer  "thumbnail_image_id"
     t.boolean  "featured"
-    t.boolean  "show_info",          default: true
-    t.boolean  "show_on_homepage",   default: false
+    t.boolean  "show_info",              default: true
+    t.boolean  "show_on_homepage",       default: false
+    t.string   "thumbnail_display_mode", default: "cover"
   end
 
   add_index "refinery_ironman_categories", ["slug"], name: "index_refinery_ironman_categories_on_slug", using: :btree
@@ -214,6 +215,7 @@ ActiveRecord::Schema.define(version: 20141017123405) do
     t.text     "warranty"
     t.boolean  "draft"
     t.boolean  "show_on_homepage",                                          default: false
+    t.string   "thumbnail_display_mode",                                    default: "cover"
   end
 
   add_index "refinery_ironman_products", ["slug"], name: "index_refinery_ironman_products_on_slug", using: :btree

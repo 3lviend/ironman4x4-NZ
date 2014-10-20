@@ -102,7 +102,7 @@ module Refinery
           params.require(:category).permit(:parent_id, :name,
             :short_description, :description, :sort_order, :visible, :featured,
             :show_on_homepage, :show_info, :id, :locale, :thumbnail_image_id,
-            images_attributes: [:id])
+            :thumbnail_display_mode, images_attributes: [:id])
         end
       end
     end

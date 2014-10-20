@@ -12,7 +12,7 @@
         <% if line.product.present? %>
       <div class="row item">
         <div class="col-xs-hidden col-sm-3 col image"><!--
-          --><div class="photo" style="background-image:url('<%= if line.product.present? and line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
+          --><div class="photo <%= line.product.thumbnail_display_mode if line.product.present? %>" style="background-image:url('<%= if line.product.present? and line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
         --></div>
         <div class="col-xs-4 col-sm-5 col product">
           <div class="name"><%= link_to line.product.name, refinery.ironman_product_path(line.product) %></div>
