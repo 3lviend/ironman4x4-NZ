@@ -364,6 +364,7 @@ en:
         index:
           page_header: Store Locator
           not-found: Sorry, no stores could be found.
+          visit_us_on_facebook: Visit us on Facebook
         filters:
           prompts:
             store_type: 'Filter by store type'
@@ -600,6 +601,7 @@ en:
         logo_image_id: Logo Image
         visible: Visible?
         map_pin: Map Marker Pin
+        facebook_page: Facebook Page
       refinery/ironman/media_release:
         title: Title
         category: Category

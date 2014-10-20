@@ -143,6 +143,11 @@
         <div class="field email col-sm-offset-2 col-sm-10"><%= mail_to stockist.email, stockist.email %></div>
       </div>
       <% end %>
+      <% if stockist.facebook_page.present? %>
+      <div class="row">
+        <div class="field facebook col-sm-offset-2 col-sm-10"><%= link_to t('.visit_us_on_facebook'), stockist.facebook_page %></div>
+      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

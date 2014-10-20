@@ -12,7 +12,7 @@ module Refinery
         def stockist_params
           params.require(:stockist).permit(:name, :store_type, :address1,
             :address2, :suburb, :postcode, :state, :country, :contact, :phone,
-            :website, :email, :logo_image_id, :visible, :map_pin
+            :website, :email, :logo_image_id, :visible, :map_pin, :facebook_page
           )
         end
 
