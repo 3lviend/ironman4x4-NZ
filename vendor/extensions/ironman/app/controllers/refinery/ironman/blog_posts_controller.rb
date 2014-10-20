@@ -26,7 +26,7 @@ module Refinery
     protected
 
       def find_all_blog_posts
-        @posts = BlogPost.order('published_at DESC')
+        @posts = BlogPost.active.order('published_at DESC')
       end
 
       def find_page

@@ -1,21 +1,21 @@
-<% related_posts = @posts.where('refinery_ironman_posts.id != ?', @post.id).first(3) %>
+<% related_posts = @posts.where('refinery_ironman_posts.id != ?', @post.id).first(5) %>
 <% if related_posts.present? %>
 <hr class="double" />
 <aside id="related-posts">
   <h4><%= t('.other') %></h4>
   <ul class="clearfix">
     <% related_posts.first(5).each do |post| %>
-      <li class="post-container col-sm-4">
+      <li class="post-container col-lg-5ths col-md-3 col-sm-4">
         <div class="post">
           <% if post.instance_of?(Refinery::Ironman::Event) %>
           <%= render 'event_box', post:post %>
           <% else %>
             <div class="photo"><!--
-              --><%= if post.index_image.present? then image_tag post.index_image.thumbnail(geometry: "365x260").url else image_tag 'post_list_photo_default.jpg' end %><!--
+              --><%= if post.index_image.present? then image_tag post.index_image.thumbnail(geometry: "220x160").url else image_tag 'post_list_photo_default.jpg' end %><!--
             --></div>
           <% end %>
           <div class="content">
-            <h4><%= post.title %></h4>
+            <h4 class="two-lines"><%= post.title %></h4>
             <%
               case post.type
                 when 'Refinery::Ironman::BlogPost'

@@ -186,12 +186,15 @@
 
           @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
             padding-bottom: 45px;
+            padding-top: 45px;
           }
           @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-            padding-bottom: 70px;
+            padding-bottom: 45px;
+            padding-top: 45px;
           }
           @media (min-width: $screen-lg-min) {
-            padding-bottom: 95px;
+            padding-bottom: 45px;
+            padding-top: 45px;
           }
         }
 
@@ -205,6 +208,13 @@
             color: $green;
             margin-top: 12px;
             margin-bottom: 12px;
+
+            &.three-lines {
+              @include line-clamp($font-size-h4, $headings-line-height, 3);
+            }
+            &.two-lines {
+              @include line-clamp($font-size-h4, $headings-line-height, 2);
+            }
           }
 
           .btn {
@@ -220,7 +230,7 @@
         }
       }
 
-      @media (min-width: $screen-sm-min) {
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
         &:first-child {
           padding-left: 0;
         }
@@ -231,6 +241,48 @@
         }
 
         &:nth-child(3n+3) {
+          padding-right: 0;
+        }
+
+        &:nth-child(4n) {
+          display: none;
+        }
+
+        &:nth-child(5n) {
+          display: none;
+        }
+      }
+
+      @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:nth-child(4n+5) {
+          clear: left;
+          padding-left: 0;
+        }
+
+        &:nth-child(4n+4) {
+          padding-right: 0;
+        }
+
+        &:nth-child(5n) {
+          display: none;
+        }
+      }
+
+      @media (min-width: $screen-lg-min) {
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:nth-child(5n+6) {
+          clear: left;
+          padding-left: 0;
+        }
+
+        &:nth-child(5n+5) {
           padding-right: 0;
         }
       }
@@ -246,7 +298,7 @@
       @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
         .post {
           .photo {
-            height: 210px;
+            height: 160px;
           }
         }
       }
@@ -254,7 +306,7 @@
       @media (min-width: $screen-lg-min) {
         .post {
           .photo {
-            height: 260px;
+            height: 160px;
           }
         }
       }
