@@ -599,6 +599,7 @@ en:
         email: Email
         logo_image_id: Logo Image
         visible: Visible?
+        map_pin: Map Marker Pin
       refinery/ironman/media_release:
         title: Title
         category: Category
@@ -641,6 +642,7 @@ en:
         visible: Visible?
         featured: Featured?
         show_info: Show Info Page?
+        thumbnail_display_mode: Thumbnail Display Mode
       refinery/ironman/product:
         product_no: Product No
         name: Name
@@ -652,3 +654,4 @@ en:
         price: Price
         draft: Draft?
         featured: Featured?
+        thumbnail_display_mode: Thumbnail Display Mode

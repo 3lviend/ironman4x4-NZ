@@ -12,6 +12,8 @@ module Refinery
       validates_presence_of :name, :address1, :suburb, :postcode, :state, :country
       validates_uniqueness_of :name
 
+      MAP_PINS = [:green, :grey]
+
       scope :active, -> { where(visible: true) }
 
       after_initialize do

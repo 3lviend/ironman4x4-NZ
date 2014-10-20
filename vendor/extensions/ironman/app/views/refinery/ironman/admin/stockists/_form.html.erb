@@ -85,6 +85,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :map_pin -%>
+    <%= f.select :map_pin, Refinery::Ironman::Stockist::MAP_PINS -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :visible -%>
     <%= f.check_box :visible, :checked => @stockist[:visible] -%>
   </div>
