@@ -45,12 +45,12 @@ gem 'unicorn'
 
 
 # Refinery CMS
-gem 'refinerycms', :github => 'asgeo1/refinerycms', :branch => 'myfork' #:github => 'refinery/refinerycms'
+gem 'refinerycms', :github => 'asgeo1/refinerycms', :branch => 'myfork', :ref => '4549606' #:github => 'refinery/refinerycms'
 gem 'refinerycms-i18n', :github => 'refinery/refinerycms-i18n'
 
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', github: 'refinery/refinerycms-acts-as-indexed'
-gem 'refinerycms-wymeditor', github: 'parndt/refinerycms-wymeditor', :branch => 'take-2'
+gem 'refinerycms-wymeditor', github: 'asgeo1/refinerycms-wymeditor', :branch => 'fix_image_dialog_params'
 # gem 'refinerycms-blog', '~> 2.1.0'
 # gem 'refinerycms-inquiries', '~> 2.1.0'
 gem 'refinerycms-search', :github => 'wantedtech/refinerycms-search'

@@ -1,7 +1,7 @@
 <% cache(cache_key) do %>
 <%
   if @vehicle_filter.present?
-    categories = Refinery::Ironman::Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).uniq
+    categories = Refinery::Ironman::Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq
   else
     categories = Refinery::Ironman::Category.roots
   end

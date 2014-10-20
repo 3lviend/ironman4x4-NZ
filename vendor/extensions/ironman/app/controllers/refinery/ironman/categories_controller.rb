@@ -31,7 +31,7 @@ module Refinery
           if @category.leaf?
             if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
-              @products = category.products.active.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', vehicle_ids)
+              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', vehicle_ids)
             else
               @products = category.products.active
             end
@@ -68,7 +68,7 @@ module Refinery
 
       def filter_by_vehicle(categories)
         if @vehicle_filter.present?
-          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values)
+          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
         else
           categories
         end
