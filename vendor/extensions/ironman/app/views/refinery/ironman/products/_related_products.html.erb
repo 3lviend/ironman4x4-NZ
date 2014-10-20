@@ -1,0 +1,14 @@
+<% related_products = @product.category.products.where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
+<% if related_products.present? %>
+<hr class="double" />
+<aside id="related-products">
+  <h3><%= t('.heading') %></h3>
+  <ul id="page-product-list" class="clearfix">
+    <% related_products.first(4).each do |product| %>
+      <% url = refinery.ironman_product_path(product) %>
+      <%= render :partial => 'index_product', :locals => {product: product, url: url} %>
+    <% end %>
+  </ul>
+</aside>
+<% end %>
+

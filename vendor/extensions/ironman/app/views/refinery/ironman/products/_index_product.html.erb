@@ -1,0 +1,32 @@
+<li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+  <div class="product">
+    <div class="header">
+      <%= link_to url do %>
+        <div class="photo" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
+        </div>
+        <h3 class="three-lines"><%= product.name %></h3>
+      <% end %>
+    </div>
+    <div class="content">
+      <div class="product_no"><%= product.product_no %></div>
+      <% if product.price.present? %>
+      <div class="price"><%= number_to_currency product.price %> <span class="inc_gst"><%= t('.inc_gst') %></span></div>
+      <% end %>
+      <div class="description">
+        <% if product.short_description.present? %>
+        <%= product.short_description %>
+        <% else %>
+        <%= t('.default_product_description') %>
+        <% end %>
+      </div>
+      <div class="buttons clearfix">
+        <div class="view-product col-sm-6">
+          <%= link_to t('.buttons.view_product'), url, class: 'btn btn-primary btn-block' %>
+        </div>
+        <div class="add-to-wishlist col-sm-6">
+          <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary btn-block btn-add-to-wishlist', :'data-product-id' => product.id %>
+        </div>
+      </div>
+    </div>
+  </div>
+</li> 
