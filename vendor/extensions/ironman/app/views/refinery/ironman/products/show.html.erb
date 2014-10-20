@@ -9,7 +9,8 @@
       <% @product.images.each do |image| %>
       <li><%= image_tag(image.thumbnail(geometry: "635x360").url, alt:@product.name) %></li>
       <% end %>
-      <ul>
+      </ul>
+      <div class="image-disclaimer">Generic image only. Actual product may vary depending on model.</div>
       <% end %>
     </div>
     <div class="col-sm-5 product-overview">

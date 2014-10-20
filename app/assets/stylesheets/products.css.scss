@@ -272,6 +272,13 @@
 
   .photos {
     padding-left: 0;
+
+    .image-disclaimer {
+      color: $dark-grey;
+      margin-top: $grid-gutter-width/2;
+      font-style: italic;
+      font-size: 0.9em;
+    }
   }
 
   .product-overview {
