@@ -477,6 +477,11 @@ en:
           buttons:
             add_to_wishlist: Add to Wishlist
             added_to_wishlist: Added to Wishlist
+          sections:
+            description: Description
+            specifications: Specifications
+            fitting: Fitting
+            warranty: Warranty
         related_products:
           heading: Related Products
         index_product:

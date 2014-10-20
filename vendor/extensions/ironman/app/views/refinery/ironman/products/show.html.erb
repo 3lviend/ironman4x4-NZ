@@ -24,25 +24,27 @@
   <div class="menu">
     <div class="container clearfix">
       <ul class="links clearfix">
-        <li><a href="#description">Description</a></li>
-        <li><a href="#specifications">Specifications</a></li>
+        <li><a href="#description"><%= t('.sections.description') %></a></li>
+        <% if (@product.quantity_required.present? and @product.quantity_required > 0) or @product.specifications.present? or @product.notes.present? %>
+        <li><a href="#specifications"><%= t('.sections.specifications') %></a></li>
+        <% end %>
         <% if @product.fitting_instructions_resource.present? %>
-        <li><a href="#fitting">Fitting</a></li>
+          <li><a href="#fitting"><%= t('.sections.fitting') %></a></li>
         <% end %>
         <% if @product.warranty.present? %>
-        <li><a href="#warranty">Warranty</a></li>
+        <li><a href="#warranty"><%= t('.sections.warranty') %></a></li>
         <% end %>
       </ul>
-      <button class="btn btn-link view-all">View All</button>
-      <button class="btn btn-link close-all">Close All</button>
     </div>
   </div>
 
   <div class="container">
-    <h3 id="description">Description</h3>
+    <h3 id="description"><%= t('.sections.description') %></h3>
     <%= raw @product.description %>
+
+    <% if (@product.quantity_required.present? and @product.quantity_required > 0) or @product.specifications.present? or @product.notes.present? %>
     <hr />
-    <h3 id="specifications">Specifications</h3>
+    <h3 id="specifications"><%= t('.sections.specifications') %></h3>
     <div class="specifications">
     <% if @product.quantity_required.present? and @product.quantity_required > 0 %>
     <div class="row">
@@ -66,22 +68,22 @@
     </div>
     <% end %>
     </div>
-    <hr />
+    <% end %>
 
     <% if @product.fitting_instructions_resource.present? %>
+    <hr />
     <div class="fitting">
-    <h3 id="fitting">Fitting</h3>
+    <h3 id="fitting"><%= t('.sections.fitting') %></h3>
     <%= image_tag('icon_pdf.png') if @product.fitting_instructions_resource.mime_type == 'application/pdf' %>
     <%= link_to @product.fitting_instructions_resource.file_name, @product.fitting_instructions_resource.url %>
     <span class="file-size"><%= number_to_human_size @product.fitting_instructions_resource.file_size %></span>
     </div>
-    <hr />
     <% end %>
 
     <% if @product.warranty.present? %>
-    <h3 id="warranty">Warranty</h3>
-    <%= raw @product.warranty %>
     <hr />
+    <h3 id="warranty"><%= t('.sections.warranty') %></h3>
+    <%= raw @product.warranty %>
     <% end %>
 
     <%= render 'related_products' %>
