@@ -6,8 +6,16 @@
   <% end %>
 <div id="layout-photo-slideshow" class="<%= (@slideshow_image_width.present? ? @slideshow_image_width : 'fixed-width') %>">
   <div u="slides" class='gallery<%= ' multiple' if @slideshow_images.size > 1 %>'>
-    <% @slideshow_images.each do |image| %>
-    <div class="slide"><%= image_tag(image.thumbnail(geometry: dimensions).url, u:'image') %></div>
+    <% @slideshow_images.each do |i| %>
+    <div class="slide">
+      <% if i[:caption].present? %>
+        <%= link_to i[:caption], {u:'image'} do %>
+        <%= image_tag(i[:image].thumbnail(geometry: dimensions).url) %>
+        <% end %>
+      <% else %>
+      <%= image_tag(i[:image].thumbnail(geometry: dimensions).url, u:'image') %>
+      <% end %>
+    </div>
     <% end %>
   </div>
 

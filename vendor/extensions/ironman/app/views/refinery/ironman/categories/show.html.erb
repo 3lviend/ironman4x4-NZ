@@ -1,5 +1,5 @@
 <% @layout_fit_my_4x4 = 'below' %>
-<% @slideshow_images = @category.images %>
+<% @slideshow_images = @category.images_with_captions %>
 
 <% [:page_header, :title].each { |t| content_for t, t('.page_header', category:@category.name) } %>
 

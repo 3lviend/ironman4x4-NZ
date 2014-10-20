@@ -1,7 +1,7 @@
 <% @layout_heading = false %>
 <% @layout_fit_my_4x4 = 'above' %>
 <% @layout_social = true %>
-<% @slideshow_images = @page.images if @page.present? %>
+<% @slideshow_images = @page.images_with_captions if @page.present? %>
 <% @slideshow_image_width = :full %>
 
 <% products = Refinery::Ironman::Product.active.homepage_products.limit(2) %>

@@ -1,4 +1,4 @@
-<% @slideshow_images = [@post.hero_image] if @post.hero_image.present? %>
+<% @slideshow_images = [{:image => @post.hero_image}] if @post.hero_image.present? %>
 <% breadcrumb :post, @post %>
 
 <% content_for :body do %>
