@@ -1,8 +1,13 @@
 <% if @slideshow_images.present? %>
+  <% if @slideshow_image_width.present? and @slideshow_image_width == :full %>
+    <% dimensions = '1920x480' %>
+  <% else %>
+    <% dimensions = '1140x290' %>
+  <% end %>
 <div id="layout-photo-slideshow" class="<%= (@slideshow_image_width.present? ? @slideshow_image_width : 'fixed-width') %>">
   <div u="slides" class='gallery<%= ' multiple' if @slideshow_images.size > 1 %>'>
     <% @slideshow_images.each do |image| %>
-    <div class="slide"><%= image_tag(image.thumbnail(geometry: "1920x480").url, u:'image') %></div>
+    <div class="slide"><%= image_tag(image.thumbnail(geometry: dimensions).url, u:'image') %></div>
     <% end %>
   </div>
 

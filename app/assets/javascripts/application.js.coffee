@@ -123,8 +123,10 @@ $(document).on 'page:load ready', ->
 
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
 
+    fixedWidth = $('#layout-photo-slideshow').hasClass 'fixed-width'
+
     scaleSlider = ->
-      _SlideWidth = windowWidth = $(window).width()
+      _SlideWidth = windowWidth = (if fixedWidth then $('#layout-second-nav > .container').width() else $(window).width())
       _SlideHeight = $('#layout-photo-slideshow').height()
 
       $('#layout-photo-slideshow').width(_SlideWidth)
