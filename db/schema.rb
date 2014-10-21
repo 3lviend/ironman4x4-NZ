@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021065131) do
+ActiveRecord::Schema.define(version: 20141021112633) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -118,8 +118,8 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.datetime "start"
     t.datetime "end"
     t.string   "location"
-    t.decimal  "latitude",   precision: 10, scale: 0
-    t.decimal  "longitude",  precision: 10, scale: 0
+    t.decimal  "latitude",   precision: 16, scale: 6
+    t.decimal  "longitude",  precision: 16, scale: 6
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.integer  "order_id"
     t.integer  "product_id"
     t.integer  "quantity"
-    t.decimal  "net_amount", precision: 10, scale: 0
-    t.decimal  "tax_amount", precision: 10, scale: 0
+    t.decimal  "net_amount", precision: 16, scale: 6
+    t.decimal  "tax_amount", precision: 16, scale: 6
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -165,8 +165,8 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.string   "enquiry_type"
     t.integer  "vehicle_id"
     t.text     "comments"
-    t.decimal  "total_amount", precision: 10, scale: 0
-    t.decimal  "tax_amount",   precision: 10, scale: 0
+    t.decimal  "total_amount", precision: 16, scale: 6
+    t.decimal  "tax_amount",   precision: 16, scale: 6
     t.boolean  "spam"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -206,7 +206,7 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.text     "description"
     t.text     "notes"
     t.integer  "quantity_required"
-    t.decimal  "price",                            precision: 10, scale: 0
+    t.decimal  "price",                            precision: 16, scale: 6
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
@@ -237,8 +237,8 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.boolean  "visible"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "latitude",      precision: 10, scale: 0
-    t.decimal  "longitude",     precision: 10, scale: 0
+    t.decimal  "latitude",      precision: 16, scale: 6
+    t.decimal  "longitude",     precision: 16, scale: 6
     t.string   "address2"
     t.string   "map_pin",                                default: "green"
     t.string   "facebook_page"
@@ -279,7 +279,7 @@ ActiveRecord::Schema.define(version: 20141021065131) do
     t.string   "phone"
     t.string   "fax"
     t.decimal  "latitude",      precision: 10, scale: 0
-    t.decimal  "longitude",     precision: 10, scale: 0
+    t.decimal  "longitude",     precision: 16, scale: 6
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
