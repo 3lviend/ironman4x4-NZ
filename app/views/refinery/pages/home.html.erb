@@ -1,11 +1,12 @@
 <% @layout_heading = false %>
 <% @layout_fit_my_4x4 = 'above' %>
 <% @layout_social = true %>
+<% @layout_homepage_categories = true %>
 <% @slideshow_images = @page.images_with_captions if @page.present? %>
 <% @slideshow_image_width = :full %>
 
 <% products = Refinery::Ironman::Product.active.homepage_products.limit(2) %>
-<% categories = Refinery::Ironman::Category.active.homepage_categories.limit(5) %>
+<% @homepage_categories = Refinery::Ironman::Category.active.homepage_categories.limit(5) %>
 <% post = Refinery::Ironman::Post.active.homepage_posts.limit(1).first() %>
 
 <div id="home">
@@ -71,28 +72,5 @@
       <% end %>
     </div>
     <% end %>
-  </div>
-
-  <div class="categories">
-    <div class="container clearfix">
-      <% categories.each do |category| %>
-      <div class="category col-sm-5ths">
-        <%
-        if category.depth == 0
-          url = refinery.product_categories_path(category)
-        elsif category.depth == 1
-          url = refinery.product_subcategories_path(category.parent, category)
-        else
-          url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category)
-        end
-        %>
-        <%= link_to url do %>
-        <div class="photo" style="background-image:url(<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "365x193").url else image_path 'category_list_photo_default.jpg' end %>)">
-          <div class="name"><%= category.name %></div>
-        </div>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
   </div>
 </div>

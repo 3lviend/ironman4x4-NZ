@@ -5,6 +5,7 @@ module Refinery
       before_filter :find_page
 
       def index
+        @homepage_categories = Refinery::Ironman::Category.active.homepage_categories.limit(5)
         present(@page)
       end
 
