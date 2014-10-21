@@ -181,6 +181,11 @@ $(document).on 'page:load ready', ->
       document.location.href, 'store_type', $(this).val()
     )
 
+  $('#stockists-filters select[name=services]').change ->
+    document.location.href = Ironman.utils.updateQueryStringParameter(
+      document.location.href, 'services', $(this).val()
+    )
+
   $('#post-filters select[name=category], #media-release-filters select[name=category]').change ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
       document.location.href, 'category', $(this).val()
