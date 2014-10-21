@@ -1,8 +1,9 @@
-<% cache(cache_key_for_categories) do %>
+<% collapsed = (@categories_collapsed.nil? or @categories_collapsed) %>
+<% cache([cache_key_for_categories, (collapsed ? :collapsed : :expanded)]) do %>
   <div id="layout-categories">
     <div class="container clearfix">
       <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#category_listing"><%= t('.show_product_range_listing') %></button>
-      <div class="categories collapse" id="category_listing">
+      <div class="categories<%= ' collapse' if collapsed %>" id="category_listing">
       <% Refinery::Ironman::Category.active.roots.each do |top_category| %>
         <ul class="category">
           <li class="top-level">

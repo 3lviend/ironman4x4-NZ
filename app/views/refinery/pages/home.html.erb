@@ -4,6 +4,7 @@
 <% @layout_homepage_categories = true %>
 <% @slideshow_images = @page.images_with_captions if @page.present? %>
 <% @slideshow_image_width = :full %>
+<% @categories_collapsed = false %>
 
 <% products = Refinery::Ironman::Product.active.homepage_products.limit(2) %>
 <% @homepage_categories = Refinery::Ironman::Category.active.homepage_categories.limit(5) %>
