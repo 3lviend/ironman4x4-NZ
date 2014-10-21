@@ -6,7 +6,7 @@ module Refinery
       before_filter :find_page
 
       def children
-        @vehicles = Vehicle.find(params[:id]).children
+        @vehicles = Vehicle.find(params[:id]).children.active
       end
 
       def index

@@ -1,9 +1,9 @@
 <% cache(cache_key) do %>
 <%
   if @vehicle_filter.present?
-    categories = Refinery::Ironman::Category.all.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq
+    categories = Refinery::Ironman::Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq
   else
-    categories = Refinery::Ironman::Category.roots
+    categories = Refinery::Ironman::Category.roots.active
   end
 %>
 
@@ -15,7 +15,7 @@
 
   <div class="form-group">
   <%= label_tag :category_2nd_id, t('.subcategory.label') %>
-  <%= styled_select_tag :category_2nd_id, options_from_collection_for_select(if category.present? then category.children else [] end, 'slug', 'name', (subcategory.slug if subcategory.present?)),
+  <%= styled_select_tag :category_2nd_id, options_from_collection_for_select(if category.present? then category.children.active else [] end, 'slug', 'name', (subcategory.slug if subcategory.present?)),
                  'data-option-dependent' => true,
                  'data-option-observed' => 'category_1st_id',
                  'data-option-url' => '/categories/:category_1st_id:/children.json',
@@ -27,7 +27,7 @@
 
   <div class="form-group">
   <%= label_tag :category_3rd_id, t('.subsubcategory.label') %>
-  <%= styled_select_tag :category_3rd_id, options_from_collection_for_select(if subcategory.present? then subcategory.children else [] end, 'slug', 'name', (sub_subcategory.slug if sub_subcategory.present?)),
+  <%= styled_select_tag :category_3rd_id, options_from_collection_for_select(if subcategory.present? then subcategory.children.active else [] end, 'slug', 'name', (sub_subcategory.slug if sub_subcategory.present?)),
                  'data-option-dependent' => true,
                  'data-option-observed' => 'category_2nd_id',
                  'data-option-url' => '/categories/:category_2nd_id:/children.json',

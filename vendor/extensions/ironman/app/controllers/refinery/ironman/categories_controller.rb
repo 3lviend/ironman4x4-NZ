@@ -6,7 +6,7 @@ module Refinery
       before_filter :find_page
 
       def children
-        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children
+        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active
       end
 
       def index
@@ -38,7 +38,7 @@ module Refinery
 
             render 'refinery/ironman/products/index'
           else
-            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children
+            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active
           end
         else
           @categories = filter_by_vehicle(Category.active).map(&:root).uniq

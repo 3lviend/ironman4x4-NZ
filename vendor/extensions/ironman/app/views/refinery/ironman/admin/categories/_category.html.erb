@@ -27,7 +27,7 @@
 
   <% if not category.leaf? %>
   <ul class="nested">
-  <%= render :partial => 'category', :collection => category.children %>
+  <%= render :partial => 'category', :collection => category.children.active %>
   </ul>
   <% end %>
 </li>
