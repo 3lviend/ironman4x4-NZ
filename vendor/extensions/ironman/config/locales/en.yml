@@ -645,6 +645,7 @@ en:
         featured: Featured?
         show_info: Show Info Page?
         thumbnail_display_mode: Thumbnail Display Mode
+        has_fitting_instructions: Has Fitting Instructions?
       refinery/ironman/product:
         product_no: Product No
         name: Name

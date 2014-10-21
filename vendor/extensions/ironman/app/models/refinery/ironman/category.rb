@@ -15,6 +15,7 @@ module Refinery
 
       scope :active, -> { where(visible: true) }
       scope :featured, -> { where(featured: true) }
+      scope :has_fitting_instructions, -> { where(has_fitting_instructions: true) }
       scope :homepage_categories, -> { where(show_on_homepage: true) }
 
       after_initialize do
@@ -23,6 +24,7 @@ module Refinery
           self.featured = false if self.featured.nil?
           self.show_on_homepage = false if self.show_on_homepage.nil?
           self.show_info = true if self.show_info.nil?
+          self.has_fitting_instructions = true if self.has_fitting_instructions.nil?
         end
       end
 
@@ -40,6 +42,10 @@ module Refinery
 
       def show_info?
         show_info
+      end
+
+      def has_fitting_instructions?
+        has_fitting_instructions
       end
 
       def images_with_captions
