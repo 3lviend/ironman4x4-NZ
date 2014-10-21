@@ -5,5 +5,10 @@
   <% if options.present? %>
   <%= styled_select_tag :store_type, options, :prompt => t('.prompts.store_type'), :class => 'form-control input-sm' %>
   <% end %>
+
+  <% options = options_for_select(Refinery::Ironman::Stockist.active.collect {|r| r.notes }.uniq.reject(&:blank?), params[:services]) %>
+  <% if options.present? %>
+  <%= styled_select_tag :services, options, :prompt => t('.prompts.notes'), :class => 'form-control input-sm' %>
+  <% end %>
 </div>
 <hr />

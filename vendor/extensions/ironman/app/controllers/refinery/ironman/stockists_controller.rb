@@ -28,6 +28,10 @@ module Refinery
           conditions[:store_type] = params[:store_type]
         end
 
+        if params[:notes].present?
+          conditions[:notes] = params[:notes]
+        end
+
         @stockists = Stockist.active.where(conditions).order('name ASC')
         @stockists = @stockists.with_query(params[:stockist_query]) if params[:stockist_query].present?
       end

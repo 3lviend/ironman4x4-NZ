@@ -368,6 +368,7 @@ en:
         filters:
           prompts:
             store_type: 'Filter by store type'
+            notes: Filter by services
         search_form:
           placeholder: 'Postcode/Suburb'
         marker_info_window:

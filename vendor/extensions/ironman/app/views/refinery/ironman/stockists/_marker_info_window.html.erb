@@ -1,3 +1,4 @@
+<% cache(object) do %>
 <% if object.logo_image.present? %>
   <%= image_tag object.logo_image.thumbnail(geometry: '146x70').url, height:'70' %>
 <% end %>
@@ -22,4 +23,8 @@
   <% if object.website.present? %>
   <%= link_to object.website, object.website, :target => '_blank' %><br />
   <% end %>
+  <% if object.notes.present? %>
+  <%= object.notes %><br />
+  <% end %>
 </div>
+<% end %>

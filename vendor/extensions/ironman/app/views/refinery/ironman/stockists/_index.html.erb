@@ -1,3 +1,5 @@
+<% cache_key = [cache_key_for_stockists, params[:store_type], params[:notes], params[:stockist_query]] %>
+<% cache(cache_key) do %>
 <% stockists_search_url = refinery.ironman_stockists_path if local_assigns[:stockists_search_url].nil? %>
 
 <% if @stockists.present? %>
@@ -153,4 +155,5 @@
 </ul>
 <% else %>
   <p class="not-found"><%= t('.not-found') %></p>
+<% end %>
 <% end %>
