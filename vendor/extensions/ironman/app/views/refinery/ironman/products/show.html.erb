@@ -55,10 +55,12 @@
 
     <% if @product.specifications.present? %>
     <% @product.specifications.each do |spec| %>
+      <% if spec.value.present? %>
     <div class="row">
       <div class="col-sm-3 col-lg-2 title"><%= spec.title %></div>
       <div class="col-sm-9 col-lg-10 value"><%= spec.value %></div>
     </div>
+      <% end %>
     <% end %>
     <% end %>
     <% if @product.notes.present? %>
