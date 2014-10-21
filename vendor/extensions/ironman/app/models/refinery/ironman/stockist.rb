@@ -5,7 +5,7 @@ module Refinery
       self.table_name = 'refinery_ironman_stockists'
       acts_as_indexed :fields => [:name, :postcode, :suburb]
       geocoded_by :full_street_address
-      after_validation :geocode, if: ->(obj){ obj.full_street_address.present? }
+      after_validation :geocode, if: ->(obj){ obj.full_street_address.present? and obj.latitude.nil? and obj.longitude.nil? }
 
       belongs_to :logo_image, :class_name => '::Refinery::Image'
 

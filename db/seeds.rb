@@ -12,6 +12,7 @@
 #load 'db/seeds/c_accessory_products.rb'
 #load 'db/seeds/d_suspension_products.rb'
 #load 'db/seeds/d_suspension_products2.rb'
+#load 'db/seeds/e_stockists.rb'
 
 # Added by Refinery CMS Pages extension
 Refinery::Pages::Engine.load_seed
