@@ -490,12 +490,12 @@ en:
             add_to_wishlist: Add to Wishlist
             view_product: View Product
           default_product_description: ''
+          inc_gst: ! ' (RRP inc GST)'
         index:
           page_header: Products
           buttons:
             add_to_wishlist: Add to Wishlist
             added_to_wishlist: Added to Wishlist
-          inc_gst: ! ' (RRP inc GST)'
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
       order_mailer:
