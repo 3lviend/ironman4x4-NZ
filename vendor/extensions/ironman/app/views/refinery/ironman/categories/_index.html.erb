@@ -53,7 +53,7 @@
         <% if category.show_info? and info_url.present? %>
         <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-primary btn-block' %>
         <% else %>
-        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-primary btn-block btn-hidden' %>
+        <%= button_tag t('.buttons.view_category_info'), class: 'btn btn-primary btn-block btn-hidden' %>
         <% end %>
         <% if @this_category.nil? %>
         <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-primary btn-block' %>
