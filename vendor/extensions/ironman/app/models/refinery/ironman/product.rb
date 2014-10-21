@@ -3,6 +3,8 @@ module Refinery
     class Product < Refinery::Core::BaseModel
       extend FriendlyId
 
+      before_save :touch_categories
+
       #TODO: find out why history isn't working with friendly_id and refinery
       #friendly_id :name, use: [:slugged, :history]
       friendly_id :name, use: :slugged
@@ -10,8 +12,8 @@ module Refinery
 
       self.table_name = 'refinery_ironman_products'
 
-      has_and_belongs_to_many :categories, :join_table => 'refinery_ironman_categories_products', touch: true
-      has_and_belongs_to_many :vehicles, :join_table => 'refinery_ironman_vehicles_products', touch: true
+      has_and_belongs_to_many :categories, :join_table => 'refinery_ironman_categories_products'
+      has_and_belongs_to_many :vehicles, :join_table => 'refinery_ironman_vehicles_products'
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
       belongs_to :fitting_instructions_resource, :class_name => '::Refinery::Resource'
       has_many :specifications, :class_name => '::Refinery::Ironman::ProductSpecification'
@@ -33,6 +35,10 @@ module Refinery
           self.show_on_homepage = false if self.show_on_homepage.nil?
           self.quantity_required = 0 if self.quantity_required.nil?
         end
+      end
+
+      def touch_categories
+        categories.each(&:touch)
       end
 
       def category
