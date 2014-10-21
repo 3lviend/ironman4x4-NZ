@@ -703,6 +703,10 @@ hr.double {
   background-color: $lightest-grey;
   margin-bottom: $line-height-computed;
 
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+
   .container {
     padding-top: 15px;
     padding-bottom: 15px;
