@@ -602,6 +602,7 @@ en:
         visible: Visible?
         map_pin: Map Marker Pin
         facebook_page: Facebook Page
+        notes: Notes
       refinery/ironman/media_release:
         title: Title
         category: Category
