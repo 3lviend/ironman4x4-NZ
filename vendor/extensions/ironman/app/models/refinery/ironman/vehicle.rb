@@ -10,6 +10,8 @@ module Refinery
       #
       #   acts_as_indexed :fields => [:title]
 
+      scope :active, -> { where(visible: true) }
+
       after_initialize do
         if self.new_record?
           self.visible = false if self.visible.nil?
