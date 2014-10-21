@@ -139,6 +139,17 @@ hr.double {
   }
 }
 
+.vehicle-selector {
+  .styled-select {
+    /* always show these boxes for fit-my-4x4 */
+    display: block ! important;
+
+    select {
+      display: block ! important;
+    }
+  }
+}
+
 .panel.panel-info {
   background-color: $dark-grey;
   border-color: $dark-grey;
@@ -432,13 +443,6 @@ hr.double {
 
     .styled-select {
       margin-top: 5px;
-
-      /* always show these boxes for fit-my-4x4 */
-      display: block ! important;
-
-      select {
-        display: block ! important;
-      }
     }
 
     @media (max-width: $screen-xs-max) {
