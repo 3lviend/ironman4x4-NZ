@@ -19,7 +19,7 @@ module Refinery
         if params[:id].nil?
           if @vehicle_filter.present?
             category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq.map(&:id).select(&:active?)
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).map(&:id)
             end
 
             featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories]) do
