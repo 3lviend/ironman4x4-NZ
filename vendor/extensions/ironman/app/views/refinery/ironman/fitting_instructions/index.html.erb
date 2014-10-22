@@ -36,7 +36,11 @@
   <% end %>
 </ul>
 <% else %>
-<p class="not-found"><%= t('.not-found') %></p>
+  <% if @this_category.present? and @this_category.leaf? %>
+  <p class="not-found"><%= t('.not-found') %></p>
+  <% else %>
+  <p class="not-found"><%= t('.instructions') %></p>
+  <% end %>
 <% end %>
 <% end %>
 <% end %>

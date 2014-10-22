@@ -431,6 +431,7 @@ en:
           page_header: Fitting Instructions
           page_header_with_category: 'Fitting Instructions: %{category}'
           not-found: Sorry, no fitting instructions could be found.
+          instructions: Please select the applicable Fitting Instruction category for your Ironman 4x4 product.
           buttons:
             view_instructions: 'View Instructions'
         filters:
