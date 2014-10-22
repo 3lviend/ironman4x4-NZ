@@ -11,3 +11,10 @@ Ironman.utils.updateQueryStringParameter = (uri, key, value) ->
       hash = uri.replace(/.*#/, "#")
       uri = uri.replace(/#.*/, "")
     uri + separator + key + "=" + encodeURIComponent(value) + hash
+
+Ironman.utils.getQueryStringParameter = (name) ->
+  if document.location.search != ''
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+    regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+    results = regex.exec(location.search)
+    (if results is null then "" else decodeURIComponent(results[1].replace(/\+/g, " ")))

@@ -43,7 +43,9 @@
 
           handler.bounds.extendWith(Gmaps.store.markers);
 
-          if (currentPosition != null) {
+          var searchTerm = Ironman.utils.getQueryStringParameter('stockist_query');
+
+          if (currentPosition != null && !searchTerm) {
             var closest;
 
             $.each(Gmaps.store.markers, function(){
@@ -67,7 +69,17 @@
             }
           }
           else {
-            if (document.location.search != '') {
+            if (searchTerm) {
+              firstResult = _.first(Gmaps.store.markers);
+              if (firstResult != null) {
+                handler.map.serviceObject.setCenter(
+                  firstResult.serviceObject.position
+                );
+                handler.map.serviceObject.setZoom(11);
+              }
+            }
+            //store type / services filtering
+            else if (document.location.search != '') {
               handler.fitMapToBounds();
               handler.map.serviceObject.setZoom(12);
             }
