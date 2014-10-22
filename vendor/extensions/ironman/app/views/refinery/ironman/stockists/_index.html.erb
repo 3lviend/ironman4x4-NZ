@@ -137,9 +137,12 @@
 
 <% stockists_search_url = refinery.ironman_stockists_path if local_assigns[:stockists_search_url].nil? %>
 <% cache_key = [cache_key_for_stockists, params[:store_type], params[:services], params[:stockist_query]] %> 
-<% cache(cache_key) do %>
-<%= render :partial => 'refinery/ironman/stockists/filters', :locals => {:url => stockists_search_url} %>
 
+<% cache([stockists_search_url, cache_key]) do %>
+<%= render :partial => 'refinery/ironman/stockists/filters', :locals => {:url => stockists_search_url} %>
+<% end %>
+
+<% cache(cache_key) do %>
 <% if @stockists.present? %>
 <ul id="stockists" class="clearfix">
   <% @stockists.each_with_index do |stockist, index| %>
