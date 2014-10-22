@@ -18,11 +18,12 @@
   <% @products.each do |product| %>
   <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <div class="product">
-      <div class="photo"><!--
-        --><%= if product.thumbnail_image.present? then image_tag product.thumbnail_image.thumbnail(geometry: "302x193").url else image_tag 'product_list_photo_default.jpg' end %><!--
-      --></div>
+      <div class="header">
+        <div class="photo <%= product.thumbnail_display_mode %>" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
+        </div>
+        <h3 class="three-lines"><%= product.name %></h3>
+      </div>
       <div class="content">
-        <h3><%= product.name %></h3>
         <div class="buttons clearfix">
           <div class="view-fitting-instructions">
             <% if product.fitting_instructions_resource.present? %>
