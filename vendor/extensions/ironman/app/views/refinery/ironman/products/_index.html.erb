@@ -35,7 +35,7 @@
   <% url = refinery.ironman_product_path(product) %>
   <% end %>
 
-  <%= render :partial => 'index_product', :locals => {product: product, url: url} %>
+  <%= render :partial => 'refinery/ironman/products/index_product', :locals => {product: product, url: url} %>
 <% end %>
 </ul>
 <% end %>
