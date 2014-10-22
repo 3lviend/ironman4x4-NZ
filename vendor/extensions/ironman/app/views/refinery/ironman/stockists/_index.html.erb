@@ -7,8 +7,9 @@
     marker.lng stockist.longitude
     marker.picture({
       url: image_url("stockists_map_marker_#{stockist.map_pin}.png"),
-      width: 25,
-      height: 47
+      # for some reason, I have to specify the width/height of the pin, or it doesn't work :-/
+      width: (stockist.map_pin == 'ironman' ? 100 : 25),
+      height: (47)
     })
     marker.infowindow render('refinery/ironman/stockists/marker_info_window', :object => stockist).gsub(/\n/, '')
     marker.json({ :id => stockist.id })
