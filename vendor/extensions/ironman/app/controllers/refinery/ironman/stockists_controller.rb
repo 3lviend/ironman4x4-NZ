@@ -31,7 +31,7 @@ module Refinery
         end
 
         if params[:services].present?
-          conditions[:notes] = params[:services]
+          conditions[:services] = params[:services]
         end
 
         @stockists = Stockist.active.where(conditions)

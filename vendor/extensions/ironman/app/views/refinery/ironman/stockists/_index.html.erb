@@ -151,7 +151,7 @@
       </div>
       <% if stockist.store_type.present? %>
       <div class="row">
-        <div class="field store-type col-sm-offset-2 col-sm-10"><%= stockist.store_type %><%= ", #{stockist.notes}" if stockist.notes.present? %></div>
+        <div class="field store-type col-sm-offset-2 col-sm-10"><%= stockist.store_type %><%= ", #{stockist.services}" if stockist.services.present? %></div>
       </div>
       <% end %>
       <div class="row">
@@ -175,6 +175,11 @@
       <% if stockist.facebook_page.present? %>
       <div class="row">
         <div class="field facebook col-sm-offset-2 col-sm-10"><%= link_to t('.visit_us_on_facebook'), stockist.facebook_page %></div>
+      </div>
+      <% end %>
+      <% if stockist.notes.present? %>
+      <div class="row">
+        <div class="field notes col-sm-offset-2 col-sm-10"><%= stockist.notes %></div>
       </div>
       <% end %>
     </li>

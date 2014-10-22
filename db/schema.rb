@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021132521) do
+ActiveRecord::Schema.define(version: 20141022042643) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 20141021132521) do
     t.string   "address2"
     t.string   "map_pin",                                default: "green"
     t.string   "facebook_page"
+    t.string   "services"
     t.string   "notes"
   end
 

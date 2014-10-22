@@ -23,6 +23,9 @@
   <% if object.website.present? %>
   <%= link_to object.website, object.website, :target => '_blank' %><br />
   <% end %>
+  <% if object.services.present? %>
+  <%= object.services %><br />
+  <% end %>
   <% if object.notes.present? %>
   <%= object.notes %><br />
   <% end %>

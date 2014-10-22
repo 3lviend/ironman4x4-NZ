@@ -368,7 +368,7 @@ en:
         filters:
           prompts:
             store_type: 'Filter by store type'
-            notes: Filter by services
+            services: Filter by services
         search_form:
           placeholder: 'Postcode/Suburb'
         marker_info_window:
@@ -603,6 +603,7 @@ en:
         visible: Visible?
         map_pin: Map Marker Pin
         facebook_page: Facebook Page
+        services: Services
         notes: Notes
       refinery/ironman/media_release:
         title: Title
