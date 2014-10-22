@@ -5,6 +5,12 @@ module Refinery
       before_filter :find_all_products
       before_filter :find_page
 
+      def cache_key_for_categories
+        count          = Refinery::Ironman::Category.count
+        max_updated_at = Refinery::Ironman::Category.maximum(:updated_at).try(:utc).try(:to_s, :number)
+        "categories/all-ids-#{count}-#{max_updated_at}"
+      end
+
       def index
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
@@ -12,8 +18,16 @@ module Refinery
 
         if params[:id].nil?
           if @vehicle_filter.present?
-            @categories = Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq
-            @featured = Category.featured.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).limit(8)
+            category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories]) do
+              Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).uniq.map(&:id)
+            end
+
+            featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories]) do
+              Category.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).map(&:id)
+            end
+
+            @categories = Category.find(category_ids)
+            @featured = Category.find(featured_ids)
           else
             @categories = Category.roots.active
             @featured = Category.featured.active.limit(8)
