@@ -67,6 +67,10 @@ task :deploy => :environment do
     invoke :'rails:assets_precompile'
 
     to :launch do
+      # all the files must be owned by the rails user, who runs the web process
+      queue %[chown -R rails "#{deploy_to}"]
+      queue %[chgrp -R www-data "#{deploy_to}"]
+
       queue "service unicorn restart"
     end
   end
