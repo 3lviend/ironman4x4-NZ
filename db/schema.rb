@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022042643) do
+ActiveRecord::Schema.define(version: 20141022044800) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -290,6 +290,7 @@ ActiveRecord::Schema.define(version: 20141022042643) do
     t.string   "website"
     t.string   "address2"
     t.string   "contact"
+    t.string   "region"
   end
 
   create_table "refinery_page_part_translations", force: true do |t|

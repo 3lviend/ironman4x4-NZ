@@ -14,7 +14,8 @@ module Refinery
         def warehouse_params
           params.require(:warehouse).permit(:name, :address1, :address2,
             :suburb, :postcode, :state, :country, :phone, :fax, :latitude,
-            :longitude, :position, :locale, :business_name, :email, :website, :contact
+            :longitude, :position, :locale, :business_name, :email, :website,
+            :contact, :region
           )
         end
 

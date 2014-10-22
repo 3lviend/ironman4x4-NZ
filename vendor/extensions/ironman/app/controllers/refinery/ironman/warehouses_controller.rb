@@ -22,7 +22,7 @@ module Refinery
     protected
 
       def find_all_warehouses
-        @warehouses = Warehouse.all.order('country asc, position ASC').group_by(&:country)
+        @warehouses = Warehouse.all.order('region asc, position ASC').group_by(&:region)
       end
 
       def find_page

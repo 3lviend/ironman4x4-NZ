@@ -10,7 +10,7 @@ module Refinery
 
       def new
         @enquiry = Enquiry.new
-        @warehouses = Warehouse.all.order('country asc, position ASC').group_by(&:country)
+        @warehouses = Warehouse.all.order('region asc, position ASC').group_by(&:region)
       end
 
       def create
@@ -35,7 +35,7 @@ module Refinery
 
           redirect_to refinery.thank_you_ironman_enquiries_path
         else
-          @warehouses = Warehouse.all.order('country asc, position ASC').group_by(&:country)
+          @warehouses = Warehouse.all.order('region asc, position ASC').group_by(&:region)
           render :action => 'new'
         end
       end
