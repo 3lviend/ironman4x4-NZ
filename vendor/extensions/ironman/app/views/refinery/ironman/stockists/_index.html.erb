@@ -19,7 +19,9 @@
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
     window.initStockists = function() {
+      var loadStarted = false;
       var loadStockists = function(currentPosition) {
+        loadStarted = true;
         var handler = Gmaps.build('Google');
         handler.buildMap({
           provider: {
@@ -109,9 +111,14 @@
       };
 
       if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(currentPosition) {
+        var result = navigator.geolocation.getCurrentPosition(function(currentPosition) {
           loadStockists(currentPosition);
         }, loadStockists);
+        setTimeout(function() {
+          if (!loadStarted) {
+            loadStockists();
+          }
+        }, 10000);
       }
       else {
         loadStockists();
