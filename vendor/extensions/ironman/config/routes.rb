@@ -31,6 +31,9 @@ Refinery::Core::Engine.routes.draw do
   get 'fit-my-4x4' => 'ironman/fit_my_car#index', as: :fit_my_4x4
   get 'fit-my-4x4/results' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results
 
+  post 'newsletter/subscribe' => 'ironman/newsletter#subscribe', as: :newsletter_subscribe
+  get 'newsletter/thank-you' => 'ironman/newsletter#thank_you', as: :newsletter_thank_you
+
 
   # Frontend routes
   namespace :ironman, :path => '' do

@@ -509,7 +509,7 @@ hr.double {
       text-align: left;
     }
 
-    input {
+    input[type=email] {
       @include search-input;
       display: inline-block;
       height: 41px;

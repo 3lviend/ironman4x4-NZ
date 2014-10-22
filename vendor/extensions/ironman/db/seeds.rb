@@ -176,5 +176,21 @@ Refinery::I18n.frontend_locales.each do |lang|
       })
     end
 
+
+    newsletter_thank_you_page = Refinery::Page.where(:link_url => '/newsletter/thank-you').first
+
+    unless newsletter_thank_you_page
+      newsletter_thank_you_page = ::Refinery::Page.create({
+        :title => "Newsletter Subscribed",
+        :link_url => "/newsletter/thank-you",
+        :menu_match => "^/(newsletter\/thank-you).*$",
+        :deletable => false
+      })
+      newsletter_thank_you_page.parts.create({
+        :title => "Body",
+        :body => "<p>Thank you for subscribing to our newsletter.</p><p>We just sent you an email confirmation - please click the link in the email to confirm your subscription</p>",
+        :position => 0
+      })
+    end
   end
 end

@@ -69,6 +69,7 @@ gem 'dotenv-rails' #loads .env files into ENV
 gem 'closure_tree'
 gem 'gretel', github: 'asgeo1/gretel', branch:'make_breadcrumb_key_public'
 gem 'geocoder'
+gem 'gibbon'
 
 gem 'modernizr-rails'
 gem 'bootstrap-sass'

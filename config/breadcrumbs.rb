@@ -91,6 +91,10 @@ crumb :fit_my_4x4_results do
   parent :fit_my_4x4
 end
 
+crumb :newsletter_thank_you do
+  link t('breadcrumbs.newsletter_thank_you'), refinery.newsletter_thank_you_path
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end

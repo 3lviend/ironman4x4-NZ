@@ -1,0 +1,7 @@
+<% breadcrumb :newsletter_thank_you %>
+
+<% content_for :body do %>
+  <%= raw @page.content_for(Refinery::Pages.default_parts.first.to_sym) if Refinery::Pages.default_parts.any? and @page.present? %>
+<% end %>
+
+<%= render "/refinery/content_page" %>
