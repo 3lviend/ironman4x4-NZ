@@ -57,8 +57,8 @@
 </script>
 
 <div id="warehouses">
-  <% australia = @warehouses.slice('Oceania') %>
-  <% warehouses = australia.merge(@warehouses.except('Oceania')) %>
+  <% australia = @warehouses.slice('Australia') %>
+  <% warehouses = australia.merge(@warehouses.except('Australia')) %>
   <% warehouses.each do |region, warehouses| %>
     <h3 id="<%= region.parameterize %>"><%= region %></h3>
     <div>
