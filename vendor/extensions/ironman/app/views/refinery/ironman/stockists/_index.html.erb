@@ -44,7 +44,7 @@
 
           var searchTerm = Ironman.utils.getQueryStringParameter('stockist_query');
 
-          if (currentPosition != null && !searchTerm) {
+          if (currentPosition != null && currentPosition.coords != null && !searchTerm) {
             var closest;
 
             $.each(Gmaps.store.markers, function(){
@@ -90,9 +90,9 @@
             }
             else {
               handler.map.serviceObject.setCenter(
-                new google.maps.LatLng(-37.813186, 144.9629796)
+                new google.maps.LatLng(-26.18041, 134.472656)
               );
-              handler.map.serviceObject.setZoom(10);
+              handler.map.serviceObject.setZoom(4);
             }
           }
 
