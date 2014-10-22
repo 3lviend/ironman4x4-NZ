@@ -8,6 +8,7 @@
         <span class="homepage">*</span>
       <% end %>
       <%= category.name %>
+      <span class='product-count'>(<%= link_to category.products.size, refinery.ironman_admin_products_path(:category_id => category.id) %>)</span>
     </span>
     <span class='actions'>
       

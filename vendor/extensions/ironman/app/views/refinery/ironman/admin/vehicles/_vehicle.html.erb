@@ -2,7 +2,7 @@
   <div class="item">
     <span class='title'>
       <%= vehicle.name %>
-
+      <span class='product-count'>(<%= link_to vehicle.products.size, refinery.ironman_admin_products_path(:vehicle_id => vehicle.id) %>)</span>
     </span>
     <span class='actions'>
       

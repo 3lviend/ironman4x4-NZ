@@ -3,6 +3,8 @@ module Refinery
     class Vehicle < Refinery::Core::BaseModel
       acts_as_tree name_column: 'name', order: 'refinery_ironman_vehicles.sort_order', touch: true
 
+      has_and_belongs_to_many :products, :join_table => 'refinery_ironman_vehicles_products'
+
       validates_presence_of :name
       validates_uniqueness_of :name, scope: :parent_id
 
