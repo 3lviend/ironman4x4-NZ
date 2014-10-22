@@ -49,6 +49,10 @@ module Refinery
         vehicles.first if not vehicles.empty?
       end
 
+      def active?
+        not draft
+      end
+
       def draft?
         draft
       end

@@ -28,6 +28,10 @@ module Refinery
         end
       end
 
+      def active?
+        visible
+      end
+
       def visible?
         visible
       end
