@@ -2,12 +2,6 @@
 cache(:footer_links, expires_in: 1.hour) do
 
   begin
-    tech_support_page = ::Refinery::Page.friendly.find('technical-support')
-  rescue ActiveRecord::RecordNotFound
-    tech_support_page = nil
-  end
-
-  begin
     warranty_page = ::Refinery::Page.friendly.find('warranty-terms')
   rescue ActiveRecord::RecordNotFound
     warranty_page = nil
@@ -50,9 +44,6 @@ cache(:footer_links, expires_in: 1.hour) do
         <dl class="col-sm-3">
           <dt><%= t('.support.description') %>
           <dd><%= link_to t('.support.fitting_instructions'), refinery.fitting_instructions_path %></li>
-          <% if tech_support_page.present? %>
-          <dd><%= link_to t('.support.technical_information'), refinery.marketable_page_path(tech_support_page) %></li>
-          <% end %>
           <% if faq_page.present? %>
           <dd><%= link_to t('.support.faqs'), refinery.marketable_page_path(faq_page) %></li>
           <% end %>
