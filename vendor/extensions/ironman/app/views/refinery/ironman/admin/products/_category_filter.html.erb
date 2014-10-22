@@ -1,9 +1,27 @@
 <div>
+  <%
+    categories = Rails.cache.fetch(cache_key_for_categories) do
+      Refinery::Ironman::Category.hash_tree.flatten_nested.map { |c| ['- ' * c.depth + c.name, c.id] }
+    end
+  %>
 <%= select_tag :category_id,
       options_for_select(
-        Refinery::Ironman::Category.hash_tree.flatten_nested.map { |c| ['- ' * c.depth + c.name, c.id] },
+        categories,
         params[:category_id]
       ), { include_blank: true, class: 'category-filter chosen-select', :'data-placeholder' => t('.category_placeholder') }
+%>
+</div>
+<div>
+  <%
+    vehicles = Rails.cache.fetch(cache_key_for_vehicles) do
+      Refinery::Ironman::Vehicle.hash_tree.flatten_nested.map { |v| ['- ' * v.depth + v.name, v.id] }
+    end
+  %>
+<%= select_tag :vehicle_id,
+      options_for_select(
+        vehicles,
+        params[:vehicle_id]
+      ), { include_blank: true, class: 'vehicle-filter chosen-select', :'data-placeholder' => t('.vehicle_placeholder') }
 %>
 </div>
 <div>

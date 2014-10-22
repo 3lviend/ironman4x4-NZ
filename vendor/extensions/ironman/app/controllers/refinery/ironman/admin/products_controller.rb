@@ -2,7 +2,6 @@ module Refinery
   module Ironman
     module Admin
       class ProductsController < ::Refinery::AdminController
-
         crudify :'refinery/ironman/product',
                 :title_attribute => 'product_no',
                 :xhr_paging => true,
@@ -25,6 +24,11 @@ module Refinery
           if params[:category_id].present?
             if conditions == '' then conditions = {} end
             conditions = conditions.merge({refinery_ironman_categories: {id: params[:category_id]}})
+          end
+
+          if params[:vehicle_id].present?
+            if conditions == '' then conditions = {} end
+            conditions = conditions.merge({refinery_ironman_vehicles: {id: params[:vehicle_id]}})
           end
 
           if params[:show_on_homepage].present? and params[:show_on_homepage] == '1'

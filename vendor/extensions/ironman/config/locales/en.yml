@@ -241,6 +241,7 @@ en:
           category_filter:
             show_on_homepage: Show Only Homepage Products?
             category_placeholder: Filter by category
+            vehicle_placeholder: Filter by vehicle
           product:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
