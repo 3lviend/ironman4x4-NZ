@@ -5,11 +5,23 @@
     <div class="category col-sm-5ths">
       <%
       if category.depth == 0
-        url = refinery.product_categories_path(category)
+        if category.leaf?
+          url = refinery.category_products_path(category)
+        else
+          url = refinery.product_categories_path(category)
+        end
       elsif category.depth == 1
-        url = refinery.product_subcategories_path(category.parent, category)
+        if category.leaf?
+          url = refinery.subcategory_products_path(category.parent, category)
+        else
+          url = refinery.product_subcategories_path(category.parent, category)
+        end
       else
-        url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category)
+        if category.leaf?
+          url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category)
+        else
+          url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category)
+        end
       end
       %>
       <%= link_to url do %>
