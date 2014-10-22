@@ -22,6 +22,8 @@ module Refinery
     protected
 
       def find_all_stockists
+        @all_stockists = Stockist.active
+
         conditions = {}
 
         if params[:store_type].present?
