@@ -83,8 +83,24 @@ module Refinery
           conditions[:store_type] = params[:store_type]
         end
 
-        @stockists = Stockist.active.where(conditions).order('name ASC')
-        @stockists = @stockists.with_query(params[:stockist_query]) if params[:stockist_query].present?
+        if params[:services].present?
+          conditions[:services] = params[:services]
+        end
+
+        @stockists = Stockist.active.where(conditions)
+
+        if params[:stockist_query].present?
+          stockist_query = params[:stockist_query]
+          countries = Stockist.active.pluck(:country).uniq
+
+          if not countries.any? { |country| stockist_query.downcase.include?(country.downcase) }
+            stockist_query = "#{stockist_query}, Australia"
+          end
+
+          @stockists = @stockists.near(stockist_query, 3185, :units => :km).first(12)
+        else
+          @stockists.order('name ASC')
+        end
       end
 
       def find_all_orders
