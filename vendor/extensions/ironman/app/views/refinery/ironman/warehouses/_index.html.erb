@@ -30,8 +30,10 @@
         });
       });
 
-      if (loaded) {
-        $(window).scrollTop(ui.newHeader.offset().top);
+      if (!loaded) {
+        if (ui.newHeader.offset() != null) {
+          $(window).scrollTop(ui.newHeader.offset().top);
+        }
       }
       loaded = true;
     };
