@@ -19,4 +19,5 @@ $(document).on 'page:load ready', ->
 
   $('#vehicle-filter-enabled button.disable').on 'click', (event) ->
     $.removeCookie 'fit_my_4x4', cookieOptions
+    $.removeCookie 'vehicle_details', cookieOptions
     document.location.reload()
