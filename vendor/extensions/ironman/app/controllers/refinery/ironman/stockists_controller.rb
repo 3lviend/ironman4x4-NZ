@@ -46,7 +46,7 @@ module Refinery
 
           @stockists = @stockists.near(stockist_query, 3185, :units => :km).first(12)
         else
-          @stockists.order('name ASC')
+          @stockists = @stockists.order('state ASC, name ASC')
         end
       end
 
