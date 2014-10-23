@@ -127,6 +127,7 @@ $(document).on 'page:load ready', ->
     if stockistId and Number(stockistId) is Number($('.heading', @).data('stockist-id'))
       style = 'btn-primary'
       text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
+      $('#order_stockist_id').val stockistId
 
     $(@).append(
       '<div class="row">
