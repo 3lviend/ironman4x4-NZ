@@ -78,6 +78,8 @@ gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'jquery-fileupload-rails'
 gem 'jquery-cookie-rails'
+gem 'jquery-hoverIntent-rails'
+gem 'jquery-easing-rails'
 
 # deployment
 gem 'mina'

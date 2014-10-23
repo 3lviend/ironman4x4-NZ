@@ -14,6 +14,8 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.cookie
+#= require jquery.easing
+#= require jquery.hoverIntent
 #= require turbolinks
 # require bootstrap
 #= require bootstrap/collapse
@@ -32,6 +34,7 @@
 #= require jquery-slider/jssor.slider
 #= require jquery.ui.accordion
 #= require glasscase/jquery.glasscase
+#= require jquery-navidropdown/jquery.navidropdown
 
 $.fn.serializeObject = ->
   o = {}
@@ -195,3 +198,6 @@ $(document).on 'page:load ready', ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
       document.location.href, 'published_month', $(this).val()
     )
+
+
+  $('#drop-down-nav').naviDropDown()

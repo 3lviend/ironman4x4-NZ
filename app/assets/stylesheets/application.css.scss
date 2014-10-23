@@ -286,6 +286,7 @@ hr.double {
     list-style-type: none;
     padding: 0;
     float: left;
+    position: relative;
 
     li {
       display: inline-block;
@@ -293,6 +294,11 @@ hr.double {
       width: 104px;
       text-transform: uppercase;
       font-size: $font-size-medium;
+
+      &.nav-trigger {
+        background: image-url('selectmenu-caret.png') no-repeat right transparent;
+        padding-right: 18px;
+      }
 
       a {
         display: block;
@@ -308,6 +314,34 @@ hr.double {
           color: $white;
           top: -9px;
           right: -1px;
+        }
+      }
+    }
+
+    ul.dropdown {
+      position: absolute;
+      background-color: rgba($white, 0.85);
+      z-index: 10;
+      padding: 13px 0 0 0;
+      display: none;
+
+      li {
+        text-align: left;
+        display: block;
+        width: auto;
+        border-bottom: 1px solid $green;
+
+        a {
+          color: $dark-grey;
+          display: block;
+          position: static;
+          padding: 3px $grid-gutter-width/2;
+
+          &:hover {
+            background-color: $green;
+            text-decoration: none;
+            color: $white;
+          }
         }
       }
     }

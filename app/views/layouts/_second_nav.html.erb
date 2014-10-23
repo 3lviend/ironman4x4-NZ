@@ -12,10 +12,28 @@
         <% num = num_items_in_cart %>
         <% cache_key.push num if num.present? and num > 0 %>
         <% cache(cache_key, expires_in: 1.hour) do %>
-        <ul class="sections">
-          <li>
-            <%= link_to refinery.ironman_products_path do %>
+        <ul class="sections" id="drop-down-nav">
+          <li class="nav-trigger">
+            <%= link_to refinery.ironman_products_path, class:'navlink' do %>
               <%= t('.nav.products') %>
+            <% end %>
+
+            <% cache(cache_key_for_categories) do %>
+            <% categories = Refinery::Ironman::Category.roots.active %>
+            <% if categories.present? %>
+            <ul class="dropdown">
+              <% categories.each do |category| %>
+                <%
+                  if category.leaf?
+                    url = refinery.category_products_path(category)
+                  else
+                    url = refinery.product_categories_path(category)
+                  end
+                %>
+                <li><%= link_to category.name, url %></li>
+              <% end %>
+            </ul>
+            <% end %>
             <% end %>
           </li>
           <li>
