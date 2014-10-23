@@ -18,6 +18,8 @@ module Refinery
       scope :has_fitting_instructions, -> { where(has_fitting_instructions: true) }
       scope :homepage_categories, -> { where(show_on_homepage: true) }
 
+      alias_attribute :title, :name
+
       after_initialize do
         if self.new_record?
           self.visible = false if self.visible.nil?
