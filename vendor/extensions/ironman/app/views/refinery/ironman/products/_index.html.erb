@@ -8,7 +8,7 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<% cache(cache_key) do %>
+<% cache([cache_key_for_products, cache_key]) do %>
 <% if @category.present? %>
   <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
   <hr />
