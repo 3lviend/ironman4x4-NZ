@@ -46,9 +46,8 @@ module Refinery
             logger.warn "There was an error delivering an order confirmation:\n#{$!}\n"
           end
 
-          if cookies[:wishlist].present?
-            cookies.delete :wishlist
-          end
+          cookies.delete :wishlist if cookies[:wishlist].present?
+          cookies.delete :'wishlist-tab' if cookies[:'wishlist-details'].present?
 
           render :confirmation
         else
