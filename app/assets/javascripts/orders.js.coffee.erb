@@ -66,7 +66,7 @@ $(document).on 'page:load ready', ->
     _.each data, (value, key) ->
       if key.match('order|terms_conditions')
         el = $("#wishlist [name=\"#{key}\"]")
-        if el.not('[type=hidden]').length
+        if el.not('[type=hidden],[name*=lines_attributes]').length
           if el.is(':checkbox')
             el.prop 'checked', (value isnt '0')
           else

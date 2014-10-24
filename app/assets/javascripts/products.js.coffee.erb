@@ -18,7 +18,8 @@ $(document).on 'page:load ready', ->
   addItemToWishlist = (productId, quantity = 1) ->
     items = getItemsFromWishlist()
     if productId && not isNaN(quantity)
-      items[productId] = (items[productId] ? 0) + quantity
+      newQuantity = Number((items[productId] ? 0) + quantity)
+      items[productId] = (if isNaN(newQuantity) then 0 else newQuantity)
       saveItemsToWishlist items
 
   updateQuantity = (productId, quantity) ->
@@ -45,7 +46,8 @@ $(document).on 'page:load ready', ->
     $('#wishlist input.quantity').each ->
       productId = $(@).data('product-id')
       quantity = parseInt $(@).val()
-      if isNaN(quantity) then quantity = 1
+      if isNaN(quantity)
+        quantity = 1
       if quantity == 0
         removeItemFromWishlist productId
       else
