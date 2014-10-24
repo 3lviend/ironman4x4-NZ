@@ -518,6 +518,7 @@ en:
           vehicle: Vehicle
           address: Address
           product:
+            product_no: SKU
             name: Product Name
             quantity: Qty
             total: Subtotal

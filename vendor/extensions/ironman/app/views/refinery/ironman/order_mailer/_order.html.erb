@@ -12,6 +12,7 @@
   <thead>
     <tr>
       <th><%= t('.product.name') %></th>
+      <th><%= t('.product.product_no') %></th>
       <th><%= t('.product.quantity') %></th>
       <% if @request.location.present? and @request.location.country_code == 'AU' %>
       <th><%= t('.product.total') %></th>
@@ -22,6 +23,7 @@
 <% @order.lines.each do |line| %>
     <tr>
       <td><%= line.product.name %></td>
+      <td><%= line.product.product_no %></td>
       <td><%= line.quantity %></td>
       <% if @request.location.present? and @request.location.country_code == 'AU' %>
       <td><%= number_to_currency line.net_amount %></td>
