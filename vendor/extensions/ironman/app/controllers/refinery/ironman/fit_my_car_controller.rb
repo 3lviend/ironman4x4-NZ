@@ -13,7 +13,25 @@ module Refinery
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
 
-          @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+          if params[:id].present?
+            @this_category = Category.friendly.find(params[:id])
+
+            @products = @this_category.leaves.map { |c| c.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values) }.flatten
+
+            if @this_category.depth == 0
+              @category = @this_category
+            elsif @this_category.depth == 1
+              @category = @this_category.parent
+              @subcategory = @this_category
+            elsif @this_category.depth == 2
+              @category = @this_category.parent.parent
+              @subcategory = @this_category.parent
+              @sub_subcategory = @this_category
+            end
+
+          else
+            @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+          end
         end
 
         present(@page)

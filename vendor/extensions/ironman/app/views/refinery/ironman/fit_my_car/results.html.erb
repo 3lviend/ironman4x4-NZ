@@ -1,8 +1,20 @@
 <% breadcrumb :fit_my_4x4_results %>
 
 <% content_for :body do %>
+  <% if @category.present? %>
+  <% cache_key = [@category, @subcategory, @sub_subcategory] %>
+  <% else %>
+  <% cache_key = [cache_key_for_categories] %>
+  <% end %>
+  <% cache(cache_key) do %>
+  <div class="fit-my-4x4-filters">
+  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key: cache_key } %>
+  <hr />
+  </div>
+  <% end %>
+
   <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_selected', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-  <%= render '/refinery/ironman/products/index' %>
+  <%= render :partial => '/refinery/ironman/products/index', :locals => {has_category_filter: false} %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

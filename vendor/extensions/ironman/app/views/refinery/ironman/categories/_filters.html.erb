@@ -1,7 +1,6 @@
-<% cache(cache_key) do %>
+<% filter_fitting_instructions = false if local_assigns[:filter_fitting_instructions].nil? %>
+<% cache([cache_key, @vehicle_filter, filter_fitting_instructions]) do %>
 <%
-  filter_fitting_instructions = false if local_assigns[:filter_fitting_instructions].nil?
-
   if @vehicle_filter.present?
     categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).select(&:active?).uniq
   else
