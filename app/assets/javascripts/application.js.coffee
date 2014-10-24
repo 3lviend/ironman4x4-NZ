@@ -53,6 +53,8 @@ $(document).on 'page:load ready', ->
   #$('.tooltip-label').tooltip()
   #$('.popover-label').popover()
 
+  cookieOptions = {expires:7, path: '/'}
+
   $('select[data-option-dependent=true]').each (i) ->
     observer_dom_id = $(this).attr('id')
     observed_dom_id = $(this).data('option-observed')
@@ -199,5 +201,22 @@ $(document).on 'page:load ready', ->
       document.location.href, 'published_month', $(this).val()
     )
 
-
   $('#drop-down-nav').naviDropDown()
+
+
+  applyCountryClass = (location) ->
+    if location.country_code is 'AU'
+      $('body').addClass 'is-australia'
+
+  location = JSON.parse($.cookie 'location' ? '{}')
+
+  if not location?
+    $.ajax
+      url: "//freegeoip.net/json/"
+      type: "POST"
+      dataType: "jsonp"
+      success: (location) ->
+        $.cookie 'location', JSON.stringify(location), cookieOptions
+        applyCountryClass location
+  else
+    applyCountryClass location

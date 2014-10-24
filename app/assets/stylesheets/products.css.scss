@@ -82,6 +82,54 @@
   }
 }
 
+.is-australia {
+  #page-product-list {
+    .product-container {
+      .product {
+        .price {
+          display: block;
+        }
+      }
+    }
+  }
+
+  #page-product {
+    .product-overview {
+      .price {
+        display: block;
+      }
+    }
+  }
+
+  #wishlist {
+    #wishlist-review {
+      .row.item, .row.header {
+        .rrp, .subtotal {
+          display: block;
+        }
+      }
+
+      .row.update {
+        .price-note {
+          display: block;
+        }
+      }
+
+      .row.total {
+        display: block;
+      }
+    }
+
+    #wishlist-submission {
+      .row {
+        .net-amount {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 #page-product-categories, #page-product-list {
   margin: 0;
   padding: 0;
@@ -178,6 +226,7 @@
     .product {
       .price {
         font-size: 26px;
+        display: none;
 
         .inc_gst {
           font-size: 10px;
@@ -333,6 +382,7 @@
   .product-overview {
     padding-right: 0;
     .price {
+      display: none;
       font-family: $font-family-bold;
       color: $green;
       text-transform: uppercase;
@@ -505,6 +555,12 @@
       line-height: 25px;
     }
 
+    .row.header {
+      .rrp, .subtotal {
+        display: none;
+      }
+    }
+
     .row.item {
       margin: $grid-gutter-width/2 0;
 
@@ -515,6 +571,7 @@
       }
 
       .rrp, .subtotal {
+        display: none;
         line-height: 34px;
       }
 
@@ -551,6 +608,8 @@
       padding: $grid-gutter-width*0.33 0;
 
       .price-note {
+        display: none;
+
         @media (min-width: $screen-sm-min) {
           line-height: 34px;
         }
@@ -566,6 +625,8 @@
     }
 
     .row.total {
+      display: none;
+
       .title {
         font-family: $font-family-bold;
         font-size: 17px;
@@ -653,8 +714,15 @@
 
   #wishlist-submission {
     padding-top: $grid-gutter-width/2;
+
     h4 {
       color: $dark-grey;
+    }
+
+    .row {
+      .net-amount {
+        display: none;
+      }
     }
   }
 }
