@@ -52,6 +52,10 @@ en:
     fit_my_4x4:
       go: 'Go'
       warning: 'You must select a value for make, model and series'
+    store_search:
+      heading: Store Locator
+      placeholder: Enter Postcode / Suburb / State
+      submit_btn_text: Find Store
     footer_links:
       support:
         description: 'Support'

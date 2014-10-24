@@ -458,6 +458,49 @@ hr.double {
   .jssora02rdn { background-position: -63px -33px; }
 }
 
+#layout-store-search {
+  min-height: 88px;
+  background-color: $dark-grey;
+  background-image: image-url('bg_fit_my_4x4.jpg');
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: $white;
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+
+  h3 {
+    display: inline-block;
+    float: left;
+    margin-top: 30px;
+  }
+
+  form {
+    display: inline-block;
+    margin-top: 25px;
+
+    input, button {
+      height: 40px;
+      font-size: 20px;
+    }
+
+    input {
+      @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+        width: 400px;
+      }
+      @media (min-width: $screen-md-min) {
+        width: 600px;
+      }
+    }
+
+    button {
+      margin-left: 30px;
+    }
+  }
+}
+
 #layout-fit-my-4x4 {
   min-height: 88px;
   background-color: $dark-grey;

@@ -4,6 +4,7 @@
 <%= render :partial => 'layouts/heading' if @layout_heading.nil? or @layout_heading or ((content_for?(:page_header) or content_for?(:body_content_title) or page_title.present?) and @layout_heading) %>
 <%= render :partial => 'layouts/photo_slideshow' if @layout_photo_slideshow.nil? or @layout_photo_slideshow %>
 <%= render :partial => 'layouts/fit_my_4x4' if @layout_fit_my_4x4.present? and @layout_fit_my_4x4 == 'above' %>
+<%= render :partial => 'layouts/store_search' if @layout_store_search.present? and @layout_store_search == 'above' %>
 <%= render :partial => 'layouts/breadcrumbs' if @layout_breadcrumbs.nil? or @layout_breadcrumbs %>
 
 <!--
