@@ -17,6 +17,9 @@
   a.cover {
     display: block;
 
+    &.priced {
+      display: none;
+    }
 
     @media (max-width: $screen-xs-max) {
       width: 260px;
@@ -54,6 +57,10 @@
 
   .buttons {
     text-transform: uppercase;
+
+    .btn.priced {
+      display: none;
+    }
   }
 
   .description {
@@ -73,5 +80,33 @@
 #catalogue {
   &.catalogue {
     @include catalogue;
+  }
+}
+
+.is-australia {
+  #catalogue, #catalogues {
+    &.catalogue, .catalogue {
+      a.cover {
+        &.priced {
+          display: block;
+        }
+
+        &.unpriced {
+          display: none;
+        }
+      }
+
+      .buttons {
+        .btn {
+          &.priced {
+            display: block;
+          }
+
+          &.unpriced {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }

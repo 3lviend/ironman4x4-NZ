@@ -2,14 +2,18 @@
 
 <% content_for :body do %>
   <div id="catalogue" class="catalogue col-sm-6">
-    <%= link_to @catalogue.priced_resource.url, :class => :cover do %>
+    <%= link_to @catalogue.priced_resource.url, :class => 'cover priced' do %>
+      <div class="image" style="background-image: url(<%= @catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
+    <% end %>
+    <%= link_to @catalogue.unpriced_resource.url, :class => 'cover unpriced' do %>
       <div class="image" style="background-image: url(<%= @catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
     <% end %>
     <div class="title">
       <h4><%= @catalogue.title %></h4>
     </div>
     <div class="buttons">
-      <%= link_to t('refinery.ironman.catalogues.index.buttons.download_pdf'), @catalogue.priced_resource.url, class: 'btn btn-primary btn-block' %>
+      <%= link_to t('refinery.ironman.catalogues.index.buttons.download_pdf'), @catalogue.priced_resource.url, class: 'btn btn-primary btn-block priced' %>
+      <%= link_to t('refinery.ironman.catalogues.index.buttons.download_pdf'), @catalogue.unpriced_resource.url, class: 'btn btn-primary btn-block unpriced' %>
       <%= link_to t('refinery.ironman.catalogues.index.buttons.view_products_online'), @catalogue.products_link, class: 'btn btn-primary btn-block' %>
     </div>
     <div class="description">

@@ -7,7 +7,10 @@
     <% @catalogues.each do |catalogue| %>
       <li class="catalogue col-sm-6">
         <% if catalogue.priced_resource.present? and catalogue.cover_image.present? %>
-        <%= link_to catalogue.priced_resource.url, :class => :cover do %>
+        <%= link_to catalogue.priced_resource.url, :class => 'cover priced' do %>
+          <div class="image" style="background-image: url(<%= catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
+        <% end %>
+        <%= link_to catalogue.unpriced_resource.url, :class => 'cover unpriced' do %>
           <div class="image" style="background-image: url(<%= catalogue.cover_image.thumbnail(geometry: "402x540").url %>)"></div>
         <% end %>
         <% elsif catalogue.cover_image.present? %>
@@ -17,7 +20,8 @@
           <h4><%= catalogue.title %></h4>
         </div>
         <div class="buttons">
-          <%= link_to t('.buttons.download_pdf'), catalogue.priced_resource.url, class: 'btn btn-primary btn-block' if catalogue.priced_resource.present? %>
+          <%= link_to t('.buttons.download_pdf'), catalogue.priced_resource.url, class: 'btn btn-primary btn-block priced' if catalogue.priced_resource.present? %>
+          <%= link_to t('.buttons.download_pdf'), catalogue.unpriced_resource.url, class: 'btn btn-primary btn-block unpriced' if catalogue.unpriced_resource.present? %>
           <%= link_to t('.buttons.view_products_online'), catalogue.products_link, class: 'btn btn-primary btn-block' if catalogue.products_link.present? %>
         </div>
         <div class="description">
