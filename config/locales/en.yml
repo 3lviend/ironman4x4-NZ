@@ -63,8 +63,8 @@ en:
         terms: 'Warranty Terms'
         claims_procedure: 'Claims Procedure'
       contact:
-        description: 'Contact Us'
-        head_office: 'Head Office'
+        description: 'Contact'
+        head_office: 'Contact Us'
         international_distributors_contact: 'International Distributors Contact'
       legal:
         description: 'Legal'
