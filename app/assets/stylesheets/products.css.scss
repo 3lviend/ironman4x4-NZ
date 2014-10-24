@@ -707,6 +707,13 @@
       margin-top: $grid-gutter-width/2;
     }
 
+    /* for now, don't display the print button */
+    .print {
+      .btn.print {
+        display: none;
+      }
+    }
+
     .email p {
       text-align: center;
     }
