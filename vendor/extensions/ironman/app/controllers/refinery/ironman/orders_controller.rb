@@ -47,7 +47,7 @@ module Refinery
           end
 
           cookies.delete :wishlist if cookies[:wishlist].present?
-          cookies.delete :'wishlist-tab' if cookies[:'wishlist-details'].present?
+          cookies.delete :'wishlist-tab' if cookies[:'wishlist-tab'].present?
 
           render :confirmation
         else

@@ -8,7 +8,7 @@ $(document).on 'page:load ready', ->
     '#wishlist-submission': '<%= I18n.t('refinery.ironman.orders.form.headings.wishlist_submission') %>'
   }
 
-  $('#wishlist .next.btn').on 'click', ->
+  $('#wishlist.form .next.btn').on 'click', ->
     active = $('#wishlist li.active a[data-toggle="tab"]').attr('href')
 
     validations = {
@@ -89,14 +89,14 @@ $(document).on 'page:load ready', ->
       else
         $(@).removeClass 'incomplete'
 
-  $('#wishlist a[data-toggle="tab"]').on 'click', (e) ->
+  $('#wishlist.form a[data-toggle="tab"]').on 'click', (e) ->
     if ($(e.target).closest('li').hasClass('incomplete') or $(e.target).closest('li').hasClass('disabled'))
       e.preventDefault()
       e.stopPropagation()
 
-  $('#wishlist a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+  $('#wishlist.form a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
     setClassesForTabs e.target
-    $.cookie 'wishlist-tab', e.target.hash
+    $.cookie 'wishlist-tab', e.target.hash, cookieOptions
     $('#layout-heading .page-header').text headings[e.target.hash]
 
   stockistsInit = false
@@ -115,7 +115,7 @@ $(document).on 'page:load ready', ->
     active = $('#wishlist li.active a[data-toggle="tab"]').get(0)
     setClassesForTabs active
 
-  $('#wishlist a[data-toggle="tab"][href="#wishlist-stockist"]').on 'shown.bs.tab', (e) ->
+  $('#wishlist.form a[data-toggle="tab"][href="#wishlist-stockist"]').on 'shown.bs.tab', (e) ->
     window.initStockists() if not stockistsInit
     stockistsInit = true
 
