@@ -1,5 +1,11 @@
 @import "bootstrap-config";
 
+#stockists-container {
+  .select-stockist {
+    display: none;
+  }
+}
+
 #stockists-filters {
   margin-top: $grid-gutter-width/2;
 

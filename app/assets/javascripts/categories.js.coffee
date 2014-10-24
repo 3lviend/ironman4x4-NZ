@@ -38,4 +38,4 @@ $(document).on 'page:load ready', ->
 
   $(window).bind 'popstate', ->
     #$.getScript location.href
-    console.log('popstate', location.href)
+    #console.log('popstate', location.href)

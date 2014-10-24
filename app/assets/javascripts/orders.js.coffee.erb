@@ -124,7 +124,8 @@ $(document).on 'page:load ready', ->
     text = '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
 
     stockistId = data['order[stockist_id]']
-    if stockistId and Number(stockistId) is Number($('.heading', @).data('stockist-id'))
+    thisStockistId = Number($('.heading', @).data('stockist-id'))
+    if stockistId and Number(stockistId) is thisStockistId
       style = 'btn-primary'
       text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
       $('#order_stockist_id').val stockistId
@@ -132,31 +133,34 @@ $(document).on 'page:load ready', ->
     $(@).append(
       '<div class="row">
         <div class="field contact col-sm-offset-2 col-sm-10">
-          <button type="button" class="btn ' + style + ' btn-sm select-stockist">' + text + '</button>
+          <button type="button" class="btn ' + style + ' btn-sm select-stockist" data-stockist-id="' + thisStockistId + '">' + text + '</button>
         </div>
       </div>'
     )
 
-  $('#wishlist-stockist .btn.select-stockist').on 'click', ->
+  $('#wishlist-stockist').on 'click', '.btn.select-stockist', ->
     btn = $(@)
+    stockistId = $(@).data 'stockist-id'
+
     if btn.hasClass 'btn-primary'
       $('#order_stockist_id').val ''
 
-      $(@).removeClass 'btn-primary'
-      $(@).addClass 'btn-info'
-      $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
+      $('#wishlist-stockist .btn.select-stockist[data-stockist-id=' + stockistId + ']')
+        .removeClass('btn-primary')
+        .addClass('btn-info')
+        .text('<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>')
     else
-      $('#wishlist-stockist .btn.select-stockist.btn-primary').each ->
+      $('#wishlist-stockist .btn.select-stockist.btn-primary:not([data-stockist-id=' + stockistId + '])').each ->
         $(@).removeClass 'btn-primary'
         $(@).addClass 'btn-info'
         $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
 
-      stockistId = $('.heading.row', $(@).closest('.stockist')).data 'stockist-id'
       $('#order_stockist_id').val stockistId
 
-      $(@).removeClass 'btn-info'
-      $(@).addClass 'btn-primary'
-      $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
+      $('#wishlist-stockist .btn.select-stockist[data-stockist-id=' + stockistId + ']')
+        .removeClass('btn-info')
+        .addClass('btn-primary')
+        .text('<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>')
 
     $(@).blur()
 

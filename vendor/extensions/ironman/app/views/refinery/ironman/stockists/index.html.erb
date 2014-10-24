@@ -1,8 +1,9 @@
-<% @layout_map = true if @stockists.present? %>
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
 
 <% content_for :body do %>
+  <div id="stockists-container">
   <%= render 'index' %>
+  </div>
 <% end %>
 
 <%= render '/refinery/content_page' %>

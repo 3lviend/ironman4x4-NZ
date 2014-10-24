@@ -29,5 +29,8 @@
   <% if object.notes.present? %>
   <%= object.notes %><br />
   <% end %>
+  <div>
+    <button type="button" class="btn btn-info btn-sm select-stockist pull-right" data-stockist-id="<%= object.id %>"><%= I18n.t('refinery.ironman.orders.form.buttons.select') %></button>
+  </div>
 </div>
 <% end %>
