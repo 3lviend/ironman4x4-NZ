@@ -81,6 +81,26 @@ hr.double {
   visibility: hidden;
 }
 
+.pagination {
+  display: none;
+}
+
+.infinite-container {
+  overflow: hidden;
+}
+
+.infinite-container.infinite-loading:after {
+  content:"Loading more...";
+  text-transform: uppercase;
+  height:30px;
+  line-height:30px;
+  width: 100%;
+  text-align:center;
+  color:$green;
+  visibility: visible;
+  margin-top: $grid-gutter-width / 2;
+}
+
 .col-xs-5ths,
 .col-sm-5ths,
 .col-md-5ths,

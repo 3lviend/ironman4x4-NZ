@@ -16,6 +16,8 @@
 #= require jquery.cookie
 #= require jquery.easing
 #= require jquery.hoverIntent
+#= require jquery-waypoints/waypoints
+#= require jquery-waypoints/waypoints-infinite
 #= require turbolinks
 # require bootstrap
 #= require bootstrap/collapse
@@ -222,9 +224,6 @@ $(document).on 'page:load ready', ->
     applyCountryClass location
 
   if $('.pagination').length
-    $(window).scroll ->
-      url = $('.pagination .next_page').attr('href')
-      if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
-        $('.pagination').text("Fetching more items...")
-        $.getScript(url)
-    $(window).scroll()
+    $('.infinite-container').waypoint('infinite', {
+      more: '.pagination .next_page'
+    })

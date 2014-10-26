@@ -24,7 +24,7 @@
 <% end %>
 
 <% if @products.present? %>
-<ul id="page-product-list" class="clearfix">
+<ul id="page-product-list" class="clearfix infinite-container">
 <% @products.each do |product| %>
   <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
 <% end %>
