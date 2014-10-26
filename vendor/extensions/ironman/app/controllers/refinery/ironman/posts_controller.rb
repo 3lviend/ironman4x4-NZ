@@ -50,7 +50,7 @@ module Refinery
           conditions[:published_at] = published_month.beginning_of_month..published_month.end_of_month
         end
 
-        @posts = Post.active.where(conditions).order('published_at DESC')
+        @posts = Post.active.where(conditions).order('published_at DESC').paginate(:page => params[:page], :per_page => 12)
       end
 
       def find_page

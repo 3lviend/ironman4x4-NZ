@@ -26,7 +26,7 @@ module Refinery
     protected
 
       def find_all_blog_posts
-        @posts = BlogPost.active.order('published_at DESC')
+        @posts = BlogPost.active.order('published_at DESC').paginate(:page => params[:page], :per_page => 12)
       end
 
       def find_page

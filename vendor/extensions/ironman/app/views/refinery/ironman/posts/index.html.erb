@@ -5,9 +5,9 @@
   <%= render 'refinery/ironman/posts/filters' %>
 
   <% if @posts.present? %>
-  <ul id="posts">
+  <ul id="posts" class="infinite-container">
     <% @posts.each do |post| %>
-      <li class="row post">
+      <li class="row post infinite-item">
         <div class="side col-sm-3">
         <%= link_to refinery.ironman_post_path(post) do %>
           <% if post.instance_of?(Refinery::Ironman::Event) %>
@@ -36,6 +36,7 @@
       </li>
     <% end %>
   </ul>
+  <%= will_paginate @posts %>
   <% else %>
     <p class="not-found"><%= t('.not-found') %></p>
   <% end %>

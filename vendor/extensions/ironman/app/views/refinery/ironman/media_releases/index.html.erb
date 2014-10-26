@@ -5,9 +5,9 @@
   <%= render 'refinery/ironman/media_releases/filters' %>
 
   <% if @media_releases.present? %>
-  <ul id="media-releases">
+  <ul id="media-releases infinite-container">
     <% @media_releases.each do |media_release| %>
-      <li class="media-release col-sm-6">
+      <li class="media-release col-sm-6 infinite-item">
         <div class="side col-sm-4">
           <% if media_release.priced_resource.present? %>
           <% url = media_release.priced_resource.url %>
@@ -41,6 +41,7 @@
       </li>
     <% end %>
   </ul>
+  <%= will_paginate @media_releases %>
   <% else %>
     <p class="not-found"><%= t('.not-found') %></p>
   <% end %>
