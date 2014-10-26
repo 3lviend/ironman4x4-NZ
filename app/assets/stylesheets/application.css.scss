@@ -85,20 +85,17 @@ hr.double {
   display: none;
 }
 
-.infinite-container {
-  overflow: hidden;
-}
-
 .infinite-container.infinite-loading:after {
   content:"Loading more...";
   text-transform: uppercase;
-  height:30px;
   line-height:30px;
   width: 100%;
   text-align:center;
-  color:$green;
+  color: $green;
   visibility: visible;
+  padding-top: 30px;
   margin-top: $grid-gutter-width / 2;
+  background: image-url('ajax-loader.gif') no-repeat top white;
 }
 
 .col-xs-5ths,
