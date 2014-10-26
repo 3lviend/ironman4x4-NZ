@@ -1,9 +1,9 @@
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? t('.page_header_with_category', category:@this_category.name) : t('.page_header') } %>
 
 <% if @category.present? %>
-<% cache_key = [@category, @subcategory, @sub_subcategory] %>
+<% cache_key = [@category, @subcategory, @sub_subcategory, "page-#{params[:page] || 1}"] %>
 <% else %>
-<% cache_key = [cache_key_for_products] %>
+<% cache_key = [cache_key_for_products, "page-#{params[:page] || 1}"] %>
 <% end %>
 
 <% content_for :body do %>
@@ -14,9 +14,9 @@
 </div>
 
 <% if @products.present? %>
-<ul id="page-product-list" class="clearfix fitting-instructions">
+<ul id="page-product-list" class="clearfix fitting-instructions infinite-controller">
   <% @products.each do |product| %>
-  <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
+  <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12 infinite-item">
     <div class="product">
       <div class="header">
         <div class="photo <%= product.thumbnail_display_mode %>" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
@@ -36,6 +36,7 @@
   </li>
   <% end %>
 </ul>
+<%= will_paginate @products %>
 <% else %>
   <% if @this_category.present? and @this_category.leaf? %>
   <p class="not-found"><%= t('.not-found') %></p>

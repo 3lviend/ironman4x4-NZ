@@ -8,7 +8,7 @@ module Refinery
         if params[:id].present?
           @this_category = Category.friendly.find(params[:id])
 
-          @products = @this_category.leaves.map { |c| c.products.active.where('fitting_instructions_resource_id is not null') }.flatten
+          @products = @this_category.leaves.map { |c| c.products.active.where('fitting_instructions_resource_id is not null') }.flatten.paginate(:page => params[:page], :per_page => 15)
 
           if @this_category.depth == 0
             @category = @this_category
