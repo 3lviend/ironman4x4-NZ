@@ -14,7 +14,7 @@
   <% end %>
 
   <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_selected', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-  <%= render :partial => '/refinery/ironman/products/index', :locals => {has_category_filter: false} %>
+  <%= render :partial => '/refinery/ironman/products/index', :locals => {has_category_filter: false} %> 
 <% end %>
 
 <%= render '/refinery/content_page' %>

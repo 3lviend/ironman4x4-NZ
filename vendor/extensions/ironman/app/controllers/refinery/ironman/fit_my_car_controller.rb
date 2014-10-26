@@ -16,7 +16,7 @@ module Refinery
           if params[:id].present?
             @this_category = Category.friendly.find(params[:id])
 
-            @products = @this_category.leaves.map { |c| c.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values) }.flatten
+            @products = @this_category.leaves.map { |c| c.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values) }.flatten.page(params[:page]).per_page(15)
 
             if @this_category.depth == 0
               @category = @this_category
@@ -30,7 +30,7 @@ module Refinery
             end
 
           else
-            @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+            @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).page(params[:page]).per_page(15)
           end
         end
 

@@ -40,9 +40,9 @@ module Refinery
           @this_category = Category.active.friendly.find(params[:id])
 
           if @vehicle_filter.present?
-            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).page(params[:page]).per_page(15)
           else
-            @products = @this_category.products.active
+            @products = @this_category.products.active.page(params[:page]).per_page(15)
           end
 
           if @this_category.depth == 0

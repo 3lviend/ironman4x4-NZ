@@ -9,7 +9,7 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<% cache([cache_key_for_products, cache_key]) do %>
+<% cache([cache_key_for_products, cache_key, params[:page]]) do %>
 <% if has_category_filter and @category.present? %>
   <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
   <hr />
@@ -26,18 +26,9 @@
 <% if @products.present? %>
 <ul id="page-product-list" class="clearfix">
 <% @products.each do |product| %>
-  <% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
-  <% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
-  <% elsif @category.present? and @subcategory.present? %>
-  <% url = refinery.products_subcategory_product_path(@subcategory, @category, product) %>
-  <% elsif @category.present? %>
-  <% url = refinery.products_category_product_path(@category, product) %>
-  <% else %>
-  <% url = refinery.ironman_product_path(product) %>
-  <% end %>
-
-  <%= render :partial => 'refinery/ironman/products/index_product', :locals => {product: product, url: url} %>
+  <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
 <% end %>
 </ul>
+<%= will_paginate @products %>
 <% end %>
 <% end %>

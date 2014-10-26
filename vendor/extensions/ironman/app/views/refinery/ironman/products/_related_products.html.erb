@@ -5,8 +5,7 @@
   <h3><%= t('.heading') %></h3>
   <ul id="page-product-list" class="clearfix">
     <% related_products.first(4).each do |product| %>
-      <% url = refinery.ironman_product_path(product) %>
-      <%= render :partial => 'refinery/ironman/products/index_product', :locals => {product: product, url: url} %>
+      <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
     <% end %>
   </ul>
 </aside>

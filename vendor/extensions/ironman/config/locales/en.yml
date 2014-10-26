@@ -488,7 +488,7 @@ en:
             warranty: Warranty
         related_products:
           heading: Related Products
-        index_product:
+        product:
           buttons:
             add_to_wishlist: Add to Wishlist
             view_product: View Product

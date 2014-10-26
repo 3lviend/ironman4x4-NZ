@@ -31,9 +31,9 @@ module Refinery
           if @category.leaf?
             if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
-              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', vehicle_ids)
+              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', vehicle_ids).page(params[:page]).per_page(15)
             else
-              @products = category.products.active
+              @products = category.products.active.page(params[:page]).per_page(15)
             end
 
             render 'refinery/ironman/products/index'
