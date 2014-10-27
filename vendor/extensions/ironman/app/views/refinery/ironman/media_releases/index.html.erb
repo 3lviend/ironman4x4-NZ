@@ -5,7 +5,7 @@
   <%= render 'refinery/ironman/media_releases/filters' %>
 
   <% if @media_releases.present? %>
-  <ul id="media-releases infinite-container">
+  <ul id="media-releases" class="infinite-container">
     <% @media_releases.each do |media_release| %>
       <li class="media-release col-sm-6 infinite-item">
         <div class="side col-sm-4">
