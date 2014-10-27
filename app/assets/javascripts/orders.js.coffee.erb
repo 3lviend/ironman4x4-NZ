@@ -119,24 +119,29 @@ $(document).on 'page:load ready', ->
     window.initStockists() if not stockistsInit
     stockistsInit = true
 
-  $('#wishlist-stockist #stockists .stockist').each ->
-    style = 'btn-info'
-    text = '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
+  addStockistSelectButton = ->
+    $('#wishlist-stockist #stockists .stockist').each ->
+      if not $(@).find('.select-stockist').length
+        style = 'btn-info'
+        text = '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
 
-    stockistId = data['order[stockist_id]']
-    thisStockistId = Number($('.heading', @).data('stockist-id'))
-    if stockistId and Number(stockistId) is thisStockistId
-      style = 'btn-primary'
-      text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
-      $('#order_stockist_id').val stockistId
+        stockistId = data['order[stockist_id]']
+        thisStockistId = Number($('.heading', @).data('stockist-id'))
+        if stockistId and Number(stockistId) is thisStockistId
+          style = 'btn-primary'
+          text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
+          $('#order_stockist_id').val stockistId
 
-    $(@).append(
-      '<div class="row">
-        <div class="field contact col-sm-offset-2 col-sm-10">
-          <button type="button" class="btn ' + style + ' btn-sm select-stockist" data-stockist-id="' + thisStockistId + '">' + text + '</button>
-        </div>
-      </div>'
-    )
+        $(@).append(
+          '<div class="row">
+            <div class="field contact col-sm-offset-2 col-sm-10">
+              <button type="button" class="btn ' + style + ' btn-sm select-stockist" data-stockist-id="' + thisStockistId + '">' + text + '</button>
+            </div>
+          </div>'
+        )
+
+  addStockistSelectButton()
+  $(document).on 'pagination:onafterpageload', addStockistSelectButton
 
   $('#wishlist-stockist').on 'click', '.btn.select-stockist', ->
     btn = $(@)
