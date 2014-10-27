@@ -31,6 +31,11 @@ module Refinery
         calc_total_amount
       end
 
+      def lines_attributes=(lines)
+        super lines
+        calc_total_amount
+      end
+
       def calc_total_amount
         total = 0
 
