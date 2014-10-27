@@ -16,7 +16,7 @@
     <div class="col-sm-5 product-overview">
       <div class="price"><%= number_to_currency @product.price if @product.price.present? %></div>
       <div class="product-no"><%= @product.product_no %></div>
-      <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary add-to-wishlist' %>
+      <%= button_tag t('.buttons.add_to_wishlist'), class: 'btn btn-primary btn-add-to-wishlist', :'data-product-id' => @product.id %>
       <div class="short-description"><%= raw @product.short_description %></div>
     </div>
   </div>

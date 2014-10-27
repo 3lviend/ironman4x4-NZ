@@ -32,17 +32,19 @@ $(document).on 'page:load ready', ->
     delete items[productId]
     saveItemsToWishlist items
 
-  $('#page-product-list .btn-add-to-wishlist').on 'click', ->
+  $('#page-product-list, #page-product').on 'click', '.btn-add-to-wishlist', ->
     addItemToWishlist $(@).data('product-id')
     $(@).text(addedToWishlist).addClass 'disabled added'
     document.location.reload true
 
-  items = getItemsFromWishlist()
-  _.each items, (quantity, productId) ->
-    if productId? && productId
-      $("#page-product-list .btn-add-to-wishlist[data-product-id=#{productId}]").text(addedToWishlist).addClass 'disabled'
+  applyAddToWishlistButton = ->
+    if $('#page-product-list, #page-product').length
+      items = getItemsFromWishlist()
+      _.each items, (quantity, productId) ->
+        if productId? && productId
+          $('#page-product-list, #page-product').find(".btn-add-to-wishlist[data-product-id=#{productId}]").text(addedToWishlist).addClass 'disabled'
 
-  $('#wishlist .update-wishlist.btn').on 'click', ->
+  $('#wishlist').on 'click', '.update-wishlist.btn', ->
     $('#wishlist input.quantity').each ->
       productId = $(@).data('product-id')
       quantity = parseInt $(@).val()
@@ -55,7 +57,12 @@ $(document).on 'page:load ready', ->
         updateQuantity productId, quantity
     document.location.reload true
 
-  $('#wishlist .remove-item.btn').on 'click', ->
+  $('#wishlist').on 'click', '.remove-item.btn', ->
     productId = $(@).data('product-id')
     removeItemFromWishlist productId
     document.location.reload true
+
+  $(document).on 'pagination:onafterpageload', ->
+    applyAddToWishlistButton()
+
+  applyAddToWishlistButton()

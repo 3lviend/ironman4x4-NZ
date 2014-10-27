@@ -226,4 +226,6 @@ $(document).on 'page:load ready', ->
   if $('.pagination').length
     $('.infinite-container').waypoint('infinite', {
       more: '.pagination .next_page'
+      onAfterPageLoad: ->
+        $(document).trigger 'pagination:onafterpageload'
     })
