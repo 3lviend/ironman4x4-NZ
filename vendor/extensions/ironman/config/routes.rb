@@ -43,7 +43,7 @@ Refinery::Core::Engine.routes.draw do
     resources :products, :only => [:index, :show]
     resources :categories, :only => [:index, :show]
     resources :vehicles, :only => [:index, :show]
-    resources :media_releases, :only => [:index, :show]
+    resources :media_releases, :only => [:index, :show], :path => '/media-releases'
     resources :stockists, :only => [:index, :show], :path => '/store-locator'
     resources :warehouses, :only => [:index, :show]
     resources :catalogues, :only => [:index, :show]

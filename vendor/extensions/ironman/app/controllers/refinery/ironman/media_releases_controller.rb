@@ -37,7 +37,7 @@ module Refinery
       end
 
       def find_page
-        @page = ::Refinery::Page.where(:link_url => "/media_releases").first
+        @page = ::Refinery::Page.where(:link_url => "/media-releases").first
       end
 
     end
