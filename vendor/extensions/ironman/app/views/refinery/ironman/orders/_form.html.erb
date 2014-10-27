@@ -27,7 +27,7 @@
     <% end %>
     <div class="tab-pane" id="wishlist-stockist">
       <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
-      <div class="row">
+      <div class="row stockists-buttons">
         <div class="col-sm-6 col-lg-offset-4 col-lg-4 print">
           <p>&nbsp;</p>
           <%= button_tag t('.buttons.print'), :type => 'button', class:'btn btn-primary btn-block btn-lg print' %>

@@ -178,5 +178,9 @@ $(document).on 'page:load ready', ->
     else
       $('#new_order').submit()
 
+  if $('#wishlist-stockist #stockists').length
+    buttons = $('#wishlist-stockist .stockists-buttons').clone(true, true)
+    buttons.insertBefore $('#wishlist-stockist #stockists')
+
   $('#new_order input, #new_order select').keypress (event) ->
     return event.keyCode != 13
