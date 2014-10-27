@@ -192,7 +192,7 @@
     </li>
   <% end %>
 </ul>
-<%= will_paginate @stockists if @stockists.respond_to? :total_pages %>
+<%= will_paginate @stockists if @stockists.respond_to? :per_page %>
 <% else %>
   <p class="not-found"><%= t('.not-found') %></p>
 <% end %>
