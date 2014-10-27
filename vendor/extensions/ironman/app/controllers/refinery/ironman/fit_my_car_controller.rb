@@ -30,7 +30,7 @@ module Refinery
             end
 
           else
-            @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).paginate(:page => params[:page], :per_page => 12)
+            @products = Refinery::Ironman::Product.active.includes(:vehicles).references(:vehicles).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
           end
         end
 
