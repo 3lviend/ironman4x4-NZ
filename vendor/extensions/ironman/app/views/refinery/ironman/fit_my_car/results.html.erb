@@ -8,7 +8,7 @@
   <% end %>
   <% cache(cache_key) do %>
   <div class="fit-my-4x4-filters">
-  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key: cache_key } %>
+  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key: cache_key, filter_generic_categories:true } %>
   <hr />
   </div>
   <% end %>
