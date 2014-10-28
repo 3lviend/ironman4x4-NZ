@@ -506,8 +506,7 @@ en:
           greeting: Hi there
           you_recieved_new_order: You just received a new wishlist submission from Ironman 4x4
           closing_line: Kind Regards
-          ps: P.S. All your orders are stored in the "Orders" section of Refinery
-            should you ever want to view it later there.
+          ps:
         order:
           order_starts: ! '--- order starts ---'
           order_ends: ! '--- order ends ---'
