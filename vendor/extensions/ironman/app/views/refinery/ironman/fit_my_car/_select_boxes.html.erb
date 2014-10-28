@@ -36,6 +36,25 @@
     cache_key.push vehicle_filter
   end
 
+
+  if local_assigns[:vehicle_1st_id].nil?
+    vehicle_1st_id = :vehicle_1st_id
+  else
+    cache_key.push :vehicle_1st_id
+  end
+
+  if local_assigns[:vehicle_2nd_id].nil?
+    vehicle_2nd_id = :vehicle_2nd_id
+  else
+    cache_key.push :vehicle_2nd_id
+  end
+
+  if local_assigns[:vehicle_3rd_id].nil?
+    vehicle_3rd_id = :vehicle_3rd_id
+  else
+    cache_key.push :vehicle_3rd_id
+  end
+
   cache(cache_key) do
   # find_by_id doesn't raise an exception if id doesn't exist
   vehicle_make = Refinery::Ironman::Vehicle.find_by_id(make_id) if make_id.present? and make_id != 0
@@ -44,28 +63,30 @@
 %>
 
 <div class="control first col-sm-3 col-md-2">
-  <%= styled_select_tag :vehicle_1st_id, options_from_collection_for_select(Refinery::Ironman::Vehicle.roots, 'id', 'name', (vehicle_make.id if vehicle_make.present?)), :prompt => t('.vehicle_make.prompt'), :class => 'form-control' %>
+  <%= styled_select_tag :vehicle_1st_id, options_from_collection_for_select(Refinery::Ironman::Vehicle.roots, 'id', 'name', (vehicle_make.id if vehicle_make.present?)), :prompt => t('.vehicle_make.prompt'), :class => 'form-control', :id => vehicle_1st_id %>
 </div>
 
 <div class="control col-sm-3 col-md-2">
   <%= styled_select_tag :vehicle_2nd_id, options_from_collection_for_select(if vehicle_make.present? then vehicle_make.children.active else [] end, 'id', 'name', (vehicle_model.id if vehicle_model.present?)),
                  'data-option-dependent' => true,
-                 'data-option-observed' => 'vehicle_1st_id',
+                 'data-option-observed' => vehicle_1st_id,
                  'data-option-url' => '/vehicles/:vehicle_1st_id:/children.json',
                  'data-option-key-method' => :id,
                  'data-option-value-method' => :name,
                  :prompt => t('.vehicle_model.prompt'),
-                 :class => 'form-control' %>
+                 :class => 'form-control',
+                 :id => vehicle_2nd_id %>
 </div>
 
 <div class="control last col-sm-3 col-md-2">
   <%= styled_select_tag :vehicle_3rd_id, options_from_collection_for_select(if vehicle_model.present? then vehicle_model.children.active else [] end, 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
                  'data-option-dependent' => true,
-                 'data-option-observed' => 'vehicle_2nd_id',
+                 'data-option-observed' => vehicle_2nd_id,
                  'data-option-url' => '/vehicles/:vehicle_2nd_id:/children.json',
                  'data-option-key-method' => :id,
                  'data-option-value-method' => :name,
                  :prompt => t('.vehicle_series.prompt'),
-                 :class => 'form-control' %>
+                 :class => 'form-control',
+                 :id => vehicle_3rd_id %>
 </div>
 <% end %>

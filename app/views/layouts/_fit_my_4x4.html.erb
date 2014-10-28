@@ -6,7 +6,7 @@
             <%= image_tag 'logo_fit_my_4x4.png' %>
           </div>
 
-          <%= render 'refinery/ironman/fit_my_car/select_boxes' %>
+          <%= render :partial => 'refinery/ironman/fit_my_car/select_boxes', :locals => {vehicle_1st_id: :vehicle_1st_id_fitmy4x4, vehicle_2nd_id: :vehicle_2nd_id_fitmy4x4, vehicle_3rd_id: :vehicle_3rd_id_fitmy4x4} %>
 
           <div class="col-sm-1 col-md-1 button">
             <button type="submit" class="form-control go"><%= t('.go') %></button>
