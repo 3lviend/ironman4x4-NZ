@@ -35,6 +35,8 @@ module Ironman4x4
         Refinery::Ironman::MediaRelease.active,
         Refinery::Ironman::Post.active
       ]
+
+      Refinery::SearchEngine::RESULTS_LIMIT = 100
     end
   end
 end
