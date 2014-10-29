@@ -18,7 +18,9 @@
 
     <div class="find-local-stockist col-sm-4">
       <h3><%= t('.find_stockist') %></h3>
+      <%= link_to refinery.ironman_stockists_path do %>
       <div class="map" style="background-image:url(<%= image_path 'homepage_map_australia.jpg' %>)"></div>
+      <% end %>
       <%= render 'refinery/ironman/stockists/search_form' %>
     </div>
   </div>
