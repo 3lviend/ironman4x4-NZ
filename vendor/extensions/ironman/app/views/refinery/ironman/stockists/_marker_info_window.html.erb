@@ -18,7 +18,9 @@
   <%= phone_number_link object.phone, :target => '_blank' %><br />
   <% end %>
   <% if object.email.present? %>
+  <div class="email">
   <%= mail_to object.email, object.email, :target => '_blank' %><br />
+  </div>
   <% end %>
   <% if object.website.present? %>
   <%= link_to object.website, object.website, :target => '_blank' %><br />

@@ -277,6 +277,7 @@ en:
           required_fields_missing: Please fill out all required fields marked with an asterisk (*)
           email_wishlist: Email wishlist to selected stockist
           please_select_a_stockist: You must select a stockist first
+          no_stockist_email: This stockist doesn't have an email address associated with their listing. Please contact directly via phone or alternatively select another stockist in your area to continue.
           buttons:
             select: Select
             selected: Selected

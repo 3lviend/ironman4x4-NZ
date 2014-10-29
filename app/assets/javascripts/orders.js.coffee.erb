@@ -127,10 +127,12 @@ $(document).on 'page:load ready', ->
 
         stockistId = data['order[stockist_id]']
         thisStockistId = Number($('.heading', @).data('stockist-id'))
+        thisStockistEmail = $(@).closest('.details').find('.email a').attr('href')
         if stockistId and Number(stockistId) is thisStockistId
           style = 'btn-primary'
           text = '<%= I18n.t('refinery.ironman.orders.form.buttons.selected') %>'
           $('#order_stockist_id').val stockistId
+          $('#order_stockist_email').val thisStockistEmail
 
         $(@).append(
           '<div class="row">
@@ -146,9 +148,11 @@ $(document).on 'page:load ready', ->
   $('#wishlist-stockist').on 'click', '.btn.select-stockist', ->
     btn = $(@)
     stockistId = $(@).data 'stockist-id'
+    stockistEmail = $(@).closest('.details').find('.email a').attr('href')
 
     if btn.hasClass 'btn-primary'
       $('#order_stockist_id').val ''
+      $('#order_stockist_email').val ''
 
       $('#wishlist-stockist .btn.select-stockist[data-stockist-id=' + stockistId + ']')
         .removeClass('btn-primary')
@@ -161,6 +165,7 @@ $(document).on 'page:load ready', ->
         $(@).text '<%= I18n.t('refinery.ironman.orders.form.buttons.select') %>'
 
       $('#order_stockist_id').val stockistId
+      $('#order_stockist_email').val stockistEmail
 
       $('#wishlist-stockist .btn.select-stockist[data-stockist-id=' + stockistId + ']')
         .removeClass('btn-info')
@@ -181,7 +186,10 @@ $(document).on 'page:load ready', ->
     if not $('#order_stockist_id').val()
       alert '<%= I18n.t('refinery.ironman.orders.form.please_select_a_stockist') %>'
     else
-      $('#new_order').submit()
+      if $('#order_stockist_email').val()
+        $('#new_order').submit()
+      else
+        alert "<%= I18n.t('refinery.ironman.orders.form.no_stockist_email') %>"
 
   if $('#wishlist-stockist #stockists').length
     buttons = $('#wishlist-stockist .stockists-buttons').clone(true, true)

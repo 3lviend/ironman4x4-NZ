@@ -150,7 +150,7 @@
 <% if @stockists.present? %>
 <ul id="stockists" class="clearfix infinite-container">
   <% @stockists.each_with_index do |stockist, index| %>
-    <li class="stockist col-sm-6 col-lg-4 infinite-item">
+    <li class="stockist details col-sm-6 col-lg-4 infinite-item">
       <hr />
       <div class="heading row" data-stockist-id="<%= stockist.id %>">
         <div class="num col-xs-1 col-sm-2"><%= (index+1+((page - 1)*per_page)).to_s.rjust(2, '0') %></div>
