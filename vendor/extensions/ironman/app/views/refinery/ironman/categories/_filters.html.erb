@@ -6,7 +6,7 @@
     if filter_generic_categories
       categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).select(&:active?).uniq
     else
-      categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).map(&:root).select(&:active?).uniq
+      categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:root).select(&:active?).uniq
     end
   else
     categories = Refinery::Ironman::Category.roots.active

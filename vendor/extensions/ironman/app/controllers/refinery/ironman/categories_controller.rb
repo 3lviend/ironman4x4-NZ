@@ -68,7 +68,7 @@ module Refinery
 
       def filter_by_vehicle(categories)
         if @vehicle_filter.present?
-          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values)
         else
           categories
         end
