@@ -260,6 +260,10 @@ hr.double {
 
   form {
     margin: 0;
+
+    .navbar-form {
+      margin-right: 0;
+    }
   }
 
   .navbar-input-group {
