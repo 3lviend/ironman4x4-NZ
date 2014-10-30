@@ -1,6 +1,6 @@
 <% filter_fitting_instructions = false if local_assigns[:filter_fitting_instructions].nil? %>
 <% filter_generic_categories = false if local_assigns[:filter_generic_categories].nil? %>
-<% cache([cache_key, @vehicle_filter, filter_fitting_instructions]) do %>
+<% cache([cache_key, @vehicle_filter, filter_fitting_instructions, filter_generic_categories]) do %>
 <%
   if @vehicle_filter.present?
     if filter_generic_categories
