@@ -258,6 +258,10 @@ hr.double {
   font-size: $font-size-smallish;
   margin-bottom: 0;
 
+  form {
+    margin: 0;
+  }
+
   .navbar-input-group {
     &.navbar-form {
       padding-right: 0;
