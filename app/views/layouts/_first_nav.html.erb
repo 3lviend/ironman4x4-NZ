@@ -13,6 +13,8 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="layout-top-navigation">
         <%= form_tag refinery.search_path, class: 'navbar-form navbar-right navbar-input-group', role:'search' do -%>
+          <!-- repeat these classes - hack for iOS 8 -->
+          <div class="navbar-form navbar-right navbar-input-group">
           <div class="form-group">
             <%= text_field_tag :query, {}, {:class => 'form-control',
               :type => 'search', :placeholder => t('.search_form.placeholder'),
@@ -21,6 +23,7 @@
           <%= button_tag type:'submit', class:'btn btn-default' do %>
             <span class="glyphicon glyphicon-search"></span>
           <% end %>
+          </div>
         <% end %>
         <%
           cache(:first_nav_links, expires_in: 1.hour) do
