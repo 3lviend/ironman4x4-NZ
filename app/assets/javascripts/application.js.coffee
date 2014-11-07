@@ -48,7 +48,6 @@ $.fn.serializeObject = ->
     else
       o[@name] = @value or ""
     return
-
   o
 
 $(document).on 'page:load ready', ->
