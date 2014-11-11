@@ -69,6 +69,15 @@ module Refinery
           }
         end
       end
+
+      def thumbnail_display_mode_cached
+        # TODO: add caching
+        if thumbnail_display_mode.present?
+          thumbnail_display_mode
+        elsif not categories.empty?
+          categories.first.thumbnail_display_mode
+        end
+      end
     end
   end
 end

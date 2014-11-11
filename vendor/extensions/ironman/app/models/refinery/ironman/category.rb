@@ -27,6 +27,7 @@ module Refinery
           self.show_on_homepage = false if self.show_on_homepage.nil?
           self.show_info = true if self.show_info.nil?
           self.has_fitting_instructions = true if self.has_fitting_instructions.nil?
+          self.thumbnail_display_mode = 'contain' if self.thumbnail_display_mode.nil?
         end
       end
 

@@ -13,7 +13,7 @@
   <div class="product">
     <div class="header">
       <%= link_to url do %>
-        <div class="photo <%= product.thumbnail_display_mode %>" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
+        <div class="photo <%= product.thumbnail_display_mode_cached %>" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
         </div>
         <h3 class="three-lines"><%= product.name %></h3>
       <% end %>
