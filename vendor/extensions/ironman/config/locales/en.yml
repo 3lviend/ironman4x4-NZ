@@ -282,7 +282,7 @@ en:
             select: Select
             selected: Selected
             print: Print Wishlist
-            submit: Submit Email
+            submit: Request Quote
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your wishlist.
           vehicle_make:
@@ -480,8 +480,8 @@ en:
         show:
           other: Other Products
           buttons:
-            add_to_wishlist: Add to Wishlist
-            added_to_wishlist: Added to Wishlist
+            add_to_wishlist: Add to Quote
+            added_to_wishlist: Added to Quote
           sections:
             description: Description
             specifications: Specifications
@@ -491,15 +491,15 @@ en:
           heading: Related Products
         product:
           buttons:
-            add_to_wishlist: Add to Wishlist
+            add_to_wishlist: Add to Quote
             view_product: View Product
           default_product_description: ''
           inc_gst: ! ' (RRP inc GST)'
         index:
           page_header: Products
           buttons:
-            add_to_wishlist: Add to Wishlist
-            added_to_wishlist: Added to Wishlist
+            add_to_wishlist: Add to Quote
+            added_to_wishlist: Added to Quote
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
       order_mailer:
