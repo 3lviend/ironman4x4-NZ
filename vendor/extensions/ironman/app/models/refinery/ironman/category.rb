@@ -16,6 +16,7 @@ module Refinery
       scope :active, -> { where(visible: true) }
       scope :featured, -> { where(featured: true) }
       scope :has_fitting_instructions, -> { where(has_fitting_instructions: true) }
+      scope :show_in_products, -> { where(show_in_products: true) }
       scope :homepage_categories, -> { where(show_on_homepage: true) }
 
       alias_attribute :title, :name
@@ -25,6 +26,7 @@ module Refinery
           self.visible = false if self.visible.nil?
           self.featured = false if self.featured.nil?
           self.show_on_homepage = false if self.show_on_homepage.nil?
+          self.show_in_products = true if self.show_in_products.nil?
           self.show_info = true if self.show_info.nil?
           self.has_fitting_instructions = true if self.has_fitting_instructions.nil?
           self.thumbnail_display_mode = 'contain' if self.thumbnail_display_mode.nil?
@@ -53,6 +55,10 @@ module Refinery
 
       def has_fitting_instructions?
         has_fitting_instructions
+      end
+
+      def show_in_products?
+        show_in_products
       end
 
       def images_with_captions

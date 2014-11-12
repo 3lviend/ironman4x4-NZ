@@ -81,6 +81,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :show_in_products -%>
+    <%= f.check_box :show_in_products, :checked => @category[:show_in_products] -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :show_info -%>
     <%= f.check_box :show_info, :checked => @category[:show_info] -%>
   </div>

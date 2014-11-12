@@ -6,7 +6,7 @@ module Refinery
       before_filter :find_page
 
       def children
-        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active
+        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products
       end
 
       def index
@@ -15,7 +15,7 @@ module Refinery
         end
 
         if params[:id].present?
-          @this_category = Category.active.friendly.find(params[:id])
+          @this_category = Category.active.show_in_products.friendly.find(params[:id])
 
           if @this_category.depth == 0
             @category = @this_category
@@ -38,10 +38,10 @@ module Refinery
 
             render 'refinery/ironman/products/index'
           else
-            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active
+            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products
           end
         else
-          @categories = filter_by_vehicle(Category.active).map(&:root).uniq.select(&:active?)
+          @categories = filter_by_vehicle(Category.active).map(&:root).uniq.select(&:active?).select(&:show_in_products?)
         end
 
         # you can use meta fields from your model instead (e.g. browser_title)
@@ -50,7 +50,7 @@ module Refinery
       end
 
       def show
-        @category = Category.active.friendly.find(params[:id])
+        @category = Category.active.show_in_products.friendly.find(params[:id])
 
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @category in the line below:
@@ -59,7 +59,7 @@ module Refinery
 
     protected
       def find_all_categories
-        @categories = Category.active.order('position ASC')
+        @categories = Category.active.show_in_products.order('position ASC')
       end
 
       def find_page

@@ -19,25 +19,25 @@ module Refinery
         if params[:id].nil?
           if @vehicle_filter.present?
             category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).map(&:id)
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).map(&:id)
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             @categories = Category.find(category_ids)
             @featured = Category.find(featured_ids)
           else
-            @categories = Category.roots.active
-            @featured = Category.featured.active.limit(8)
+            @categories = Category.roots.active.show_in_products
+            @featured = Category.featured.active.show_in_products.limit(8)
           end
 
           render 'refinery/ironman/categories/index'
         else
           # TODO: is there a way to cache this, so we're not creating multiple db
           # calls here?
-          @this_category = Category.active.friendly.find(params[:id])
+          @this_category = Category.active.show_in_products.friendly.find(params[:id])
 
           if @vehicle_filter.present?
             @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)

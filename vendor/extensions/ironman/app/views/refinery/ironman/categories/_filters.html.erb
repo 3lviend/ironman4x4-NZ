@@ -14,6 +14,12 @@
 
   if filter_fitting_instructions
     categories = categories.has_fitting_instructions
+  else
+    if categories.kind_of?(Array)
+      categories = categories.select(&:show_in_products?)
+    else
+      categories = categories.show_in_products
+    end
   end
 
   if category.present?
@@ -21,6 +27,8 @@
 
     if filter_fitting_instructions
       subcategories = subcategories.has_fitting_instructions
+    else
+      subcategories = subcategories.show_in_products
     end
   else
     subcategories = []
@@ -30,6 +38,8 @@
     sub_subcategories = subcategory.children.active
     if filter_fitting_instructions
       sub_subcategories = sub_subcategories.has_fitting_instructions
+    else
+      sub_subcategories = sub_subcategories.show_in_products
     end
   else
     sub_subcategories = []
