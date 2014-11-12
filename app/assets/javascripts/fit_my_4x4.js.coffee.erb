@@ -4,13 +4,15 @@ $(document).on 'page:load ready', ->
   $('#fit-my-4x4, #layout-fit-my-4x4').on 'submit', (event) ->
     event.preventDefault()
 
+    inLayout = if $(this).closest('#layout-fit-my-4x4').length then '_fitmy4x4' else ''
+
     data = {
-      vehicle_make_id: Number $('#vehicle_1st_id').val()
-      vehicle_model_id: Number $('#vehicle_2nd_id').val()
-      vehicle_series_id: Number $('#vehicle_3rd_id').val()
+      vehicle_make_id: Number $("#vehicle_1st_id#{inLayout}").val()
+      vehicle_model_id: Number $("#vehicle_2nd_id#{inLayout}").val()
+      vehicle_series_id: Number $("#vehicle_3rd_id#{inLayout}").val()
     }
 
-    if data.vehicle_make_id is 0 or data.vehicle_model_id is 0 or data.vehicle_series_id is 0
+    if data.vehicle_make_id is 0 or data.vehicle_model_id is 0 or data.vehicle_series_id is 0 or isNaN(data.vehicle_make_id) or isNaN(data.vehicle_model_id) or isNaN(data.vehicle_series_id)
       alert('<%= I18n.t('layouts.fit_my_4x4.warning') %>')
       return
 
