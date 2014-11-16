@@ -48,7 +48,6 @@ en:
         fitmy4x4: 'Fit My 4x4'
         technical: 'Technical'
         wish_list: 'Online Quote'
-        stockists: 'Find Store'
     fit_my_4x4:
       go: 'Go'
       warning: 'You must select a value for make, model and series'

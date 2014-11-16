@@ -373,6 +373,8 @@ en:
             services: Filter by services
         search_form:
           placeholder: 'Postcode/Suburb'
+          nav:
+            stockists: 'Find Store'
         marker_info_window:
           directions: Directions
       media_releases:

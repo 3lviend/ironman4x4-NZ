@@ -1,7 +1,13 @@
 <% url = refinery.ironman_stockists_path if local_assigns[:url].nil? %>
 <% placeholder = t('.placeholder') if local_assigns[:placeholder].nil? %>
 <% submit_btn_text = false if local_assigns[:submit_btn_text].nil? %>
+<% find_store_link = false if local_assigns[:find_store_link].nil? %>
 <%= form_tag url, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search', method: :get do -%>
+  <% if find_store_link %>
+    <%= link_to refinery.ironman_stockists_path, class:'find-store' do %>
+      <%= t('.nav.stockists') %>
+    <% end %>
+  <% end %>
   <div class="form-group">
     <%= text_field_tag :stockist_query, {}, {:class => 'form-control input-sm',
       :type => 'search', :placeholder => placeholder,

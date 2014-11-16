@@ -190,6 +190,18 @@ hr.double {
     float: right;
     margin-bottom: 10px;
 
+    a.find-store {
+      font-size: $font-size-medium;
+      color: $dark-grey;
+      text-transform: uppercase;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      margin-right: 20px;
+    }
+
     input.form-control {
       @include search-input;
 
@@ -323,6 +335,10 @@ hr.double {
       width: 104px;
       text-transform: uppercase;
       font-size: $font-size-medium;
+
+      &.wishlist {
+        width: 124px;
+      }
 
       &.nav-trigger {
         background: image-url('selectmenu-caret.png') no-repeat right transparent;

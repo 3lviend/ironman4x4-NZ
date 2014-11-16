@@ -55,7 +55,7 @@
             <% end %>
           </li>
           <% end %>
-          <li>
+          <li class="wishlist">
             <%= link_to refinery.new_ironman_order_path do %>
               <%= t('.nav.wish_list') %>
               <% if num.present? and num > 0 %>
@@ -63,15 +63,10 @@
               <% end %>
             <% end %>
           </li>
-          <li>
-            <%= link_to refinery.ironman_stockists_path do %>
-              <%= t('.nav.stockists') %>
-            <% end %>
-          </li>
         </ul>
         <% end %>
 
-        <%= render 'refinery/ironman/stockists/search_form' %>
+        <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {find_store_link: true} %>
       </div>
     </div>
   </div>
