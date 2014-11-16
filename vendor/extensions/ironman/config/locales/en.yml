@@ -250,41 +250,41 @@ en:
         show:
           other: Other Orders
         confirmation:
-          page_header: Wishlist - Submission Complete
-          wish_list: Wishlist
+          page_header: Quote - Submission Complete
+          wish_list: Quote
           customer_details: Customer Details
           selected_stockist: Selected Stockist
           buttons:
             email: Resend to your email
             return: Return to products
           panel:
-            heading: THANK YOU! YOUR WISHLIST HAS BEEN SUCCESSFULLY SUBMITTED.
-            text: A copy of the submission information below has been automatically emailed to your email address. Your selected stockist will contact you shortly to assist you with more information on the products within your wishlist.
+            heading: THANK YOU! YOUR QUOTE HAS BEEN SUCCESSFULLY SUBMITTED.
+            text: A copy of the submission information below has been automatically emailed to your email address. Your selected stockist will contact you shortly to assist you with more information on the products within your quote.
         new:
-          page_header: Wishlist - Review
+          page_header: Quote - Review
         form:
           tabs:
-            review: Review wishlist
+            review: Review quote
             customer: Customer details
             stockist: Select stockist
             submission: Submission review
-          wishlist_empty: Wishlist is empty. Try adding some products first.
+          wishlist_empty: Quote is empty. Try adding some products first.
           headings:
-            wishlist_review: Wishlist - Review
-            wishlist_details: Wishlist - Customer Details
-            wishlist_stockist: Wishlist - Select Stockist
-            wishlist_submission: Wishlist - Submission Complete
+            wishlist_review: Quote - Review
+            wishlist_details: Quote - Customer Details
+            wishlist_stockist: Quote - Select Stockist
+            wishlist_submission: Quote - Submission Complete
           required_fields_missing: Please fill out all required fields marked with an asterisk (*)
-          email_wishlist: Email wishlist to selected stockist
+          email_wishlist: Email quote to selected stockist
           please_select_a_stockist: You must select a stockist first
           no_stockist_email: This stockist doesn't have an email address associated with their listing. Please contact directly via phone or alternatively select another stockist in your area to continue.
           buttons:
             select: Select
             selected: Selected
-            print: Print Wishlist
+            print: Print Quote
             submit: Request Quote
         contact_details:
-          description: Please enter your details so our stockist can contact you regarding your wishlist.
+          description: Please enter your details so our stockist can contact you regarding your quote.
           vehicle_make:
             label: Vehicle Details
           buttons:
@@ -296,7 +296,7 @@ en:
           accept: Accept
         cart_contents:
           price_note: 'Note: Please note that all prices do not include fitting & freight charges'
-          notes: "Please review the contents of your wishlist below. If you would like to add more products to your wishlist simply return to the Products page and add more items. If you have added all products you require click on the 'Next' button to continue to the next step of your submission."
+          notes: "Please review the contents of your quote below. If you would like to add more products to your quote simply return to the Products page and add more items. If you have added all products you require click on the 'Next' button to continue to the next step of your submission."
           items:
             headers:
               product: Product
@@ -308,7 +308,7 @@ en:
               title: Order Total
               comment: (RRP inc GST)
           buttons:
-            update_wishlist: Update Wishlist
+            update_wishlist: Update Quote
             next: 'Next >>'
       catalogues:
         show:
@@ -505,7 +505,7 @@ en:
       order_mailer:
         notification:
           greeting: Hi there
-          you_recieved_new_order: You just received a new wishlist submission from Ironman 4x4
+          you_recieved_new_order: You just received a new quote submission from Ironman 4x4
           closing_line: Kind Regards
           ps:
         order:
