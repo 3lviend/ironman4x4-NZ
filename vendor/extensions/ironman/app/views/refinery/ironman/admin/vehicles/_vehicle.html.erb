@@ -22,7 +22,7 @@
 
   <% if not vehicle.leaf? %>
   <ul class="nested">
-  <%= render :partial => 'vehicle', :collection => vehicle.children.active %>
+  <%= render :partial => 'vehicle', :collection => vehicle.children %>
   </ul>
   <% end %>
 </li>
