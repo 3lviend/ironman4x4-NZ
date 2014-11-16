@@ -47,7 +47,7 @@ Refinery::Core::Engine.routes.draw do
     resources :stockists, :only => [:index, :show], :path => '/store-locator'
     resources :warehouses, :only => [:index, :show]
     resources :catalogues, :only => [:index, :show]
-    resources :orders, :only => [:new, :create], :path => '/wishlist'
+    resources :orders, :only => [:new, :create], :path => '/quote'
   end
 
   namespace :ironman, :path => '' do
