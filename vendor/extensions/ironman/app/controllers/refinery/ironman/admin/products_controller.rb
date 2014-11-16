@@ -52,6 +52,10 @@ module Refinery
             :warranty, images_attributes: [:id, :image_page_id, :caption], resources_attributes: [:id],
             specifications_attributes: [:id, :_destroy, :title, :value])
 
+          if p[:images_attributes].nil?
+            p[:images_attributes] = []
+          end
+
           p
         end
       end

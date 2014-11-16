@@ -99,11 +99,17 @@ module Refinery
 
       protected
         def category_params
-          params.require(:category).permit(:parent_id, :name,
+          p = params.require(:category).permit(:parent_id, :name,
             :short_description, :description, :sort_order, :visible, :featured,
             :show_on_homepage, :show_info, :id, :locale, :thumbnail_image_id,
             :has_fitting_instructions, :thumbnail_display_mode, :show_in_products,
             images_attributes: [:id, :image_page_id, :caption])
+
+          if p[:images_attributes].nil?
+            p[:images_attributes] = []
+          end
+
+          p
         end
       end
     end
