@@ -1,4 +1,4 @@
-<% related_products = @product.category.products.where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
+<% related_products = @product.category.products.active.where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
 <% if related_products.present? %>
 <hr class="double" />
 <aside id="related-products">
