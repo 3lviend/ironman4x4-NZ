@@ -14,7 +14,7 @@ module Refinery
       validates_presence_of :name, :address1, :suburb, :postcode, :state, :country
       validates_uniqueness_of :name
 
-      MAP_PINS = [:green, :grey, :ironman]
+      MAP_PINS = [:red, :green, :grey, :ironman]
 
       scope :active, -> { where(visible: true) }
 
