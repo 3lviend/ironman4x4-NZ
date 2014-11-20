@@ -222,6 +222,9 @@ hr.double {
     }
   }
 
+
+
+  /* fix alignment issues on mobile */
   .form-group {
     display: inline-block;
     margin-bottom: 0;
@@ -331,6 +334,42 @@ hr.double {
 
     ul {
       font-size: $font-size-smallish;
+    }
+  }
+
+  /* fix alignment issues on mobile */
+  form {
+    box-shadow: none;
+    border: none;
+
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+    }
+
+    .navbar-form {
+      box-shadow: none;
+      border: none;
+    }
+
+    &.navbar-form {
+      .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+      }
+    }
+
+    &.navbar-input-group {
+      font-size: 0px;
+
+      .btn {
+        width: auto;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-left: 0px;
+      }
     }
   }
 }
