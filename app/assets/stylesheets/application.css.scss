@@ -321,6 +321,35 @@ hr.double {
     vertical-align: top;
   }
 
+  form {
+    .form-group {
+      display: inline-block;
+      margin-bottom: 0;
+      vertical-align: middle;
+      margin-top: -7px;
+    }
+
+    &.navbar-form {
+      .form-control {
+        display: inline-block;
+        width: auto;
+        vertical-align: middle;
+      }
+    }
+
+    &.navbar-input-group {
+      font-size: 0px;
+
+      .btn {
+        width: auto;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-left: 0px;
+        margin-top: -7px;
+      }
+    }
+  }
+
   ul.sections {
     margin-top: 10px;
     margin-bottom: 0;
