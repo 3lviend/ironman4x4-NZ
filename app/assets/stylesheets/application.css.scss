@@ -218,6 +218,33 @@ hr.double {
       color: $white;
     }
   }
+
+  .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    margin-top: -7px;
+  }
+
+  &.navbar-form {
+    .form-control {
+      display: inline-block;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &.navbar-input-group {
+    font-size: 0px;
+
+    .btn {
+      width: auto;
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-left: 0px;
+      margin-top: -7px;
+    }
+  }
 }
 
 /* new class, so submit button in navbar can be grouped with search input */
@@ -319,35 +346,6 @@ hr.double {
     text-indent: -99999px;
     background-image: image-url('nav_logo.png');
     vertical-align: top;
-  }
-
-  form {
-    .form-group {
-      display: inline-block;
-      margin-bottom: 0;
-      vertical-align: middle;
-      margin-top: -7px;
-    }
-
-    &.navbar-form {
-      .form-control {
-        display: inline-block;
-        width: auto;
-        vertical-align: middle;
-      }
-    }
-
-    &.navbar-input-group {
-      font-size: 0px;
-
-      .btn {
-        width: auto;
-        border-top-left-radius: 0px;
-        border-bottom-left-radius: 0px;
-        border-left: 0px;
-        margin-top: -7px;
-      }
-    }
   }
 
   ul.sections {
@@ -645,6 +643,12 @@ hr.double {
       height: 50px;
       margin-right: 28px;
 
+      &.youtube {
+        @media (max-width: $screen-xs-max) {
+          margin-right: 0;
+        }
+      }
+
       a {
         display: inline-block;
       }
@@ -655,6 +659,11 @@ hr.double {
     display: inline-block;
     float: right;
     margin-top: 10px;
+
+    @media (max-width: $screen-xs-max) {
+      display: block;
+      float: none;
+    }
 
     .description {
       text-align: left;
@@ -670,6 +679,39 @@ hr.double {
       border: 1px solid $dark-grey;
       color: $dark-grey;
       border-radius: 0;
+    }
+
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      .description {
+        width: 300px;
+      }
+      input[type=email] {
+        width: 300px;
+      }
+    }
+
+    @media (max-width: $screen-xs-max) {
+      .input-group {
+        input[type=email] {
+          width: 200px;
+        }
+
+        .flexbox & {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: flex;
+            &, input {
+              -webkit-box-flex: 1;
+              -webkit-flex: 1;
+              -moz-box-flex: 1;
+              -ms-flex: 1;
+              flex: 1;
+              width: 100%;
+            }
+        }
+      }
     }
 
     .input-group-btn {
@@ -915,6 +957,10 @@ hr.double {
   .find-local-stockist {
     padding-right: 0;
 
+    @media (max-width: $screen-xs-max) {
+      padding-left: 0;
+    }
+
     h3 {
       text-transform: uppercase;
     }
@@ -961,11 +1007,23 @@ hr.double {
       }
       padding-left: $grid-gutter-width/2;
       padding-right: $grid-gutter-width/2;
+
+      @media (max-width: $screen-xs-max) {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: $grid-gutter-width;
+      }
     }
 
     .post {
       padding-left: $grid-gutter-width/2;
       padding-right: 0;
+
+      @media (max-width: $screen-xs-max) {
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: $grid-gutter-width;
+      }
     }
 
     .product, .post {
