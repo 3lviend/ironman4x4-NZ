@@ -200,6 +200,9 @@ hr.double {
       }
 
       margin-right: 20px;
+      @media (max-width: $screen-xs-max) {
+        margin-right: 5px;
+      }
     }
 
     input.form-control {
@@ -223,7 +226,7 @@ hr.double {
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
-    margin-top: -7px;
+    margin-top: -8px;
   }
 
   &.navbar-form {
@@ -242,7 +245,7 @@ hr.double {
       border-top-left-radius: 0px;
       border-bottom-left-radius: 0px;
       border-left: 0px;
-      margin-top: -7px;
+      margin-top: -8px;
     }
   }
 }
@@ -346,6 +349,14 @@ hr.double {
     text-indent: -99999px;
     background-image: image-url('nav_logo.png');
     vertical-align: top;
+  }
+
+  .stockists-search {
+    input.form-control {
+      @media (max-width: $screen-xs-max) {
+        max-width: 150px;
+      }
+    }
   }
 
   ul.sections {
@@ -731,6 +742,10 @@ hr.double {
 
 #layout-categories {
   background-color: $lighter-grey;
+
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
 
   .btn.btn-link {
     float: right;
