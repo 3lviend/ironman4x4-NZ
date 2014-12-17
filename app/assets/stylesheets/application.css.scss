@@ -474,8 +474,19 @@ hr.double {
   height: 450px;
   background-color: $light-grey;
 
-  @media (max-width: $screen-xs-max) {
-    height: 150px;
+  &, & > div {
+    @media (max-width: $screen-xs-max) {
+      height: 150px ! important;
+    }
+    @media (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+      height: 250px ! important;
+    }
+    @media (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+      height: 350px ! important;
+    }
+    @media (min-width: $screen-lg-min) {
+      height: 450px ! important;
+    }
   }
 
   & > div > div {
