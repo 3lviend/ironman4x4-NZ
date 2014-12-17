@@ -650,7 +650,6 @@ en:
         sort_order: Sort Order
         visible: Visible?
         featured: Featured?
-        show_info: Show Info Page?
         thumbnail_display_mode: Thumbnail Display Mode
         has_fitting_instructions: Has Fitting Instructions?
         show_in_products: Show in Products Section?
