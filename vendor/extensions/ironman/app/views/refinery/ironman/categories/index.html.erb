@@ -1,4 +1,5 @@
-<% @layout_fit_my_4x4 = 'above_heading' %>
+<% @layout_fit_my_4x4 = 'below' %>
+<% @slideshow_images = @this_category.images_with_captions if @this_category.present? %>
 <% @no_container = true %>
 
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
@@ -20,14 +21,30 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<div class="container">
-<%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-<%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
 <% if @this_category.present? %>
-<hr />
-<% end %>
+<% cache([@this_category, @vehicle_filter]) do %>
+<div class="container">
+  <div id="page-category-info">
+    <div class="content">
+      <% if @this_category.description.present? %>
+      <%= raw @this_category.description %>
+      <% end %>
+    </div>
+  </div>
 </div>
+<% end %>
+<% end %>
 
+<div class="container category-filters">
+  <% if @this_category.present? %>
+    <h3><%= t('.category_product_categories', {category: @this_category.name}) %> </h3>
+  <% end %>
+  <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
+  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
+  <% if @this_category.present? %>
+    <hr />
+  <% end %>
+</div>
 
 <%= render :partial => 'refinery/ironman/categories/index', :locals => {categories: @featured, cache_key: ['featured', cache_key], featured: true} %>
 <div class="container categories">

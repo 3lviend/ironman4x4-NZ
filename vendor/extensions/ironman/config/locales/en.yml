@@ -466,6 +466,7 @@ en:
             view_more_info: View More Info
           product_categories: Product Categories
           featured_product_cataegories: Featured Product Categories
+          category_product_categories: ! '%{category} Product Categories'
         filters:
           category:
             label: Product Category

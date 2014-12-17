@@ -41,6 +41,11 @@
   }
 }
 
+.container.category-filters {
+  h3 {
+    margin-bottom: $grid-gutter-width;
+  }
+}
 
 .homepage-categories {
   background-color: $lightest-grey;
