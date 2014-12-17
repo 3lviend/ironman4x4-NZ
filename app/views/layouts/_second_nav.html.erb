@@ -19,7 +19,7 @@
             <% end %>
 
             <% cache(cache_key_for_categories) do %>
-            <% categories = Refinery::Ironman::Category.roots.active %>
+            <% categories = Refinery::Ironman::Category.roots.active.order(:sort_order => :asc) %>
             <% if categories.present? %>
             <ul class="dropdown">
               <% categories.each do |category| %>
