@@ -18,9 +18,9 @@ Refinery::Core::Engine.routes.draw do
   get 'products/:category_id/:subcategory_id/:id' => 'ironman/products#show', as: :products_subcategory_product
   get 'products/:category_id/:subcategory_id/:sub_subcategory_id/:id' => 'ironman/products#show', as: :products_sub_subcategory_product
 
-  # category show pages
-  get 'categories/:category_id/:id' => 'ironman/categories#show', as: :subcategory
-  get 'categories/:category_id/:subcategory_id/:id' => 'ironman/categories#show', as: :sub_subcategory
+  # category show pages - not currently used
+  # get 'categories/:category_id/:id' => 'ironman/categories#show', as: :subcategory
+  # get 'categories/:category_id/:subcategory_id/:id' => 'ironman/categories#show', as: :sub_subcategory
 
   # fitting instructions - index pages of products for a given category
   get 'fitting-instructions' => 'ironman/fitting_instructions#index', as: :fitting_instructions

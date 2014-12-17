@@ -11,26 +11,20 @@
     <% if @category.nil? %>
       <% if category.leaf? %>
       <% list_url = refinery.category_products_path(category) %>
-      <% info_url = refinery.ironman_category_path(category) %>
       <% else %>
       <% list_url = refinery.product_categories_path(category) %>
-      <% info_url = refinery.ironman_category_path(category) %>
       <% end %>
     <% elsif category.depth == 1 %>
       <% if category.leaf? %>
       <% list_url = refinery.subcategory_products_path(category.parent, category) %>
-      <% info_url = refinery.subcategory_path(category.parent, category) %>
       <% else %>
       <% list_url = refinery.product_subcategories_path(category.parent, category) %>
-      <% info_url = nil %>
       <% end %>
     <% else %>
       <% if category.leaf? %>
       <% list_url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category) %>
-      <% info_url = refinery.sub_subcategory_path(category.parent.parent, category.parent, category) %>
       <% else %>
       <% list_url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category) %>
-      <% info_url = nil %>
       <% end %>
     <% end %>
 
@@ -50,16 +44,7 @@
           <%= t('.default_category_description') %>
           <% end %>
         </div>
-        <% if category.show_info? and info_url.present? %>
-        <%= link_to t('.buttons.view_category_info'), info_url, class: 'btn btn-primary btn-block' %>
-        <% else %>
-        <%= button_tag t('.buttons.view_category_info'), class: 'btn btn-primary btn-block btn-hidden' %>
-        <% end %>
-        <% if @this_category.nil? %>
-        <%= link_to t('.buttons.view_product_range'), list_url, class: 'btn btn-primary btn-block' %>
-        <% else %>
-        <%= link_to t('.buttons.view_product_listing'), list_url, class: 'btn btn-primary btn-block' %>
-        <% end %>
+        <%= link_to t('.buttons.view_more_info'), list_url, class: 'btn btn-primary btn-block' %>
       </div>
     </div>
   </li>

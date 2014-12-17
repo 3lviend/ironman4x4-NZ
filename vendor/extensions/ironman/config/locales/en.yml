@@ -463,9 +463,7 @@ en:
           page_header: Products
           default_category_description: ''
           buttons:
-            view_product_range: View Product Range
-            view_category_info: View Category Info
-            view_product_listing: View Product Listing
+            view_more_info: View More Info
           product_categories: Product Categories
           featured_product_cataegories: Featured Product Categories
         filters:
