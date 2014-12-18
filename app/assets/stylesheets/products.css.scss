@@ -363,6 +363,10 @@
     color: $dark-grey;
     display: block;
 
+    @media (max-width: $screen-xs-max) {
+      height: auto;
+    }
+
     .photo {
       background-position: 50% 0;
       background-repeat: no-repeat;
@@ -372,9 +376,14 @@
         background-position: center;
       }
       height: 100%;
+
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
     }
 
     .details {
+      padding-bottom: $grid-gutter-width/2;
       h3 {
         @media (max-width: $screen-xs-max) {
           text-align: center;
