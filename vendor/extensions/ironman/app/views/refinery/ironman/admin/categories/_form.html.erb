@@ -71,6 +71,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :is_hero_subcategory -%>
+    <%= f.check_box :is_hero_subcategory, :checked => @category[:is_hero_subcategory] -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :show_on_homepage -%>
     <%= f.check_box :show_on_homepage, :checked => @category[:show_on_homepage] -%>
   </div>

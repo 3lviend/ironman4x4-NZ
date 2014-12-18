@@ -653,6 +653,8 @@ en:
         thumbnail_display_mode: Thumbnail Display Mode
         has_fitting_instructions: Has Fitting Instructions?
         show_in_products: Show in Products Section?
+        is_hero_subcategory: Is Hero Subcategory?
+        show_on_homepage: Show on Homepage?
       refinery/ironman/product:
         product_no: Product No
         name: Name

@@ -56,6 +56,10 @@ module Refinery
         show_in_products
       end
 
+      def is_hero_subcategory?
+        is_hero_subcategory
+      end
+
       def images_with_captions
         @images_with_captions = image_pages.map do |ref|
           {
