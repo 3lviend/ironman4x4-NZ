@@ -384,6 +384,7 @@
 
     .details {
       padding-bottom: $grid-gutter-width/2;
+
       h3 {
         @media (max-width: $screen-xs-max) {
           text-align: center;
@@ -408,6 +409,7 @@
         margin-top: 12px;
         margin-bottom: 16px;
 
+        // note: this doesn't seem to work well if there are <p> tags in the description
         @include line-clamp($font-size-base, $line-height-base, 9);
       }
     }
