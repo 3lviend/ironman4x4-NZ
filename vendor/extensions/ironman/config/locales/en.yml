@@ -459,6 +459,10 @@ en:
 <p>Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam etureprat laborem quias ratatum quidiae pellabor aut imus ut es eseque nobis rehendant abo.</p>
 <p>Doloreritam et odignitatur, simet desequia alique commos del inctin necabor ad et re pariorupis ut labo- rume provit, quos eturistrum int ullest et peror sum fuga. Nam que dus andi occus, sit, secum conestrum everibusae natum nonet lab ium vende aciaerum fugiae velluptat lam nat verorro odit voluptat et autet mili- tium aut etur, te dicto dem eicia pos et am renduntin consecti blat a consed quasi omniendipsam nati dis- trum ad que volupta sectem ut ommolup tatium re eum alit, quia consenimusam est, quibusanis aut aut quiat elendae. It que nessinv ellorest et fuga. At omnis renia ium quame et et odit ea vent.</p>
 <p>Ur sam, quasitatur simet anim aut pari aut ut earum quuntio ssitiae cus se peris doluptur maio.</p>'
+        hero:
+          default_category_description: ''
+          buttons:
+            view_more_info: View More Info
         index:
           page_header: Products
           default_category_description: ''

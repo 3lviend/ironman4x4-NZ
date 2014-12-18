@@ -347,6 +347,64 @@
   }
 }
 
+#page-product-categories-hero {
+  margin: 0;
+  padding: 0;
+
+  .category {
+    list-style-type: none;
+    margin-bottom: $grid-gutter-width;
+    height: 350px;
+    background-color: $white;
+    box-shadow: 2px 2px 10px 2px $light-grey;
+    .no-boxshadow & {
+      border: 1px solid $light-grey;
+    }
+    color: $dark-grey;
+    display: block;
+
+    .photo {
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      background-size: cover;
+      &.contain {
+        background-size: contain;
+        background-position: center;
+      }
+      height: 100%;
+    }
+
+    .details {
+      h3 {
+        @media (max-width: $screen-xs-max) {
+          text-align: center;
+        }
+
+        color: $green;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+        font-size: $font-size-h3 * 1.5;
+
+        &.three-lines {
+          @include line-clamp(($font-size-h3 * 1.5), $headings-line-height, 3);
+        }
+        &.two-lines {
+          @include line-clamp(($font-size-h3 * 1.5), $headings-line-height, 2);
+        }
+      }
+
+      .description {
+        margin-top: 12px;
+        margin-bottom: 16px;
+
+        @include line-clamp($font-size-base, $line-height-base, 9);
+      }
+    }
+  }
+}
+
 #page-category-info {
   padding-bottom: $grid-gutter-width;
 

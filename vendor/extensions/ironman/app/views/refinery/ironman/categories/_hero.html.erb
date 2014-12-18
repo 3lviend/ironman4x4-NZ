@@ -1,0 +1,43 @@
+<% cache(cache_key) do %>
+<ul id="page-product-categories-hero">
+<% categories.select(&:is_hero_subcategory?).each do |category| %>
+  <li class="category clearfix">
+    <% if @category.nil? %>
+      <% if category.leaf? %>
+      <% list_url = refinery.category_products_path(category) %>
+      <% else %>
+      <% list_url = refinery.product_categories_path(category) %>
+      <% end %>
+    <% elsif category.depth == 1 %>
+      <% if category.leaf? %>
+      <% list_url = refinery.subcategory_products_path(category.parent, category) %>
+      <% else %>
+      <% list_url = refinery.product_subcategories_path(category.parent, category) %>
+      <% end %>
+    <% else %>
+      <% if category.leaf? %>
+      <% list_url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category) %>
+      <% else %>
+      <% list_url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category) %>
+      <% end %>
+    <% end %>
+
+    <%= link_to list_url do %>
+    <div class="col-sm-6 photo <%= category.thumbnail_display_mode %>" style="background-image:url('<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "570x350").url else image_url 'category_list_photo_default.jpg' end %>')"></div>
+    <% end %>
+
+    <div class="col-sm-6 details">
+      <h3 class="two-lines"><%= category.name %></h3>
+      <div class="description">
+        <% if category.description.present? %>
+        <%= raw category.description %>
+        <% else %>
+        <%= t('.default_category_description') %>
+        <% end %>
+      </div>
+      <%= link_to t('.buttons.view_more_info'), list_url, class: 'btn btn-primary btn-block' %>
+    </div>
+  </li>
+<% end %>
+</ul>
+<% end %>
