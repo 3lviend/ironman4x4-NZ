@@ -12,6 +12,12 @@
   <%= render 'refinery/ironman/categories/category_info' %>
   <div class="container">
     <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
+
+    <div class="form-group clearfix vehicle-selector right">
+      <%= label_tag :vehicle_1st_id, t('.select_vehicle'), :class => 'control-label col-sm-3 col-md-2' %>
+      <%= render 'refinery/ironman/fit_my_car/select_boxes' %>
+    </div>
+
     <%= render :partial => 'index', :locals => {:product_index_template => @product_index_template} %>
   </div>
 <% end %>

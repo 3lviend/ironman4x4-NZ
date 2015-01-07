@@ -46,34 +46,35 @@
   end
 %>
 
-<%= form_tag refinery.ironman_products_path, {:method => :get, :class => 'form-inline product-category-filters'} do %>
-  <div class="form-group">
-    <%= label_tag :category_1st_id, t('.category.label') %>
-    <%= styled_select_tag :category_1st_id, options_from_collection_for_select(categories, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'input-sm' %>
-  </div>
+<%= form_tag refinery.ironman_products_path, {:method => :get} do %>
+  <div class="form-group clearfix category-selector right">
+    <%= label_tag :category_1st_id, t('.category.label'), class:'control-label col-sm-3 col-md-2' %>
 
-  <div class="form-group">
-  <%= label_tag :category_2nd_id, t('.subcategory.label') %>
-  <%= styled_select_tag :category_2nd_id, options_from_collection_for_select(subcategories, 'slug', 'name', (subcategory.slug if subcategory.present?)),
-                 'data-option-dependent' => true,
-                 'data-option-observed' => 'category_1st_id',
-                 'data-option-url' => '/categories/:category_1st_id:/children.json',
-                 'data-option-key-method' => :slug,
-                 'data-option-value-method' => :name,
-                 :prompt => t('.subcategory.prompt'),
-                 :class => 'input-sm' %>
-  </div>
+    <div class="control col-sm-3 col-md-2">
+      <%= styled_select_tag :category_1st_id, options_from_collection_for_select(categories, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'form-control' %>
+    </div>
 
-  <div class="form-group">
-  <%= label_tag :category_3rd_id, t('.subsubcategory.label') %>
-  <%= styled_select_tag :category_3rd_id, options_from_collection_for_select(sub_subcategories, 'slug', 'name', (sub_subcategory.slug if sub_subcategory.present?)),
-                 'data-option-dependent' => true,
-                 'data-option-observed' => 'category_2nd_id',
-                 'data-option-url' => '/categories/:category_2nd_id:/children.json',
-                 'data-option-key-method' => :slug,
-                 'data-option-value-method' => :name,
-                 :prompt => t('.subsubcategory.prompt'),
-                 :class => 'input-sm' %>
+    <div class="control col-sm-3 col-md-2">
+    <%= styled_select_tag :category_2nd_id, options_from_collection_for_select(subcategories, 'slug', 'name', (subcategory.slug if subcategory.present?)),
+                   'data-option-dependent' => true,
+                   'data-option-observed' => 'category_1st_id',
+                   'data-option-url' => '/categories/:category_1st_id:/children.json',
+                   'data-option-key-method' => :slug,
+                   'data-option-value-method' => :name,
+                   :prompt => t('.subcategory.prompt'),
+                   :class => 'form-control' %>
+    </div>
+
+    <div class="control col-sm-3 col-md-2">
+    <%= styled_select_tag :category_3rd_id, options_from_collection_for_select(sub_subcategories, 'slug', 'name', (sub_subcategory.slug if sub_subcategory.present?)),
+                   'data-option-dependent' => true,
+                   'data-option-observed' => 'category_2nd_id',
+                   'data-option-url' => '/categories/:category_2nd_id:/children.json',
+                   'data-option-key-method' => :slug,
+                   'data-option-value-method' => :name,
+                   :prompt => t('.subsubcategory.prompt'),
+                   :class => 'form-control' %>
+    </div>
   </div>
 <% end %>
 <% end %>

@@ -156,6 +156,27 @@ hr.double {
   }
 }
 
+.vehicle-selector, .category-selector {
+  &.right {
+    .control-label {
+      text-align: right;
+    }
+  }
+
+  @media (max-width: $screen-xs-max) {
+    .control-label {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .control {
+      margin-bottom: 4px;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 .vehicle-selector {
   .styled-select {
     /* always show these boxes for fit-my-4x4 */
