@@ -1,4 +1,6 @@
 <% @layout_fit_my_4x4 = 'above_heading' %>
+<% @slideshow_images = @this_category.images_with_captions if @this_category.present? %>
+<% @no_container = true %>
 
 <% if @this_category.present? %>
 <% breadcrumb :category, @this_category %>
@@ -7,8 +9,11 @@
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.name if @this_category.present? } %>
 
 <% content_for :body do %>
-  <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-  <%= render :partial => 'index', :locals => {:product_index_template => @product_index_template} %>
+  <%= render 'refinery/ironman/categories/category_info' %>
+  <div class="container">
+    <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
+    <%= render :partial => 'index', :locals => {:product_index_template => @product_index_template} %>
+  </div>
 <% end %>
 
 <%= render '/refinery/content_page' %>

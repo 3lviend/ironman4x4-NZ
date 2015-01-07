@@ -1,0 +1,13 @@
+<% if @this_category.present? %>
+<% cache([@this_category, @vehicle_filter]) do %>
+<div class="container">
+  <div id="page-category-info">
+    <div class="content">
+      <% if @this_category.description.present? %>
+      <%= raw @this_category.description %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>
+<% end %>

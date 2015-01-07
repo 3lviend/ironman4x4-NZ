@@ -21,19 +21,7 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<% if @this_category.present? %>
-<% cache([@this_category, @vehicle_filter]) do %>
-<div class="container">
-  <div id="page-category-info">
-    <div class="content">
-      <% if @this_category.description.present? %>
-      <%= raw @this_category.description %>
-      <% end %>
-    </div>
-  </div>
-</div>
-<% end %>
-<% end %>
+<%= render 'category_info' %>
 
 <div class="container category-filters">
   <% if @this_category.present? %>
