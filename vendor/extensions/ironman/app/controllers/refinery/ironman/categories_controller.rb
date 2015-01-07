@@ -36,6 +36,17 @@ module Refinery
               @products = category.products.active.order('refinery_ironman_products.name').page(params[:page]).per_page(12)
             end
 
+            # lookup which product index template to use
+            @product_index_template = 'product-grid'
+            if @this_category.product_index_template == 'inherit'
+              parent = @this_category.self_and_ancestors.detect { |c| c.product_index_template != 'inherit' }
+              if parent.present?
+                @product_index_template = parent.product_index_template
+              end
+            else
+              @product_index_template = @this_category.product_index_template
+            end
+
             render 'refinery/ironman/products/index'
           else
             @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products

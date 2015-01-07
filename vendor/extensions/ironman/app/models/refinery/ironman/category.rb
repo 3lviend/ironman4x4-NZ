@@ -7,11 +7,14 @@ module Refinery
       acts_as_tree name_column: 'name', order: 'refinery_ironman_categories.sort_order', touch: true
       acts_as_indexed :fields => [:name, :description, :short_description]
 
+      PRODUCT_INDEX_TEMPLATES = ['inherit', 'product-grid', 'product-list', 'product-list-condensed']
+
       has_and_belongs_to_many :products, :join_table => 'refinery_ironman_categories_products', :dependent => :destroy
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
 
       validates_presence_of :name
       validates_uniqueness_of :name, scope: :parent_id
+      validates_inclusion_of :product_index_template, :in => PRODUCT_INDEX_TEMPLATES, :allow_blank => true
 
       scope :active, -> { where(visible: true) }
       scope :featured, -> { where(featured: true) }
@@ -29,6 +32,14 @@ module Refinery
           self.show_in_products = true if self.show_in_products.nil?
           self.has_fitting_instructions = true if self.has_fitting_instructions.nil?
           self.thumbnail_display_mode = 'contain' if self.thumbnail_display_mode.nil?
+        end
+
+        if self.product_index_template.nil?
+          if root?
+            self.product_index_template = 'product-grid'
+          else
+            self.product_index_template = 'inherit'
+          end
         end
       end
 

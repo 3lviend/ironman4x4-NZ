@@ -66,6 +66,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :product_index_template %>
+    <%= f.select :product_index_template, Refinery::Ironman::Category::PRODUCT_INDEX_TEMPLATES %>
+  </div>
+
+  <div class='field'>
     <%= f.label :featured -%>
     <%= f.check_box :featured, :checked => @category[:featured] -%>
   </div>

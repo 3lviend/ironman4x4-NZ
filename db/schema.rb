@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141218052046) do
+ActiveRecord::Schema.define(version: 20150107032846) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20141218052046) do
     t.boolean  "has_fitting_instructions", default: true
     t.boolean  "show_in_products",         default: true
     t.boolean  "is_hero_subcategory",      default: false
+    t.string   "product_index_template"
   end
 
   add_index "refinery_ironman_categories", ["slug"], name: "index_refinery_ironman_categories_on_slug", using: :btree

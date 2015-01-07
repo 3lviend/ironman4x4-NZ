@@ -55,6 +55,17 @@ module Refinery
             @subcategory = @this_category.parent
             @sub_subcategory = @this_category
           end
+
+          # lookup which product index template to use
+          @product_index_template = 'product-grid'
+          if @this_category.product_index_template == 'inherit'
+            parent = @this_category.self_and_ancestors.detect { |c| c.product_index_template != 'inherit' }
+            if parent.present?
+              @product_index_template = parent.product_index_template
+            end
+          else
+            @product_index_template = @this_category.product_index_template
+          end
         end
 
         # you can use meta fields from your model instead (e.g. browser_title)
