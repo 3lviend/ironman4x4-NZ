@@ -7,7 +7,8 @@
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.name if @this_category.present? } %>
 
 <% content_for :body do %>
-  <%= render @product_index_template.underscore %>
+  <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
+  <%= render :partial => 'index', :locals => {:product_index_template => @product_index_template} %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

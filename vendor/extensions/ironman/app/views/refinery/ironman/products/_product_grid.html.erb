@@ -1,2 +1,5 @@
-<%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-<%= render 'index' %>
+<ul id="page-product-list" class="clearfix infinite-container">
+<% @products.each do |product| %>
+  <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
+<% end %>
+</ul>

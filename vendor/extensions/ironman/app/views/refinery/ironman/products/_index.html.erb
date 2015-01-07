@@ -1,4 +1,5 @@
 <% has_category_filter = true if local_assigns[:has_category_filter].nil? %>
+<% product_index_template = :product_grid if local_assigns[:product_index_template].nil? %>
 <% if @this_category.present? %>
   <% cache_key = [@this_category] %>
 <% else %>
@@ -9,7 +10,7 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
-<% cache([cache_key_for_products, cache_key, "page-#{params[:page] || 1}"]) do %>
+<% cache([product_index_template, cache_key_for_products, cache_key, "page-#{params[:page] || 1}"]) do %>
 <% if has_category_filter and @category.present? %>
   <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
   <hr />
@@ -24,11 +25,7 @@
 <% end %>
 
 <% if @products.present? %>
-<ul id="page-product-list" class="clearfix infinite-container">
-<% @products.each do |product| %>
-  <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
-<% end %>
-</ul>
+<%= render product_index_template.to_s.underscore %>
 <%= will_paginate @products %>
 <% end %>
 <% end %>
