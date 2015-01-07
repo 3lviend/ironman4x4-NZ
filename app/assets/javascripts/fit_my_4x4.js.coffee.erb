@@ -1,10 +1,8 @@
 $(document).on 'page:load ready', ->
   cookieOptions = {expires:7, path: '/'}
 
-  $('#fit-my-4x4, #layout-fit-my-4x4').on 'submit', (event) ->
-    event.preventDefault()
-
-    inLayout = if $(this).closest('#layout-fit-my-4x4').length then '_fitmy4x4' else ''
+  updateVehicleFilter = (node) ->
+    inLayout = if $(node).closest('#layout-fit-my-4x4').length then '_fitmy4x4' else ''
 
     data = {
       vehicle_make_id: Number $("#vehicle_1st_id#{inLayout}").val()
@@ -17,9 +15,19 @@ $(document).on 'page:load ready', ->
       return
 
     $.cookie 'fit_my_4x4', JSON.stringify(data), cookieOptions
-    document.location.href = $('form', this).attr 'action'
+
+    if $('form', node).length
+      document.location.href = $('form', node).attr 'action'
+    else
+      document.location.reload(true)
+
+  $('#fit-my-4x4, #layout-fit-my-4x4').on 'submit', (event) ->
+    event.preventDefault()
+    updateVehicleFilter @
 
   $('#vehicle-filter-enabled button.disable').on 'click', (event) ->
     $.removeCookie 'fit_my_4x4', cookieOptions
     $.removeCookie 'vehicle_details', cookieOptions
     document.location.reload()
+
+  $('#vehicle_3rd_id').on 'change', -> updateVehicleFilter @
