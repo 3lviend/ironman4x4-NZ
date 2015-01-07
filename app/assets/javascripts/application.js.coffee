@@ -206,7 +206,7 @@ $(document).on 'page:load ready', ->
 
 
   applyCountryClass = (location) ->
-    if location.country_code is 'AU'
+    if location?.country_code is 'AU'
       $('body').addClass 'is-australia'
 
   location = JSON.parse($.cookie 'location' ? '{}')
