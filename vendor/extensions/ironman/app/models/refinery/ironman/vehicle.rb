@@ -20,13 +20,20 @@ module Refinery
         end
       end
 
-      def name_full
-        self_and_ancestors.reverse.map {|v| v.name}.join(' ')
+      after_update do
+        if name_changed?
+          leaves.select.each(&:calc_name_full)
+        end
       end
 
       def visible?
         visible
       end
+
+      def calc_name_full
+        update_attribute(:name_full, self_and_ancestors.reverse.map {|v| v.name}.join(' '))
+      end
+
     end
   end
 end
