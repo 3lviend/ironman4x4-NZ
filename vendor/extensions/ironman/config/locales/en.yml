@@ -508,6 +508,7 @@ en:
             added_to_wishlist: Added to Quote
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
+          category_product_products: ! '%{category} Products'
       order_mailer:
         notification:
           greeting: Hi there

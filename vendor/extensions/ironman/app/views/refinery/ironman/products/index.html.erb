@@ -11,6 +11,10 @@
 <% content_for :body do %>
   <%= render 'refinery/ironman/categories/category_info' %>
   <div class="container">
+    <% if @this_category.present? %>
+      <h3 class="category-product-products"><%= t('.category_product_products', {category: @this_category.name}) %> </h3>
+    <% end %>
+
     <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
 
     <div class="form-group clearfix vehicle-selector right">
