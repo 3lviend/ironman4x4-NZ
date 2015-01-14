@@ -166,6 +166,19 @@
       }
 
       .header {
+        .vehicle-bar {
+          .two-lines {
+            @include line-clamp($font-size-base, $line-height-base, 2, 2px, 2px);
+
+            .vehicle-name {
+              background-color: $green;
+              color: $white;
+              text-transform: uppercase;
+              padding: 2px 4px;
+            }
+          }
+        }
+
         h3 {
           @media (max-width: $screen-xs-max) {
             text-align: center;

@@ -1,5 +1,5 @@
 <ul id="page-product-list" class="clearfix infinite-container">
 <% @products.each do |product| %>
-  <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
+  <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, style: :vehicle_bar_top} %>
 <% end %>
 </ul>

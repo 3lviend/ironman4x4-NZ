@@ -1,4 +1,5 @@
-<% cache(product) do %>
+<% style = :default if local_assigns[:style].nil? %>
+<% cache([style, product]) do %>
 <% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
 <% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
 <% elsif @category.present? and @subcategory.present? %>
@@ -12,7 +13,19 @@
 <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12 infinite-item">
   <div class="product">
     <div class="header">
-      <%= link_to url do %>
+      <% if style == :vehicle_bar_top %>
+        <% vehicle = product.vehicles.first %>
+        <% if vehicle.present? %>
+        <div class="vehicle-bar">
+          <div class="two-lines">
+            <div class="vehicle-name">
+              <%= vehicle.name_full %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+      <%= link_to url, class:'clearfix' do %>
         <div class="photo <%= product.thumbnail_display_mode_cached %>" style="background-image: url('<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "302x193").url else image_url 'product_list_photo_default.jpg' end %>')">
         </div>
         <h3 class="three-lines"><%= product.name %></h3>
