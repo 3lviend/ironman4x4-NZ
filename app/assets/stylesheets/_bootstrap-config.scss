@@ -97,9 +97,9 @@ $font-family-extra-bold: 'HelveticaNeueW02-XBlkCn739235', "Helvetica Neue", Helv
   }
 }
 
-@mixin line-clamp($font-size, $line-height, $lines-to-show) {
+@mixin line-clamp($font-size, $line-height, $lines-to-show, $padding-top: 0, $padding-bottom: 0) {
   overflow: hidden;
-  height: $font-size*$line-height*$lines-to-show;
+  height: ($font-size*$line-height*$lines-to-show)+$padding-top+$padding-bottom;
   position: relative;
 
   /* for browsers which don't have line-clamp */
@@ -110,7 +110,7 @@ $font-family-extra-bold: 'HelveticaNeueW02-XBlkCn739235', "Helvetica Neue", Helv
     bottom: 0;
     right: 0;
     width: 20%;
-    height: $font-size;
+    height: $font-size + $padding-bottom;
     background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
   }
 
