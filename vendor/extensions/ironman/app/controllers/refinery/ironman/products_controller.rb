@@ -39,10 +39,11 @@ module Refinery
           # calls here?
           @this_category = Category.active.show_in_products.friendly.find(params[:id])
 
+          # NOTE: moved ordering and pagination on @products into the view, so each product_index_template could have a different order/grouping
           if @vehicle_filter.present?
-            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
           else
-            @products = @this_category.products.active.order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles)
           end
 
           if @this_category.depth == 0

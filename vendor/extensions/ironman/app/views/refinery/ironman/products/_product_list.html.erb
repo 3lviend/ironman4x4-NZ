@@ -1,3 +1,4 @@
+<% @products = @products.order('refinery_ironman_vehicles.name_full, refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12) %>
 <div class="infinite-container">
   <% @products.group_by { |p| p.vehicles.first }.each do |vehicle, products| %>
     <div class="infinite-item">
@@ -9,7 +10,7 @@
 
       <ul id="page-product-list" class="clearfix">
         <% products.each do |product| %>
-        <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, infinite_item: true} %>
+        <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, infinite_item: false} %>
         <% end %>
       </ul>
     </div>

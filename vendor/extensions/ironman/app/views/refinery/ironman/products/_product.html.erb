@@ -1,6 +1,6 @@
 <% style = :default if local_assigns[:style].nil? %>
 <% infinite_item = true if local_assigns[:infinite_item].nil? %>
-<% cache([style, product]) do %>
+<% cache([infinite_item, style, product]) do %>
 <% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
 <% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
 <% elsif @category.present? and @subcategory.present? %>
@@ -10,7 +10,6 @@
 <% else %>
 <% url = refinery.ironman_product_path(product) %>
 <% end %>
-
 <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12<%= ' infinite-item' if infinite_item %>">
   <div class="product">
     <div class="header">
