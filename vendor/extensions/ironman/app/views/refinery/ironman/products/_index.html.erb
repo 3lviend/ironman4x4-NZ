@@ -26,6 +26,5 @@
 
 <% if @products.present? %>
   <%= render "refinery/ironman/products/#{product_index_template.to_s.underscore}" %>
-<%= will_paginate @products %>
 <% end %>
 <% end %>

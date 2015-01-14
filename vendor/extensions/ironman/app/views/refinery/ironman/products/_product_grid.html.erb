@@ -3,3 +3,4 @@
   <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, style: :vehicle_bar_top} %>
 <% end %>
 </ul>
+<%= will_paginate @products %>
