@@ -2,11 +2,13 @@
 <div class="infinite-container">
   <% @products.group_by { |p| p.vehicles.first }.each do |vehicle, products| %>
     <div class="infinite-item">
+      <% if vehicle.present? %>
       <div class="vehicle-bar two-lines">
         <div class="vehicle-name">
           <%= vehicle.name_full %>
         </div>
       </div>
+      <% end %>
 
       <ul id="page-product-list" class="clearfix">
         <% products.each do |product| %>
