@@ -1,4 +1,4 @@
-<% @products = @products.order('refinery_ironman_products.name_full').paginate(:page => params[:page], :per_page => 12) %>
+<% @products = @products.order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12) %>
 <ul id="page-product-list" class="clearfix infinite-container">
 <% @products.each do |product| %>
   <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, style: :vehicle_bar_top} %>
