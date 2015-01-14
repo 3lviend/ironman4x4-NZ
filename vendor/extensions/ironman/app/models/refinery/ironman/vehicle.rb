@@ -22,7 +22,10 @@ module Refinery
 
       after_update do
         if name_changed?
-          leaves.select.each(&:calc_name_full)
+          leaves.each { |v|
+            v.calc_name_full
+            v.products.each(&:touch)
+          }
         end
       end
 
