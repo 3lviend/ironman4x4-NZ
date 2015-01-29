@@ -66,3 +66,29 @@ $(document).on 'page:load ready', ->
     applyAddToWishlistButton()
 
   applyAddToWishlistButton()
+
+  $('#product-list-condensed .product').each ->
+    specs = $(@).data 'specifications'
+    $(@).popover({
+      placement: 'top'
+      html: true
+      content: ->
+        specs = $(@).data 'product-specifications'
+        out = ''
+        out += '<table class="table table-condensed table-noborder">'
+        _.each specs, (value, title) ->
+          out += '<tr><th>' + title + '</th><td>' + value + '</td></tr>'
+        out += '</table>'
+        out += '<div>'
+        out += '<a href="' + $(@).data('product-url') + '" class="btn btn-primary btn-sm">View Product</a> '
+        out += '<button class="btn btn-primary btn-sm">Add to Quote</button>'
+        out += '</div>'
+        out
+      trigger: 'hover'
+    })
+    # move position of popover, so it buttons on it can more easily be pressed
+    .on 'shown.bs.popover', (event) ->
+      position = $(@).position()
+      $tip = $(@).data('bs.popover').$tip
+      $tip.offset(top:position.top-$tip.outerHeight(), left:position.left+$(@).width()-$tip.outerWidth())
+      $(@).append $tip

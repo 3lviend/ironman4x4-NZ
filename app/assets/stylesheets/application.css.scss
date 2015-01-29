@@ -81,6 +81,12 @@ hr.double {
   visibility: hidden;
 }
 
+.table.table-noborder {
+  td, th {
+    border: none;
+  }
+}
+
 .pagination {
   display: none;
 }

@@ -70,6 +70,17 @@ module Refinery
         end
       end
 
+      def specs
+        specs = {}
+        specs["Quantity Required"] = quantity_required if quantity_required.present?
+
+        self.specifications.each do |specification|
+          specs[specification.title] = specification.value if specification.value.present?
+        end
+
+        specs
+      end
+
       def thumbnail_display_mode_cached
         # TODO: add caching
         if thumbnail_display_mode.present?

@@ -1,7 +1,7 @@
 <% @products = @products.order('refinery_ironman_vehicles.name_full, refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12) %>
 <div id="product-list-condensed" class="infinite-container">
   <% @products.group_by { |p| p.vehicles.first }.each do |vehicle, products| %>
-    <table class="table infinite-item">
+    <table class="table table-hover infinite-item">
       <% if vehicle.present? %>
       <thead>
         <tr class="vehicle-bar">
@@ -14,7 +14,14 @@
 
       <tbody>
         <% products.each do |product| %>
-        <tr>
+        <tr class="product"
+            data-product-specifications="<%= product.specs.to_json %>"
+            data-product-url="<%= refinery.ironman_product_path(product) %>"
+            data-product-id="<%= product.id %>"
+            data-product-no="<%= product.product_no %>"
+            data-product-price="<%= number_to_currency product.price %>"
+            data-product-image="<%= product.thumbnail_image.thumbnail(geometry: "302x193").url if product.thumbnail_image.present? %>">
+
           <td class="col-sm-2"><%= product.product_no %></td>
           <td class="col-sm-8"><%= product.name %></td>
           <td class="col-sm-2 text-right"><%= number_to_currency product.price %></td>

@@ -22,6 +22,8 @@
 # require bootstrap
 #= require bootstrap/collapse
 #= require bootstrap/tab
+#= require bootstrap/tooltip
+#= require bootstrap/popover
 #= require utils
 #= require underscore
 #= require gmaps/google
