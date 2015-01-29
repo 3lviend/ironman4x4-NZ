@@ -1,1 +1,27 @@
-product_list_condensed
+<% @products = @products.order('refinery_ironman_vehicles.name_full, refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12) %>
+<div id="product-list-condensed" class="infinite-container">
+  <% @products.group_by { |p| p.vehicles.first }.each do |vehicle, products| %>
+    <table class="table infinite-item">
+      <% if vehicle.present? %>
+      <thead>
+        <tr class="vehicle-bar">
+          <td colspan="3">
+            <%= vehicle.name_full %>
+          </td>
+        </tr>
+      </thead>
+      <% end %>
+
+      <tbody>
+        <% products.each do |product| %>
+        <tr>
+          <td class="col-sm-2"><%= product.product_no %></td>
+          <td class="col-sm-8"><%= product.name %></td>
+          <td class="col-sm-2 text-right"><%= number_to_currency product.price %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
+<%= will_paginate @products %>

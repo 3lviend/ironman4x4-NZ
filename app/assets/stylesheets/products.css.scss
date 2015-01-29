@@ -143,6 +143,15 @@ h3.category-product-products {
   }
 }
 
+#product-list-condensed {
+  .vehicle-bar {
+    background-color: $green;
+    color: $white;
+    text-transform: uppercase;
+    padding: 2px 4px;
+  }
+}
+
 #page-product-categories, #page-product-list {
   margin: 0;
   padding: 0;
