@@ -62,23 +62,28 @@ $(document).on 'page:load ready', ->
     removeItemFromWishlist productId
     document.location.reload true
 
+  applyProductPopup = ->
+    $('#product-list-condensed .product:not(.has-popup)').each ->
+      row = $(@)
+      specs = row.data 'specifications'
+      row.popover({
+        placement: 'top'
+        html: true
+        content: ->
+          $("#popup-template-#{row.data('product-id')}").html()
+        trigger: 'hover'
+      })
+      # move position of popover, so it buttons on it can more easily be pressed
+      .on 'shown.bs.popover', (event) ->
+        position = $(@).position()
+        $tip = $(@).data('bs.popover').$tip
+        $tip.offset(top:position.top-$tip.outerHeight(), left:position.left+$(@).width()-$tip.outerWidth())
+        $(@).append $tip
+      row.addClass 'has-popup'
+
   $(document).on 'pagination:onafterpageload', ->
     applyAddToWishlistButton()
+    applyProductPopup()
 
   applyAddToWishlistButton()
-
-  $('#product-list-condensed .product').each ->
-    specs = $(@).data 'specifications'
-    $(@).popover({
-      placement: 'top'
-      html: true
-      content: ->
-        $("#popup-template-#{$(@).data('product-id')}").html()
-      trigger: 'hover'
-    })
-    # move position of popover, so it buttons on it can more easily be pressed
-    .on 'shown.bs.popover', (event) ->
-      position = $(@).position()
-      $tip = $(@).data('bs.popover').$tip
-      $tip.offset(top:position.top-$tip.outerHeight(), left:position.left+$(@).width()-$tip.outerWidth())
-      $(@).append $tip
+  applyProductPopup()

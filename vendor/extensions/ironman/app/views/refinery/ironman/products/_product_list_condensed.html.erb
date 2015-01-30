@@ -34,9 +34,10 @@
         <% else %>
         <% url = refinery.ironman_product_path(product) %>
         <% end %>
+        <% product_image = product.thumbnail_image.thumbnail(geometry: "221x140") if product.thumbnail_image.present? %>
       <div class="popup-template" id="popup-template-<%= product.id %>">
-        <% if product.thumbnail_image.present? %>
-        <img src="<%= product.thumbnail_image.thumbnail(geometry: "221x140").url %>" />
+        <% if product_image.present? %>
+        <img src="<%= product_image.url %>" width="<%= product_image.width %>" height="<%= product_image.height %>" />
         <% end %>
         <div class="product-no"><%= product.product_no %></div>
         <div class="price"><%= number_to_currency product.price %> <small>(RRP inc GST)</small></div>
