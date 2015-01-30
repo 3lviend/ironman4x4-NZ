@@ -1,34 +1,60 @@
 <% @products = @products.order('refinery_ironman_vehicles.name_full, refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12) %>
 <div id="product-list-condensed" class="infinite-container">
   <% @products.group_by { |p| p.vehicles.first }.each do |vehicle, products| %>
-    <table class="table table-hover infinite-item">
-      <% if vehicle.present? %>
-      <thead>
-        <tr class="vehicle-bar">
-          <td colspan="3">
-            <%= vehicle.name_full %>
-          </td>
-        </tr>
-      </thead>
-      <% end %>
-
-      <tbody>
-        <% products.each do |product| %>
-        <tr class="product"
-            data-product-specifications="<%= product.specs.to_json %>"
-            data-product-url="<%= refinery.ironman_product_path(product) %>"
-            data-product-id="<%= product.id %>"
-            data-product-no="<%= product.product_no %>"
-            data-product-price="<%= number_to_currency product.price %>"
-            data-product-image="<%= product.thumbnail_image.thumbnail(geometry: "302x193").url if product.thumbnail_image.present? %>">
-
-          <td class="col-sm-2"><%= product.product_no %></td>
-          <td class="col-sm-8"><%= product.name %></td>
-          <td class="col-sm-2 text-right"><%= number_to_currency product.price %></td>
-        </tr>
+    <div class="infinite-item">
+      <table class="table table-hover">
+        <% if vehicle.present? %>
+        <thead>
+          <tr class="vehicle-bar">
+            <td colspan="3">
+              <%= vehicle.name_full %>
+            </td>
+          </tr>
+        </thead>
         <% end %>
-      </tbody>
-    </table>
+
+        <tbody>
+          <% products.each do |product| %>
+          <tr class="product" data-product-id="<%= product.id %>">
+            <td class="col-sm-2"><%= product.product_no %></td>
+            <td class="col-sm-8"><%= product.name %></td>
+            <td class="col-sm-2 text-right"><%= number_to_currency product.price %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <% products.each do |product| %>
+        <% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
+        <% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
+        <% elsif @category.present? and @subcategory.present? %>
+        <% url = refinery.products_subcategory_product_path(@subcategory, @category, product) %>
+        <% elsif @category.present? %>
+        <% url = refinery.products_category_product_path(@category, product) %>
+        <% else %>
+        <% url = refinery.ironman_product_path(product) %>
+        <% end %>
+      <div class="popup-template" id="popup-template-<%= product.id %>">
+        <% if product.thumbnail_image.present? %>
+        <img src="<%= product.thumbnail_image.thumbnail(geometry: "221x140").url %>" />
+        <% end %>
+        <div class="product-no"><%= product.product_no %></div>
+        <div class="price"><%= number_to_currency product.price %> <small>(RRP inc GST)</small></div>
+        <table class="table table-condensed table-noborder">
+          <tr><th>Quantity Required:</th><td class="green"><%= product.quantity_required %></td></tr>
+          <% product.specifications.each do |spec| %>
+          <% if spec.value.present? %>
+          <tr><th><%= spec.title %>:</th><td class="green"><%= spec.value %></td></tr>
+          <% end %>
+          <% end %>
+        </table>
+        <div>
+          <%= link_to t('refinery.ironman.products.product.buttons.view_product'), url, class: 'btn btn-primary btn-sm' %>
+          <%= button_tag t('refinery.ironman.products.product.buttons.add_to_wishlist'), class: 'btn btn-primary btn-sm btn-add-to-wishlist', :'data-product-id' => product.id %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
 <%= will_paginate @products %>

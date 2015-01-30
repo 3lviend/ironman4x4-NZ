@@ -1,4 +1,5 @@
 @import "bootstrap-config";
+@import "bootstrap/mixins";
 
 .fitting-instructions-filters {
   margin-top: $grid-gutter-width * 0.75;
@@ -149,6 +150,32 @@ h3.category-product-products {
     color: $white;
     text-transform: uppercase;
     padding: 2px 4px;
+  }
+
+  .popup-template {
+    display: none;
+  }
+
+  .popover {
+    @include box-shadow(0 5px 10px rgba(0,0,0,.4));
+
+    .popover-content {
+      img {
+        margin-bottom: $grid-gutter-width/2;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .product-no {
+      }
+      .price {
+        font-size: 26px;
+        small {
+          font-size: 10px;
+        }
+      }
+    }
   }
 }
 
