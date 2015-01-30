@@ -3,15 +3,22 @@ $(document).on 'page:load ready', ->
     '<tr class="add_new">' +
     '<td><label for="product_specification_title">Title</label><input type="text" name="product_specification_title" /></td>' +
     '<td><label for="product_specification_value">Value</label><input type="text" name="product_specification_value" /></td>' +
+    '<td><label for="product_specification_show_on_product_detail">Show on<br />Product Detail?</label><input type="checkbox" name="product_specification_show_on_product_detail" /></td>' +
+    '<td><label for="product_specification_show_on_product_popover">Show on<br />Product Popover?</label><input type="checkbox" name="product_specification_show_on_product_popover" /></td>' +
     '<td><input type="button" value="Add" class="wymupdate button" /></td>' +
-    '</tr>'
+    '</tr>' +
+    '<tr><td colspan="5"><hr /></td></tr>'
   )
 
   $('#page_specifications .add_new input.button').on 'click', ->
     $title = $('#page_specifications .add_new input[name=product_specification_title]')
     $value = $('#page_specifications .add_new input[name=product_specification_value]')
+    $show_on_product_detail = $('#page_specifications .add_new input[name=product_specification_show_on_product_detail]')
+    $show_on_product_popover = $('#page_specifications .add_new input[name=product_specification_show_on_product_popover]')
     title = $title.val()
     value = $value.val()
+    show_on_product_detail = $show_on_product_detail.is(':checked')
+    show_on_product_popover = $show_on_product_popover.is(':checked')
 
     if !(title && value)
       alert 'You must enter both a specification title and value'
@@ -29,6 +36,14 @@ $(document).on 'page:load ready', ->
       '<tr class="spec_value">' +
         '<td><input type="text" name="product[specifications_attributes][' + index + '][title]" value="' + title + '" /></td>' +
         '<td><input type="text" name="product[specifications_attributes][' + index + '][value]" value="' + value + '" /></td>' +
+        '<td>
+          <input type="hidden" name="product[specifications_attributes][' + index + '][show_on_product_detail]" value="0" />
+          <input type="checkbox" name="product[specifications_attributes][' + index + '][show_on_product_detail]" value="1"' + (if show_on_product_detail then ' checked="checked"' else '') + ' />
+         </td>' +
+        '<td>
+          <input type="hidden" name="product[specifications_attributes][' + index + '][show_on_product_popover]" value="0" />
+          <input type="checkbox" name="product[specifications_attributes][' + index + '][show_on_product_popover]" value="1"' + (if show_on_product_popover then ' checked="checked"' else '') + ' />
+         </td>' +
         '<td class="actions">' +
           '<img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />' +
         '</td>' +
@@ -37,6 +52,8 @@ $(document).on 'page:load ready', ->
 
     $title.val('')
     $value.val('')
+    $show_on_product_detail.attr('checked', false)
+    $show_on_product_popover.attr('checked', false)
     $title.get(0).focus()
 
   $('#page_specifications').on 'click', '.delete', ->

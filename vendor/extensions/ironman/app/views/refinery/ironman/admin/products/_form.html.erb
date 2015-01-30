@@ -74,6 +74,12 @@
                   <td>
                     <%= s.text_field :value %>
                   </td>
+                  <td>
+                    <%= s.check_box :show_on_product_detail %>
+                  </td>
+                  <td>
+                    <%= s.check_box :show_on_product_popover %>
+                  </td>
                   <td class="actions">
                     <%= s.hidden_field :id %>
                     <img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />

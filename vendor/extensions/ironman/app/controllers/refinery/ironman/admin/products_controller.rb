@@ -50,7 +50,7 @@ module Refinery
             {:category_ids => []}, {:vehicle_ids => []}, :thumbnail_image_id,
             :thumbnail_display_mode, :fitting_instructions_resource_id,
             :warranty, images_attributes: [:id, :image_page_id, :caption], resources_attributes: [:id],
-            specifications_attributes: [:id, :_destroy, :title, :value])
+            specifications_attributes: [:id, :_destroy, :title, :value, :show_on_product_detail, :show_on_product_popover])
 
           if p[:images_attributes].nil?
             p[:images_attributes] = []
