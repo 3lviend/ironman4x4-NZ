@@ -69,15 +69,13 @@
               <%= f.fields_for :specifications do |s| %>
                 <tr class="spec_value">
                   <td>
-                  <%= s.object.title %>
+                    <%= s.text_field :title %>
                   </td>
                   <td>
-                    <%= s.object.value %>
+                    <%= s.text_field :value %>
                   </td>
                   <td class="actions">
                     <%= s.hidden_field :id %>
-                    <%= s.hidden_field :title %>
-                    <%= s.hidden_field :value %>
                     <img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />
                   </td>
                 </tr>

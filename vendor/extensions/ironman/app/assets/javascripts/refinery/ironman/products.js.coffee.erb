@@ -27,11 +27,9 @@ $(document).on 'page:load ready', ->
 
     $('#page_specifications table ' + (if index then '.spec_value:last' else '.add_new')).after(
       '<tr class="spec_value">' +
-        '<td>' + title + '</td>' +
-        '<td>' + value + '</td>' +
+        '<td><input type="text" name="product[specifications_attributes][' + index + '][title]" value="' + title + '" /></td>' +
+        '<td><input type="text" name="product[specifications_attributes][' + index + '][value]" value="' + value + '" /></td>' +
         '<td class="actions">' +
-          '<input type="hidden" name="product[specifications_attributes][' + index + '][title]" value="' + title + '" />' +
-          '<input type="hidden" name="product[specifications_attributes][' + index + '][value]" value="' + value + '" />' +
           '<img src="<%= image_path('refinery/icons/delete.png') %>" width="16" height="16" class="delete" />' +
         '</td>' +
       '</tr>'
