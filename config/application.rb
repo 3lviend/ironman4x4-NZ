@@ -33,7 +33,9 @@ module Ironman4x4
         Refinery::Ironman::Product.active,
         Refinery::Ironman::Category.active,
         Refinery::Ironman::MediaRelease.active,
-        Refinery::Ironman::Post.active
+        Refinery::Ironman::BlogPost.active,
+        Refinery::Ironman::Event.active,
+        Refinery::Ironman::NewsItem.active
       ]
 
       Refinery::SearchEngine::RESULTS_LIMIT = 100

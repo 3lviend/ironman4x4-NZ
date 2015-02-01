@@ -3,6 +3,35 @@
 <% end %>
 
 <% content_for :body do %>
+  <div class="search-results-page">
+    <div class="row search-filters">
+      <%= label_tag 'search_results_categories[category]', 'Filter Results', class:'filter-results' %>
+      <%= label_tag 'search_results_categories[category]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[category]', 1, @filters[:category] %>
+        <%= 'Categories' %>
+      <% end %>
+      <%= label_tag 'search_results_categories[products]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[products]', 1, @filters[:products] %>
+        <%= 'Products' %>
+      <% end %>
+      <%= label_tag 'search_results_categories[media]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[media]', 1, @filters[:media] %>
+        <%= 'Media' %>
+      <% end %>
+      <%= label_tag 'search_results_categories[news]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[news]', 1, @filters[:news] %>
+        <%= 'News' %>
+      <% end %>
+      <%= label_tag 'search_results_categories[events]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[events]', 1, @filters[:events] %>
+        <%= 'Events' %>
+      <% end %>
+      <%= label_tag 'search_results_categories[blog]', class:'checkbox-inline' do %>
+        <%= check_box_tag 'search_results_categories[blog]', 1, @filters[:blog] %>
+        <%= 'Blog' %>
+      <% end %>
+    </div>
+
   <% if @results.empty? %>
     <%= t('.no_results_for', :what => params[:query]) %>
   <% else %>
@@ -16,8 +45,8 @@
         </li>
       <% end %>
     <% end %>
-  </ul>
+    </ul>
+  </div>
 <% end %>
 
 <%= render "/refinery/content_page" %>
-

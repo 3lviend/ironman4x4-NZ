@@ -40,7 +40,7 @@ module Refinery
           when 'news_item'
             @type = Refinery::Ironman::NewsItem
           when 'event'
-            @type = Refinery::Ironman::BlogPost
+            @type = Refinery::Ironman::Event
           end
           conditions[:type] = @type if @type.present?
         end

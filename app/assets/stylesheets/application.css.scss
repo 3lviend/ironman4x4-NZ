@@ -1165,3 +1165,23 @@ hr.double {
     margin-top: 0;
   }
 }
+
+#search-results-page {
+  .search-filters {
+    margin-bottom: $grid-gutter-width;
+    text-align: center;
+    label {
+      font-family: $font-family-base;
+    }
+
+    .filter-results {
+      margin-right: 20px;
+    }
+  }
+  .result_type {
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
+      width: 80px;
+    }
+  }
+}
