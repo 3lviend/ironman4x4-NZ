@@ -63,7 +63,7 @@ $(document).on 'page:load ready', ->
     document.location.reload true
 
   applyProductPopup = ->
-    $('#product-list-condensed .product:not(.has-popup)').each ->
+    $('.product:not(.has-popup)', $('#product-list-condensed, #search_results')).each ->
       row = $(@)
       specs = row.data 'specifications'
       row.popover({

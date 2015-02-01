@@ -37,12 +37,15 @@
   <% else %>
     <ul id="search_results" class="infinite-container">
       <% @results.each do |result| %>
-        <li class="infinite-item">
+        <li class="infinite-item<%= ' product' if result.is_a?(Refinery::Ironman::Product) %>" <%= raw " data-product-id=\"#{result.id}\"" if result.is_a?(Refinery::Ironman::Product) %>>
           <span class='result_type'>
             <%= result_type result %>:
           </span>
           <%= link_to result_title(result).html_safe, result_url(result) %>
         </li>
+        <% if result.is_a?(Refinery::Ironman::Product) %>
+        <%= render 'refinery/ironman/products/product_popover', {product:result} %>
+        <% end %>
       <% end %>
     </ul>
     <%= will_paginate @results %>

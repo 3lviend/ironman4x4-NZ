@@ -1180,6 +1180,8 @@ hr.double {
   }
 
   #search_results {
+    max-width: $screen-sm-max;
+
     li {
       margin-bottom: $grid-gutter-width/4;
 
@@ -1187,6 +1189,12 @@ hr.double {
         @media (min-width: $screen-sm-min) {
           display: inline-block;
           width: 80px;
+        }
+      }
+
+      &.product {
+        &:hover {
+          background-color: $table-bg-hover;
         }
       }
     }
