@@ -1178,10 +1178,17 @@ hr.double {
       margin-right: 20px;
     }
   }
-  .result_type {
-    @media (min-width: $screen-sm-min) {
-      display: inline-block;
-      width: 80px;
+
+  #search_results {
+    li {
+      margin-bottom: $grid-gutter-width/4;
+
+      .result_type {
+        @media (min-width: $screen-sm-min) {
+          display: inline-block;
+          width: 80px;
+        }
+      }
     }
   }
 }

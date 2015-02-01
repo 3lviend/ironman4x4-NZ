@@ -17,7 +17,7 @@ module Refinery
       end
 
       Refinery.searchable_models = [
-        Refinery::Page,
+        Refinery::Page
       ]
 
       Refinery.searchable_models << Refinery::Ironman::Product.active if @filters[:products]
@@ -28,6 +28,7 @@ module Refinery
       Refinery.searchable_models << Refinery::Ironman::NewsItem.active if @filters[:news]
 
       @results = Refinery::SearchEngine.search(params[:query], params[:page])
+      @results = @results.paginate(:page => params[:page], :per_page => 30)
 
       present(@page = Refinery::Page.find_by_link_url("/search"))
     end

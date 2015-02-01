@@ -35,17 +35,18 @@
   <% if @results.empty? %>
     <%= t('.no_results_for', :what => params[:query]) %>
   <% else %>
-    <ul id="search_results">
+    <ul id="search_results" class="infinite-container">
       <% @results.each do |result| %>
-        <li>
+        <li class="infinite-item">
           <span class='result_type'>
             <%= result_type result %>:
           </span>
           <%= link_to result_title(result).html_safe, result_url(result) %>
         </li>
       <% end %>
-    <% end %>
     </ul>
+    <%= will_paginate @results %>
+    <% end %>
   </div>
 <% end %>
 

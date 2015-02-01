@@ -12,7 +12,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="layout-top-navigation">
-        <%= form_tag refinery.search_path, class: 'navbar-form navbar-right navbar-input-group', role:'search' do -%>
+        <%= form_tag refinery.search_path, method: :get, class: 'navbar-form navbar-right navbar-input-group', role:'search' do -%>
           <!-- repeat these classes - hack for iOS 8 -->
           <div class="navbar-form navbar-right navbar-input-group">
           <div class="form-group">
