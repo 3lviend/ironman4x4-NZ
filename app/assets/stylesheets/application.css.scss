@@ -419,9 +419,15 @@ hr.double {
 
   .stockists-search {
     input.form-control {
+      margin-bottom: 5px;
+
       @media (max-width: $screen-xs-max) {
         max-width: 150px;
       }
+    }
+
+    button {
+      margin-bottom: 5px;
     }
   }
 
