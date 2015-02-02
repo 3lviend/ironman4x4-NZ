@@ -170,12 +170,20 @@ $(document).on 'page:load ready', ->
           $('div', this).width(_SlideWidth)
           $(this).height(_SlideHeight)
           $(this).width(_SlideWidth)
+
+          $(this).css left:_SlideWidth if $(this).offset().left > 0
+          $(this).css left:-_SlideWidth if $(this).offset().left < 0
+
       jssor_slider1.$SetScaleWidth _SlideWidth
 
-     unless navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)
-       $(window).bind "resize", scaleSlider
-     else
-       $(window).bind "orientationchange", scaleSlider
+    unless navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)
+      $(window).bind "resize", ->
+        scaleSlider()
+        setTimeout scaleSlider, 500
+    else
+      $(window).bind "orientationchange", scaleSlider
+
+    window.scaleSlider = scaleSlider
 
   $('#glasscase')?.glassCase({
     widthDisplay: 635,
