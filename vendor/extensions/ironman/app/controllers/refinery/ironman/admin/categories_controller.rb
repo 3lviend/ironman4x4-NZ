@@ -103,7 +103,8 @@ module Refinery
             :short_description, :description, :sort_order, :visible, :featured,
             :show_on_homepage, :id, :locale, :thumbnail_image_id,
             :has_fitting_instructions, :thumbnail_display_mode, :show_in_products,
-            :is_hero_subcategory, :product_index_template, images_attributes: [:id, :image_page_id, :caption])
+            :is_hero_subcategory, :product_index_template, images_attributes: [:id, :image_page_id, :caption],
+            specifications_attributes: [:id, :_destroy, :title, :value, :show_on_product_detail, :show_on_product_popover])
 
           if p[:images_attributes].nil?
             p[:images_attributes] = []

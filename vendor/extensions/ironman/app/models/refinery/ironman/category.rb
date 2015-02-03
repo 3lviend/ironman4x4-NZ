@@ -11,6 +11,7 @@ module Refinery
 
       has_and_belongs_to_many :products, :join_table => 'refinery_ironman_categories_products', :dependent => :destroy
       belongs_to :thumbnail_image, :class_name => '::Refinery::Image'
+      has_many :specifications, :class_name => '::Refinery::Ironman::ProductSpecification'
 
       validates_presence_of :name
       validates_uniqueness_of :name, scope: :parent_id
@@ -21,6 +22,8 @@ module Refinery
       scope :has_fitting_instructions, -> { where(has_fitting_instructions: true) }
       scope :show_in_products, -> { where(show_in_products: true) }
       scope :homepage_categories, -> { where(show_on_homepage: true) }
+
+      accepts_nested_attributes_for :specifications, :allow_destroy => true
 
       alias_attribute :title, :name
 
