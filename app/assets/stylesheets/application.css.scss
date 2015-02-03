@@ -418,6 +418,12 @@ hr.double {
   }
 
   .stockists-search {
+    @media (max-width: $screen-xs-max) {
+      &.navbar-form {
+        float: none;
+      }
+    }
+
     input.form-control {
       margin-bottom: 5px;
 
@@ -439,6 +445,14 @@ hr.double {
     float: left;
     position: relative;
 
+    @media (max-width: $screen-xs-max) {
+      float: none;
+      display: block;
+      background-color: $lighter-grey;
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
     li {
       display: inline-block;
       text-align: center;
@@ -446,13 +460,29 @@ hr.double {
       text-transform: uppercase;
       font-size: $font-size-medium;
 
+      @media (max-width: $screen-xs-max) {
+        padding: 10px 15px;
+        border-top: 1px solid $white;
+        display: block;
+        width: auto;
+        text-align: left;
+      }
+
       &.wishlist {
         width: 124px;
+        @media (max-width: $screen-xs-max) {
+          width: auto;
+        }
       }
 
       &.nav-trigger {
         background: image-url('selectmenu-caret.png') no-repeat right transparent;
         padding-right: 18px;
+
+        @media (max-width: $screen-xs-max) {
+          background-position: right 17px;
+          background-size: 20px 15px;
+        }
       }
 
       a {
@@ -460,6 +490,9 @@ hr.double {
         color: $dark-grey;
         &:hover {
           text-decoration: underline;
+          @media (max-width: $screen-xs-max) {
+            text-decoration: none;
+          }
         }
         position: relative;
 
@@ -469,6 +502,10 @@ hr.double {
           color: $white;
           top: -9px;
           right: -1px;
+
+          @media (max-width: $screen-xs-max) {
+            top: 0px;
+          }
         }
       }
     }
@@ -484,11 +521,33 @@ hr.double {
       padding: 13px 0 0 0;
       display: none;
 
+      @media (max-width: $screen-xs-max) {
+        margin: 0 -15px -10px -15px;
+        top: 0 ! important;
+        position: relative;
+        background-color: transparent;
+        box-shadow: none;
+        .no-boxshadow & {
+          border: none;
+          padding: 0;
+        }
+      }
+
       li {
         text-align: left;
         display: block;
         width: auto;
         border-bottom: 1px solid $green;
+
+        @media (max-width: $screen-xs-max) {
+          border-bottom: none;
+          border-top: 1px solid $white;
+          padding-left: 30px;
+
+          &:hover {
+            background-color: darken($lighter-grey, 20%);
+          }
+        }
 
         a {
           color: $dark-grey;
@@ -496,10 +555,16 @@ hr.double {
           position: static;
           padding: 3px $grid-gutter-width/2;
 
-          &:hover {
-            background-color: $green;
-            text-decoration: none;
-            color: $white;
+          @media (max-width: $screen-xs-max) {
+            padding: 0;
+          }
+
+          @media (min-width: $screen-sm-max) {
+            &:hover {
+              background-color: $green;
+              text-decoration: none;
+              color: $white;
+            }
           }
         }
       }
