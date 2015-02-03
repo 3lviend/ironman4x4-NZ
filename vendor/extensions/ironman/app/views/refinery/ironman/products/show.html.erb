@@ -42,23 +42,17 @@
     <h3 id="description"><%= t('.sections.description') %></h3>
     <%= raw @product.description %>
 
-    <% if (@product.quantity_required.present? and @product.quantity_required > 0) or @product.specifications.present? or @product.notes.present? %>
+    <% if (@product.quantity_required.present? and @product.quantity_required > 0) or @product.specs(:detail).present? or @product.notes.present? %>
     <hr />
     <h3 id="specifications"><%= t('.sections.specifications') %></h3>
     <div class="specifications">
-    <% if @product.quantity_required.present? and @product.quantity_required > 0 %>
-    <div class="row">
-      <div class="col-sm-3 col-lg-2 title">Quantity Required</div>
-      <div class="col-sm-9 col-lg-10 value"><%= @product.quantity_required %></div>
-    </div>
-    <% end %>
 
-    <% if @product.specifications.present? %>
-    <% @product.specifications.each do |spec| %>
-      <% if spec.value.present? %>
+    <% if @product.specs(:detail).present? %>
+    <% @product.specs(:detail).each do |title, value| %>
+      <% if value.present? %>
     <div class="row">
-      <div class="col-sm-3 col-lg-2 title"><%= spec.title %></div>
-      <div class="col-sm-9 col-lg-10 value"><%= spec.value %></div>
+      <div class="col-sm-3 col-lg-2 title"><%= title %></div>
+      <div class="col-sm-9 col-lg-10 value"><%= value %></div>
     </div>
       <% end %>
     <% end %>
