@@ -72,10 +72,14 @@ module Refinery
 
       def specs
         specs = {}
-        specs["Quantity Required"] = quantity_required if quantity_required.present?
 
-        self.specifications.each do |specification|
+        self.category.specifications.each do |specification|
           specs[specification.title] = specification.value if specification.value.present?
+        end
+
+        specs["Quantity Required"] = quantity_required if quantity_required.present? and specs["Quantity Required"].nil?
+        self.specifications.each do |specification|
+          specs[specification.title] = specification.value if specification.value.present? and specs[specification.title].nil?
         end
 
         specs

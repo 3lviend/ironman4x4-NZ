@@ -16,11 +16,8 @@
   <div class="product-no"><%= product.product_no %></div>
   <div class="price"><%= number_to_currency product.price %> <small>(RRP inc GST)</small></div>
   <table class="table table-condensed table-noborder">
-    <tr><th>Quantity Required:</th><td class="green"><%= product.quantity_required %></td></tr>
-    <% product.specifications.each do |spec| %>
-    <% if spec.value.present? %>
-    <tr><th><%= spec.title %>:</th><td class="green"><%= spec.value %></td></tr>
-    <% end %>
+    <% product.specs.each do |title, value| %>
+    <tr><th><%= title %>:</th><td class="green"><%= value %></td></tr>
     <% end %>
   </table>
   <div>

@@ -228,6 +228,9 @@ en:
             edit: Edit this category
             delete: Remove this category forever
         products:
+          form:
+            yes: Yes
+            no: No
           actions:
             categories: Product Categories
             create_new: Add New Product
