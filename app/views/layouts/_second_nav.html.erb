@@ -12,7 +12,17 @@
         <% num = num_items_in_cart %>
         <% cache_key.push num if num.present? and num > 0 %>
         <% cache(cache_key, expires_in: 1.hour) do %>
-        <ul class="sections" id="drop-down-nav">
+        <div class="navbar navbar-default">
+          <div class="navbar-header">
+            <span class="navbar-text">Menu</span>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#drop-down-nav">
+              <span class="sr-only"><%= t('.toggle_navigation') %></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        <ul class="sections collapse navbar-collapse" id="drop-down-nav">
           <li class="nav-trigger">
             <%= link_to refinery.ironman_products_path, class:'navlink' do %>
               <%= t('.nav.products') %>
@@ -64,6 +74,7 @@
             <% end %>
           </li>
         </ul>
+        </div>
         <% end %>
 
         <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {find_store_link: true} %>

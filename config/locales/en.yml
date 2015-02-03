@@ -41,6 +41,7 @@ en:
         placeholder: 'Search'
         button: 'Submit'
     second_nav:
+      toggle_navigation: 'Toggle navigation'
       logo:
         title: 'Ironman 4x4'
       nav:
