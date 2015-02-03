@@ -44,8 +44,26 @@
   }
 
   @media (max-width: $screen-xs-max) {
-    select.form-control {
-      margin-bottom: $grid-gutter-width/2;
+    .form-group.vehicle-selector {
+      margin-left:0;
+      margin-right:0;
+
+      .button {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      select.form-control {
+        margin-bottom: $grid-gutter-width/2;
+      }
+
+      .styled-select {
+        margin-bottom: $grid-gutter-width/2;
+
+        select.form-control {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
