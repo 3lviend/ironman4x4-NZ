@@ -43,14 +43,14 @@
       end
       %>
       <%= link_to url do %>
-      <div class="photo" style="background-image:url(<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "365x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
+      <div class="photo <%= product.thumbnail_display_mode_cached %>" style="background-image:url(<%= if product.thumbnail_image.present? then product.thumbnail_image.thumbnail(geometry: "365x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
       <div class="content">
         <h3><%= product.name %></h3>
         <div class="description">
           <% if product.short_description.present? %>
           <%= product.short_description %>
           <% else %>
-          <%= t('refinery.ironman.products.index_product.default_product_description') %>
+          <%= t('refinery.ironman.products.product.default_product_description') %>
           <% end %>
         </div>
       </div>
