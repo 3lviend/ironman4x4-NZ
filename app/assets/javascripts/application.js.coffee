@@ -233,7 +233,7 @@ $(document).on 'page:load ready', ->
   else
     applyCountryClass location
 
-  if $('.pagination').length
+  if $('.pagination').length and $('.infinite-container').is(':visible')
     $('.infinite-container').waypoint('infinite', {
       more: '.pagination .next_page:not(.disabled)'
       onAfterPageLoad: ->

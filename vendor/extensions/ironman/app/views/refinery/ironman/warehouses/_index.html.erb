@@ -1,3 +1,4 @@
+<% auto_scroll = true if local_assigns[:auto_scroll].nil? %>
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
     var warehouses = <%=raw Hash[*@warehouses.values.flatten.first.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
@@ -29,12 +30,14 @@
         });
       });
 
+      <% if auto_scroll %>
       if (!loaded) {
         if (ui.newHeader.offset() != null) {
           $(window).scrollTop(ui.newHeader.offset().top);
         }
       }
       loaded = true;
+      <% end %>
     };
 
     $('#warehouses').accordion({
@@ -44,6 +47,7 @@
       active: false
     });
 
+    <% if auto_scroll %>
     if ($(document.location.hash).length) {
       $(document.location.hash).trigger('click');
       // this will reposition the page, but should not refresh the page
@@ -53,6 +57,7 @@
       $('#warehouses h3:first').trigger('click');
       window.scrollTo(0, 0);
     }
+    <% end %>
   });
 </script>
 
