@@ -851,8 +851,23 @@ h3.category-product-products {
         color: $green;
         margin: $grid-gutter-width 0;
       }
+
       .select-regional-office {
         color: $dark-grey;
+      }
+
+      .stockists-search {
+        &.navbar-form {
+          float: none !important;
+          padding-left: 0;
+
+          .btn {
+            background-color: $dark-grey;
+            border-color: darken($dark-grey, 20%);
+            color: $white;
+            margin-left: 40px;
+          }
+        }
       }
     }
 

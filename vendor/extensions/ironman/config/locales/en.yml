@@ -266,6 +266,11 @@ en:
         new:
           page_header: Quote - Review
         form:
+          international:
+            international_user: '* International User Detected *'
+            select_regional_office: 'Select your regional head office*'
+            description: '- Please select the International Ironman 4x4 Head Office to submit your Online Quote to:'
+            australian_search: 'Users within Australia please enter your postcode below and click to load your nearest stockists.'
           tabs:
             review: Review quote
             customer: Customer details

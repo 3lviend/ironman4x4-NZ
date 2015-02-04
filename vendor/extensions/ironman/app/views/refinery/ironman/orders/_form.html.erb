@@ -28,10 +28,15 @@
     <div class="tab-pane" id="wishlist-stockist">
       <% cache(cache_key_for_stockists) do %>
       <div class="international">
-        <h3 class="international-user">* International User Detected *</h3>
-        <h3 class="select-regional-office">Select your regional head office*</h3>
-        <p>- Please select the International Ironman 4x4 Head Office to submit your Online Quote to:</p>
-        <%= render "/refinery/ironman/warehouses/index" %>
+        <h3 class="international-user"><%= t('.international.international_user') %></h3>
+        <h3 class="select-regional-office"><%= t('.international.select_regional_office') %></h3>
+        <p><%= t('.international.description') %></p>
+        <%= render :layout => '/refinery/ironman/warehouses/index' do %>
+          <h3 class="australia">Australia</h3>
+          <div>
+            <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => request.original_url, :submit_btn_text => 'Load Australian Stockists', :heading => t('refinery.ironman.orders.form.international.australian_search') } %>
+          </div>
+        <% end %>
       </div>
       <% end %>
 

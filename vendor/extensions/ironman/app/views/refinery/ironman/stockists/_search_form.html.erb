@@ -2,7 +2,11 @@
 <% placeholder = t('.placeholder') if local_assigns[:placeholder].nil? %>
 <% submit_btn_text = false if local_assigns[:submit_btn_text].nil? %>
 <% find_store_link = false if local_assigns[:find_store_link].nil? %>
+<% heading = nil if local_assigns[:heading].nil? %>
 <%= form_tag url, class: 'stockists-search navbar-form navbar-right navbar-input-group', role:'search', method: :get do -%>
+  <% if heading.present? %>
+    <p class="form-heading"><%= heading %></p>
+  <% end %>
   <% if find_store_link %>
     <%= link_to refinery.ironman_stockists_path, class:'find-store' do %>
       <%= t('.nav.stockists') %>

@@ -252,6 +252,11 @@ hr.double {
       font-size: $font-size-smallish;
     }
 
+    .form-heading {
+      font-size: $font-size-medium;
+      margin-bottom: $grid-gutter-width/2;
+    }
+
     .btn {
       border-radius: 0;
       background-color: $green;
