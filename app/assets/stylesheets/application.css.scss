@@ -147,6 +147,12 @@ hr.double {
   background: image-url('selectmenu-caret.png') no-repeat right white;
   border: 1px solid $dark-grey;
 
+  &.disabled {
+    cursor: not-allowed;
+    background-color: $input-bg-disabled;
+    opacity: 1;
+  }
+
   select {
     display: block;
     background: transparent;
@@ -155,6 +161,7 @@ hr.double {
     border: 0;
     border-radius: 0;
     -webkit-appearance: none;
+    -moz-appearance:window;
 
     &.input-sm {
       height: ($input-height-small - 2);

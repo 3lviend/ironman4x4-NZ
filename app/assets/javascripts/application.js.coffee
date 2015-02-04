@@ -74,7 +74,7 @@ $(document).on 'page:load ready', ->
     if (not observer.val() and observed.size() > 1) or observer.find('option').not('[value=""]').length == 0
       observer.attr 'disabled', true
       observer.hide()
-      observer.parent('.styled-select').hide()
+      observer.parent('.styled-select').hide().addClass('disabled')
       observer_label.hide()
 
     observed.on 'change', (e) ->
@@ -86,14 +86,14 @@ $(document).on 'page:load ready', ->
             if not data.length
               observer.attr 'disabled', true
               observer.hide()
-              observer.parent('.styled-select').hide()
+              observer.parent('.styled-select').hide().addClass('disabled')
               observer_label.hide()
             else
               $.each data, (i, object) ->
                 observer.append $('<option>').attr('value', object[key_method]).text(object[value_method])
                 observer.attr 'disabled', false
                 observer.show()
-                observer.parent('.styled-select').show()
+                observer.parent('.styled-select').show().removeClass('disabled')
                 observer_label.show()
 
           observer.trigger 'dependent-data-loaded', e
