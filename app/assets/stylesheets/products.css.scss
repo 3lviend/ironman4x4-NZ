@@ -121,6 +121,15 @@ h3.category-product-products {
       }
     }
 
+    #wishlist-stockist {
+      .international {
+        display: none;
+      }
+      .australian {
+        display: block;
+      }
+    }
+
     #wishlist-submission {
       .row {
         .net-amount {
@@ -835,6 +844,20 @@ h3.category-product-products {
 
     .email p {
       text-align: center;
+    }
+
+    .international {
+      .international-user {
+        color: $green;
+        margin: $grid-gutter-width 0;
+      }
+      .select-regional-office {
+        color: $dark-grey;
+      }
+    }
+
+    .australian {
+      display: none;
     }
   }
 

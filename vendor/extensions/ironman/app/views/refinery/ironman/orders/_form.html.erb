@@ -26,15 +26,26 @@
     </div>
     <% end %>
     <div class="tab-pane" id="wishlist-stockist">
-      <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
-      <div class="row stockists-buttons">
-        <div class="col-sm-6 col-lg-offset-4 col-lg-4 print">
-          <p>&nbsp;</p>
-          <%= button_tag t('.buttons.print'), :type => 'button', class:'btn btn-primary btn-block btn-lg print' %>
-        </div>
-        <div class="col-sm-6 col-lg-4 email">
-          <p><%= t('.email_wishlist') %></p>
-          <%= button_tag t('.buttons.submit'), :type => 'button', class:'btn btn-primary btn-block btn-lg email' %>
+      <% cache(cache_key_for_stockists) do %>
+      <div class="international">
+        <h3 class="international-user">* International User Detected *</h3>
+        <h3 class="select-regional-office">Select your regional head office*</h3>
+        <p>- Please select the International Ironman 4x4 Head Office to submit your Online Quote to:</p>
+        <%= render "/refinery/ironman/warehouses/index" %>
+      </div>
+      <% end %>
+
+      <div class="australian">
+        <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
+        <div class="row stockists-buttons">
+          <div class="col-sm-6 col-lg-offset-4 col-lg-4 print">
+            <p>&nbsp;</p>
+            <%= button_tag t('.buttons.print'), :type => 'button', class:'btn btn-primary btn-block btn-lg print' %>
+          </div>
+          <div class="col-sm-6 col-lg-4 email">
+            <p><%= t('.email_wishlist') %></p>
+            <%= button_tag t('.buttons.submit'), :type => 'button', class:'btn btn-primary btn-block btn-lg email' %>
+          </div>
         </div>
       </div>
     </div>

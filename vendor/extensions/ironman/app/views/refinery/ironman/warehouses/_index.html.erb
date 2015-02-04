@@ -1,7 +1,6 @@
-<% cache(cache_key_for_warehouses) do %>
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
-    var warehouses = <%=raw Hash[*Refinery::Ironman::Warehouse.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
+    var warehouses = <%=raw Hash[*@warehouses.values.flatten.first.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
     var loaded = false;
     var handleAccordion = function(event, ui) {
       $('li:not(.map-added)', ui.newPanel).each(function() {
@@ -88,7 +87,7 @@
             <% if warehouse.phone.present? %>
             <div class="phone">Ph: <%= warehouse.phone %></div>
             <% end %>
-            <% if warehouse.fax.present? %>
+            <% if warehouse.respond_to?(:fax) and warehouse.fax.present? %>
             <div class="fax">Fax: <%= warehouse.fax %></div>
             <% end %>
             <% if warehouse.email.present? %>
@@ -104,4 +103,3 @@
     </div>
   <% end %>
 </div>
-<% end %>

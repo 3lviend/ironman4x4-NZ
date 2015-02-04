@@ -10,6 +10,7 @@ module Refinery
       belongs_to :logo_image, :class_name => '::Refinery::Image'
 
       alias_attribute :title, :name
+      alias_attribute :business_name, :name
 
       validates_presence_of :name, :address1, :suburb, :postcode, :state, :country
       validates_uniqueness_of :name

@@ -1,5 +1,7 @@
 <% content_for :body do %>
+  <% cache(cache_key_for_warehouses) do %>
   <%= render 'index' %>
+  <% end %>
 <% end %>
 
 <%= render '/refinery/content_page' %>

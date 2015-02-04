@@ -2,6 +2,7 @@ module Refinery
   module Ironman
     class OrdersController < ::ApplicationController
 
+      before_filter :find_all_warehouses, :only => [:new]
       before_filter :find_all_stockists, :only => [:new]
       before_filter :find_all_orders, :only => [:index, :show]
       before_filter :find_page, :only => [:index, :show]
@@ -71,6 +72,10 @@ module Refinery
         p[:vehicle_id] = vehicle_id if vehicle_id.present?
 
         p
+      end
+
+      def find_all_warehouses
+        @warehouses = Stockist.active.where('lower(region) != ?', 'australia').where('region is not null').order('region asc, name ASC').group_by(&:region)
       end
 
       def find_all_stockists
