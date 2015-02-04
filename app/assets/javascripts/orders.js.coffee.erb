@@ -10,6 +10,7 @@ $(document).on 'page:load ready', ->
 
   $('#wishlist.form .next.btn').on 'click', ->
     active = $('#wishlist li.active a[data-toggle="tab"]').attr('href')
+    that = @
 
     validations = {
       '#wishlist-review': -> true
@@ -37,6 +38,21 @@ $(document).on 'page:load ready', ->
             if not $('#terms_conditions').is(':checked')
               alert '<%= I18n.t('refinery.ironman.orders.contact_details.terms_conditions.warning') %>'
               ok = false
+
+        if ok
+          # refresh the page, with stockist search query for current postcode,
+          # so closest stockists are listed by default
+          postcode = $('#order_postcode').val()
+          postcodeOld = window.localStorage?.getItem 'wishlist-postcode'
+
+          if postcode != postcodeOld
+            window.localStorage?.setItem 'wishlist-postcode', postcode
+            console.log 'hmm', $(that).data('next-tab').hash, $(that), that
+            $.cookie 'wishlist-tab', '#' + $(that).data('next-tab'), cookieOptions
+            ok = false
+            document.location.href = Ironman.utils.updateQueryStringParameter(
+              document.location.href, 'stockist_query', postcode
+            )
 
         return ok
       '#wishlist-stockist': -> true
