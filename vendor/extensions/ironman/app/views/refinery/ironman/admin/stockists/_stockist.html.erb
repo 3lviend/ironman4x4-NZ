@@ -1,9 +1,14 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %> <%= 'draft' if not stockist.visible? %>' id="<%= dom_id(stockist) -%>">
-  <span class='title'>
+<tr class='record <%= cycle("on", "on-hover") %> <%= 'draft' if not stockist.visible? %>' id="<%= dom_id(stockist) -%>">
+  <td class='col title'>
     <%= stockist.name %>
-
-  </span>
-  <span class='actions'>
+  </td>
+  <td class='col'>
+    <%= stockist.store_type %>
+  </td>
+  <td class='col'>
+    <%= stockist.region %>
+  </td>
+  <td class='actions'>
     
     <%= link_to refinery_icon_tag("application_go.png"), refinery.ironman_stockist_path(stockist),
         :title => t('.view_live_html'),
@@ -16,5 +21,5 @@
         :title => t('.delete'),
         :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => stockist.name)},
         :method => :delete %>
-  </span>
-</li>
+  </td>
+</tr>
