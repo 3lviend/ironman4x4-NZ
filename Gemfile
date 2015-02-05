@@ -43,6 +43,7 @@ gem 'unicorn'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'exception_notification'
 
 # Refinery CMS
 gem 'refinerycms', :github => 'asgeo1/refinerycms', :branch => 'myfork', :ref => '4549606' #:github => 'refinery/refinerycms'
