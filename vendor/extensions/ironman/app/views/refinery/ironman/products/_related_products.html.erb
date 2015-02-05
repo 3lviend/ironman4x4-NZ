@@ -1,4 +1,21 @@
+<% related_products = [] %>
+<% if @product.vehicle.present? %>
+  <% related_products << @product.vehicle.products.active.includes(:categories).references(:categories).where('refinery_ironman_categories_products.category_id in (?)', @product.category.sibling_ids).where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
+  <% if related_products.size < 4 %>
+  <% related_products << @product.vehicle.products.active.includes(:categories).references(:categories).where('refinery_ironman_categories_products.category_id not in (?)', @product.category.id).where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
+  <% related_products.flatten! %>
+  <% end %>
+  <% if related_products.size < 4 %>
+  <% related_products << @product.vehicle.products.active.where('refinery_ironman_products.id not in (?)', [related_products.select {|p| p.id}, @product.id].flatten).order('RAND()').first(4) %>
+  <% related_products.flatten! %>
+  <% end %>
+  <% if related_products.size < 4 %>
+  <% related_products << @product.category.products.active.where('refinery_ironman_products.id not in (?)', [related_products.select {|p| p.id}, @product.id].flatten).order('RAND()').first(4) %>
+  <% related_products.flatten! %>
+  <% end %>
+<% else %>
 <% related_products = @product.category.products.active.where('refinery_ironman_products.id != ?', @product.id).order('RAND()').first(4) %>
+<% end %>
 <% if related_products.present? %>
 <hr class="double" />
 <aside id="related-products">
