@@ -42,17 +42,18 @@ $(document).on 'page:load ready', ->
         if ok
           # refresh the page, with stockist search query for current postcode,
           # so closest stockists are listed by default
-          postcode = $('#order_postcode').val()
-          postcodeOld = window.localStorage?.getItem 'wishlist-postcode'
+          if $('body').hasClass('is-australia')
+            postcode = $('#order_postcode').val()
+            postcodeOld = window.localStorage?.getItem 'wishlist-postcode'
 
-          if postcode != postcodeOld
-            window.localStorage?.setItem 'wishlist-postcode', postcode
-            console.log 'hmm', $(that).data('next-tab').hash, $(that), that
-            $.cookie 'wishlist-tab', '#' + $(that).data('next-tab'), cookieOptions
-            ok = false
-            document.location.href = Ironman.utils.updateQueryStringParameter(
-              document.location.href, 'stockist_query', postcode
-            )
+            if postcode != postcodeOld
+              window.localStorage?.setItem 'wishlist-postcode', postcode
+              console.log 'hmm', $(that).data('next-tab').hash, $(that), that
+              $.cookie 'wishlist-tab', '#' + $(that).data('next-tab'), cookieOptions
+              ok = false
+              document.location.href = Ironman.utils.updateQueryStringParameter(
+                document.location.href, 'stockist_query', postcode
+              )
 
         return ok
       '#wishlist-stockist': -> true

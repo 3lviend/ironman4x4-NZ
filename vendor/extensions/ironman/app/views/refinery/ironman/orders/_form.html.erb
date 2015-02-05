@@ -26,6 +26,7 @@
     </div>
     <% end %>
     <div class="tab-pane" id="wishlist-stockist">
+      <% if not params[:stockist_query].present? %>
       <% cache(cache_key_for_stockists) do %>
       <div class="international">
         <h3 class="international-user"><%= t('.international.international_user') %></h3>
@@ -39,8 +40,9 @@
         <% end %>
       </div>
       <% end %>
+      <% end %>
 
-      <div class="australian">
+      <div<%= raw ' class="australian"' if not params[:stockist_query].present? %>>
         <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
       </div>
 
