@@ -72,12 +72,12 @@
     <div>
       <ul>
       <% warehouses.each do |warehouse| %>
-        <li class="row" data-warehouse="<%= warehouse.id %>">
+        <li class="row details" data-warehouse="<%= warehouse.id %>">
           <div class="col-sm-8">
             <div id="<%= "map#{warehouse.id}" %>" class="map"></div>
           </div>
-          <div class="col-sm-4">
-            <h4><%= warehouse.name %></h4>
+          <div class="col-sm-4 warehouse">
+            <h4 class="heading" data-warehouse-id="<%= warehouse.id %>"><%= warehouse.name %></h4>
             <% if warehouse.business_name.present? %>
             <div class="business-name"><%= warehouse.business_name %></div>
             <% end %>
