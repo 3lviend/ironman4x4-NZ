@@ -79,7 +79,7 @@ module Refinery
           end
         end
 
-        specs["Quantity Required"] = quantity_required if quantity_required.present? and specs["Quantity Required"].nil?
+        specs["Quantity Required"] = quantity_required if quantity_required.present? and quantity_required != 0 and specs["Quantity Required"].nil?
         self.specifications.each do |specification|
           if display_mode == :all or (display_mode == :detail and specification.show_on_product_detail) or (display_mode == :popover and specification.show_on_product_popover)
             specs[specification.title] = specification.value if specification.value.present? and specs[specification.title].nil?
