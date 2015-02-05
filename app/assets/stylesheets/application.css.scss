@@ -1276,6 +1276,10 @@ hr.double {
         background-size: cover;
         width: 100%;
         height: 193px;
+
+        &.contain {
+          background-size: contain;
+        }
       }
     }
   }
