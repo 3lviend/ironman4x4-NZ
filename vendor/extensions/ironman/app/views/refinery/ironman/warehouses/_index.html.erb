@@ -1,4 +1,4 @@
-<% auto_scroll = true if local_assigns[:auto_scroll].nil? %>
+<% auto_scroll = false if local_assigns[:auto_scroll].nil? %>
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
     var warehouses = <%=raw Hash[*@warehouses.values.flatten.first.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
