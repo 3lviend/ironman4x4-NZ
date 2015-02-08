@@ -66,6 +66,7 @@
           <div class='page_part' id='page_part_specifications'>
             <div class="wym_skin_refinery page_part" id="page_specifications" data-input-type="wym" style="opacity: 1; padding-bottom: 5px;">
               <table>
+              <% if @product.category.present? %>
               <% @product.category.specifications.each do |s| %>
                 <tr class="spec_value">
                   <td><%= s.title %></td>
@@ -74,6 +75,7 @@
                   <td><%= s.show_on_product_popover ? 'Yes' : 'No' %></td>
                   <td>&nbsp;</td>
                 </tr>
+              <% end %>
               <% end %>
 
               <%= f.fields_for :specifications do |s| %>
