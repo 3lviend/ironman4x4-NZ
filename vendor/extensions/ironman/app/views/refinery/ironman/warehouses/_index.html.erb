@@ -1,7 +1,12 @@
 <% auto_scroll = false if local_assigns[:auto_scroll].nil? %>
+<% first_warehouse = @warehouses.values.flatten.first %>
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
-    var warehouses = <%=raw Hash[*@warehouses.values.flatten.first.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>
+    <% if first_warehouse.present? %>
+    var warehouses = <%=raw Hash[*first_warehouse.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>;
+    <% else %>
+    var warehouses = [];
+    <% end %>
     var loaded = false;
     var handleAccordion = function(event, ui) {
       $('li:not(.map-added)', ui.newPanel).each(function() {
