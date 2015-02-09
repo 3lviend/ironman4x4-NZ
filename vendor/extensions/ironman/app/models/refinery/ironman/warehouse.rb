@@ -2,6 +2,7 @@ module Refinery
   module Ironman
     class Warehouse < Refinery::Core::BaseModel
 
+      acts_as_indexed :fields => [:business_name, :name, :postcode, :suburb, :country]
       geocoded_by :full_street_address
       after_validation :geocode, if: ->(obj){ obj.full_street_address.present? }
 
