@@ -26,6 +26,7 @@ module Refinery
 
       after_initialize do
         if self.new_record?
+          self.thumbnail_display_mode = 'cover' if self.thumbnail_display_mode.nil?
           self.draft = true if self.draft.nil?
           self.show_on_homepage = false if self.show_on_homepage.nil?
           self.published_at = Time.zone.now if self.published_at.nil?

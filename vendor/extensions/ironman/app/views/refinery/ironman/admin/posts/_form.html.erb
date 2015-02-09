@@ -77,6 +77,11 @@
     %>
   </div>
 
+  <div class='field'>
+    <%= f.label :thumbnail_display_mode %>
+    <%= f.select :thumbnail_display_mode, [nil, 'cover', 'contain'] %>
+  </div>
+
   <div class="field">
     <%= f.label :hero_image %>
     <%= render :partial => "/refinery/admin/image_picker", :locals => {

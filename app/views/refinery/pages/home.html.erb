@@ -61,7 +61,7 @@
     <% if post.present? %>
     <div class="post col-sm-4">
       <%= link_to refinery.ironman_post_path(post) do %>
-      <div class="photo" style="background-image:url(<%= if post.index_image.present? then post.index_image.thumbnail(geometry: "365x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
+      <div class="photo <%= post.thumbnail_display_mode %>" style="background-image:url(<%= if post.index_image.present? then post.index_image.thumbnail(geometry: "365x193").url else image_path 'product_list_photo_default.jpg' end %>)"></div>
       <div class="content">
         <h3><%= post.title %></h3>
         <div class="description">
