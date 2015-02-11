@@ -141,6 +141,7 @@ $(document).on 'page:load ready', ->
 
       $('#layout-photo-slideshow').width(_SlideWidth)
       $('#layout-photo-slideshow > div').width(_SlideWidth)
+      $('#layout-photo-slideshow > div > div.full').width(_SlideWidth)
       $('#layout-photo-slideshow div[debug-id=slide-board] > div').width(_SlideWidth)
       $('#layout-photo-slideshow .slide').each ->
         image = $('img', this).get(0)
@@ -185,6 +186,7 @@ $(document).on 'page:load ready', ->
       $(window).bind "orientationchange", scaleSlider
 
     window.scaleSlider = scaleSlider
+    scaleSlider()
 
   $('#glasscase')?.glassCase({
     widthDisplay: 635,
