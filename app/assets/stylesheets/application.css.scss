@@ -161,7 +161,11 @@ hr.double {
     border: 0;
     border-radius: 0;
     -webkit-appearance: none;
-    -moz-appearance:window;
+    -moz-appearance: none;
+
+    &::-ms-expand{
+      display:none;
+    }
 
     &.input-sm {
       height: ($input-height-small - 2);
