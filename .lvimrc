@@ -5,4 +5,4 @@ let g:ctrlp_custom_ignore = {
   \ 'dir': '\v[\/](node_modules|components|bower_components|.gems|bin|gen|.vimtags|tmp|log)$'
   \ }
 
-let NERDTreeIgnore=['\gen$', '^bin$', '\~$', '^node_modules$', '^bower_components$', 'tmp', 'log']
+let NERDTreeIgnore=['\gen$', '^bin$', '\~$', '^node_modules$', '^bower_components$', '^tmp$', '^log$']
