@@ -14,7 +14,7 @@
             <%= render 'event_box', post:post %>
           <% else %>
             <% if post.index_image.present? %>
-              <div class="image" style="background-image:url(<%= post.index_image.thumbnail(geometry: "263x263").url %>)"></div>
+              <div class="image <%= post.thumbnail_display_mode %>" style="background-image:url(<%= post.index_image.thumbnail(geometry: "263x263").url %>)"></div>
             <% end %>
           <% end %>
         <% end %>

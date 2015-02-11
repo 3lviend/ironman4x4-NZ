@@ -1148,12 +1148,18 @@ hr.double {
     }
 
     .photo {
+      background-color: $white;
       background-position: 50% 0;
       background-repeat: no-repeat;
       background-size: cover;
       width: 100%;
       height: 120px;
       position: relative;
+
+      &.contain {
+        background-size: contain;
+        background-position: center;
+      }
 
       .name {
         position: absolute;
@@ -1283,6 +1289,7 @@ hr.double {
 
         &.contain {
           background-size: contain;
+          background-position: center;
         }
       }
     }

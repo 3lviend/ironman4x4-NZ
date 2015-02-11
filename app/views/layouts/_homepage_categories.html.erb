@@ -25,7 +25,7 @@
       end
       %>
       <%= link_to url do %>
-      <div class="photo" style="background-image:url(<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "365x193").url else image_path 'category_list_photo_default.jpg' end %>)">
+      <div class="photo <%= category.thumbnail_display_mode %>" style="background-image:url(<%= if category.thumbnail_image.present? then category.thumbnail_image.thumbnail(geometry: "365x193").url else image_path 'category_list_photo_default.jpg' end %>)">
         <div class="name"><%= category.name %></div>
       </div>
       <% end %>
