@@ -98,7 +98,7 @@
             <div class="contact"><%= warehouse.contact %></div>
             <% end %>
             <% if warehouse.phone.present? %>
-            <div class="phone">Ph: <%= warehouse.phone %></div>
+              <div class="phone">Ph: <%= phone_number_link warehouse.phone, :target => '_blank' %></div>
             <% end %>
             <% if warehouse.respond_to?(:fax) and warehouse.fax.present? %>
             <div class="fax">Fax: <%= warehouse.fax %></div>

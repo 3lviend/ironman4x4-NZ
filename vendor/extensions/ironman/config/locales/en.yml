@@ -362,8 +362,10 @@ en:
           terms_conditions:
             label: Terms & Conditions
             warning: You must agree to the terms and conditions
-          australian_call: Australia Wide Local Call 1300 731 137
-          international_call: International Call +61 (0) 3 9532 1111
+          australian_phone: 1300 731 137
+          international_phone: +61 (0) 3 9532 1111
+          australian_call: 'Australia Wide Local Call %{phone}'
+          international_call: 'International Call %{phone}'
           vehicle_make:
             label: Vehicle Details
         show:
