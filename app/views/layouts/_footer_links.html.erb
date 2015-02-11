@@ -43,39 +43,39 @@ cache(:footer_links, expires_in: 1.hour) do
       <div class="row">
         <dl class="col-sm-3">
           <dt><%= t('.support.description') %>
-          <dd><%= link_to t('.support.fitting_instructions'), refinery.fitting_instructions_path %></li>
+          <dd><%= link_to t('.support.fitting_instructions'), refinery.fitting_instructions_path %></dd>
           <% if faq_page.present? %>
-          <dd><%= link_to t('.support.faqs'), refinery.marketable_page_path(faq_page) %></li>
+          <dd><%= link_to t('.support.faqs'), refinery.marketable_page_path(faq_page) %></dd>
           <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.warranty.description') %>
           <% if warranty_page.present? %>
-          <dd><%= link_to t('.warranty.terms'), refinery.marketable_page_path(warranty_page) %></li>
+          <dd><%= link_to t('.warranty.terms'), refinery.marketable_page_path(warranty_page) %></dd>
           <% end %>
           <% if claims_page.present? %>
-          <dd><%= link_to t('.warranty.claims_procedure'), refinery.marketable_page_path(claims_page) %></li>
+          <dd><%= link_to t('.warranty.claims_procedure'), refinery.marketable_page_path(claims_page) %></dd>
           <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.contact.description') %>
           <% if contact_page.present? %>
-          <dd><%= link_to t('.contact.head_office'), refinery.marketable_page_path(contact_page) %></li>
+          <dd><%= link_to t('.contact.head_office'), refinery.marketable_page_path(contact_page) %></dd>
           <% end %>
           <% if contact_page.present? %>
-          <dd><%= link_to t('.contact.international_distributors_contact'), "#{refinery.marketable_page_path(contact_page)}#africa" %></li>
+          <dd><%= link_to t('.contact.international_distributors_contact'), "#{refinery.marketable_page_path(contact_page)}#africa" %></dd>
           <% end %>
         </dl>
 
         <dl class="col-sm-3">
           <dt><%= t('.legal.description') %>
           <% if privacy_page.present? %>
-          <dd><%= link_to t('.legal.privacy_policy'), refinery.marketable_page_path(privacy_page) %></li>
+          <dd><%= link_to t('.legal.privacy_policy'), refinery.marketable_page_path(privacy_page) %></dd>
           <% end %>
           <% if terms_page.present? %>
-          <dd><%= link_to t('.legal.terms_conditions'), refinery.marketable_page_path(terms_page) %></li>
+          <dd><%= link_to t('.legal.terms_conditions'), refinery.marketable_page_path(terms_page) %></dd>
           <% end %>
         </dl>
 
