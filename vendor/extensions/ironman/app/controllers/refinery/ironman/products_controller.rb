@@ -19,11 +19,11 @@ module Refinery
         if params[:id].nil?
           if @vehicle_filter.present?
             category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).select(&:show_in_products?).map(&:id)
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             @categories = Category.find(category_ids)
@@ -41,7 +41,7 @@ module Refinery
 
           # NOTE: moved ordering and pagination on @products into the view, so each product_index_template could have a different order/grouping
           if @vehicle_filter.present?
-            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null))', @vehicle_filter.values)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/)', @vehicle_filter.values)
           else
             @products = @this_category.products.active.includes(:vehicles).references(:vehicles)
           end
