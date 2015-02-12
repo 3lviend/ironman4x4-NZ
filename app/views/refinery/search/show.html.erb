@@ -42,10 +42,11 @@
             <%= result_type result %>:
           </span>
           <%= link_to result_title(result).html_safe, result_url(result) %>
+
+          <% if result.is_a?(Refinery::Ironman::Product) %>
+          <%= render 'refinery/ironman/products/product_popover', {product:result} %>
+          <% end %>
         </li>
-        <% if result.is_a?(Refinery::Ironman::Product) %>
-        <%= render 'refinery/ironman/products/product_popover', {product:result} %>
-        <% end %>
       <% end %>
     </ul>
     <%= will_paginate @results %>
