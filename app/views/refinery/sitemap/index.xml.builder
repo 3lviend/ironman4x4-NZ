@@ -41,7 +41,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
       xml.lastmod Refinery::Ironman::Stockist.maximum(:updated_at).iso8601
     end
 
-    ::Refinery::Ironman::Product.active.includes(:categories, :vehicles).references(:categories, :vehicles).each do |product|
+    ::Refinery::Ironman::Product.active.each do |product|
       category = product.category
 
       page_url = Rails.cache.fetch ([product, :product_url]) do
