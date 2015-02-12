@@ -25,10 +25,12 @@ Refinery::Core::Engine.routes.draw do
   get 'fitting-instructions/:category_id/:subcategory_id/:id' => 'ironman/fitting_instructions#index', as: :fitting_instructions_sub_subcategory_products
 
   get 'fit-my-4x4' => 'ironman/fit_my_car#index', as: :fit_my_4x4
-  get 'fit-my-4x4/results' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results
-  get 'fit-my-4x4/results/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_category_products
-  get 'fit-my-4x4/results/:category_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_subcategory_products
-  get 'fit-my-4x4/results/:category_id/:subcategory_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_sub_subcategory_products
+
+  # disabled for now, results will go directly to the products page
+  # get 'fit-my-4x4/results' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results
+  # get 'fit-my-4x4/results/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_category_products
+  # get 'fit-my-4x4/results/:category_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_subcategory_products
+  # get 'fit-my-4x4/results/:category_id/:subcategory_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_sub_subcategory_products
 
   post 'newsletter/subscribe' => 'ironman/newsletter#subscribe', as: :newsletter_subscribe
   get 'newsletter/thank-you' => 'ironman/newsletter#thank_you', as: :newsletter_thank_you

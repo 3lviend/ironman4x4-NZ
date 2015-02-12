@@ -9,6 +9,8 @@ module Refinery
         present(@page)
       end
 
+      # NOTE: this is not currently being used - currently redirecting to the 
+      # main products page
       def results
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
