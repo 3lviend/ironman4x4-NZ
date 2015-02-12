@@ -243,3 +243,6 @@ $(document).on 'page:load ready', ->
       onAfterPageLoad: ->
         $(document).trigger 'pagination:onafterpageload'
     })
+
+$(document).on 'page:receive', ->
+  $('.infinite-container').waypoint 'destroy'
