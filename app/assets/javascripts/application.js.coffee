@@ -186,7 +186,9 @@ $(document).on 'page:load ready', ->
       $(window).bind "orientationchange", scaleSlider
 
     window.scaleSlider = scaleSlider
-    scaleSlider()
+
+    if $('#layout-photo-slideshow .slide').length > 1
+      scaleSlider()
 
   $('#glasscase')?.glassCase({
     widthDisplay: 635,
