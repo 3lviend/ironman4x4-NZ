@@ -130,7 +130,7 @@ $(document).on 'page:load ready', ->
       }
     }
 
-    $('#layout-photo-slideshow').width $(document).width()
+    $("#layout-photo-slideshow:not('.fixed-width')").width $(document).width()
     jssor_slider1 = new $JssorSlider$("layout-photo-slideshow", options)
 
     fixedWidth = $('#layout-photo-slideshow').hasClass 'fixed-width'
