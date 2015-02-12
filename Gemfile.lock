@@ -179,7 +179,7 @@ GEM
     coffee-script (2.3.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.7.1)
+    coffee-script-source (1.9.0)
     compass (0.12.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -214,7 +214,7 @@ GEM
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
     excon (0.39.4)
-    execjs (2.2.1)
+    execjs (2.3.0)
     filters_spam (0.4)
     fog (1.23.0)
       fog-brightbox
@@ -257,7 +257,7 @@ GEM
     httparty (0.13.1)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
-    i18n (0.6.11)
+    i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
     jbuilder (2.1.1)
@@ -278,7 +278,7 @@ GEM
       railties (>= 3.1)
     jquery-ui-rails (4.1.2)
       railties (>= 3.1.0)
-    json (1.8.1)
+    json (1.8.2)
     kgio (2.9.2)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -298,7 +298,7 @@ GEM
       open4
       rake
     mini_portile (0.6.0)
-    minitest (5.4.0)
+    minitest (5.5.1)
     modernizr-rails (2.7.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
@@ -314,7 +314,7 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
-    rack-test (0.6.2)
+    rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.4)
       actionmailer (= 4.1.4)
@@ -340,7 +340,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     raindrops (0.13.0)
-    rake (10.3.2)
+    rake (10.4.2)
     rdoc (4.1.1)
       json (~> 1.4)
     routing-filter (0.4.0.pre)
@@ -387,7 +387,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     truncate_html (0.9.2)
-    turbolinks (2.2.2)
+    turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)

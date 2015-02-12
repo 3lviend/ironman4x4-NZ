@@ -140,6 +140,11 @@ hr.double {
   }
 }
 
+html.turbolinks-progress-bar::before {
+  background-color: darken($green, 10%) !important;
+  height: 5px !important;
+}
+
 .styled-select {
   display: block;
   vertical-align: bottom;

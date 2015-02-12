@@ -53,6 +53,8 @@ $.fn.serializeObject = ->
     return
   o
 
+Turbolinks.enableProgressBar()
+
 $(document).on 'page:load ready', ->
   #$('.tooltip-label').tooltip()
   #$('.popover-label').popover()
