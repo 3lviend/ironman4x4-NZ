@@ -173,8 +173,9 @@ $(document).on 'page:load ready', ->
           $(this).height(_SlideHeight)
           $(this).width(_SlideWidth)
 
-          $(this).css left:_SlideWidth if $(this).offset().left > 0
-          $(this).css left:-_SlideWidth if $(this).offset().left < 0
+          if $('#layout-photo-slideshow .slide').length > 1
+            $(this).css left:_SlideWidth if $(this).offset().left > 0
+            $(this).css left:-_SlideWidth if $(this).offset().left < 0
 
       jssor_slider1.$SetScaleWidth _SlideWidth
 
@@ -186,9 +187,7 @@ $(document).on 'page:load ready', ->
       $(window).bind "orientationchange", scaleSlider
 
     window.scaleSlider = scaleSlider
-
-    if $('#layout-photo-slideshow .slide').length > 1
-      scaleSlider()
+    scaleSlider()
 
   $('#glasscase')?.glassCase({
     widthDisplay: 635,
