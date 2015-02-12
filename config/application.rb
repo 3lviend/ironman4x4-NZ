@@ -38,6 +38,8 @@ module Ironman4x4
         Refinery::Ironman::NewsItem.active
       ]
 
+      # default setting - this will actually be ignored by our custom search
+      # model, which will return unlimited results
       Refinery::SearchEngine::RESULTS_LIMIT = 100
     end
   end
