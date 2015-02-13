@@ -10,7 +10,11 @@ module Refinery
       end
 
       def meta_description
-        @model.short_description
+        if not @model.meta_description.blank?
+          @model.meta_description
+        else
+          @model.short_description
+        end
       end
 
       def open_graph_description
