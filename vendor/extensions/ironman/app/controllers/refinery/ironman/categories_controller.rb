@@ -48,16 +48,24 @@ module Refinery
             end
 
             render 'refinery/ironman/products/index'
+
+            # you can use meta fields from your model instead (e.g. browser_title)
+            # by swapping @page for @category in the line below:
+            present(@this_category)
           else
             @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products
+
+            # you can use meta fields from your model instead (e.g. browser_title)
+            # by swapping @page for @category in the line below:
+            present(@page)
           end
         else
           @categories = filter_by_vehicle(Category.active).map(&:root).uniq.select(&:active?).select(&:show_in_products?)
-        end
 
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @category in the line below:
-        present(@page)
+          # you can use meta fields from your model instead (e.g. browser_title)
+          # by swapping @page for @category in the line below:
+          present(@page)
+        end
       end
 
       def show

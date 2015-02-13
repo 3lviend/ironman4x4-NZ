@@ -34,6 +34,8 @@ module Refinery
           end
 
           render 'refinery/ironman/categories/index'
+
+          present(@page)
         else
           # TODO: is there a way to cache this, so we're not creating multiple db
           # calls here?
@@ -67,11 +69,11 @@ module Refinery
           else
             @product_index_template = @this_category.product_index_template
           end
-        end
 
-        # you can use meta fields from your model instead (e.g. browser_title)
-        # by swapping @page for @product in the line below:
-        present(@page)
+          # you can use meta fields from your model instead (e.g. browser_title)
+          # by swapping @page for @product in the line below:
+          present(@this_category)
+        end
       end
 
       def show
