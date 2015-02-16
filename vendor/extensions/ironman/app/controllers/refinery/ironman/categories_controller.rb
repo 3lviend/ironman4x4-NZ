@@ -6,7 +6,8 @@ module Refinery
       before_filter :find_page
 
       def children
-        @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products
+        category = Category.active.friendly.find(params[:id])
+        @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.depth == category.depth + 1 }]
       end
 
       def index
@@ -53,7 +54,8 @@ module Refinery
             # by swapping @page for @category in the line below:
             present(@this_category)
           else
-            @categories = filter_by_vehicle Category.active.friendly.find(params[:id]).children.active.show_in_products
+            category = Category.active.friendly.find(params[:id])
+            @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.depth == category.depth + 1 }]
 
             # you can use meta fields from your model instead (e.g. browser_title)
             # by swapping @page for @category in the line below:
