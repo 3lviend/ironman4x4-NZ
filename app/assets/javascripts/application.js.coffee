@@ -27,6 +27,7 @@
 #= require utils
 #= require underscore
 #= require gmaps/google
+#= require sharethis
 #= require categories
 #= require events
 #= require enquiries
