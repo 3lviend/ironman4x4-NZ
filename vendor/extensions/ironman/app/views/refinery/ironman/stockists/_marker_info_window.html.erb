@@ -10,10 +10,7 @@
   <% end %>
   <%= [object.suburb, object.state, object.postcode].reject(&:blank?).join(', ') %><br />
   <%= object.country %><br />
-  <%= link_to t('.directions'), "http://maps.google.com/maps?daddr=#{u object.full_street_address}", :target => '_blank' %>
-  <% if object.phone.present? and object.email.present? and object.website.present? %>
-  <br />
-  <% end %>
+  <%= link_to t('.directions'), "http://maps.google.com/maps?daddr=#{u object.full_street_address}", :target => '_blank' %><br />
   <% if object.phone.present? %>
   <%= phone_number_link object.phone, :target => '_blank' %><br />
   <% end %>
