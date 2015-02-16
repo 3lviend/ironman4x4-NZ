@@ -30,4 +30,6 @@ $(document).on 'page:load ready', ->
     $.removeCookie 'vehicle_details', cookieOptions
     document.location.reload()
 
-  $('#vehicle_3rd_id').on 'change', -> updateVehicleFilter @
+  $('#vehicle_3rd_id').on 'change', ->
+    if not $('form #vehicle_3rd_id').length
+      updateVehicleFilter @
