@@ -1,5 +1,16 @@
-<ul id='sortable_list'>
+<table id='sortable_list'>
+  <thead>
+    <tr>
+      <th class="col">Warehouse</th>
+      <th class="col">Region</th>
+      <th class="col">Country</th>
+      <th class="col">Postcode</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
   <%= render :partial => 'warehouse', :collection => @warehouses %>
-</ul>
+  </tbody>
+</table>
 <%= render '/refinery/admin/sortable_list',
             :continue_reordering => (local_assigns.keys.include?(:continue_reordering)) ? continue_reordering : true %>

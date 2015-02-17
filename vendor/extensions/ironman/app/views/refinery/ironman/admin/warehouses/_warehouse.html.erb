@@ -1,9 +1,17 @@
-<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(warehouse) -%>">
-  <span class='title'>
+<tr class='record <%= cycle("on", "on-hover") %>' id="<%= dom_id(warehouse) -%>">
+  <td class='col title'>
     <%= "#{warehouse.country}, #{warehouse.name}" %>
-
-  </span>
-  <span class='actions'>
+  </td>
+  <td class='col'>
+    <%= warehouse.region %>
+  </td>
+  <td class='col'>
+    <%= warehouse.country %>
+  </td>
+  <td class='col'>
+    <%= warehouse.postcode %>
+  </td>
+  <td class='actions'>
     
     <%= link_to refinery_icon_tag("application_go.png"), refinery.ironman_warehouse_path(warehouse),
         :title => t('.view_live_html'),
@@ -16,5 +24,5 @@
         :title => t('.delete'),
         :data => {:confirm => t('message', :scope => 'refinery.admin.delete', :title => warehouse.name)},
         :method => :delete %>
-  </span>
-</li>
+  </td>
+</tr>
