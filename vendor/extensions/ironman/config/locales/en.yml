@@ -290,7 +290,7 @@ en:
             select: Select
             selected: Selected
             print: Print Quote
-            submit: Request Quote
+            submit: Submit Quote
         contact_details:
           description: Please enter your details so our stockist can contact you regarding your quote.
           vehicle_make:
