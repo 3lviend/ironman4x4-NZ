@@ -98,6 +98,22 @@ h3.category-product-products {
       }
     }
   }
+
+  #product-list-condensed, &#search-results-page {
+    .product {
+      .price {
+        display: block;
+      }
+    }
+
+    .popover {
+      .popover-content {
+        .price {
+          display: block;
+        }
+      }
+    }
+  }
 }
 
 .vehicle-bar {
@@ -125,6 +141,12 @@ h3.category-product-products {
     display: none;
   }
 
+  .product {
+    .price {
+      display: none;
+    }
+  }
+
   .popover {
     @include box-shadow(0 5px 10px rgba(0,0,0,.4));
 
@@ -139,6 +161,7 @@ h3.category-product-products {
       .product-no {
       }
       .price {
+        display: none;
         font-size: 26px;
         small {
           font-size: 10px;
