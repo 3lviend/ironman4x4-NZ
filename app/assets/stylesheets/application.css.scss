@@ -1077,7 +1077,7 @@ html.turbolinks-progress-bar::before {
 }
 
 #layout-heading {
-  height: 88px;
+  min-height: 88px;
   background-color: $lighter-grey;
 
   @media (max-width: $screen-xs-max) {
@@ -1090,16 +1090,17 @@ html.turbolinks-progress-bar::before {
     text-transform: uppercase;
     display: inline-block;
     padding-bottom: 0;
-    margin: 0;
-    line-height: 88px;
+    margin: 27px 0;
     border: none;
     color: $green;
     @media (max-width: $screen-xs-max) {
+      margin-bottom: 0;
       line-height: normal;
     }
   }
 
   .icons {
+    text-align: right;
     float: right;
     margin-top: 27px;
     display: inline-block;
