@@ -32,8 +32,8 @@ $(document).on 'page:load ready', ->
     last = $('#page_specifications table .spec_value').last()
 
     if last.length
-      matches = $('input[name*=title]', last).attr('name').match(/product|category\[specifications_attributes\]\[([0-9]+)\]/)
-      index = Number(matches[1]) + 1
+      matches = $('input[name*=title]', last).attr('name').match(/(product|category)\[specifications_attributes\]\[([0-9]+)\]/)
+      index = Number(matches[2]) + 1
     else
       index = 0
 
