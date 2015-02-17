@@ -4,7 +4,7 @@
 <%
   if @vehicle_filter.present?
     if filter_generic_categories
-      categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).select(&:active?).uniq
+      categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_products.draft = 0 and refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:root).select(&:active?).uniq
     else
       categories = Refinery::Ironman::Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values).map(&:root).select(&:active?).uniq
     end
@@ -23,23 +23,43 @@
   end
 
   if category.present?
-    subcategories = category.children.active
+    if @vehicle_filter.present?
+      subcategories = category.leaves.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_products.draft = 0 and refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.select(&:active?).select { |c| c.depth == 1 }
 
-    if filter_fitting_instructions
-      subcategories = subcategories.has_fitting_instructions
+      if filter_fitting_instructions
+        subcategories = subcategories.select(&:has_fitting_instructions)
+      else
+        subcategories = subcategories.select(&:show_in_products)
+      end
     else
-      subcategories = subcategories.show_in_products
+      subcategories = category.children.active
+
+      if filter_fitting_instructions
+        subcategories = subcategories.has_fitting_instructions
+      else
+        subcategories = subcategories.show_in_products
+      end
     end
   else
     subcategories = []
   end
 
   if subcategory.present?
-    sub_subcategories = subcategory.children.active
-    if filter_fitting_instructions
-      sub_subcategories = sub_subcategories.has_fitting_instructions
+    if @vehicle_filter.present?
+      sub_subcategories = category.leaves.active.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('refinery_ironman_products.draft = 0 and refinery_ironman_vehicles.id in (?)', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.select(&:active?).select { |c| c.depth == 2 }
+
+      if filter_fitting_instructions
+        sub_subcategories = sub_subcategories.select(&:has_fitting_instructions)
+      else
+        sub_subcategories = sub_subcategories.select(&:show_in_products)
+      end
     else
-      sub_subcategories = sub_subcategories.show_in_products
+      sub_subcategories = subcategory.children.active
+      if filter_fitting_instructions
+        sub_subcategories = sub_subcategories.has_fitting_instructions
+      else
+        sub_subcategories = sub_subcategories.show_in_products
+      end
     end
   else
     sub_subcategories = []

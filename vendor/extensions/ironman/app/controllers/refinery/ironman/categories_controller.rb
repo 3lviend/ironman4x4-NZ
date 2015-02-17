@@ -55,7 +55,7 @@ module Refinery
             present(@this_category)
           else
             category = Category.active.friendly.find(params[:id])
-            @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.depth == category.depth + 1 }]
+            @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.active? and c.depth == category.depth + 1 }]
 
             # you can use meta fields from your model instead (e.g. browser_title)
             # by swapping @page for @category in the line below:
