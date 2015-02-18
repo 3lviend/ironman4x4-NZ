@@ -7,12 +7,17 @@ module Refinery
 
       def children
         category = Category.active.friendly.find(params[:id])
-        @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.depth == category.depth + 1 }]
+        @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.select { |c| c.active? and c.show_in_products? and c.depth == category.depth + 1 }]
       end
 
       def index
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
+        end
+
+        if params[:fit_my_4x4] and not cookies[:fit_my_4x4].present?
+          redirect_to refinery.fit_my_4x4_path
+          return
         end
 
         if params[:id].present?
@@ -32,7 +37,7 @@ module Refinery
           if @category.leaf?
             if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
-              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/)', vehicle_ids).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
+              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?))', vehicle_ids, (params[:fit_my_4x4]?0:1)).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
             else
               @products = category.products.active.order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
             end
@@ -55,14 +60,14 @@ module Refinery
             present(@this_category)
           else
             category = Category.active.friendly.find(params[:id])
-            @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.uniq.select { |c| c.active? and c.depth == category.depth + 1 }]
+            @categories = [*filter_by_vehicle(category.leaves.active.show_in_products).map { |c| c.self_and_ancestors }.flatten.uniq.select { |c| c.active? and c.show_in_products? and c.depth == category.depth + 1 }]
 
             # you can use meta fields from your model instead (e.g. browser_title)
             # by swapping @page for @category in the line below:
             present(@page)
           end
         else
-          @categories = filter_by_vehicle(Category.active).map(&:root).uniq.select(&:active?).select(&:show_in_products?)
+          @categories = filter_by_vehicle(Category.active.show_in_products).map(&:root).uniq.select(&:active?).select(&:show_in_products?)
 
           # you can use meta fields from your model instead (e.g. browser_title)
           # by swapping @page for @category in the line below:
@@ -89,7 +94,7 @@ module Refinery
 
       def filter_by_vehicle(categories)
         if @vehicle_filter.present?
-          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values)
+          categories.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1))
         else
           categories
         end

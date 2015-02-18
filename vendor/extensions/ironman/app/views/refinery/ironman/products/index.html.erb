@@ -3,7 +3,11 @@
 <% @no_container = true %>
 
 <% if @this_category.present? %>
+<% if params[:fit_my_4x4] %>
+<% breadcrumb :fit_my_4x4_results_category, @this_category %>
+<% else %>
 <% breadcrumb :category, @this_category %>
+<% end %>
 <% end %>
 
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.name if @this_category.present? } %>

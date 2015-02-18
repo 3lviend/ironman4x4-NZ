@@ -5,25 +5,24 @@ module Refinery
       before_filter :find_all_products
       before_filter :find_page
 
-      def cache_key_for_categories
-        count          = Refinery::Ironman::Category.count
-        max_updated_at = Refinery::Ironman::Category.maximum(:updated_at).try(:utc).try(:to_s, :number)
-        "categories/all-ids-#{count}-#{max_updated_at}"
-      end
-
       def index
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
         end
 
+        if params[:fit_my_4x4] and not cookies[:fit_my_4x4].present?
+          redirect_to refinery.fit_my_4x4_path
+          return
+        end
+
         if params[:id].nil?
           if @vehicle_filter.present?
-            category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values).map(&:root).uniq.select(&:active?).select(&:show_in_products?).map(&:id)
+            category_ids = Rails.cache.fetch([@vehicle_filter, :category_ids, cache_key_for_categories, (params[:fit_my_4x4]?:exclude_generic : :include_generic)]) do
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_categories.show_in_products = 1 and refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1)).map(&:root).uniq.select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
-            featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/))', @vehicle_filter.values).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
+            featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories, (params[:fit_my_4x4]?:exclude_generic : :include_generic)]) do
+              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_categories.show_in_products = 1 and refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1)).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             @categories = Category.find(category_ids)
@@ -43,7 +42,7 @@ module Refinery
 
           # NOTE: moved ordering and pagination on @products into the view, so each product_index_template could have a different order/grouping
           if @vehicle_filter.present?
-            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) /*disabling generic products for now: or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null)*/)', @vehicle_filter.values)
+            @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1))
           else
             @products = @this_category.products.active.includes(:vehicles).references(:vehicles)
           end
@@ -109,6 +108,12 @@ module Refinery
 
       def find_page
         @page = ::Refinery::Page.where(:link_url => "/products").first
+      end
+
+      def cache_key_for_categories
+        count          = Refinery::Ironman::Category.count
+        max_updated_at = Refinery::Ironman::Category.maximum(:updated_at).try(:utc).try(:to_s, :number)
+        "categories/all-ids-#{count}-#{max_updated_at}"
       end
 
     end

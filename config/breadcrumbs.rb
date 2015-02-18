@@ -6,6 +6,11 @@ crumb :categories do
   link t('breadcrumbs.products'), refinery.ironman_products_path
 end
 
+crumb :fit_my_4x4_results_categories do
+  link t('breadcrumbs.fit_my_4x4_results'), refinery.ironman_fit_my_4x4_results_path
+  parent :fit_my_4x4
+end
+
 crumb :blog_posts do
   link t('breadcrumbs.blog_posts'), refinery.ironman_blog_posts_path
 end
@@ -59,6 +64,24 @@ crumb :category do |category|
   end
 end
 
+crumb :fit_my_4x4_results_category do |category|
+  if category.depth == 0
+    url = refinery.ironman_fit_my_4x4_results_product_categories_path(category)
+  elsif category.depth == 1
+    url = refinery.ironman_fit_my_4x4_results_product_subcategories_path(category.parent, category)
+  else
+    url = refinery.ironman_fit_my_4x4_results_product_sub_subcategories_path(category.parent.parent, category.parent, category)
+  end
+
+  link category.name, url
+
+  if category.root?
+    parent :fit_my_4x4_results_categories
+  else
+    parent :fit_my_4x4_results_category, category.parent
+  end
+end
+
 crumb :category_info do |category|
   if category.depth == 0
     url = refinery.product_categories_path(category)
@@ -87,7 +110,7 @@ crumb :fit_my_4x4 do
 end
 
 crumb :fit_my_4x4_results do
-  link t('breadcrumbs.fit_my_4x4_results'), refinery.fit_my_4x4_results_path
+  link t('breadcrumbs.fit_my_4x4_results'), refinery.ironman_fit_my_4x4_results_path
   parent :fit_my_4x4
 end
 

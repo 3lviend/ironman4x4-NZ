@@ -5,26 +5,27 @@
 <div class="container">
   <h3><%= t('.featured_product_cataegories') %></h3>
 <% end %>
+<% prefix = 'ironman_fit_my_4x4_results_' if params[:fit_my_4x4] %>
 <ul id="page-product-categories" class="clearfix">
 <% categories.each do |category| %>
   <li class="category-container col-lg-3 col-md-4 col-sm-6 col-xs-12">
     <% if @category.nil? %>
       <% if category.leaf? %>
-      <% list_url = refinery.category_products_path(category) %>
+      <% list_url = refinery.send("#{prefix}category_products_path", category) %>
       <% else %>
-      <% list_url = refinery.product_categories_path(category) %>
+      <% list_url = refinery.send("#{prefix}product_categories_path", category) %>
       <% end %>
     <% elsif category.depth == 1 %>
       <% if category.leaf? %>
-      <% list_url = refinery.subcategory_products_path(category.parent, category) %>
+      <% list_url = refinery.send("#{prefix}subcategory_products_path", category.parent, category) %>
       <% else %>
-      <% list_url = refinery.product_subcategories_path(category.parent, category) %>
+      <% list_url = refinery.send("#{prefix}product_subcategories_path", category.parent, category) %>
       <% end %>
     <% else %>
       <% if category.leaf? %>
-      <% list_url = refinery.sub_subcategory_products_path(category.parent.parent, category.parent, category) %>
+      <% list_url = refinery.send("#{prefix}sub_subcategory_products_path", category.parent.parent, category.parent, category) %>
       <% else %>
-      <% list_url = refinery.product_sub_subcategories_path(category.parent.parent, category.parent, category) %>
+      <% list_url = refinery.send("#{prefix}product_sub_subcategories_path", category.parent.parent, category.parent, category) %>
       <% end %>
     <% end %>
 

@@ -335,6 +335,8 @@ en:
       fit_my_car:
         index:
           save_and_view: Save & View Products
+        results_categories:
+          page_header: Fit My 4x4 Results
         vehicle_selected:
           description: 'Your Selected Vehicle: <strong>%{vehicle}</strong>'
           unknown_vehicle: unknown vehicle

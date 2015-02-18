@@ -26,11 +26,25 @@ Refinery::Core::Engine.routes.draw do
 
   get 'fit-my-4x4' => 'ironman/fit_my_car#index', as: :fit_my_4x4
 
-  # disabled for now, results will go directly to the products page
-  # get 'fit-my-4x4/results' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results
-  # get 'fit-my-4x4/results/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_category_products
-  # get 'fit-my-4x4/results/:category_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_subcategory_products
-  # get 'fit-my-4x4/results/:category_id/:subcategory_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_sub_subcategory_products
+  #get 'fit-my-4x4/results' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results
+  #get 'fit-my-4x4/results/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_category_products
+  #get 'fit-my-4x4/results/:category_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_subcategory_products
+  #get 'fit-my-4x4/results/:category_id/:subcategory_id/:id' => 'ironman/fit_my_car#results', as: :fit_my_4x4_results_sub_subcategory_products
+
+  namespace :ironman, :path => 'fit-my-4x4/results' do
+    get '/' => 'products#index', as: :fit_my_4x4_results, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+
+    # index pages of categories
+    get 'product-categories/:id' => 'categories#index', as: :fit_my_4x4_results_product_categories, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+    get 'product-categories/:category_id/:id' => 'categories#index', as: :fit_my_4x4_results_product_subcategories, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+    get 'product-categories/:category_id/:subcategory_id/:id' => 'categories#index', as: :fit_my_4x4_results_product_sub_subcategories, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+
+    # index pages of products for a given category
+    get 'category-products/:id' => 'products#index', as: :fit_my_4x4_results_category_products, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+    get 'category-products/:category_id/:id' => 'products#index', as: :fit_my_4x4_results_subcategory_products, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+    get 'category-products/:category_id/:subcategory_id/:id' => 'products#index', as: :fit_my_4x4_results_sub_subcategory_products, :defaults => {:filter_generic_categories => true, :fit_my_4x4 => true}
+  end
+
 
   post 'newsletter/subscribe' => 'ironman/newsletter#subscribe', as: :newsletter_subscribe
   get 'newsletter/thank-you' => 'ironman/newsletter#thank_you', as: :newsletter_thank_you

@@ -5,9 +5,17 @@
 <% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
 
 <% if @this_category.present? %>
-  <% breadcrumb :category, @this_category %>
+  <% if params[:fit_my_4x4] %>
+    <% breadcrumb :fit_my_4x4_results_category, @this_category %>
+  <% else %>
+    <% breadcrumb :category, @this_category %>
+  <% end %>
 <% else %>
-  <% breadcrumb :categories %>
+  <% if params[:fit_my_4x4] %>
+    <% breadcrumb :fit_my_4x4_results_categories %>
+  <% else %>
+    <% breadcrumb :categories %>
+  <% end %>
 <% end %>
 
 <% content_for :body do %>
@@ -21,6 +29,8 @@
   <% cache_key = cache_key.push @vehicle_filter %>
 <% end %>
 
+<% cache_key << params[:fit_my_4x4] %>
+
 <%= render 'refinery/ironman/categories/category_info' %>
 
 <div class="container category-filters">
@@ -28,7 +38,7 @@
     <h3><%= t('.category_product_categories', {category: @this_category.name}) %> </h3>
   <% end %>
   <%= render :partial => 'refinery/ironman/fit_my_car/vehicle_filter_enabled', :locals => {vehicle_filter: @vehicle_filter} if @vehicle_filter.present? %>
-  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key} %>
+  <%= render :partial => 'refinery/ironman/categories/filters', :locals => {category: @category, subcategory: @subcategory, sub_subcategory: @sub_subcategory, cache_key:cache_key, filter_generic_categories:(params[:fit_my_4x4] ? true : false)} %>
   <% if @this_category.present? %>
     <hr />
   <% end %>
