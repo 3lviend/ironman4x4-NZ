@@ -234,6 +234,11 @@ html.turbolinks-progress-bar::before {
   margin-bottom: $grid-gutter-width/2;
 }
 
+/* fix for glasscase close button */
+.gc-icon-close {
+  top: 25px;
+}
+
 .stockists-search {
   &.navbar-form {
     float: right;
