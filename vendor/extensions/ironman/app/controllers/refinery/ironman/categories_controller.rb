@@ -37,9 +37,9 @@ module Refinery
           if @category.leaf?
             if @vehicle_filter.present?
               vehicle_ids = @vehicle_filter.values
-              @products = category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?))', vehicle_ids, (params[:fit_my_4x4]?0:1)).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
+              @products = @this_category.products.active.includes(:vehicles).references(:vehicles).where('(refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?))', vehicle_ids, (params[:fit_my_4x4]?0:1)).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
             else
-              @products = category.products.active.order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
+              @products = @this_category.products.active.includes(:vehicles).references(:vehicles).order('refinery_ironman_products.name').paginate(:page => params[:page], :per_page => 12)
             end
 
             # lookup which product index template to use
