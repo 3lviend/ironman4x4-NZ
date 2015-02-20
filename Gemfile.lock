@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/asgeo1/actionpack.git
+  revision: db87ec5078bfd7d71415dd3341b575328718bfa9
+  specs:
+    actionpack (4.1.4)
+      actionview (= 4.1.4)
+      activesupport (= 4.1.4)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+
+GIT
   remote: git://github.com/asgeo1/gretel.git
   revision: a1248d3390be355a89d123111355d07c6d8d296c
   branch: make_breadcrumb_key_public
@@ -133,11 +143,6 @@ GEM
       actionpack (= 4.1.4)
       actionview (= 4.1.4)
       mail (~> 2.5.4)
-    actionpack (4.1.4)
-      actionview (= 4.1.4)
-      activesupport (= 4.1.4)
-      rack (~> 1.5.2)
-      rack-test (~> 0.6.2)
     actionview (4.1.4)
       activesupport (= 4.1.4)
       builder (~> 3.1)
@@ -409,6 +414,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  actionpack!
   bootstrap-sass
   chosen-rails
   closure_tree

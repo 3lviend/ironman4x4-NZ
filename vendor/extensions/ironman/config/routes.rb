@@ -129,4 +129,6 @@ Refinery::Core::Engine.routes.draw do
     end
   end
 
+  # TODO: remove this. Temporarily redirect 404s to root page
+  get '*path', to: redirect('/') unless Rails.env.development?
 end
