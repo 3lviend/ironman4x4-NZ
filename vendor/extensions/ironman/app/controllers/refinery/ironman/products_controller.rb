@@ -22,7 +22,7 @@ module Refinery
             end
 
             featured_ids = Rails.cache.fetch([@vehicle_filter, :featured_ids, cache_key_for_categories, (params[:fit_my_4x4]?:exclude_generic : :include_generic)]) do
-              Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_categories.show_in_products = 1 and refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1)).map(&:self_and_ancestors).inject {|items, item| items + item }.uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
+              [*Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_categories.show_in_products = 1 and refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1)).map(&:self_and_ancestors).inject {|items, item| items + item }].uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
             @categories = Category.find(category_ids)
