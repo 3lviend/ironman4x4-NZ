@@ -41,6 +41,22 @@ module Ironman4x4
       # default setting - this will actually be ignored by our custom search
       # model, which will return unlimited results
       Refinery::SearchEngine::RESULTS_LIMIT = 100
+
+      # TODO: remove this - temp workaround to have 404s redirect to the homepage
+      Refinery::ApplicationController.class_eval do
+        def error_404(exception=nil)
+          redirect_to refinery.root_path, status:302
+          return false
+        end
+      end
+
+      Refinery::Pages::InstanceMethods.class_eval do
+        def error_404(exception=nil)
+          redirect_to refinery.root_path, status:302
+          return false
+        end
+      end
+
     end
   end
 end
