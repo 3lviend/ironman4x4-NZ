@@ -14,6 +14,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :warehouse_name -%>
+    <%= f.text_field :warehouse_name, :class => 'widest', :placeholder => '(only applicable to warehouses)' -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :services -%>
     <%= f.text_field :services -%>
   </div>
@@ -69,6 +74,11 @@
   </div>
 
   <div class='field'>
+    <%= f.label :fax -%>
+    <%= f.text_field :fax -%>
+  </div>
+
+  <div class='field'>
     <%= f.label :website -%>
     <%= f.text_field :website -%>
   </div>
@@ -107,6 +117,11 @@
   <div class='field'>
     <%= f.label :map_pin -%>
     <%= f.select :map_pin, Refinery::Ironman::Stockist::MAP_PINS -%>
+  </div>
+
+  <div class='field'>
+    <%= f.label :show_on_contact -%>
+    <%= f.check_box :show_on_contact, :checked => @stockist[:show_on_contact] -%>
   </div>
 
   <div class='field'>

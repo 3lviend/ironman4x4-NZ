@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150219091301) do
+ActiveRecord::Schema.define(version: 20150225042218) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -245,14 +245,17 @@ ActiveRecord::Schema.define(version: 20150219091301) do
     t.boolean  "visible"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "latitude",      precision: 16, scale: 6
-    t.decimal  "longitude",     precision: 16, scale: 6
+    t.decimal  "latitude",        precision: 16, scale: 6
+    t.decimal  "longitude",       precision: 16, scale: 6
     t.string   "address2"
-    t.string   "map_pin",                                default: "red"
+    t.string   "map_pin",                                  default: "red"
     t.string   "facebook_page"
     t.string   "services"
     t.string   "notes"
     t.string   "region"
+    t.string   "fax"
+    t.boolean  "show_on_contact"
+    t.string   "warehouse_name"
   end
 
   create_table "refinery_ironman_vehicle_hierarchies", id: false, force: true do |t|

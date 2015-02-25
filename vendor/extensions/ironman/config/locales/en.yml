@@ -610,6 +610,7 @@ en:
         receive_news: Receive News
       refinery/ironman/stockist:
         name: Name
+        warehouse_name: Warehouse Name
         store_type: Store Type
         address1: Address Line 1
         address2: Address Line 2
@@ -619,6 +620,7 @@ en:
         country: Country
         contact: Contact
         phone: Phone
+        fax: Fax
         website: Website
         email: Email
         logo_image_id: Logo Image
@@ -627,6 +629,7 @@ en:
         facebook_page: Facebook Page
         services: Services
         notes: Notes
+        show_on_contact: Show on Contact?
       refinery/ironman/media_release:
         title: Title
         category: Category
