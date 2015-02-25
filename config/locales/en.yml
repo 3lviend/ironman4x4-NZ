@@ -77,7 +77,7 @@ en:
       sitemap:
         description: 'Site Map'
     acknowledgements:
-      copyright: '© Ironman 4x4 2014'
+      copyright: '© Ironman 4x4 %{year}'
       designed_by: 'Website by 1bdesign'
     categories:
       show_product_range_listing: Ironman 4x4 Product Listing
