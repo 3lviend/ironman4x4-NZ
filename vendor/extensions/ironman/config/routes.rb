@@ -1,4 +1,7 @@
+require 'generators/refinery/ironman/robots_generator'
+
 Refinery::Core::Engine.routes.draw do
+  get '/robots.txt' => Refinery::Ironman::RobotsGenerator
 
   get 'categories/:id/children' => 'ironman/categories#children', :as => 'category_children', :format => :json
   get 'vehicles/:id/children' => 'ironman/vehicles#children', :as => 'vehicle_children', :format => :json
