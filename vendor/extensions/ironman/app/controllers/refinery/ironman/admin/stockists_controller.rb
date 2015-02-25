@@ -6,7 +6,8 @@ module Refinery
         crudify :'refinery/ironman/stockist',
                 :title_attribute => 'name',
                 :xhr_paging => true,
-                :sortable => false
+                :sortable => false,
+                :per_page => 50
 
       protected
         def stockist_params
