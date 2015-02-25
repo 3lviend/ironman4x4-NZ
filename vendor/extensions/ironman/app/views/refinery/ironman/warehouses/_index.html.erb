@@ -82,9 +82,9 @@
             <div id="<%= "map#{warehouse.id}" %>" class="map"></div>
           </div>
           <div class="col-sm-4 warehouse">
-            <h4 class="heading" data-warehouse-id="<%= warehouse.id %>"><%= warehouse.name %></h4>
-            <% if warehouse.business_name.present? %>
-            <div class="business-name"><%= warehouse.business_name %></div>
+            <h4 class="heading" data-warehouse-id="<%= warehouse.id %>"><%= (warehouse.respond_to?(:warehouse_name) and warehouse.warehouse_name) || warehouse.name %></h4>
+            <% if not warehouse.respond_to?(:warehouse_name) or warehouse.warehouse_name.present? %>
+            <div class="business-name"><%= warehouse.name %></div>
             <% end %>
             <div class="address"><%= warehouse.address1 %></div>
             <% if warehouse.address2.present? %>

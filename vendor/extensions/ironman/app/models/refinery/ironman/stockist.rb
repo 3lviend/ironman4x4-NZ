@@ -3,7 +3,7 @@ module Refinery
     class Stockist < Refinery::Core::BaseModel
 
       self.table_name = 'refinery_ironman_stockists'
-      acts_as_indexed :fields => [:name, :postcode, :suburb]
+      acts_as_indexed :fields => [:name, :warehouse_name, :postcode, :suburb, :country]
       geocoded_by :full_street_address
       after_validation :geocode, if: ->(obj){ obj.full_street_address.present? and obj.latitude.nil? and obj.longitude.nil? }
 

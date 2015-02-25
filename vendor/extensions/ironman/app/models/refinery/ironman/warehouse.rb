@@ -1,3 +1,4 @@
+# NOTE: NOT CURRENTLY USED!
 module Refinery
   module Ironman
     class Warehouse < Refinery::Core::BaseModel
