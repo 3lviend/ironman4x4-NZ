@@ -32,6 +32,30 @@ module Refinery
         super s.titleize
       end
 
+      def website=(link)
+        link = link.downcase
+
+        unless link.blank? or link.include?('http://') or link.include?('https://')
+          link = 'http://' + link
+        end
+
+        super link
+      end
+
+      def website
+        link = super
+
+        unless link.blank? or link.include?('http://') or link.include?('https://')
+          link = 'http://' + link
+        end
+
+        link
+      end
+
+      def website_min
+        website.sub('http://', '').sub('https://', '')
+      end
+
       def logo_image_url
         logo_image.url if logo_image.present?
       end

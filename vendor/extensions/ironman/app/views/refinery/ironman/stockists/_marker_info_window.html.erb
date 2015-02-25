@@ -20,7 +20,7 @@
   </div>
   <% end %>
   <% if object.website.present? %>
-  <%= link_to object.website, object.website, :target => '_blank' %><br />
+  <%= link_to object.website_min, object.website, :target => '_blank' %><br />
   <% end %>
   <% if object.services.present? %>
   <%= object.services %><br />

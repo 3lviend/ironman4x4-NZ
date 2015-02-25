@@ -107,7 +107,7 @@
             <div class="email"><%= mail_to warehouse.email %></div>
             <% end %>
             <% if warehouse.website.present? %>
-            <div class="website"><%= link_to warehouse.website, warehouse.website %></div>
+            <div class="website"><%= link_to warehouse.website_min, warehouse.website %></div>
             <% end %>
           </div>
         </li>
