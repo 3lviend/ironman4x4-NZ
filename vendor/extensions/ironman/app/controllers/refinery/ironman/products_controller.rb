@@ -25,8 +25,8 @@ module Refinery
               [*Category.includes(:products => [:vehicles]).references(:products => [:vehicles]).where('(refinery_ironman_categories.show_in_products = 1 and refinery_ironman_products.draft = 0 and (refinery_ironman_vehicles.id in (?) or (refinery_ironman_vehicles.id is null and refinery_ironman_products.id is not null and 1=?)))', @vehicle_filter.values, (params[:fit_my_4x4]?0:1)).map(&:self_and_ancestors).inject {|items, item| items + item }].uniq.select(&:featured?).select(&:active?).select(&:show_in_products?).map(&:id)
             end
 
-            @categories = Category.find(category_ids)
-            @featured = Category.find(featured_ids)
+            @categories = Category.order(:sort_order).find(category_ids)
+            @featured = Category.order(:sort_order).find(featured_ids)
           else
             @categories = Category.roots.active.show_in_products
             @featured = Category.featured.active.show_in_products.limit(8)
