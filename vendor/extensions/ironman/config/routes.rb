@@ -57,7 +57,6 @@ Refinery::Core::Engine.routes.draw do
     resources :vehicles, :only => [:index, :show]
     resources :media_releases, :only => [:index, :show], :path => '/media-releases'
     resources :stockists, :only => [:index, :show], :path => '/store-locator'
-    resources :warehouses, :only => [:index, :show]
     resources :catalogues, :only => [:index, :show]
     resources :orders, :only => [:new, :create], :path => '/quote'
   end
@@ -103,12 +102,6 @@ Refinery::Core::Engine.routes.draw do
       end
 
       resources :media_releases, :except => :show
-
-      resources :warehouses, :except => :show do
-        collection do
-          post :update_positions
-        end
-      end
 
       resources :catalogues, :except => :show do
         collection do

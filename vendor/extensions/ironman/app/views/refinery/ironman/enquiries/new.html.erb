@@ -150,8 +150,8 @@
     <% end %>
   </div>
 
-  <% cache(cache_key_for_warehouses) do %>
-  <%= render "/refinery/ironman/warehouses/index" %>
+  <% cache(cache_key_for_stockists) do %>
+  <%= render "/refinery/ironman/stockists/warehouses" %>
   <% end %>
 <% end %>
 <%= render "/refinery/content_page" %>

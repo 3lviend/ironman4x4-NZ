@@ -27,11 +27,6 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
     end
 
     xml.url do
-      xml.loc url_for(refinery.ironman_new_enquiry_url)
-      xml.lastmod Refinery::Ironman::Warehouse.maximum(:updated_at).iso8601
-    end
-
-    xml.url do
       xml.loc url_for(refinery.ironman_catalogues_url)
       xml.lastmod Refinery::Ironman::Catalogue.maximum(:updated_at).iso8601
     end

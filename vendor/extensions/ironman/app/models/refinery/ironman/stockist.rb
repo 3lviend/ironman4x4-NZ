@@ -12,8 +12,10 @@ module Refinery
       alias_attribute :title, :name
       alias_attribute :business_name, :name
 
-      validates_presence_of :name, :address1, :suburb, :postcode, :state, :country
+      validates_presence_of :name, :address1, :suburb, :state, :country
       validates_uniqueness_of :name
+      validates_presence_of :region, if: :show_on_contact
+      validates_presence_of :postcode, unless: :show_on_contact
 
       MAP_PINS = [:red, :green, :grey, :ironman]
 
@@ -24,6 +26,10 @@ module Refinery
         if self.new_record?
           self.visible = false if self.visible.nil?
         end
+      end
+
+      def country=(s)
+        super s.titleize
       end
 
       def logo_image_url
