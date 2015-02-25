@@ -811,6 +811,10 @@ html.turbolinks-progress-bar::before {
 
     button {
       margin-left: 30px;
+
+      @media (min-width: $screen-lg-min) {
+        margin-right: 120px;
+      }
     }
   }
 }
