@@ -103,6 +103,9 @@
   }
 
   .field {
+    &.website, &.email {
+      word-wrap:break-word;
+    }
   }
 }
 
