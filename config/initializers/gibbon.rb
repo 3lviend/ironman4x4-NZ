@@ -1,4 +1,4 @@
-if Rails.env.production?
+if Rails.env.production? or Rails.env.staging?
   Gibbon::API.throws_exceptions = false
   Gibbon::API.timeout = 15
 end

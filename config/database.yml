@@ -16,6 +16,14 @@ test:
 
 # This is for local production testing/profiling. Heroku overrides this with
 # it's own connection string
+staging:
+  adapter: mysql2
+  encoding: utf8
+  database: rails
+  username: rails
+  password: whyM1o1U8A
+  host: localhost
+
 production:
   adapter: mysql2
   encoding: utf8

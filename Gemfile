@@ -69,6 +69,7 @@ gem 'refinerycms-ironman', path: 'vendor/extensions'
 # enables serving assets in production and setting your logger to standard out
 gem 'rails_12factor', group: [:production, :staging]
 gem 'dotenv-rails' #loads .env files into ENV
+gem 'dotenv-deployment' #allows environment-specific .env files, e.g. .env.production
 gem 'closure_tree'
 gem 'gretel', github: 'asgeo1/gretel', branch:'make_breadcrumb_key_public'
 gem 'geocoder'
@@ -86,6 +87,7 @@ gem 'jquery-easing-rails'
 
 # deployment
 gem 'mina'
+gem 'mina-multistage', require: false
 
 # Development gems
 #gem 'rack-mini-profiler'
