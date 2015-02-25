@@ -7,6 +7,8 @@
 <%= raw t('.vehicle') %>: <%= @order.vehicle_name_full %><br />
 <%= raw t('.comments') %>:<br />
 <%= raw strip_tags(@order.comments) %></p>
+<%= raw t('.ip_address') %>: <%= @request.remote_ip %>
+<%= raw t('.detected_country') %>: <%= @request.location.country %>
 
 <table border="1">
   <thead>
