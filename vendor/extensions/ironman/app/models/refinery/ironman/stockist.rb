@@ -56,6 +56,18 @@ module Refinery
         website.sub('http://', '').sub('https://', '')
       end
 
+      def websites
+        website.split('/').map(&:strip)
+      end
+
+      def websites_min
+        websites.map { |website| website.sub('http://', '').sub('https://', '') }
+      end
+
+      def emails
+        email.split('/').map(&:strip)
+      end
+
       def logo_image_url
         logo_image.url if logo_image.present?
       end

@@ -13,7 +13,7 @@ module Refinery
       def notification(order, request)
         @order, @request = order, request
         mail :subject   => Refinery::Ironman::Setting.order_notification_subject,
-             :to        => (if order.stockist.email.present? then order.stockist.email else Refinery::Ironman::Setting.notification_recipients end),
+             :to        => (if order.stockist.emails.first.present? then order.stockist.emails.first else Refinery::Ironman::Setting.notification_recipients end),
              :from      => from_info,
              :reply_to  => order.email
       end
