@@ -1,12 +1,19 @@
 <tr class='record <%= cycle("on", "on-hover") %> <%= 'draft' if not stockist.visible? %>' id="<%= dom_id(stockist) -%>">
+  <td>
+    <% if stockist.show_on_contact? %>
+      <span class="contact" title="Appears on contact page">*</span>
+    <% end %>
+  </td>
   <td class='col title'>
+    <%= raw "#{stockist.warehouse_name}<br />" if stockist.warehouse_name.present? %>
     <%= stockist.name %>
   </td>
   <td class='col'>
     <%= stockist.store_type %>
   </td>
   <td class='col'>
-    <%= stockist.region %>
+    <%= raw "#{stockist.region}<br />" if stockist.region.present? %>
+    <%= stockist.country %>
   </td>
   <td class='col'>
     <%= stockist.postcode %>

@@ -3,6 +3,7 @@
 //= require jquery-ui-timepicker-addon
 //= require chosen
 //= require refinery/ironman/products
+//= require refinery/ironman/stockists
 // used for direct to S3 uploads
 // require refinery/admin/resources
 
@@ -35,7 +36,7 @@
       vertical-align: middle;
     }
 
-    .homepage {
+    .homepage, .contact {
       color: blue;
       font-weight: bold;
       font-size: 2em;

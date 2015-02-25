@@ -1,9 +1,4 @@
 <ul>
-  <% if ::Refinery::Ironman::Admin::StockistsController.searchable? %>
-    <li>
-      <%= render '/refinery/admin/search', :url => refinery.ironman_admin_stockists_path %>
-    </li>
-  <% end %>
   <li>
     <%= link_to t('.create_new'), refinery.new_ironman_admin_stockist_path,
                  :class => "add_icon" %>

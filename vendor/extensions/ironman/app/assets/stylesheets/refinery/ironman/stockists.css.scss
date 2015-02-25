@@ -1,0 +1,35 @@
+#search.stockists {
+  width: 35%;
+  display: inline-block;
+  float:left;
+  border: none;
+}
+
+#actions.stockists {
+  width: 35%;
+  display: inline-block;
+  float:right;
+  ul {
+    margin: 0;
+    float: right;
+    li {
+      display: inline-block;
+    }
+  }
+}
+
+#records.stockists {
+  width: 100%;
+
+  .image {
+    vertical-align: middle;
+  }
+
+  .col {
+    padding-left: 10px;
+  }
+}
+
+.stockists .search_form .button {
+  right: auto;
+}

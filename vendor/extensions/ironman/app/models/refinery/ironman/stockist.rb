@@ -43,6 +43,10 @@ module Refinery
       def visible?
         visible
       end
+
+      def show_on_contact?
+        show_on_contact
+      end
     end
   end
 end
