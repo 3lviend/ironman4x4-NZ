@@ -18,6 +18,7 @@ module Refinery
       MAP_PINS = [:red, :green, :grey, :ironman]
 
       scope :active, -> { where(visible: true) }
+      scope :show_on_contact, -> { where(show_on_contact: true) }
 
       after_initialize do
         if self.new_record?
