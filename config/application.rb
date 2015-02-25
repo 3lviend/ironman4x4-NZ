@@ -58,5 +58,17 @@ module Ironman4x4
       end
 
     end
+
+    # Allow browsers to make cross-site requests
+    config.middleware.use Rack::Cors do
+      #for debugging
+      #@logger = Rails.logger
+
+      allow do
+        origins 'ironman4x4.com', 'www.ironman4x4.com'
+        resource '*', headers: :any, methods: [:get, :post, :put, :delete, :options]
+      end
+    end
+
   end
 end

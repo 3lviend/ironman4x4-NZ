@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.1.0'
 gem 'actionpack', :github => 'asgeo1/actionpack'
+gem 'rack-cors', :require => 'rack/cors'
 #gem 'pg'
 gem 'mysql2'
 # Use SCSS for stylesheets
