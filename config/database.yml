@@ -1,7 +1,8 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: ironman4x4_development
+  #database: ironman4x4_development
+  database: ironman4x4_production
   username: root
   password: password
   host: localhost

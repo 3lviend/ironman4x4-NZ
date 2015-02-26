@@ -14,6 +14,7 @@ module Refinery
         @order, @request = order, request
         mail :subject   => Refinery::Ironman::Setting.order_notification_subject,
              :to        => (if order.stockist.emails.first.present? then order.stockist.emails.first else Refinery::Ironman::Setting.notification_recipients end),
+             :cc        => Refinery::Ironman::Setting.order_notification_email(order.stockist.region, order.stockist.country),
              :from      => from_info,
              :reply_to  => order.email
       end

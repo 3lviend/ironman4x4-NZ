@@ -78,7 +78,6 @@ module Refinery
           end
         end
 
-
         def notification_recipients
           recipients = ((Role[:refinery].users.first.email rescue nil) if defined?(Role)).to_s
           find_or_set(:enquiry_notification_recipients, recipients, scoping: "enquiries")
@@ -97,6 +96,21 @@ module Refinery
 
         def order_notification_subject
           find_or_set(:order_notification_subject, "New order from Ironman 4x4", scoping: "orders")
+        end
+
+        def order_notification_email(region = '', country = '')
+          email = nil
+          email = get(:"order_notification_email_#{country.downcase.underscore}") if country.present?
+
+          if email.blank?
+            email = get(:"order_notification_email_#{region.downcase.underscore}") if region.present?
+          end
+
+          if email.blank?
+            email = get(:"order_notification_email")
+          end
+
+          email
         end
 
         def send_confirmation?
