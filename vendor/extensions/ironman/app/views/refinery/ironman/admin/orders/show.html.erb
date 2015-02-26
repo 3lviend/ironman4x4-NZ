@@ -74,6 +74,22 @@
     </tr>
     <tr>
       <td>
+        <strong><%= t('.ip_address') %></strong>
+      </td>
+      <td>
+        <%= @order.ip_address %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong><%= t('.detected_country') %></strong>
+      </td>
+      <td>
+        <%= JSON.parse(@order.detected_country)['data']['country_name'] if @order.detected_country.present? %>
+      </td>
+    </tr>
+    <tr>
+      <td>
         <strong><%= t('.receive_news') %></strong>
       </td>
       <td>

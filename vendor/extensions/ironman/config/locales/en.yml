@@ -64,6 +64,8 @@ en:
             phone: Phone
             date: Date
             message: Comments
+            ip_address: IP Address
+            detected_country: Detected Country
           delete: Delete
         catalogues:
           actions:
@@ -536,8 +538,6 @@ en:
           comments: Comments
           vehicle: Vehicle
           address: Address
-          ip_address: IP Address
-          detected_country: Detected Country
           product:
             product_no: SKU
             name: Product Name

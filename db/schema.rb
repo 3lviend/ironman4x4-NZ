@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150225044124) do
+ActiveRecord::Schema.define(version: 20150226034010) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -168,12 +168,14 @@ ActiveRecord::Schema.define(version: 20150225044124) do
     t.string   "enquiry_type"
     t.integer  "vehicle_id"
     t.text     "comments"
-    t.decimal  "total_amount", precision: 16, scale: 6
-    t.decimal  "tax_amount",   precision: 16, scale: 6
+    t.decimal  "total_amount",     precision: 16, scale: 6
+    t.decimal  "tax_amount",       precision: 16, scale: 6
     t.boolean  "spam"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "receive_news"
+    t.string   "ip_address"
+    t.string   "detected_country"
   end
 
   create_table "refinery_ironman_posts", force: true do |t|

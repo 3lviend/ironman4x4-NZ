@@ -28,8 +28,10 @@ module Refinery
 
       def create
         @order = Order.create(order_params)
+        @order.ip_address = request.remote_ip
+        @order.detected_country = request.location.to_json
 
-        if @order.valid?
+        if @order.valid? and @order.save
           flash.notice = t(
             'refinery.crudify.created',
             :what => @order.order_no
