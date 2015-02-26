@@ -10,7 +10,7 @@
 
   <div class='field'>
     <%= f.label :store_type -%>
-    <%= f.text_field :store_type -%>
+    <%= f.select :store_type, Refinery::Ironman::Stockist::STORE_TYPE, :include_blank => true -%>
   </div>
 
   <div class='field'>

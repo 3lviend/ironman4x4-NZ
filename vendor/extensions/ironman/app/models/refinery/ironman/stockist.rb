@@ -18,6 +18,7 @@ module Refinery
       validates_presence_of :postcode, unless: :show_on_contact
 
       MAP_PINS = [:red, :green, :grey, :ironman]
+      STORE_TYPE = ['Stockist', 'Showroom', 'Ironman 4x4 Branch']
 
       scope :active, -> { where(visible: true) }
       scope :show_on_contact, -> { where(show_on_contact: true) }
