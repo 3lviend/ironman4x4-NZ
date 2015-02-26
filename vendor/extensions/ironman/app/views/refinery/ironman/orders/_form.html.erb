@@ -35,7 +35,7 @@
 
         <% australian = @warehouses.slice('Australia') %>
         <% @warehouses = @warehouses.except('Australia') %>
-        <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:auto_scroll => false} do %>
+        <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:auto_scroll => false, :open_first => false} do %>
           <% if australian.empty? %>
           <% australian = {'Australia' => []}; %>
           <% end %>

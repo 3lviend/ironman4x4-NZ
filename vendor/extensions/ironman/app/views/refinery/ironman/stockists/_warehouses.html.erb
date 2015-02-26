@@ -1,4 +1,5 @@
 <% auto_scroll = false if local_assigns[:auto_scroll].nil? %>
+<% open_first = true if local_assigns[:open_first].nil? %>
 <% first_warehouse = @warehouses.values.flatten.first %>
 <script type="text/javascript">
   $(document).on('ready page:load', function() {
@@ -59,10 +60,12 @@
       document.location.href = document.location.href;
     }
     else {
+      <% if open_first %>
       $('#warehouses h3:first').trigger('click');
       window.scrollTo(0, 0);
+      <% end %>
     }
-    <% else %>
+    <% elsif open_first %>
       $('#warehouses h3:first').trigger('click');
       window.scrollTo(0, 0);
     <% end %>
