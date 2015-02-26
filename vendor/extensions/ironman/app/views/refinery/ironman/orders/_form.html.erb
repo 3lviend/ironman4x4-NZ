@@ -32,11 +32,27 @@
         <h3 class="international-user"><%= t('.international.international_user') %></h3>
         <h3 class="select-regional-office"><%= t('.international.select_regional_office') %></h3>
         <p><%= t('.international.description') %></p>
+
+        <% australian = @warehouses.slice('Australia') %>
+        <% @warehouses = @warehouses.except('Australia') %>
         <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:auto_scroll => false} do %>
-          <h3 class="australia">Australia</h3>
-          <div>
-            <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => request.original_url, :submit_btn_text => 'Load Australian Stockists', :heading => t('refinery.ironman.orders.form.international.australian_search') } %>
-          </div>
+          <% if australian.empty? %>
+          <% australian = {'Australia' => []}; %>
+          <% end %>
+          <% australian.each do |region, warehouses| %>
+            <h3 id="<%= region.parameterize %>" class="australia"><%= region %></h3>
+            <div>
+              <% if warehouses.any? %>
+              <ul>
+                <% warehouses.each do |warehouse| %>
+                  <%= render :partial => 'refinery/ironman/stockists/warehouse', :locals => {:warehouse => warehouse} %>
+                <% end %>
+              </ul>
+              <% end %>
+
+              <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => request.original_url, :submit_btn_text => 'Load Australian Stockists', :heading => t('refinery.ironman.orders.form.international.australian_search') } %>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <% end %>

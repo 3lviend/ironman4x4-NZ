@@ -1,0 +1,42 @@
+<li class="row details" data-warehouse="<%= warehouse.id %>">
+  <div class="col-sm-8">
+    <div id="<%= "map#{warehouse.id}" %>" class="map"></div>
+  </div>
+  <div class="col-sm-4 warehouse">
+    <h4 class="heading" data-warehouse-id="<%= warehouse.id %>"><%= (warehouse.respond_to?(:warehouse_name) and warehouse.warehouse_name) || warehouse.name %></h4>
+    <% if not warehouse.respond_to?(:warehouse_name) or warehouse.warehouse_name.present? %>
+    <div class="business-name"><%= warehouse.name %></div>
+    <% end %>
+    <div class="address"><%= warehouse.address1 %></div>
+    <% if warehouse.address2.present? %>
+    <div class="address"><%= warehouse.address2 %></div>
+    <% end %>
+    <div class="address"><%= [warehouse.suburb, warehouse.state, warehouse.postcode].reject(&:blank?).join(', ') %></div>
+    <% if warehouse.country.present? %>
+    <div class="country"><%= warehouse.country %></div>
+    <% end %>
+    <% if warehouse.contact.present? %>
+    <div class="contact"><%= warehouse.contact %></div>
+    <% end %>
+    <% if warehouse.phone.present? %>
+      <div class="phone">Ph:
+        <% warehouse.phones.each do |phone| %>
+        <%= phone_number_link phone, :target => '_blank' %>
+        <% end %>
+      </div>
+    <% end %>
+    <% if warehouse.respond_to?(:fax) and warehouse.fax.present? %>
+    <div class="fax">Fax: <%= warehouse.fax %></div>
+    <% end %>
+    <% if warehouse.email.present? %>
+    <% warehouse.emails.each do |email| %>
+    <div class="email"><%= mail_to email %></div>
+    <% end %>
+    <% end %>
+    <% if warehouse.website.present? %>
+    <% warehouse.websites.each_with_index do |website, i| %>
+    <div class="website"><%= link_to warehouse.websites_min[i], website %></div>
+    <% end %>
+    <% end %>
+  </div>
+</li>
