@@ -98,16 +98,24 @@
             <div class="contact"><%= warehouse.contact %></div>
             <% end %>
             <% if warehouse.phone.present? %>
-              <div class="phone">Ph: <%= phone_number_link warehouse.phone, :target => '_blank' %></div>
+              <div class="phone">Ph:
+                <% warehouse.phones.each do |phone| %>
+                <%= phone_number_link phone, :target => '_blank' %>
+                <% end %>
+              </div>
             <% end %>
             <% if warehouse.respond_to?(:fax) and warehouse.fax.present? %>
             <div class="fax">Fax: <%= warehouse.fax %></div>
             <% end %>
             <% if warehouse.email.present? %>
-            <div class="email"><%= mail_to warehouse.email %></div>
+            <% warehouse.emails.each do |email| %>
+            <div class="email"><%= mail_to email %></div>
+            <% end %>
             <% end %>
             <% if warehouse.website.present? %>
-            <div class="website"><%= link_to warehouse.website_min, warehouse.website %></div>
+            <% warehouse.websites.each_with_index do |website, i| %>
+            <div class="website"><%= link_to warehouse.websites_min[i], website %></div>
+            <% end %>
             <% end %>
           </div>
         </li>

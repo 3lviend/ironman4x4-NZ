@@ -12,15 +12,23 @@
   <%= object.country %><br />
   <%= link_to t('.directions'), "http://maps.google.com/maps?daddr=#{u object.full_street_address}", :target => '_blank' %><br />
   <% if object.phone.present? %>
-  <%= phone_number_link object.phone, :target => '_blank' %><br />
+  <% object.phones.each do |phone| %>
+  <%= phone_number_link phone, :target => '_blank' %><br />
+  <% end %>
   <% end %>
   <% if object.email.present? %>
   <div class="email">
-  <%= mail_to object.email, object.email, :target => '_blank' %><br />
+  <% object.emails.each do |email| %>
+  <%= mail_to email, :target => '_blank' %><br />
+  <% end %>
   </div>
   <% end %>
   <% if object.website.present? %>
-  <%= link_to object.website_min, object.website, :target => '_blank' %><br />
+  <div class="website">
+  <% object.websites.each_with_index do |website, i| %>
+  <%= link_to object.websites_min[i], website, :target => '_blank' %><br />
+  <% end %>
+  </div>
   <% end %>
   <% if object.services.present? %>
   <%= object.services %><br />

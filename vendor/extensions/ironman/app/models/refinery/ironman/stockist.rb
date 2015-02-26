@@ -57,7 +57,13 @@ module Refinery
       end
 
       def websites
-        website.split('/').map(&:strip)
+        website.split(' / ').map(&:strip).map { |link|
+          unless link.include?('http://') or link.include?('https://')
+            link = 'http://' + link
+          end
+
+          link
+        }
       end
 
       def websites_min
@@ -66,6 +72,10 @@ module Refinery
 
       def emails
         email.split('/').map(&:strip)
+      end
+
+      def phones
+        phone.split('/').map(&:strip)
       end
 
       def logo_image_url

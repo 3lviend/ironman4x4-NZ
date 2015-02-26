@@ -171,12 +171,20 @@
       <% end %>
       <% if stockist.website.present? %>
       <div class="row">
-        <div class="field website col-sm-offset-2 col-sm-10"><%= link_to stockist.website_min, stockist.website, :target => '_blank' %></div>
+        <div class="field website col-sm-offset-2 col-sm-10">
+          <% stockist.websites.each_with_index do |website, i| %>
+          <%= link_to stockist.websites_min[i], website, :target => '_blank' %>
+          <% end %>
+        </div>
       </div>
       <% end %>
       <% if stockist.email.present? %>
       <div class="row">
-        <div class="field email col-sm-offset-2 col-sm-10"><%= mail_to stockist.email, stockist.email %></div>
+        <div class="field email col-sm-offset-2 col-sm-10">
+          <% stockist.emails.each do |email| %>
+          <%= mail_to email %>
+          <% end %>
+        </div>
       </div>
       <% end %>
       <% if stockist.facebook_page.present? %>
