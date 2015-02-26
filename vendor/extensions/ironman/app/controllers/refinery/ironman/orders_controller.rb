@@ -77,7 +77,7 @@ module Refinery
       end
 
       def find_all_warehouses
-        @warehouses = Stockist.active.where('lower(region) != ?', 'australia').where('region is not null').order('region asc, name ASC').group_by(&:region)
+        @warehouses = Stockist.active.where('lower(region) != ?', 'australia').where("region is not null and region != ''").order('region asc, name ASC').group_by(&:region)
       end
 
       def find_all_stockists
