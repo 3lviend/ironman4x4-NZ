@@ -16,13 +16,16 @@ $(document).on 'page:load ready', ->
 
     if document.location.href.match(/\/fitting-instructions/)
       href = '/fitting-instructions' + href
-    else if document.location.href.match(/\/fit-my-4x4/)
-      href = '/fit-my-4x4/results' + href
     else
+      prefix = ''
+
+      if document.location.href.match(/\/fit-my-4x4/)
+        prefix = '/fit-my-4x4/results'
+
       if (sub_subcategory.val() and e.target.id == 'category_3rd_id') or (subcategory.val() and not sub_subcategory_exists and e.target.id == 'category_2nd_id') or (category.val() and not subcategory_exists and e.target.id = 'category_1st_id')
-        href = '/category-products' + href
+        href = prefix + '/category-products' + href
       else
-        href = '/product-categories' + href
+        href = prefix + '/product-categories' + href
 
     # TODO: turn on pushState
     #if history and history.pushState
