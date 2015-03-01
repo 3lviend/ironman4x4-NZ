@@ -19,7 +19,7 @@
   <% if object.email.present? %>
   <div class="email">
   <% object.emails.each do |email| %>
-  <%= mail_to email, :target => '_blank' %><br />
+  <%= mail_to email %><br />
   <% end %>
   </div>
   <% end %>
