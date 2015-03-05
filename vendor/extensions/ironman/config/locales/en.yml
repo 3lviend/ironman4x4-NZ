@@ -528,11 +528,11 @@ en:
           greeting: Hi there
           you_recieved_new_order: You just received a new quote submission from Ironman 4x4
           closing_line: Kind Regards
-          ps:
+          ps: ''
         order:
           order_starts: ! '--- order starts ---'
           order_ends: ! '--- order ends ---'
-          from: From
+          from: Name
           email: Email
           phone: Phone
           comments: Comments
@@ -553,7 +553,7 @@ en:
         enquiry:
           enquiry_starts: ! '--- enquiry starts ---'
           enquiry_ends: ! '--- enquiry ends ---'
-          from: From
+          from: Name
           email: Email
           phone: Phone
           message: Message
