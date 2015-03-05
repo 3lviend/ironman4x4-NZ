@@ -1,5 +1,5 @@
 <% breadcrumb :posts %>
-<% [:page_header, :title, :open_graph_title].each { |t| content_for t, t('.page_header') } %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(t('.page_header')) } %>
 
 <% content_for :body do %>
   <%= render 'refinery/ironman/posts/filters' %>

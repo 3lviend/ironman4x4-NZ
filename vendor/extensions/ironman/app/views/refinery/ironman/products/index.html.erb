@@ -10,7 +10,7 @@
 <% end %>
 <% end %>
 
-<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.name if @this_category.present? } %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(@this_category.name) if @this_category.present? } %>
 
 <% content_for :body do %>
   <%= render 'refinery/ironman/categories/category_info' %>

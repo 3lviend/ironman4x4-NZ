@@ -1,4 +1,4 @@
-<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? t('.page_header_with_category', category:@this_category.name) : t('.page_header') } %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(@this_category.present? ? t('.page_header_with_category', category:@this_category.name) : t('.page_header')) } %>
 
 <% if @category.present? %>
 <% cache_key = [@category, @subcategory, @sub_subcategory, "page-#{params[:page] || 1}"] %>

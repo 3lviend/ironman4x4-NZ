@@ -2,7 +2,7 @@
 <% @slideshow_images = @this_category.images_with_captions if @this_category.present? %>
 <% @no_container = true %>
 
-<% [:page_header, :title, :open_graph_title].each { |t| content_for t, @this_category.present? ? @this_category.name : t('.page_header') } %>
+<% [:page_header, :title, :open_graph_title].each { |t| content_for t, raw(@this_category.present? ? @this_category.name : t('.page_header')) } %>
 
 <% if @this_category.present? %>
   <% if params[:fit_my_4x4] %>
