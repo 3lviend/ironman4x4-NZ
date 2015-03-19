@@ -150,8 +150,7 @@
     <% end %>
   </div>
 
-  <% cache(cache_key_for_stockists) do %>
-  <%= render "/refinery/ironman/stockists/warehouses" %>
-  <% end %>
+  <%= render "/refinery/ironman/stockists/warehouses_javascript", :locals => {:cache_key => :enquiries} %>
+  <%= render "/refinery/ironman/stockists/warehouses", :locals => {:cache_key => :enquiries} %>
 <% end %>
 <%= render "/refinery/content_page" %>

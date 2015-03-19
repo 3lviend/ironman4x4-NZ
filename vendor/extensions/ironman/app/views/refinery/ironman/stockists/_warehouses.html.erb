@@ -1,77 +1,6 @@
-<% auto_scroll = false if local_assigns[:auto_scroll].nil? %>
-<% open_first = true if local_assigns[:open_first].nil? %>
-<% first_warehouse = @warehouses.values.flatten.first %>
-<script type="text/javascript">
-  $(document).on('ready page:load', function() {
-    <% if first_warehouse.present? %>
-    var warehouses = <%=raw Hash[*first_warehouse.class.all.map{ |w| [w.id, w.slice(:id, :latitude, :longitude)] }.flatten].to_json %>;
-    <% else %>
-    var warehouses = [];
-    <% end %>
-    var loaded = false;
-    var handleAccordion = function(event, ui) {
-      $('li:not(.map-added)', ui.newPanel).each(function() {
-        var handler = Gmaps.build('Google');
-        var warehouseId = $(this).data('warehouse');
-        var li = $(this);
+<% cache_key = nil if local_assigns[:cache_key].nil? %>
 
-        handler.buildMap({
-          provider: {
-            disableDefaultUI: true
-            // pass in other Google Maps API options here
-          },
-          internal: {
-            id: ('map' + warehouseId)
-          }
-        }, function(){
-          var warehouse = warehouses[warehouseId];
-          if (warehouse.latitude != null && warehouse.longitude != null) {
-            var m = handler.addMarkers([{lat: warehouse.latitude, lng: warehouse.longitude}]);
-            handler.bounds.extendWith(m);
-            handler.fitMapToBounds();
-            handler.getMap().setZoom(16);
-          }
-
-          li.addClass('map-added');
-        });
-      });
-
-      <% if auto_scroll %>
-      if (!loaded) {
-        if (ui.newHeader.offset() != null) {
-          $(window).scrollTop(ui.newHeader.offset().top);
-        }
-      }
-      loaded = true;
-      <% end %>
-    };
-
-    $('#warehouses').accordion({
-      heightStyle: 'content',
-      activate: handleAccordion,
-      collapsible: true,
-      active: false
-    });
-
-    <% if auto_scroll %>
-    if ($(document.location.hash).length) {
-      $(document.location.hash).trigger('click');
-      // this will reposition the page, but should not refresh the page
-      document.location.href = document.location.href;
-    }
-    else {
-      <% if open_first %>
-      $('#warehouses h3:first').trigger('click');
-      window.scrollTo(0, 0);
-      <% end %>
-    }
-    <% elsif open_first %>
-      $('#warehouses h3:first').trigger('click');
-      window.scrollTo(0, 0);
-    <% end %>
-  });
-</script>
-
+<% cache([cache_key_for_stockists, cache_key]) do %>
 <div id="warehouses">
   <% australia = @warehouses.slice('Australia') %>
   <% warehouses = australia.merge(@warehouses.except('Australia')) %>
@@ -89,3 +18,4 @@
   <% # any additional content passed through in a block %>
   <%= yield %>
 </div>
+<% end %>

@@ -1,6 +1,12 @@
 <% cache([:map, cache_key_for_stockists]) do %>
 <% if @all_stockists.present? %>
   <div id="map"></div>
+<% end %>
+<% end %>
+
+<% content_for :javascripts do %>
+<% cache([:javascripts, cache_key_for_stockists]) do %>
+<% if @all_stockists.present? %>
 <%
   markers = Gmaps4rails.build_markers(@all_stockists) do |stockist, marker|
     marker.title stockist.name
@@ -16,9 +22,7 @@
     marker.json({ :id => stockist.id })
   end
 %>
-
-
-<script type="text/javascript">
+<script>
   $(document).on('ready page:load', function() {
     window.initStockists = function() {
       var loadStarted = false;
@@ -133,6 +137,7 @@
     }
   });
 </script>
+<% end %>
 <% end %>
 <% end %>
 

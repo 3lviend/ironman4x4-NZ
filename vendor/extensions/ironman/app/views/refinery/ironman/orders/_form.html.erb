@@ -27,15 +27,15 @@
     <% end %>
     <div class="tab-pane" id="wishlist-stockist">
       <% if not params[:stockist_query].present? %>
-      <% cache(cache_key_for_stockists) do %>
       <div class="international">
         <h3 class="international-user"><%= t('.international.international_user') %></h3>
         <h3 class="select-regional-office"><%= t('.international.select_regional_office') %></h3>
         <p><%= t('.international.description') %></p>
 
+        <% cache(cache_key_for_stockists) do %>
         <% australian = @warehouses.slice('Australia') %>
         <% @warehouses = @warehouses.except('Australia') %>
-        <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:auto_scroll => false, :open_first => false} do %>
+        <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:cache_key => :order_form} do %>
           <% if australian.empty? %>
           <% australian = {'Australia' => []}; %>
           <% end %>
@@ -54,8 +54,10 @@
             </div>
           <% end %>
         <% end %>
+        <% end %>
+
+        <%= render :partial => '/refinery/ironman/stockists/warehouses_javascript', :locals => {:auto_scroll => false, :open_first => false, :cache_key => :order_form} %>
       </div>
-      <% end %>
       <% end %>
 
       <div<%= raw ' class="australian"' if not params[:stockist_query].present? %>>
