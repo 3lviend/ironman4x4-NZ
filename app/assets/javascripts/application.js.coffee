@@ -18,7 +18,7 @@
 #= require jquery.hoverIntent
 #= require jquery-waypoints/waypoints
 #= require jquery-waypoints/waypoints-infinite
-#= require turbolinks
+# require turbolinks
 # require bootstrap
 #= require bootstrap/collapse
 #= require bootstrap/tab
@@ -54,7 +54,10 @@ $.fn.serializeObject = ->
     return
   o
 
-Turbolinks.enableProgressBar()
+# have disabled turbolinks for now, as I had to move the javascripts out of the
+# head, due to issue with google maps being blocked in china, and blocking the
+# page
+# Turbolinks.enableProgressBar()
 
 $(document).on 'page:load ready', ->
   #$('.tooltip-label').tooltip()
