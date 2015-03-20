@@ -11,12 +11,17 @@ $(document).on 'page:restore', ->
 ShareThisTurbolinks =
   load: ->
     window.switchTo5x = false
-    $.getScript 'https://ws.sharethis.com/button/buttons.js', ->
-      window.stLight.options
-        publisher: '9f21a09e-c2d1-4c03-adb8-1c7ef5311bb6'
-        doNotHash: false
-        doNotCopy: false
-        hashAddressBar: false
+    $.ajax {
+      dataType: 'script'
+      cache: true
+      url: 'https://ws.sharethis.com/button/buttons.js'
+      success: ->
+        window.stLight.options
+          publisher: '9f21a09e-c2d1-4c03-adb8-1c7ef5311bb6'
+          doNotHash: false
+          doNotCopy: false
+          hashAddressBar: false
+    }
 
   reload: ->
     stlib?.cookie.deleteAllSTCookie()
