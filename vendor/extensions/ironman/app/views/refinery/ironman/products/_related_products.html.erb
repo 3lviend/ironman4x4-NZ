@@ -22,7 +22,7 @@
   <h3><%= t('.heading') %></h3>
   <ul id="page-product-list" class="clearfix">
     <% related_products.first(4).each do |product| %>
-      <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product} %>
+      <%= render :partial => 'refinery/ironman/products/product', :locals => {product: product, default_categories: true} %>
     <% end %>
   </ul>
 </aside>

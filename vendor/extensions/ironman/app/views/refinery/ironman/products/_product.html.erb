@@ -1,15 +1,29 @@
 <% style = :default if local_assigns[:style].nil? %>
 <% infinite_item = true if local_assigns[:infinite_item].nil? %>
-<% cache([infinite_item, style, product]) do %>
-<% if @category.present? and @subcategory.present? and @sub_subcategory.present? %>
-<% url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product) %>
-<% elsif @category.present? and @subcategory.present? %>
-<% url = refinery.products_subcategory_product_path(@subcategory, @category, product) %>
-<% elsif @category.present? %>
-<% url = refinery.products_category_product_path(@category, product) %>
-<% else %>
-<% url = refinery.ironman_product_path(product) %>
-<% end %>
+<% default_categories = false if local_assigns[:default_categories].nil? %>
+<% cache([infinite_item, style, product, default_categories]) do %>
+<%
+if default_categories
+  category = product.categories.first
+  if category.depth == 0
+    url = refinery.products_category_product_path(category, product)
+  elsif category.depth == 1
+    url = refinery.products_subcategory_product_path(category.parent, category, product)
+  else
+    url = refinery.products_sub_subcategory_product_path(category.parent.parent, category.parent, category, product)
+  end
+else
+  if @category.present? and @subcategory.present? and @sub_subcategory.present?
+    url = refinery.products_sub_subcategory_product_path(@sub_subcategory, @subcategory, @category, product)
+  elsif @category.present? and @subcategory.present?
+    url = refinery.products_subcategory_product_path(@subcategory, @category, product)
+  elsif @category.present?
+    url = refinery.products_category_product_path(@category, product)
+  else
+    url = refinery.ironman_product_path(product)
+  end
+end
+%>
 <li class="product-container col-lg-3 col-md-4 col-sm-6 col-xs-12<%= ' infinite-item' if infinite_item %>">
   <div class="product">
     <div class="header">
