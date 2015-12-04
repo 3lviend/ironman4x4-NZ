@@ -1,6 +1,8 @@
 cs:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,10 +25,24 @@ cs:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Přidat Subdomain
+            reorder: "Řadit Subdomains"
+            reorder_done: Konec řazení Subdomains
+          records:
+            title: Subdomains
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Subdomains. Zvolte "Přidat
+              Subdomain" pro přidání prvního subdomain.
+          subdomain:
+            view_live_html: Zobrazit náhled subdomain<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit subdomain
+            delete: Smazat subdomain
         orders:
           actions:
             create_new: Přidat Order
-            reorder: Řadit Orders
+            reorder: "Řadit Orders"
             reorder_done: Konec řazení Orders
           records:
             title: Orders
@@ -40,7 +56,7 @@ cs:
         catalogues:
           actions:
             create_new: Přidat Catalogue
-            reorder: Řadit Catalogues
+            reorder: "Řadit Catalogues"
             reorder_done: Konec řazení Catalogues
           records:
             title: Catalogues
@@ -54,7 +70,7 @@ cs:
         warehouses:
           actions:
             create_new: Přidat Warehouse
-            reorder: Řadit Warehouses
+            reorder: "Řadit Warehouses"
             reorder_done: Konec řazení Warehouses
           records:
             title: Warehouses
@@ -68,7 +84,7 @@ cs:
         enquiries:
           actions:
             create_new: Přidat Enquiry
-            reorder: Řadit Enquiries
+            reorder: "Řadit Enquiries"
             reorder_done: Konec řazení Enquiries
           records:
             title: Enquiries
@@ -82,7 +98,7 @@ cs:
         stockists:
           actions:
             create_new: Přidat Stockist
-            reorder: Řadit Stockists
+            reorder: "Řadit Stockists"
             reorder_done: Konec řazení Stockists
           records:
             title: Stockists
@@ -96,7 +112,7 @@ cs:
         media_releases:
           actions:
             create_new: Přidat Media Release
-            reorder: Řadit Media Releases
+            reorder: "Řadit Media Releases"
             reorder_done: Konec řazení Media Releases
           records:
             title: Media Releases
@@ -113,7 +129,7 @@ cs:
             create_new_blog_post: Přidat Blog Post
             create_new_news_item: Přidat News Item
             create_new_event: Přidat Event
-            reorder: Řadit Posts
+            reorder: "Řadit Posts"
             reorder_done: Konec řazení Posts
           records:
             title: Posts
@@ -127,7 +143,7 @@ cs:
         vehicles:
           actions:
             create_new: Přidat Vehicle
-            reorder: Řadit Vehicles
+            reorder: "Řadit Vehicles"
             reorder_done: Konec řazení Vehicles
           records:
             title: Vehicles
@@ -141,7 +157,7 @@ cs:
         categories:
           actions:
             create_new: Přidat Category
-            reorder: Řadit Categories
+            reorder: "Řadit Categories"
             reorder_done: Konec řazení Categories
           records:
             title: Categories
@@ -155,7 +171,7 @@ cs:
         products:
           actions:
             create_new: Přidat Product
-            reorder: Řadit Products
+            reorder: "Řadit Products"
             reorder_done: Konec řazení Products
           records:
             title: Products
@@ -166,6 +182,9 @@ cs:
             view_live_html: Zobrazit náhled product<br/><em>(otevře se v novém okně)</em>
             edit: Upravit product
             delete: Smazat product
+      subdomains:
+        show:
+          other: Další Subdomains
       orders:
         show:
           other: Další Orders
@@ -198,6 +217,9 @@ cs:
           other: Další Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.1.0'
 gem 'actionpack', :github => 'asgeo1/actionpack'
@@ -85,6 +84,8 @@ gem 'jquery-cookie-rails'
 gem 'jquery-hoverIntent-rails'
 gem 'jquery-easing-rails'
 
+gem 'eventmachine', '~> 1.0.4'
+
 # deployment
 gem 'mina'
 gem 'mina-multistage', require: false
@@ -92,3 +93,12 @@ gem 'mina-multistage', require: false
 # Development gems
 #gem 'rack-mini-profiler'
 gem 'mailcatcher', group: :development
+
+# debug
+gem 'pry-byebug', group: :development
+
+# delayed jobs
+gem 'sidekiq'
+
+gem "better_errors"
+gem "binding_of_caller"

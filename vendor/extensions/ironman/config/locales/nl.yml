@@ -1,6 +1,8 @@
 nl:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,6 +25,21 @@ nl:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Nieuwe Subdomain toevoegen
+            reorder: De volgorde van de Subdomains wijzigen
+            reorder_done: Klaar met het wijzingen van de van de Subdomain-volgorde
+          records:
+            title: Subdomains
+            sorry_no_results: Helaas! Er zijn geen resultaten gevonden.
+            no_items_yet: Er zijn nog geen Subdomains. Druk op 'Nieuwe Subdomain toevoegen'
+              om de eerste toe te voegen.
+          subdomain:
+            view_live_html: Deze subdomain op de website bekijken <br/><em>(opent
+              in een nieuw venster)</em>
+            edit: Bewerk deze subdomain
+            delete: Deze subdomain definitief verwijderen
         orders:
           actions:
             create_new: Nieuwe Order toevoegen
@@ -175,6 +192,9 @@ nl:
               een nieuw venster)</em>
             edit: Bewerk deze product
             delete: Deze product definitief verwijderen
+      subdomains:
+        show:
+          other: Andere Subdomains
       orders:
         show:
           other: Andere Orders
@@ -207,6 +227,9 @@ nl:
           other: Andere Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
+  include DatabaseManager
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   around_filter :set_time_zone
   before_action :set_date_format
+  before_action :set_current_database
 
   def set_time_zone(&block)
     time_zone = Refinery::Setting.get(:time_zone)
@@ -14,11 +17,22 @@ class ApplicationController < ActionController::Base
     date_format = Refinery::Setting.get(:date_format)
     Date.format = date_format
   end
+
+  #
+  # set connection to database for current subdomain
+  #
+  def set_current_database
+    connect(request.host.split('.')[-3])
+  end
+
 end
 
 Refinery::AdminController.class_eval do
+  include DatabaseManager
+
   around_filter :set_time_zone
   before_action :set_date_format
+  before_action :set_current_database
 
   def set_time_zone(&block)
     time_zone = Refinery::Setting.get(:time_zone)
@@ -29,6 +43,14 @@ Refinery::AdminController.class_eval do
     date_format = Refinery::Setting.get(:date_format)
     Date.format = date_format if date_format.present?
   end
+
+  #
+  # set connection to database for current subdomain
+  #
+  def set_current_database
+    connect(request.host.split('.')[-3])
+  end
+
 end
 
 # only needed for direct to S3 uploads

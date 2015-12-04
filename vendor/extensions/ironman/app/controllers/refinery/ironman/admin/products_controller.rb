@@ -15,6 +15,7 @@ module Refinery
           direction = (params[:direction] == 'desc' ? 'desc' : 'asc')
 
           orders = {
+            :id => 'refinery_ironman_products.id ' + direction,
             :product_no => 'refinery_ironman_products.product_no ' + direction,
             :title => 'refinery_ironman_products.name ' + direction,
             :category => 'refinery_ironman_categories.name ' + direction,

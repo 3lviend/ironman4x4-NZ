@@ -1,6 +1,8 @@
 it:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,6 +25,21 @@ it:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Aggiungi Nuovo Subdomain
+            reorder: Riordina Subdomains
+            reorder_done: Termina il Riordino di Subdomains
+          records:
+            title: Subdomains
+            sorry_no_results: Spiacenti! Nessun risultato trovato
+            no_items_yet: Non ci sono ancora Subdomains. Clicca "Aggiungi Nuovo Subdomain"
+              per aggiungere il tuo primo subdomain.
+          subdomain:
+            view_live_html: Guarda live questo subdomain <br/><em>(apre una nuova
+              finestra)</em>
+            edit: Modifica questo subdomain
+            delete: Rimuovi per sempre questo subdomain
         orders:
           actions:
             create_new: Aggiungi Nuovo Order
@@ -168,6 +185,9 @@ it:
             view_live_html: Guarda live questo product <br/><em>(apre una nuova finestra)</em>
             edit: Modifica questo product
             delete: Rimuovi per sempre questo product
+      subdomains:
+        show:
+          other: Altri Subdomains
       orders:
         show:
           other: Altri Orders
@@ -200,6 +220,9 @@ it:
           other: Altri Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

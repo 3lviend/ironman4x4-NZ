@@ -1,6 +1,8 @@
 tr:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,6 +25,21 @@ tr:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Yeni Ekle Subdomain
+            reorder: Tekrar sirala Subdomains
+            reorder_done: Tekrar siralama tamamlandiSubdomains
+          records:
+            title: Subdomains
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Subdomains yok henuz.  Tikla "Yeni Ekle Subdomain"
+              eklemek senin ilk subdomain.
+          subdomain:
+            view_live_html: Bunu canlu subdomain goruntule <br/><em>(yeni bir pencerede
+              acar)</em>
+            edit: Bunu Duzenle subdomain
+            delete: Bunu Sil subdomain sonsuza dek
         orders:
           actions:
             create_new: Yeni Ekle Order
@@ -175,6 +192,9 @@ tr:
               acar)</em>
             edit: Bunu Duzenle product
             delete: Bunu Sil product sonsuza dek
+      subdomains:
+        show:
+          other: Diger Subdomains
       orders:
         show:
           other: Diger Orders
@@ -207,6 +227,9 @@ tr:
           other: Diger Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

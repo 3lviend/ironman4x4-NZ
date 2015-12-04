@@ -1,0 +1,724 @@
+
+
+<div class="col-md-12 col-sm-12 main">
+  <div class="container">
+    <h1>SUSPENSION BUILDER</h1>
+    <div class="col-md-6 col-sm-6 text">
+      <div class="text">
+       <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velist esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velist esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 offset6">
+      <div class="col-md-12 col-sm-12">
+       <%= image_tag '1.png' %>
+     </div>
+   </div>
+   <div class="col-md-9 col-sm-9 list">
+    <div class="col-md-12 col-sm-12">
+     <p class="title_first">1. INPUT YOUR VEHICLE SPECIFICATIONS</p>
+   </div>
+   <div class="col-md-12 col-sm-12 first-container">
+     <div class="col-md-4 col-sm-4 line">
+      <p class="big_title"><span id="caret" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+      </span> &nbsp; &nbsp;1.1 VEHICLE</p>
+    </div>
+    <div class="col-md-7 col-sm-7">
+      <p class="size">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+        <span class="more">More information<span id="caret" class="caret">
+        </span></span></p>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12 second-container-gray" id="layout-fit-my-4x4">
+     <div id="hid" class="container">
+      <%= form_tag refinery.ironman_fit_my_4x4_results_path do %>
+      <div class="col-md-12 col-sm-12 form-group clearfix vehicle-selector">
+       <%= render :partial => 'refinery/ironman/fit_my_car/select_boxes', :locals => {vehicle_1st_id: :vehicle_1st_id_fitmy4x4, vehicle_2nd_id: :vehicle_2nd_id_fitmy4x4, vehicle_3rd_id: :vehicle_3rd_id_fitmy4x4} %>     
+     </div>
+     <div class="col-md-12 col-sm-12 form-group clearfix vehicle-selector">
+       <%= render :partial => 'refinery/ironman/fit_my_car/select_boxes', :locals => {vehicle_1st_id: :vehicle_1st_id_fitmy4x4, vehicle_2nd_id: :vehicle_2nd_id_fitmy4x4, vehicle_3rd_id: :vehicle_3rd_id_fitmy4x4} %>
+       <div class="col-sm-1 col-md-1 button">
+        <button type="submit" class="form-control go">Go</button>
+      </div>       
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+<div class="col-md-12 col-sm-12 second-container">
+ <div class="col-md-4 col-sm-4 line">
+  <p class="big_title"><span id="caret1" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+  </span> &nbsp; &nbsp;1.2 FRONT Springs </p>
+</div>
+<div class="col-md-7 col-sm-7">
+
+  <p class="size">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    <span class="more">More information<span id="caret1" class="caret">
+    </span></span></p>
+  </div>
+  <div class="photo"><%= image_tag 'qestion.png' %></div>
+</div>
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid2">
+  <div class="col-md-6 col-sm-6">
+   <div class="radio">
+    <label for="bullbar_steel">
+     <input id="bullbar_steel" name="bullbar" type="checkbox" value="STEEL BAR"/>&nbsp; &nbsp;STEEL BAR
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="bullbar_alloy">
+   <input id="bullbar_alloy" name="bullbar1" type="checkbox" value="ALLOY BAR"/>&nbsp; &nbsp;ALLOY BAR
+ </label> 
+</div>
+<div class="radio">
+  <label for="bullbar_rope">
+   <input id="bullbar_rope" name="bullbar2" type="checkbox" value="WINCH WITH ROPE"/>&nbsp; &nbsp;WINCH WITH ROPE
+ </label> 
+</div>
+</div>
+<div class="col-md-6 col-sm-6">
+  <div class="radio">
+    <label for="bullbar_cable">
+     <input id="bullbar_cable" name="bullbar3" type="checkbox" value="WINCH WITH STEEL CABLE" />&nbsp; &nbsp;WINCH WITH STEEL CABLE
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="bullbar_batteries">
+   <input id="bullbar_batteries" name="bullbar4" type="checkbox" value="DUAL BATTERIES (IN ENGINE BAY)"/>&nbsp; &nbsp;DUAL BATTERIES (IN ENGINE BAY)
+ </label> 
+</div>
+<div class="radio">
+  <label for="bullbar_other">
+   <input id="bullbar_other" name="bullbar5" type="checkbox" value="OTHER"/>&nbsp; &nbsp;OTHER <input class="spec" placeholder="Specify Item(s)"/><input class="spec1" placeholder="Weight"/>&nbsp;Kg
+ </label> 
+</div>
+</div>
+</div>
+
+
+
+
+<div class="col-md-12 col-sm-12 third-container">
+ <div class="col-md-4 col-sm-4 line">
+   <p class="big_title"><span id="caret2" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+   </span> &nbsp; &nbsp;1.3 rear setup  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (wagon)</p>
+ </div>
+ <div class="col-md-7 col-sm-7">
+  <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    <span class="more">More information<span id="caret2" class="caret">
+    </span></span></p>
+  </div>
+  <div class="photo2"><%= image_tag 'qestion.png' %></div>
+</div>
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid3">
+ <div class="col-md-6 col-sm-6">
+   <div class="radio">
+    <label for="drawer">
+     <input id="drawer" name="tray" type="checkbox" value="DRAWER SYSTEM" />&nbsp; &nbsp;DRAWER SYSTEM
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="long">
+   <input id="long" name="tray1" type="checkbox" value="LONG RANGE FUEL TANK" />&nbsp; &nbsp;LONG RANGE FUEL TANK
+ </label> 
+</div>
+<div class="radio">
+  <label for="bar">
+   <input id="bar" name="tray2" type="checkbox" value="REAR STEEL BAR" />&nbsp; &nbsp;REAR STEEL BAR
+ </label> 
+</div>
+<div class="radio">
+  <label for="carrier">
+   <input id="carrier" name="tray3" type="checkbox" value="REAR STEEL BAR WITH SINGLE CARRIER" />&nbsp; &nbsp;REAR STEEL BAR WITH SINGLE CARRIER
+ </label> 
+</div>
+<div class="radio">
+  <label for="dual_carrier">
+   <input id="dual_carrier" name="tray4" type="checkbox" value="REAR STEEL BAR WITH DUAL CARRIERS" />&nbsp; &nbsp;REAR STEEL BAR WITH DUAL CARRIERS
+ </label> 
+</div>
+<div class="radio">
+  <label for="steel_roof">
+   <input id="steel_roof" name="tray5" type="checkbox" value="STEEL ROOF RACK" />&nbsp; &nbsp;STEEL ROOF RACK
+ </label> 
+</div>
+<div class="radio">
+  <label for="alloy_roof">
+   <input id="alloy_roof" name="tray6" type="checkbox" value="ALLOY ROOF RACK" />&nbsp; &nbsp;ALLOY ROOF RACK
+ </label> 
+</div>
+</div>
+<div class="col-md-6 col-sm-6">
+  <div class="radio">
+    <label for="battery">
+     <input id="battery" name="tray7" type="checkbox" value="SECONDARY BATTERY" />&nbsp; &nbsp;SECONDARY BATTERY
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="fridge">
+   <input id="fridge" name="tray8" type="checkbox" value="FRIDGE" />&nbsp; &nbsp;FRIDGE
+ </label> 
+</div>
+<div class="radio">
+  <label for="tent">
+   <input id="tent" name="tray9" type="checkbox" value="ROOF TOP TENT" />&nbsp; &nbsp;ROOF TOP TENT
+ </label> 
+</div>
+<div class="radio">
+  <label for="laggage">
+   <input id="laggage" name="tray10" type="checkbox" value="LUGGAGE" />&nbsp; &nbsp;LUGGAGE &nbsp;<input class="spec1" placeholder="Weight"/>&nbsp;Kg
+ </label> 
+</div>
+<div class="radio">
+  <label for="tank">
+   <input id="tank" name="tray11" type="checkbox" value="WATER TANK" />&nbsp; &nbsp;WATER TANK &nbsp;<input class="spec1" placeholder="Litres"/>&nbsp;Litres
+ </label> 
+</div>
+<div class="radio">
+  <label for="other">
+   <input id="other" name="tray12" type="checkbox" value="OTHER"/>&nbsp; &nbsp;OTHER<input class="spec" placeholder="Specify Item(s)"/><input class="spec1" placeholder="Weight"/>&nbsp;Kg
+ </label> 
+</div>
+</div>
+</div>
+
+<div class="col-md-12 col-sm-12 third-container">
+ <div class="col-md-4 col-sm-4 line">
+   <p class="big_title"><span id="caret3" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+   </span> &nbsp; &nbsp;1.3 rear setup  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (ute)</p>
+ </div>
+ <div class="col-md-7 col-sm-7">
+  <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    <span class="more">More information<span id="caret3" class="caret">
+    </span></span></p>
+  </div>
+  <div class="photo2"><%= image_tag 'qestion.png' %></div>
+</div>
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid4">
+  <div class="col-md-6 col-sm-6">
+   <div class="radio">
+    <label for="canopy">
+     <input id="canopy" name="tray13" type="checkbox" value="CANOPY" />&nbsp; &nbsp;CANOPY
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="steel_canopy">
+   <input id="steel_canopy" name="tray14" type="checkbox" value="STEEL CANOPY" />&nbsp; &nbsp;STEEL CANOPY
+ </label> 
+</div>
+<div class="radio">
+  <label for="steel_tray">
+   <input id="steel_tray" name="tray15" type="checkbox" value="STEEL TRAY" />&nbsp; &nbsp;STEEL TRAY
+ </label> 
+</div>
+<div class="radio">
+  <label for="range_rank">
+   <input id="range_rank" name="tray16" type="checkbox" value="LONG RANGE RANK" />&nbsp; &nbsp;LONG RANGE RANK
+ </label> 
+</div>
+<div class="radio">
+  <label for="steel_roof_rack">
+   <input id="steel_roof_rack" name="tray17" type="checkbox" value="STEEL ROOF RACK" />&nbsp; &nbsp;STEEL ROOF RACK
+ </label> 
+</div>
+<div class="radio">
+  <label for="alloy_roof_rack">
+   <input id="alloy_roof_rack" name="tray18" type="checkbox" value="ALLOY ROOF RACK" />&nbsp; &nbsp;ALLOY ROOF RACK
+ </label> 
+</div>
+</div>
+<div class="col-md-6 col-sm-6">
+  <div class="radio">
+    <label for="roof_top_tent">
+     <input id="roof_top_tent" name="tray19" type="checkbox" value="ROOF TOP TENT" />&nbsp; &nbsp;ROOF TOP TENT
+   </label> 
+ </div>
+ <div class="radio">
+  <label for="drawer_system">
+   <input id="drawer_system" name="tray20" type="checkbox" value="DRAWER SYSTEM" />&nbsp; &nbsp;DRAWER SYSTEM
+ </label> 
+</div>
+<div class="radio">
+  <label for="battery_in_rear">
+   <input id="battery_in_rear" name="tray21" type="checkbox" value="SECONDARY BATTERY REAR" />&nbsp; &nbsp;SECONDARY BATTERY IN REAR
+ </label> 
+</div>
+<div class="radio">
+  <label for="luggage_raer">
+   <input id="luggage_raer" name="tray22" type="checkbox" value="LUGGAGE" />&nbsp; &nbsp;LUGGAGE &nbsp;<input class="spec1" placeholder="Weight"/>&nbsp;Kg
+ </label> 
+</div>
+<div class="radio">
+  <label for="tank_rear">
+   <input id="tank_rear" name="tray23" type="checkbox" value="WATER TANK" />&nbsp; &nbsp;WATER TANK &nbsp;<input class="spec1" placeholder="Litres"/>&nbsp;Litres
+ </label> 
+</div>
+<div class="radio">
+  <label for="other_rear">
+   <input id="other_rear" name="tray24" type="checkbox" value="OTHER"/>&nbsp; &nbsp;OTHER<input class="spec" placeholder="Specify Item(s)"/><input class="spec1" placeholder="Weight"/>&nbsp;Kg
+ </label> 
+</div>
+</div>
+</div>
+
+
+<div class="col-md-12 col-sm-12">
+ <p class="title_first">2. SELECT SHOCK ABSORBERS</p>
+</div>
+<div class="col-md-12 col-sm-12 four-container">
+ <div class="col-md-4 col-sm-4 line">
+   <p class="big_title"><span id="caret4" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+   </span> &nbsp; &nbsp;2.1 front shock &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;absorbers</p>
+ </div>
+ <div class="col-md-7 col-sm-7">
+  <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    <span class="more">More information<span id="caret4" class="caret">
+    </span></span></p>
+  </div>
+  <div class="photo2"><%= image_tag 'qestion.png' %></div>
+</div>
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid5">
+  <div class="radio">
+   <label for="nitro_gas">
+    <input id="nitro_gas" name="nitro_gas" type="checkbox" value="NITRO GASS" />&nbsp; NITRO GASS
+    <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+    <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+    </label> 
+  </div>
+  <div class="radio">
+    <label for="foam_cell">
+     <input id="foam_cell" name="nitro_gas1" type="checkbox" value="FOAM CELL" data-price="50" />&nbsp; FOAM CELL
+     <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+     <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+     </label> 
+   </div>
+   <div class="radio">
+     <label for="foam_cell_pro">
+      <input id="foam_cell_pro" name="nitro_gas2"  type="checkbox" value="FOAM CELL PRO" data-price="100"/>&nbsp; FOAM CELL PRO
+      <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+      <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+      </label> 
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12 fifth-container">
+    <div class="col-md-4 col-sm-4 line">
+     <p class="big_title"><span id="caret5" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+     </span> &nbsp; &nbsp;2.2 rear shock &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;absorbers</p>
+   </div>
+   <div class="col-md-7 col-sm-7">
+    <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+      <span class="more">More information<span id="caret5" class="caret">
+      </span></span></p>
+    </div>
+    <div class="photo2"><%= image_tag 'qestion.png' %></div>
+  </div>
+  <div class="col-md-12 col-sm-12 second-container-gray" id="hid6">
+    <div class="radio">
+     <label for="nitro_gas_rear">
+      <input id="nitro_gas_rear" name="nitro_gas_rear" type="checkbox" value="NITRO GASS" />&nbsp; NITRO GASS
+      <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+      <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+      </label> 
+    </div>
+    <div class="radio">
+      <label for="foam_cell_rear">
+       <input id="foam_cell_rear" name="nitro_gas1_rear" type="checkbox" value="FOAM CELL" data-price="50" />&nbsp; FOAM CELL
+       <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+       <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+       </label> 
+     </div>
+     <div class="radio">
+       <label for="foam_cell_pro_rear">
+        <input id="foam_cell_pro_rear" name="nitro_gas2_rear"  type="checkbox" value="FOAM CELL PRO" data-price="100"/>&nbsp; FOAM CELL PRO
+        <p>&nbsp; &nbsp; &nbsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+        <p>&nbsp; &nbsp; &nbsp;More information <span class="caret">
+        </label> 
+      </div>
+    </div>
+
+    <div class="col-md-12 col-sm-12">
+     <p class="title_first">3. Components</p>
+   </div>
+   <div class="col-md-12 col-sm-12 six-container">
+     <div class="col-md-4 col-sm-4 line">
+       <p class="big_title"><span id="caret6" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+       </span> &nbsp; &nbsp;3.1 mandatory &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;components</p>
+     </div>
+     <div class="col-md-7 col-sm-7">
+      <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+        <span class="more">More information<span id="caret6" class="caret">
+        </span></span></p>
+      </div>
+      <div class="photo2"><%= image_tag 'qestion.png' %></div>
+    </div>
+    <div class="col-md-12 col-sm-12 second-container-gray" id="hid7">
+      <div class="col-md-6 col-sm-6">
+       <div class="radio">
+        <label for="drag_link">
+         <input id="drag_link" name="drag_link" type="checkbox" value="ADJUSTABLE DRAG LINK"/>&nbsp; ADJUSTABLE DRAG LINK 
+       </label>
+       <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+     </div>
+     <div class="radio">
+      <label for="brake_lines">
+       <input id="brake_lines" name="brake_lines" type="checkbox" value="BRAKE LINES"/>&nbsp; BRAKE LINES
+     </label>
+     <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+   </div>
+   <div class="radio">
+    <label for="castor_correction">
+     <input id="castor_correction" name="castor_correction" type="checkbox" value="CASTOR CORRECTION"/>&nbsp; CASTOR CORRECTION
+   </label>
+   <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+ </div>
+ <div class="radio">
+  <label for="upper_trailing">
+   <input id="upper_trailing" name="upper_trailing" type="checkbox" value="ADJUSTABLE UPPER TRAILING ARMS"/>&nbsp; ADJUSTABLE UPPER TRAILING ARMS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6">
+ <div class="radio">
+  <label for="traling_arms">
+   <input id="traling_arms" name="traling_arms" type="checkbox" value="ADJUSTABLE UPPER LOWER ARMS"/>&nbsp; ADJUSTABLE LOWER TRAILING ARMS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="front_painihard">
+   <input id="front_painihard" name="front_painihard" type="checkbox" value="ADJUSTABLE FRONT PANIHAR"/>&nbsp; ADJUSTABLE FRONT PANIHARD
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="rear_painhard">
+   <input id="rear_painhard" name="rear_painhard" type="checkbox" value="ADJUSTABLE REAR PANIHARD"/>&nbsp; ADJUSTABLE REAR PANIHARD
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="bar_extention">
+   <input id="bar_extention" name="bar_extention" type="checkbox" value="SWAY BAR EXTENSION"/>&nbsp; SWAY BAR EXTENSION
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+</div>
+</div>
+
+<div class="col-md-12 col-sm-12 seven-container">
+  <div class="col-md-4 col-sm-4 line">
+   <p class="big_title"><span id="caret7" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+   </span> &nbsp; &nbsp;3.2 optional &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;components</p>
+ </div>
+ <div class="col-md-7 col-sm-7">
+   <p class="size2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+    <span class="more">More information<span id="caret7" class="caret">
+    </span></span></p>
+  </div>
+  <div class="photo2"><%= image_tag 'qestion.png' %></div>
+</div>
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid8">
+ <div class="col-md-6 col-sm-6">
+  <div class="radio">
+    <label for="greasable_shackles">
+     <input id="greasable_shackles" name="greasable_shackles" type="checkbox" value="GREASABLE SHACKLES"/>&nbsp; GREASABLE SHACKLES
+   </label>
+   <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+ </div>
+
+ <div class="radio">
+  <label for="greasable_pins">
+   <input id="greasable_pins" name="greasable_pins" type="checkbox" value="GREASABLE PINS"/>&nbsp; GREASABLE PINS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="coil_spacer">
+   <input id="coil_spacer" name="coil_spacer" type="checkbox" value="COIL SPACER"/>&nbsp; COIL SPACER
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="steering_damper">
+   <input id="steering_damper" name="steering_damper" type="checkbox" value="STEERING DAMPER"/>&nbsp; STEERING DAMPER
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="brake_hose">
+   <input id="brake_hose" name="brake_hose" type="checkbox" value="EXTENDED BRAKE HOSE"/>&nbsp; EXTENDED BRAKE HOSE
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="panhard_rod">
+   <input id="panhard_rod" name="panhard_rod" type="checkbox" value="ADJUSTABLE PANHARD ROD"/>&nbsp; ADJUSTABLE PANHARD ROD
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="abjustable_drag">
+   <input id="abjustable_drag" name="abjustable_drag" type="checkbox" value="ADJUSTABLE DRAG LINK"/>&nbsp; ADJUSTABLE DRAG LINK
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="abjustable_upper">
+   <input id="abjustable_upper" name="abjustable_upper" type="checkbox" value="ADJUSTABLE UPPER TRAILING ARMS"/>&nbsp; ADJUSTABLE UPPER TRAILING ARMS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+</div>
+<div class="col-md-6 col-sm-6">
+  <div class="radio">
+    <label for="abjustable_lower">
+     <input id="abjustable_lower" name="abjustable_lower" type="checkbox" value="ADJUSTABLE LOWER TRAILING ARMS"/>&nbsp; ADJUSTABLE LOWER TRAILING ARMS
+   </label>
+   <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+ </div>
+ <div class="radio">
+  <label for="abjustable_front">
+   <input id="abjustable_front" name="abjustable_front" type="checkbox" value="ADJUSTABLE FRONT PANHARD"/>&nbsp; ADJUSTABLE FRONT PANHARD
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="abjustable_rear">
+   <input id="abjustable_rear" name="abjustable_rear" type="checkbox" value="ADJUSTABLE REAR PANHARD"/>&nbsp; ADJUSTABLE REAR PANHARD
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="trim_packers">
+   <input id="trim_packers" name="trim_packers" type="checkbox" value="TRIM PACKERS"/>&nbsp; TRIM PACKERS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="coil">
+   <input id="coil" name="coil" type="checkbox" value="COIL SPACERS"/>&nbsp; COIL SPACERS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="load">
+   <input id="load" name="load" type="checkbox" value="LOAD PLUS"/>&nbsp; LOAD PLUS
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="spacer_kit">
+   <input id="spacer_kit" name="spacer_kit" type="checkbox" value="CENTRE BEARING SPACER KIT"/>&nbsp; CENTRE BEARING SPACER KIT
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+<div class="radio">
+  <label for="abs">
+   <input id="abs" name="abs" type="checkbox" value="ABS PROTECTION"/>&nbsp; ABS PROTECTION
+ </label>
+ <div class="photo3"><%= image_tag 'queistion2.png' %></div>
+</div>
+</div>
+</div>
+
+</div>
+
+<div class="col-md-3 col-sm-3 list2 conteiner-fix">
+<div class="col-md-12 col-sm-12 fix2">
+   <div class="col-md-12 col-sm-12 sub-menu">
+   <p class="title_first">YOUR SUSPENSION KIT</p>
+    <p class="title_first">A$ <output id="rezultat">0</output>
+    </p>
+    <div class="col-md-4 col-sm-4">
+     <p class="smalll"> &nbsp; Incl GST</p>
+    </div>
+    <div class="col-md-8 col-sm-8 online">
+      <button type="submit">Add to Online Quote</button>
+    </div>
+  </div>
+</div>
+<div class="col-md-12 col-sm-12 fix">
+  <div class="col-md-12 col-sm-12 sub-menu">
+   <p class="title_first">SPECIFICATIONS</p>
+   <label>Vehicle:
+    <div class="veh">   
+    </div>
+  </label>
+  <div class="front">
+    <label>
+     FORNT SPRINGS:
+     <div class="bl1">   
+     </div>
+     <div class="bl2">   
+     </div>
+     <div class="bl3">   
+     </div>
+     <div class="bl4">   
+     </div>
+     <div class="bl5">   
+     </div>
+     <div class="bl6">   
+     </div>
+   </label>
+ </div>
+ <div class="reare">
+  <label>
+   REAR SPRINGS:
+   <div class="tr1">   
+   </div>
+   <div class="tr2">   
+   </div>
+   <div class="tr3">   
+   </div>
+   <div class="tr4">   
+   </div>
+   <div class="tr5">   
+   </div>
+   <div class="tr6">   
+   </div>
+   <div class="tr7">   
+   </div>
+   <div class="tr8">   
+   </div>
+   <div class="tr9">   
+   </div>
+   <div class="tr10">   
+   </div>
+   <div class="tr11">   
+   </div>
+   <div class="tr12">   
+   </div>
+   <div class="tr13">   
+   </div>
+   <div class="tr14"> 
+   </div>
+   <div class="tr15"> 
+   </div>
+   <div class="tr16"> 
+   </div>
+   <div class="tr17"> 
+   </div>
+   <div class="tr18"> 
+   </div>
+   <div class="tr19"> 
+   </div>
+   <div class="tr20"> 
+   </div>
+   <div class="tr21"> 
+   </div>
+   <div class="tr22"> 
+   </div>
+   <div class="tr23"> 
+   </div>
+   <div class="tr24"> 
+   </div>
+   <div class="tr25"> 
+   </div>
+ </label>
+</div>
+<div class="front_shock">
+  <label>
+   FRONT SHOCK:
+   <div class="fs1"> 
+   </div>
+   <div class="fs2"> 
+   </div>
+   <div class="fs3"> 
+   </div>
+ </label>
+</div>
+<div class="reare_shock">
+  <label>
+   REAR SHOCK:
+   <div class="rs1"> 
+   </div>
+   <div class="rs2"> 
+   </div>
+   <div class="rs3">
+   </div> 
+   </label>
+</div>
+ <div class="manadatory">
+  <label>
+   MANDATORY COMPONENTS:
+   <div class="extra1_1">   
+   </div>
+   <div class="extra1_2">   
+   </div>
+   <div class="extra1_3">   
+   </div>
+   <div class="extra1_4">   
+   </div>
+   <div class="extra1_5">   
+   </div>
+   <div class="extra1_6">   
+   </div>
+   <div class="extra1_7">   
+   </div>
+   <div class="extra1_8">   
+   </div>
+ </label>
+</div>
+<div class="optional">
+ <label>
+   OPTIONAL COMPONENTS:
+   <div class="extra1_9">   
+   </div>
+   <div class="extra1_10">   
+   </div>
+   <div class="extra1_11">   
+   </div>
+   <div class="extra1_12">   
+   </div>
+   <div class="extra1_13">   
+   </div>
+   <div class="extra1_14">   
+   </div>
+   <div class="extra1_15">   
+   </div>
+   <div class="extra1_16">   
+   </div>
+   <div class="extra1_17">   
+   </div>
+   <div class="extra1_18">   
+   </div>
+   <div class="extra1_19">   
+   </div>
+   <div class="extra1_20">   
+   </div>
+   <div class="extra1_21">   
+   </div>
+   <div class="extra1_22">   
+   </div>
+   <div class="extra1_23">   
+   </div>
+   <div class="extra1_24">   
+   </div>
+ </label>
+</div>
+<div class="total">
+ <label>
+   TOTAL:
+ </label>
+        <p class="title_price2">$ 
+    </p>
+    <output id="rezultat2">0</output>
+    <p class="smalll2"> &nbsp; Incl GST</p>
+</div>
+ <div class="col-md-12 col-sm-12 sub-menu">
+    <div class="col-md-5 col-sm-5">
+     <p class="smalll">* Excludes fitting 
+     & labour</p>
+    </div>
+    <div class="col-md-7 col-sm-7 online2">
+      <button type="submit">Add to Online Quote</button>
+    </div>
+  </div>
+  </div>
+</div>

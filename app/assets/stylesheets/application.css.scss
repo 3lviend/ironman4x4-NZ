@@ -21,6 +21,7 @@
  *= require enquiries
  *= require fit_my_4x4
  *= require glasscase/glasscase
+ *= require pages
  */
 
 @import "bootstrap-config";
@@ -840,13 +841,13 @@ html.turbolinks-progress-bar::before {
 }
 
 #layout-fit-my-4x4 {
-  min-height: 88px;
+  /*min-height: 88px;
   background-color: $dark-grey;
   background-image: image-url('bg_fit_my_4x4.jpg');
   background-position: 50% 0;
   background-repeat: no-repeat;
   background-size: cover;
-  color: $white;
+  color: $white;*/
 
   .vehicle-selector {
     margin-top: 24px;
