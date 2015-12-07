@@ -1,113 +1,80 @@
-SSHKit.config.command_map[:rake] = "bundle exec rake"
-# config valid only for current version of Capistrano
+require 'mina/multistage'
+require 'mina/bundler'
+require 'mina/rails'
+require 'mina/git'
+# require 'mina/rbenv'  # for rbenv support. (http://rbenv.org)
+require 'mina/rvm'    # for rvm support. (http://rvm.io)
 
-set :application, 'ironman4x4'
-set :repo_url, 'git@github.com:sergeychernyakov/ironman4x4.git'
-set :branch, "master"
+# Basic settings:
+#   domain       - The hostname to SSH to.
+#   deploy_to    - Path to deploy into.
+#   repository   - Git repo to clone from. (needed by mina/git)
+#   branch       - Branch name to deploy. (needed by mina/git)
 
-set :stages, ["production", "staging"]
-set :default_stage, "staging"
-set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
-set :pty, false
-set :deploy_via, :remote_cache
-set :scm, :git
-set :keep_releases, 5
+# Manually create these paths in shared/ (eg: shared/config/database.yml) in your server.
+# They will be linked in the 'deploy:link_shared_paths' step.
+set :shared_paths, ['config/database.yml', 'log', 'public/system']
 
-set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-set :tests, []
+# Optional settings:
+#   set :port, '30000'     # SSH port number.
+set :ssh_options, '-A'
 
+set :rvm_path, '/usr/local/rvm/bin/rvm'
 
-# ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
+# This task is the environment that is loaded for most commands, such as
+# `mina deploy` or `mina rake`.
+task :environment do
+  # If you're using rbenv, use this to load the rbenv environment.
+  # Be sure to commit your .rbenv-version to your repository.
+  # invoke :'rbenv:load'
 
-# set :deploy_to, '/var/www/my_app'
-# set :scm, :git
-
-# set :format, :pretty
-# set :log_level, :debug
-# set :pty, true
-
-# set :linked_files, %w{config/database.yml}
-# set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-# set :default_env, { path: "/opt/ruby/bin:$PATH" }
-# set :keep_releases, 5
-
-namespace :setup do
-  
-  desc "Upload database.yml file."
-  task :upload_yml do
-    on roles(:app) do
-      execute "mkdir -p #{shared_path}/config"
-      upload! "config/database.yml", "#{shared_path}/config/database.yml"
-      upload! "config/secrets.yml", "#{shared_path}/config/secrets.yml"
-    end
-  end
-   
-  desc "Create database and database user"
-  task :create_mysql_database do
-    ask :db_root_password, ''
-    ask :db_name, "#{fetch(:application)}_production"
-    ask :db_user, fetch(:application)
-    ask :db_pass, ''
-
-    on roles(:app) do
-      execute "mysql --user=root --password=#{fetch(:db_root_password)} -e \"CREATE DATABASE IF NOT EXISTS #{fetch(:db_name)}\""
-      execute "mysql --user=root --password=#{fetch(:db_root_password)} -e \"GRANT ALL PRIVILEGES ON #{fetch(:db_name)}.* TO '#{fetch(:db_user)}'@'localhost' IDENTIFIED BY '#{fetch(:db_pass)}' WITH GRANT OPTION\""
-    end
-  end
-  
-  desc "Seed the database."
-  task :seed_db do
-    on roles(:app) do
-      within "#{current_path}" do
-        with rails_env: :staging do
-          execute :rake, "db:seed"
-        end
-      end
-    end
-  end
-   
+  # For those using RVM, use this to load an RVM version@gemset.
+  invoke :'rvm:use[ruby-1.9.3-p448@default]'
 end
 
-namespace :deploy do
+# Put any custom mkdir's in here for when `mina setup` is ran.
+# For Rails apps, we'll make some of the shared paths that are shared between
+# all releases.
+task :setup => :environment do
+  queue! %[mkdir -p "#{deploy_to}/shared/log"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
 
-  %w[start stop restart].each do |command|
-    desc "#{command} apache server."
-    task command do
-      on roles(:app) do
-        execute :sudo, "service apache2 #{command}"
-      end
-    end
-  end
+  queue! %[mkdir -p "#{deploy_to}/shared/config"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-  
-#  namespace :sidekiq do
-#    task :quiet do
-#      on roles(:app) do
-#        # Horrible hack to get PID without having to use terrible PID files
-#        puts capture("kill -USR1 $(sudo initctl status workers | grep /running | awk '{print $NF}') || :") 
-#      end
-#    end
-#    task :restart do
-#      on roles(:app) do
-#        execute :sudo, :initctl, :restart, :workers
-#      end
-#    end
-#  end
+  queue! %[mkdir -p "#{deploy_to}/shared/public"]
+  queue! %[mkdir -p "#{deploy_to}/shared/public/system"]
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/system"]
 
-#  after 'deploy:starting', 'sidekiq:quiet'
-#  after 'deploy:reverted', 'sidekiq:restart'
-#  after 'deploy:published', 'sidekiq:restart'
-
-  after :finishing, 'deploy:cleanup'
-  
+  queue! %[touch "#{deploy_to}/shared/config/database.yml"]
+  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
+
+desc "Deploys the current version to the server."
+task :deploy => :environment do
+  deploy do
+    # Put things that will set up an empty directory into a fully set-up
+    # instance of your project.
+    invoke :'git:clone'
+    invoke :'deploy:link_shared_paths'
+    invoke :'bundle:install'
+    invoke :'rails:db_migrate'
+    invoke :'rails:assets_precompile'
+
+    to :launch do
+      # all the files must be owned by the rails user, who runs the web process
+      queue %[chown -R rails "#{deploy_to}"]
+      queue %[chgrp -R www-data "#{deploy_to}"]
+
+      queue "service unicorn restart"
+    end
+  end
+end
+
+# For help in making your deploy script, see the Mina documentation:
+#
+#  - http://nadarei.co/mina
+#  - http://nadarei.co/mina/tasks
+#  - http://nadarei.co/mina/settings
+#  - http://nadarei.co/mina/helpers
+
