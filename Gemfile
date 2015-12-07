@@ -95,9 +95,9 @@ gem 'mina-multistage', require: false
 gem 'mailcatcher', group: :development
 
 # debug
-gem 'pry-byebug', group: :development
+#gem 'pry-byebug', group: :development
 
 # delayed jobs
-gem 'sidekiq'
+gem 'sidekiq', '~> 2.17.8'
 
 gem "binding_of_caller"
