@@ -1,6 +1,8 @@
 nb:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,6 +25,21 @@ nb:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Lag en ny Subdomain
+            reorder: Endre rekkefølgen på Subdomains
+            reorder_done: Ferdig å endre rekkefølgen Subdomains
+          records:
+            title: Subdomains
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Subdomains enda. Klikk på "Lag en ny Subdomain"
+              for å legge til din første subdomain.
+          subdomain:
+            view_live_html: Vis hvordan denne subdomain ser ut offentlig <br/><em>(åpner
+              i et nytt vindu)</em>
+            edit: Rediger denne subdomain
+            delete: Fjern denne subdomain permanent
         orders:
           actions:
             create_new: Lag en ny Order
@@ -175,6 +192,9 @@ nb:
               i et nytt vindu)</em>
             edit: Rediger denne product
             delete: Fjern denne product permanent
+      subdomains:
+        show:
+          other: Andre Subdomains
       orders:
         show:
           other: Andre Orders
@@ -207,6 +227,9 @@ nb:
           other: Andre Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

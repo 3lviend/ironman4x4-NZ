@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226211123) do
+ActiveRecord::Schema.define(version: 20150930204340) do
 
   create_table "refinery_image_page_translations", force: true do |t|
     t.integer  "refinery_image_page_id", null: false
@@ -258,6 +258,14 @@ ActiveRecord::Schema.define(version: 20150226211123) do
     t.string   "fax"
     t.boolean  "show_on_contact"
     t.string   "warehouse_name"
+  end
+
+  create_table "refinery_ironman_subdomains", force: true do |t|
+    t.string   "db_name"
+    t.string   "company_name"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "refinery_ironman_vehicle_hierarchies", id: false, force: true do |t|

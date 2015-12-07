@@ -7,6 +7,19 @@
     <%= link_to t('.create_new'), refinery.new_ironman_admin_product_path,
                  :class => "add_icon" %>
   </li>
+  <li>
+    <%= link_to 'Export file',  refinery.export_path(format: "csv"),
+                 :class => "go_icon" %>
+  </li>
+  <div id="import"><li>
+    <%= form_tag  refinery.import_ironman_products_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import CSV" %>
+    <% end %>
+  </li>
+  </div>
+
+
 <% if !searching? && ::Refinery::Ironman::Admin::ProductsController.sortable? && ::Refinery::Ironman::Product.many? %>
   <li>
     <%= link_to t('.reorder', :what => "Products"),

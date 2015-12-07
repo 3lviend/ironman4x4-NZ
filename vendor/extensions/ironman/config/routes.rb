@@ -5,7 +5,7 @@ Refinery::Core::Engine.routes.draw do
 
   get 'categories/:id/children' => 'ironman/categories#children', :as => 'category_children', :format => :json
   get 'vehicles/:id/children' => 'ironman/vehicles#children', :as => 'vehicle_children', :format => :json
-
+  get '/export', to: 'ironman/products#export'
   # index pages of categories
   get 'product-categories/:id' => 'ironman/categories#index', as: :product_categories
   get 'product-categories/:category_id/:id' => 'ironman/categories#index', as: :product_subcategories
@@ -55,7 +55,9 @@ Refinery::Core::Engine.routes.draw do
 
   # Frontend routes
   namespace :ironman, :path => '' do
-    resources :products, :only => [:index, :show]
+    resources :products, :only => [:index, :show] do
+      collection { post :import }
+    end
     resources :categories, :only => [:index, :show]
     resources :vehicles, :only => [:index, :show]
     resources :media_releases, :only => [:index, :show], :path => '/media-releases'
@@ -80,7 +82,9 @@ Refinery::Core::Engine.routes.draw do
   # Admin routes
   namespace :ironman, :path => '' do
     namespace :admin, :path => "#{Refinery::Core.backend_route}/ironman" do
-      resources :products, :except => :show
+      resources :products, :except => :show  do
+        collection { post :import }
+      end
 
       resources :categories, :except => :show do
         collection do
@@ -124,4 +128,19 @@ Refinery::Core::Engine.routes.draw do
       end
     end
   end
+
+  # Frontend routes
+  
+
+  # Admin routes
+  namespace :ironman, :path => '' do
+    namespace :admin, :path => "#{Refinery::Core.backend_route}/ironman" do
+      resources :subdomains, :except => :show do
+        collection do
+          post :update_positions
+        end
+      end
+    end
+  end
+
 end

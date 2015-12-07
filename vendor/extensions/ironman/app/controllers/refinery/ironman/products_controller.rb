@@ -6,6 +6,7 @@ module Refinery
       before_filter :find_page
 
       def index
+
         if cookies[:fit_my_4x4].present?
           @vehicle_filter = JSON.parse(cookies[:fit_my_4x4]).with_indifferent_access
         end
@@ -98,6 +99,24 @@ module Refinery
         # you can use meta fields from your model instead (e.g. browser_title)
         # by swapping @page for @product in the line below:
         present(@product)
+      end
+
+      #Method for export all products in csv file
+      def export
+        respond_to do |format|
+          format.html 
+          format.csv do
+            send_data(Product.to_csv, filename: "products-#{DateTime.now}.csv")
+          end
+        end
+      end
+
+      #Method for the import of products from a csv file
+      def import
+        ExportImport::Csv::Product.new.import(params[:file])
+        redirect_to refinery.ironman_admin_products_path, notice: "Products imported."
+      rescue => e
+        redirect_to refinery.ironman_admin_products_path, alert: "There was an error while importing products: #{e.message}."
       end
 
     protected

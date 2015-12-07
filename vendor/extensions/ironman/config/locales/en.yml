@@ -1,6 +1,8 @@
 en:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,12 +25,25 @@ en:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Add New Subdomain
+            reorder: Reorder Subdomains
+            reorder_done: Done Reordering Subdomains
+          records:
+            title: Subdomains
+            sorry_no_results: Sorry! There are no results found.
+            no_items_yet: There are no Subdomains yet. Click "Add New Subdomain" to
+              add your first subdomain.
+          subdomain:
+            view_live_html: View this subdomain live <br/><em>(opens in a new window)</em>
+            edit: Edit this subdomain
+            delete: Remove this subdomain forever
         orders:
           order:
-            read_order: Read the order
-            said: said
-            mark_as_spam: Mark as spam
-            mark_as_ham: Move to inbox
+            view_live_html: View this order live <br/><em>(opens in a new window)</em>
+            edit: Edit this order
+            delete: Remove this order forever
           actions:
             create_new: Add New Order
             reorder: Reorder Orders
@@ -38,10 +53,6 @@ en:
             sorry_no_results: Sorry! There are no results found.
             no_items_yet: There are no Orders yet. Click "Add New Order" to add your
               first order.
-          order:
-            view_live_html: View this order live <br/><em>(opens in a new window)</em>
-            edit: Edit this order
-            delete: Remove this order forever
           show:
             details: Details
             age: Age
@@ -51,8 +62,8 @@ en:
             spam_yes: 'yes'
             order: Order
             receive_news: Receive News?
-            yes: Yes
-            no: No
+            true: true
+            false: false
             to: To
             from: From
             products: Products
@@ -100,7 +111,7 @@ en:
             enquiry_settings_value_name: Send notifications to
             hint: When a new enquiry is submitted, Refinery will send an email notification
               to you.
-            example: ! 'Enter your email address(es) like: jack@work.com, jill@office.com'
+            example: 'Enter your email address(es) like: jack@work.com, jill@office.com'
           confirmation_email_form:
             to: To
             from: From
@@ -111,8 +122,8 @@ en:
             below_edit_email_sent: Below you can edit the email that is sent out.
             the_customer_making_enquiry: The customer making the enquiry
             message: Message
-            note: ! 'Note: place the text %name% where you''d like the customer''s
-              name to appear in the email'
+            note: 'Note: place the text %name% where you''d like the customer''s name
+              to appear in the email'
         enquiries:
           delete: Remove this enquiry forever
           enquiry:
@@ -138,8 +149,8 @@ en:
             enquiry: Enquiry
             enquiry_type: Enquiry Type
             receive_news: Receive News?
-            yes: Yes
-            no: No
+            true: true
+            false: false
             to: To
             from: From
             address: Address
@@ -231,8 +242,8 @@ en:
             delete: Remove this category forever
         products:
           form:
-            yes: Yes
-            no: No
+            true: true
+            false: false
           actions:
             categories: Product Categories
             create_new: Add New Product
@@ -251,6 +262,9 @@ en:
             view_live_html: View this product live <br/><em>(opens in a new window)</em>
             edit: Edit this product
             delete: Remove this product forever
+      subdomains:
+        show:
+          other: Other Subdomains
       orders:
         show:
           other: Other Orders
@@ -264,15 +278,20 @@ en:
             return: Return to products
           panel:
             heading: THANK YOU! YOUR QUOTE HAS BEEN SUCCESSFULLY SUBMITTED.
-            text: A copy of the submission information below has been automatically emailed to your email address. Your selected stockist will contact you shortly to assist you with more information on the products within your quote.
+            text: A copy of the submission information below has been automatically
+              emailed to your email address. Your selected stockist will contact you
+              shortly to assist you with more information on the products within your
+              quote.
         new:
           page_header: Quote - Review
         form:
           international:
-            international_user: '* International User Detected *'
-            select_regional_office: 'Select your regional head office*'
-            description: '- Please select the International Ironman 4x4 Head Office to submit your Online Quote to:'
-            australian_search: 'Users within Australia please enter your postcode below and click to load your nearest stockists.'
+            international_user: "* International User Detected *"
+            select_regional_office: Select your regional head office*
+            description: "- Please select the International Ironman 4x4 Head Office
+              to submit your Online Quote to:"
+            australian_search: Users within Australia please enter your postcode below
+              and click to load your nearest stockists.
           tabs:
             review: Review quote
             customer: Customer details
@@ -284,42 +303,50 @@ en:
             wishlist_details: Quote - Customer Details
             wishlist_stockist: Quote - Select Stockist
             wishlist_submission: Quote - Submission Complete
-          required_fields_missing: Please fill out all required fields marked with an asterisk (*)
+          required_fields_missing: Please fill out all required fields marked with
+            an asterisk (*)
           email_wishlist: Email quote to selected stockist
           please_select_a_stockist: You must select a stockist first
-          no_stockist_email: This stockist doesn't have an email address associated with their listing. Please contact directly via phone or alternatively select another stockist in your area to continue.
+          no_stockist_email: This stockist doesn't have an email address associated
+            with their listing. Please contact directly via phone or alternatively
+            select another stockist in your area to continue.
           buttons:
             select: Select
             selected: Selected
             print: Print Quote
             submit: Submit Quote
         contact_details:
-          description: Please enter your details so our stockist can contact you regarding your quote.
+          description: Please enter your details so our stockist can contact you regarding
+            your quote.
           vehicle_make:
             label: Vehicle Details
           buttons:
-            next: 'Next >>'
+            next: Next >>
           receive_news: Receive news & promotions from Ironman 4x4
           terms_conditions:
             label: Terms & Conditions
             warning: You must agree to the terms and conditions
           accept: Accept
         cart_contents:
-          price_note: 'Note: Please note that all prices do not include fitting & freight charges'
-          notes: "Please review the contents of your quote below. If you would like to add more products to your quote simply return to the Products page and add more items. If you have added all products you require click on the 'Next' button to continue to the next step of your submission."
+          price_note: 'Note: Please note that all prices do not include fitting &
+            freight charges'
+          notes: Please review the contents of your quote below. If you would like
+            to add more products to your quote simply return to the Products page
+            and add more items. If you have added all products you require click on
+            the 'Next' button to continue to the next step of your submission.
           items:
             headers:
               product: Product
-              rrp: 'RRP$'
-              qty: 'Qty'
+              rrp: RRP$
+              qty: Qty
               subtotal: Subtotal
               remove: Remove
             total:
               title: Order Total
-              comment: (RRP inc GST)
+              comment: "(RRP inc GST)"
           buttons:
             update_wishlist: Update Quote
-            next: 'Next >>'
+            next: Next >>
       catalogues:
         show:
           other: Other Catalogues
@@ -327,13 +354,13 @@ en:
           page_header: Catalogues
           not-found: Sorry, no catalogues could be found.
           buttons:
-            download_pdf: 'Download PDF'
-            view_products_online: 'View Products Online'
+            download_pdf: Download PDF
+            view_products_online: View Products Online
       warehouses:
         show:
           other: Other Warehouses
       config:
-        from_name: ! '%{name} [%{site_name}]'
+        from_name: "%{name} [%{site_name}]"
       fit_my_car:
         index:
           save_and_view: Save & View Products
@@ -345,7 +372,8 @@ en:
         vehicle_filter_enabled:
           heading: Product Filtering Enabled
           description1: All categories listed below are compatible with your <strong>%{vehicle}</strong>
-          description2: You can <button class="btn btn-link disable">turn product filtering off</button> at any time to browse our full range of products
+          description2: You can <button class="btn btn-link disable">turn product
+            filtering off</button> at any time to browse our full range of products
           unknown_vehicle: unknown vehicle
         select_boxes:
           vehicle_make:
@@ -367,9 +395,9 @@ en:
             label: Terms & Conditions
             warning: You must agree to the terms and conditions
           australian_phone: 1300 731 137
-          international_phone: +61 (0) 3 9532 1111
-          australian_call: 'Australia Wide Local Call %{phone}'
-          international_call: 'International Call %{phone}'
+          international_phone: "+61 (0) 3 9532 1111"
+          australian_call: Australia Wide Local Call %{phone}
+          international_call: International Call %{phone}
           vehicle_make:
             label: Vehicle Details
         show:
@@ -383,12 +411,12 @@ en:
           visit_us_on_facebook: Visit us on Facebook
         filters:
           prompts:
-            store_type: 'Filter by store type'
+            store_type: Filter by store type
             services: Filter by services
         search_form:
-          placeholder: 'Postcode/Suburb'
+          placeholder: Postcode/Suburb
           nav:
-            stockists: 'Find Store'
+            stockists: Find Store
         marker_info_window:
           directions: Directions
       media_releases:
@@ -396,50 +424,67 @@ en:
           other: Other Media Releases
         index:
           page_header: Media & Press Releases
-          default_media_release_description: Document descriptor text or overview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum re cus, officius expero to quatum faceaquamus dolla aute prestrumqui ommodiam elisinctur? Accus asped que sin et, ommo tempore ptibus dolorerchil inullaut as in prati veliqui anistisit ut qeditat ionsectum, odi abo. Et liam voluptatist, vellaborio et es acimet quaero estin porum volest pernam rem resed maiosam, qui doluptibus ipicia dolor am hilit quo berio veriatem latiae remporrumque vidissit accae  uunt, quibustis sint audisseque peditat ionsectum, odi abo. Et liam voluptatist, Blog text preview...Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum re cus, officius expero to quatum faceaquamus dolla aute prestrumqui ommodiam elisinctur? Accus asped que sin et, ommo tempore ptibus dolorerchil inullaut as in prati veliqui anistisit ut qeditat ionsectum, odi abo. Et liam voluptatist, vellaborio et es acimet quaero estin porum volest pernam rem resed maiosam, qui doluptibus ipicia dolor am hilit quo berio veriatem latiae remporrumque vidissit accae  uunt, quibustis sint audisseque peditat ionsectum, odi abo. Et liam voluptatist
+          default_media_release_description: Document descriptor text or overview...Ebit,
+            inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio.
+            Itationet estrum re cus, officius expero to quatum faceaquamus dolla aute
+            prestrumqui ommodiam elisinctur? Accus asped que sin et, ommo tempore
+            ptibus dolorerchil inullaut as in prati veliqui anistisit ut qeditat ionsectum,
+            odi abo. Et liam voluptatist, vellaborio et es acimet quaero estin porum
+            volest pernam rem resed maiosam, qui doluptibus ipicia dolor am hilit
+            quo berio veriatem latiae remporrumque vidissit accae  uunt, quibustis
+            sint audisseque peditat ionsectum, odi abo. Et liam voluptatist, Blog
+            text preview...Ebit, inciur? Ri di corum labor re veritas estinul lessint
+            miliquam, atur moluptio. Itationet estrum re cus, officius expero to quatum
+            faceaquamus dolla aute prestrumqui ommodiam elisinctur? Accus asped que
+            sin et, ommo tempore ptibus dolorerchil inullaut as in prati veliqui anistisit
+            ut qeditat ionsectum, odi abo. Et liam voluptatist, vellaborio et es acimet
+            quaero estin porum volest pernam rem resed maiosam, qui doluptibus ipicia
+            dolor am hilit quo berio veriatem latiae remporrumque vidissit accae  uunt,
+            quibustis sint audisseque peditat ionsectum, odi abo. Et liam voluptatist
           not-found: Sorry, no media releases could be found.
         filters:
           prompts:
-            category: 'Filter by category'
-            published_month: 'Filter by month'
+            category: Filter by category
+            published_month: Filter by month
           search_form:
-            label: 'Keyword Search'
-            placeholder: 'Enter Search Keyword'
-            button: 'Submit'
+            label: Keyword Search
+            placeholder: Enter Search Keyword
+            button: Submit
       events:
         show:
-          posted_at: 'Posted on %{published_at}'
-          starts: 'Starts'
-          ends: 'Ends'
-          location: 'Location'
+          posted_at: Posted on %{published_at}
+          starts: Starts
+          ends: Ends
+          location: Location
         add_this_event:
-          add_to_calendar: '+ Add to Calendar'
+          add_to_calendar: "+ Add to Calendar"
       posts:
         show:
-          posted_at: 'Posted on %{published_at}'
+          posted_at: Posted on %{published_at}
         related_posts:
           other: 'Related events / news / blog posts:'
           buttons:
-            view_blog_post: 'View Blog Post'
-            view_event: 'View Event Details'
-            view_news_item: 'View News Item'
+            view_blog_post: View Blog Post
+            view_event: View Event Details
+            view_news_item: View News Item
         index:
           page_header: Ironman 4x4 Blog
           read_more: Read More...
-          default_post_teaser: Ebit, inciur? Ri di corum labor re veritas estinul lessint miliquam, atur moluptio. Itationet estrum
+          default_post_teaser: Ebit, inciur? Ri di corum labor re veritas estinul
+            lessint miliquam, atur moluptio. Itationet estrum
           not-found: Sorry, no posts could be found.
         filters:
           categories:
-            blog_posts: 'Blog posts'
-            news_item: 'News'
-            event: 'Events'
+            blog_posts: Blog posts
+            news_item: News
+            event: Events
           prompts:
-            category: 'Filter by category'
-            published_month: 'Filter by month'
+            category: Filter by category
+            published_month: Filter by month
           search_form:
-            label: 'Keyword Search'
-            placeholder: 'Enter Search Keyword'
-            button: 'Submit'
+            label: Keyword Search
+            placeholder: Enter Search Keyword
+            button: Submit
       vehicles:
         show:
           other: Other Vehicles
@@ -448,9 +493,10 @@ en:
           page_header: Fitting Instructions
           page_header_with_category: 'Fitting Instructions: %{category}'
           not-found: Sorry, no fitting instructions could be found.
-          instructions: Please select the applicable Fitting Instruction category for your Ironman 4x4 product.
+          instructions: Please select the applicable Fitting Instruction category
+            for your Ironman 4x4 product.
           buttons:
-            view_instructions: 'View Instructions'
+            view_instructions: View Instructions
         filters:
           category:
             label: Product Category
@@ -464,15 +510,27 @@ en:
       categories:
         show:
           other: Other Categories
-          page_header: ! '%{category} Info'
+          page_header: "%{category} Info"
           buttons:
             back: Back to %{parent}
             back_to_products: Back to Products
             view_product_listing: View Product Listing
-          default_category_description: '<p>Epta dio. Dolessinus unt mosam quae volut et aceprae pererro magnam et repelit aquiand endissimus.</p>
-<p>Us et poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam etureprat laborem quias ratatum quidiae pellabor aut imus ut es eseque nobis rehendant abo.</p>
-<p>Doloreritam et odignitatur, simet desequia alique commos del inctin necabor ad et re pariorupis ut labo- rume provit, quos eturistrum int ullest et peror sum fuga. Nam que dus andi occus, sit, secum conestrum everibusae natum nonet lab ium vende aciaerum fugiae velluptat lam nat verorro odit voluptat et autet mili- tium aut etur, te dicto dem eicia pos et am renduntin consecti blat a consed quasi omniendipsam nati dis- trum ad que volupta sectem ut ommolup tatium re eum alit, quia consenimusam est, quibusanis aut aut quiat elendae. It que nessinv ellorest et fuga. At omnis renia ium quame et et odit ea vent.</p>
-<p>Ur sam, quasitatur simet anim aut pari aut ut earum quuntio ssitiae cus se peris doluptur maio.</p>'
+          default_category_description: "<p>Epta dio. Dolessinus unt mosam quae volut
+            et aceprae pererro magnam et repelit aquiand endissimus.</p> <p>Us et
+            poreperibus eni reptatur, qui officae que millam quam hil inullam, ilibus
+            il ipsa incipsunte de perrum quam ut intur rehentios ra dipsam etureprat
+            laborem quias ratatum quidiae pellabor aut imus ut es eseque nobis rehendant
+            abo.</p> <p>Doloreritam et odignitatur, simet desequia alique commos del
+            inctin necabor ad et re pariorupis ut labo- rume provit, quos eturistrum
+            int ullest et peror sum fuga. Nam que dus andi occus, sit, secum conestrum
+            everibusae natum nonet lab ium vende aciaerum fugiae velluptat lam nat
+            verorro odit voluptat et autet mili- tium aut etur, te dicto dem eicia
+            pos et am renduntin consecti blat a consed quasi omniendipsam nati dis-
+            trum ad que volupta sectem ut ommolup tatium re eum alit, quia consenimusam
+            est, quibusanis aut aut quiat elendae. It que nessinv ellorest et fuga.
+            At omnis renia ium quame et et odit ea vent.</p> <p>Ur sam, quasitatur
+            simet anim aut pari aut ut earum quuntio ssitiae cus se peris doluptur
+            maio.</p>"
         hero:
           default_category_description: ''
           buttons:
@@ -484,7 +542,7 @@ en:
             view_more_info: View More Info
           product_categories: Product Categories
           featured_product_cataegories: Featured Product Categories
-          category_product_categories: ! '%{category} Product Categories'
+          category_product_categories: "%{category} Product Categories"
         filters:
           category:
             label: Product Category
@@ -513,7 +571,7 @@ en:
             add_to_wishlist: Add to Quote
             view_product: View Product
           default_product_description: ''
-          inc_gst: ! ' (RRP inc GST)'
+          inc_gst: " (RRP inc GST)"
         index:
           select_vehicle: Select Vehicle
           page_header: Products
@@ -522,16 +580,17 @@ en:
             added_to_wishlist: Added to Quote
           no_products_found: No products were found
           no_products_found_with_filter_applied: No products were found for your vehicle
-          category_product_products: ! '%{category} Products'
+          category_product_products: "%{category} Products"
       order_mailer:
         notification:
           greeting: Hi there
-          you_recieved_new_order: You just received a new quote submission from Ironman 4x4
+          you_recieved_new_order: You just received a new quote submission from Ironman
+            4x4
           closing_line: Kind Regards
           ps: ''
         order:
-          order_starts: ! '--- order starts ---'
-          order_ends: ! '--- order ends ---'
+          order_starts: "--- order starts ---"
+          order_ends: "--- order ends ---"
           from: Name
           email: Email
           phone: Phone
@@ -551,8 +610,8 @@ en:
           ps: P.S. All your enquiries are stored in the "Enquiries" section of Refinery
             should you ever want to view it later there.
         enquiry:
-          enquiry_starts: ! '--- enquiry starts ---'
-          enquiry_ends: ! '--- enquiry ends ---'
+          enquiry_starts: "--- enquiry starts ---"
+          enquiry_ends: "--- enquiry ends ---"
           from: Name
           email: Email
           phone: Phone
@@ -562,6 +621,9 @@ en:
           address: Address
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

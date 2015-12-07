@@ -41,6 +41,7 @@
 #= require jquery.ui.accordion
 #= require glasscase/jquery.glasscase
 #= require jquery-navidropdown/jquery.navidropdown
+#= require pages
 
 $.fn.serializeObject = ->
   o = {}

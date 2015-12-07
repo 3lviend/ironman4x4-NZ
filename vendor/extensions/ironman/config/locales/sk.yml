@@ -1,6 +1,8 @@
 sk:
   refinery:
     plugins:
+      subdomains:
+        title: Subdomains
       ironman_orders:
         title: Orders
       ironman_catalogues:
@@ -23,6 +25,20 @@ sk:
         title: Products
     ironman:
       admin:
+        subdomains:
+          actions:
+            create_new: Pridať Subdomain
+            reorder: Preusporiadať Subdomains
+            reorder_done: Koniec radenia Subdomains
+          records:
+            title: Subdomains
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
+            no_items_yet: Nie sú vytvorené žiadne Subdomains. Kliknite na "Pridať
+              Subdomain" pre pridanie prvého subdomain.
+          subdomain:
+            view_live_html: Zobraziť náhľad subdomain<br/><em>(otvorí sa v novom okne)</em>
+            edit: Upraviť subdomain
+            delete: Zmazať subdomain
         orders:
           actions:
             create_new: Pridať Order
@@ -30,7 +46,7 @@ sk:
             reorder_done: Koniec radenia Orders
           records:
             title: Orders
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Orders. Kliknite na "Pridať Order"
               pre pridanie prvého order.
           order:
@@ -44,7 +60,7 @@ sk:
             reorder_done: Koniec radenia Catalogues
           records:
             title: Catalogues
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Catalogues. Kliknite na "Pridať
               Catalogue" pre pridanie prvého catalogue.
           catalogue:
@@ -58,7 +74,7 @@ sk:
             reorder_done: Koniec radenia Warehouses
           records:
             title: Warehouses
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Warehouses. Kliknite na "Pridať
               Warehouse" pre pridanie prvého warehouse.
           warehouse:
@@ -72,7 +88,7 @@ sk:
             reorder_done: Koniec radenia Enquiries
           records:
             title: Enquiries
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Enquiries. Kliknite na "Pridať Enquiry"
               pre pridanie prvého enquiry.
           enquiry:
@@ -86,7 +102,7 @@ sk:
             reorder_done: Koniec radenia Stockists
           records:
             title: Stockists
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Stockists. Kliknite na "Pridať Stockist"
               pre pridanie prvého stockist.
           stockist:
@@ -100,7 +116,7 @@ sk:
             reorder_done: Koniec radenia Media Releases
           records:
             title: Media Releases
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Media Releases. Kliknite na "Pridať
               Media Release" pre pridanie prvého media release.
           media_release:
@@ -117,7 +133,7 @@ sk:
             reorder_done: Koniec radenia Posts
           records:
             title: Posts
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Posts. Kliknite na "Pridať Post"
               pre pridanie prvého post.
           post:
@@ -131,7 +147,7 @@ sk:
             reorder_done: Koniec radenia Vehicles
           records:
             title: Vehicles
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Vehicles. Kliknite na "Pridať Vehicle"
               pre pridanie prvého vehicle.
           vehicle:
@@ -145,7 +161,7 @@ sk:
             reorder_done: Koniec radenia Categories
           records:
             title: Categories
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Categories. Kliknite na "Pridať
               Category" pre pridanie prvého category.
           category:
@@ -159,13 +175,16 @@ sk:
             reorder_done: Koniec radenia Products
           records:
             title: Products
-            sorry_no_results: Ľutujeme, ale neboli nájdené žiadne výsledky.
+            sorry_no_results: "Ľutujeme, ale neboli nájdené žiadne výsledky."
             no_items_yet: Nie sú vytvorené žiadne Products. Kliknite na "Pridať Product"
               pre pridanie prvého product.
           product:
             view_live_html: Zobraziť náhľad product<br/><em>(otvorí sa v novom okne)</em>
             edit: Upraviť product
             delete: Zmazať product
+      subdomains:
+        show:
+          other: Daľšie Subdomains
       orders:
         show:
           other: Daľšie Orders
@@ -198,6 +217,9 @@ sk:
           other: Daľšie Products
   activerecord:
     attributes:
+      refinery/ironman/subdomain:
+        db_name: Db Name
+        company_name: Company Name
       refinery/ironman/order:
         order_no: Order No
         stockist_id: Stockist

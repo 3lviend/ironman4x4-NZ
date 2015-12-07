@@ -29,6 +29,11 @@ module Refinery
 
       accepts_nested_attributes_for :specifications, :allow_destroy => true
 
+      before_destroy do
+        categories.clear
+        vehicles.clear
+      end
+
       after_initialize do
         if self.new_record?
           self.draft = true if self.draft.nil?
@@ -97,6 +102,16 @@ module Refinery
           categories.first.thumbnail_display_mode
         end
       end
+
+      def self.to_csv(options = {})
+        CSV.generate(options) do |csv|
+          csv << ExportImport::Csv::Product.title_line
+          Product.find_each(batch_size: 50) do |product|
+            csv << ExportImport::Csv::Product.new.export_record(product)
+          end
+        end
+      end
+
     end
   end
 end

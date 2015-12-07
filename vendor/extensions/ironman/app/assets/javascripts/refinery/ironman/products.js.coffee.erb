@@ -1,4 +1,7 @@
 $(document).on 'page:load ready', ->
+  $('form').submit ->
+    $(this).find('input[type="submit"]').attr('disabled', true)
+
   if document.location.href.match '/admin/ironman/categories'
     type = 'category'
   else
