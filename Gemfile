@@ -100,5 +100,4 @@ gem 'pry-byebug', group: :development
 # delayed jobs
 gem 'sidekiq'
 
-gem "better_errors"
 gem "binding_of_caller"
