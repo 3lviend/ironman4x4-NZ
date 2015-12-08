@@ -17,8 +17,10 @@ module Refinery
         #
         # create database and fill it with data after creating new subdomain
         #
-        def create_db_for_subdomain
-          Refinery::Ironman::CreateSubdomainDatabaseWorker.perform_async(@subdomain.db_name) if @subdomain.persisted?
+	def create_db_for_subdomain
+          if @subdomain.persisted?
+            ::CreateSubdomainDatabaseWorker.perform_async(@subdomain.db_name)
+          end
         end
 
         def subdomain_params
