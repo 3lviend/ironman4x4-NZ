@@ -21,11 +21,10 @@ class CreateSubdomainDatabaseWorker
   def create_database(db_name)
     config = Rails.configuration.database_configuration[Rails.env]
     password = Shellwords.escape(config['password'])
-    new_db = "mysqldump -u#{config['username']} -p#{password} -h#{config['host']} #{config['database']} --no-data > tmp/backup.sql;
-              mysqldump -u#{config['username']} -p#{password} -h#{config['host']} #{config['database']} refinery_ironman_subdomains >> tmp/backup.sql;
+    new_db = "mysqldump -u#{config['username']} -p#{password} -h#{config['host']} #{config['database']} > /home/rails/current/tmp/backup.sql;
               mysqladmin -u#{config['username']} -p#{password} create #{db_name};
-              mysql -u#{config['username']} -p#{password} -h#{config['host']} #{db_name} < tmp/backup.sql"
+              mysql -u#{config['username']} -p#{password} -h#{config['host']} #{db_name} < /home/rails/current/tmp/backup.sql"
     system new_db
   end
-  
+
 end
