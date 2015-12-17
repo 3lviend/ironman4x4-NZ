@@ -2,6 +2,13 @@ module ExportImport
   module Csv
     class Product
 
+      # delimiter for record attributes
+      ATTRIBUTES_DELIMITER = '='
+
+      # delimiter for multiple entities
+      # should be something that user won't use in names
+      DELIMITER = '|'
+
       #
       # Export products to CVS
       #
@@ -129,7 +136,7 @@ module ExportImport
       def get_image_data_from_string(str)
         res = {}
         names  = %w(image_height image_name image_size image_uid image_width)
-        values = str.split('=')
+        values = str.split(ATTRIBUTES_DELIMITER)
         values.each do |element|
           res[names[values.find_index(element)]] = element
         end
@@ -145,7 +152,7 @@ module ExportImport
       def get_specification_data_from_string(str)
         res = {}
         names  = %w(title value show_on_product_detail show_on_product_popover)
-        values = str.split('=')
+        values = str.split(ATTRIBUTES_DELIMITER)
         values.each do |element|
           res[names[values.find_index(element)]] = element
         end
@@ -162,7 +169,7 @@ module ExportImport
         record.categories.map do |category|
           category.try(:name)
         end
-        .join(', ')
+        .join(DELIMITER)
       end
 
       #
@@ -175,7 +182,7 @@ module ExportImport
         record.categories.map do |category|
           category.try(:parent).try(:name)
         end
-        .join(', ')
+        .join(DELIMITER)
       end
 
       #
@@ -199,7 +206,7 @@ module ExportImport
         # TODO refactor
         %w(height name size uid width).each do |attribute|
           field = "image_#{attribute}"
-          res << "#{image.try(field)}="
+          res << "#{image.try(field)}#{ATTRIBUTES_DELIMITER}"
         end
         res.chop
       end
@@ -211,10 +218,10 @@ module ExportImport
       #
       # @return [String]
       def get_formatted_images_field(record)
-        record.images.map do |image| 
+        record.images.map do |image|
           self.get_formatted_image(image)
         end
-        .join(', ')
+        .join(DELIMITER)
       end
 
       #
@@ -227,7 +234,7 @@ module ExportImport
         res = ''
         # TODO refactor
         %w(title value show_on_product_detail show_on_product_popover).each do |attribute|
-          res << "#{specification.try(attribute)}="
+          res << "#{specification.try(attribute)}#{ATTRIBUTES_DELIMITER}"
         end
         res.chop
       end
@@ -239,10 +246,10 @@ module ExportImport
       #
       # @return [String]
       def get_formatted_specifications_field(record)
-        record.specifications.map do |spec| 
+        record.specifications.map do |spec|
           self.get_formatted_specification(spec)
         end
-        .join(', ')
+        .join(DELIMITER)
       end
 
       #
@@ -267,7 +274,7 @@ module ExportImport
         record.vehicles.map do |vehicle|
           vehicle.try(:name_full)
         end
-        .join(', ')
+        .join(DELIMITER)
       end
 
       #
@@ -279,7 +286,7 @@ module ExportImport
       def load_categories(record, data)
         if data[:complex][:categories].present?
           record.categories.destroy_all
-          data[:complex][:categories].split(', ').each do |c|
+          data[:complex][:categories].split(DELIMITER).each do |c|
             record.categories << Refinery::Ironman::Category.find_or_create_by(name: c)
           end
         end
@@ -294,7 +301,7 @@ module ExportImport
       def load_images(record, data)
         # TODO simplify
         if data[:complex][:images].present?
-          data[:complex][:images].split(', ').each do |img|
+          data[:complex][:images].split(DELIMITER).each do |img|
             img_record = Refinery::Image.find_or_create_by(
              self.get_image_data_from_string(img)
              )
@@ -318,7 +325,7 @@ module ExportImport
       def load_specifications(record, data)
         if data[:complex][:specifications].present?
           record.specifications.destroy_all
-          data[:complex][:specifications].split(', ').each do |spec|
+          data[:complex][:specifications].split(DELIMITER).each do |spec|
             record.specifications << Refinery::Ironman::ProductSpecification.find_or_create_by(
               self.get_specification_data_from_string(spec)
               )
@@ -335,7 +342,7 @@ module ExportImport
       def load_vehicles(record, data)
         if data[:complex][:vehicles].present?
           record.vehicles.destroy_all
-          data[:complex][:vehicles].split(', ').each do |v|
+          data[:complex][:vehicles].split(DELIMITER).each do |v|
             record.vehicles << Refinery::Ironman::Vehicle.find_or_create_by(name_full: v)
           end
         end
