@@ -300,6 +300,7 @@ module ExportImport
       #
       def load_images(record, data)
         # TODO simplify
+        record.images.destroy_all
         if data[:complex][:images].present?
           data[:complex][:images].split(DELIMITER).each do |img|
             img_record = Refinery::Image.find_or_create_by(
@@ -360,6 +361,7 @@ module ExportImport
         if delete_record.present?
           Refinery::Ironman::Product.delete(record_id)
         else
+          record_attributes = self.prepare_reference_attributes(record_attributes)
           record = Refinery::Ironman::Product.find_or_create_by(id: record_id)
           record.update_attributes(record_attributes[:simple])
           self.after_save_record(record, record_attributes)
@@ -389,6 +391,52 @@ module ExportImport
         res
       end
 
+      #
+      # Prepares record attributes
+      #
+      # @param data [Hash]
+      #
+      # @return record attributes [Hash]
+      def prepare_reference_attributes(data)
+        data.tap do |d|
+          self.set_thumbnail_image(d)
+          self.set_fitting_instructions_resource(d)
+        end
+      end
+
+      #
+      # Set fitting_instructions_resource for product
+      #
+      # @param data [Hash]
+      #
+      # @return record attributes [Hash]
+      def set_fitting_instructions_resource(data)
+        data.tap do |d|
+          file_uid = d[:complex].delete(:fitting_instructions_resource)
+          if file_uid.present?
+            d[:simple][:fitting_instructions_resource] = Refinery::Resource.find_or_create_by(
+              file_uid: file_uid
+            )
+          end
+        end
+      end
+
+      #
+      # Set thumbnail_image for product
+      #
+      # @param data [Hash]
+      #
+      # @return record attributes [Hash]
+      def set_thumbnail_image(data)
+        data.tap do |d|
+          img_string = d[:complex].delete(:thumbnail_image)
+          if img_string.present?
+            d[:simple][:thumbnail_image] = Refinery::Image.find_or_create_by(
+              self.get_image_data_from_string(img_string)
+            )
+          end
+        end
+      end
     end
   end
 end
