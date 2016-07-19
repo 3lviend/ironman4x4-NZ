@@ -15,7 +15,7 @@
   <img src="<%= product_image.url %>" width="<%= product_image.width %>" height="<%= product_image.height %>" />
   <% end %>
   <div class="product-no"><%= product.product_no %></div>
-  <div class="price"><%= number_to_currency product.price %> <small>(RRP inc GST)</small></div>
+   <!-- <div class="price"><%#= number_to_currency product.price %> <small>(RRP inc GST)</small></div> -->
   <table class="table table-condensed table-noborder">
     <% product.specs(:popover).each do |title, value| %>
     <tr><th><%= title %>:</th><td class="green"><%= value %></td></tr>

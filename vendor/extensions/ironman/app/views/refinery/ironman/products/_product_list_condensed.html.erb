@@ -17,8 +17,8 @@
           <% products.each do |product| %>
           <tr class="product" data-product-id="<%= product.id %>">
             <td class="col-sm-2"><%= product.product_no %></td>
-            <td class="col-sm-8"><%= product.name %></td>
-            <td class="col-sm-2 text-right"><span class="price"><%= number_to_currency product.price %></span></td>
+            <td class="col-sm-10"><%= product.name %></td>
+            <!-- <td class="col-sm-2 text-right"><span class="price"><%#= number_to_currency product.price %></span></td> -->
           </tr>
           <% end %>
         </tbody>

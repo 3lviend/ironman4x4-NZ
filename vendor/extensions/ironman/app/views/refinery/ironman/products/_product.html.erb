@@ -45,9 +45,9 @@ end
     </div>
     <div class="content">
       <div class="product_no"><%= product.product_no %></div>
-      <% if product.price.present? %>
-      <div class="price"><%= number_to_currency product.price %> <span class="inc_gst"><%= t('.inc_gst') %></span></div>
-      <% end %>
+     <!--  <%# if product.price.present? %>
+      <div class="price"><%#= number_to_currency product.price %> <span class="inc_gst"><%#= t('.inc_gst') %></span></div>
+      <%#end %> -->
       <div class="description">
         <% if product.short_description.present? %>
         <%= product.short_description %>

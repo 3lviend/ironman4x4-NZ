@@ -1,10 +1,10 @@
       <p class="notes"><%= t('.notes') %></p>
 
       <div class="row header border">
-        <div class="col col-xs-4 col-sm-8 product image"><%= t('.items.headers.product') %></div>
-        <div class="col col-xs-2 col-sm-1 rrp"><%= t('.items.headers.rrp') %></div>
+        <div class="col col-xs-4 col-sm-10 product image"><%= t('.items.headers.product') %></div>
+        <!-- <div class="col col-xs-2 col-sm-1 rrp"><%#= t('.items.headers.rrp') %></div> -->
         <div class="col col-xs-2 col-sm-1 qty"><%= t('.items.headers.qty') %></div>
-        <div class="col col-xs-2 col-sm-1 subtotal"><%= t('.items.headers.subtotal') %></div>
+        <!-- <div class="col col-xs-2 col-sm-1 subtotal"><%#= t('.items.headers.subtotal') %></div> -->
         <div class="col col-xs-2 col-sm-1 remove"><%= t('.items.headers.remove') %></div>
       </div>
 
@@ -14,16 +14,16 @@
         <div class="col-xs-hidden col-sm-3 col image"><!--
           --><div class="photo <%= line.product.thumbnail_display_mode_cached if line.product.present? %>" style="background-image:url('<%= if line.product.present? and line.product.thumbnail_image.present? then line.product.thumbnail_image.thumbnail(geometry: "200x120").url else image_url 'product_list_photo_default.jpg' end %>');"></div><!--
         --></div>
-        <div class="col-xs-4 col-sm-5 col product">
+        <div class="col-xs-4 col-sm-7 col product">
           <div class="name"><%= link_to line.product.name, refinery.ironman_product_path(line.product) %></div>
           <div class="sku"><%= line.product.product_no %></div>
         </div>
-        <div class="col-xs-2 col-sm-1 col rrp"><%= number_to_currency line.product.price || 0 %></div>
+        <!-- <div class="col-xs-2 col-sm-1 col rrp"><%#= number_to_currency line.product.price || 0 %></div> -->
         <div class="col-xs-2 col-sm-1 col qty">
           <%= text_field_tag "order[lines_attributes][#{i}][quantity]", line.quantity, class: 'form-control quantity', :'data-product-id' => line.product.id %>
           <%= hidden_field_tag "order[lines_attributes][#{i}][product_id]", line.product.id %>
         </div>
-        <div class="col-xs-2 col-sm-1 col subtotal"><%= number_to_currency line.net_amount %></div>
+         <!-- <div class="col-xs-2 col-sm-1 col subtotal"><%#= number_to_currency line.net_amount %></div> -->
         <div class="col-xs-2 col-sm-1 col remove"><button type="button" class="btn btn-link glyphicon glyphicon-remove remove-item" data-product-id="<%= line.product.id %>"></button></div>
       </div>
         <% end %>
@@ -36,15 +36,15 @@
         </div>
       </div>
 
-      <div class="row total">
+<!--       <div class="row total">
         <div class="col col-xs-offset-4 col-sm-offset-8 col-xs-4 col-sm-2 title">
-          <%= t('.items.total.title') %>
+          <%#= t('.items.total.title') %>
         </div>
         <div class="col col-xs-4 col-sm-2 value">
-          <div class="price"><%= number_to_currency @order.total_amount %></div>
-          <div class="comment"><%= t('.items.total.comment') %></div>
+          <div class="price"><%#= number_to_currency @order.total_amount %></div>
+          <div class="comment"><%#= t('.items.total.comment') %></div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row update next border-top">
         <div class="col col-xs-8 col-sm-10"></div>

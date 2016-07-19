@@ -68,7 +68,9 @@
 
 <%= form_tag refinery.ironman_products_path, {:method => :get} do %>
   <div class="form-group clearfix category-selector right">
-    <%= label_tag :category_1st_id, t('.category.label'), class:'control-label col-sm-3 col-md-2' %>
+    <div class=" col-sm-3 col-md-2 plm0">
+      <%= label_tag :category_1st_id, t('.category.label'), class:'' %>
+    </div>
 
     <div class="control col-sm-3 col-md-2">
       <%= styled_select_tag :category_1st_id, options_from_collection_for_select(categories, 'slug', 'name', (category.slug if category.present?)), :prompt => t('.category.prompt'), :class => 'form-control' %>
