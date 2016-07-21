@@ -1,0 +1,3 @@
+<% unless @product.blank? %>
+  $('#front_spring_product_id').html('<%= @product.product_no %> x <%= @product.quantity_required %> <input type="hidden" value="<%= @product.id %>_<%= @product.quantity_required %>" name="front_spring_product_id" />');
+<% end %>

@@ -1,0 +1,20 @@
+<% unless @vehicle.blank? || @vehicle.rear_type.blank? %>
+  <% if @vehicle.rear_type == "wagon" %>
+    $("#hid4 :input").attr("disabled", true);
+    $('#ute_div').css('background-color', 'grey');
+    $('#ute_question').html('<%= image_tag 'queistion2.png', style: '-webkit-border-radius:10px;' %>')    
+    $('#hid3 :input').removeAttr('disabled');
+    $('#wagon_div').css('background', '#9ebb24');    
+    $('#wagon_question').html('<%= image_tag 'qestion.png' %>')
+    $('#wagon_div').show();
+  <% elsif @vehicle.rear_type == "ute" %>
+    $("#hid3 :input").attr("disabled", true);
+    $('#wagon_div').css('background-color', 'grey');
+    $('#wagon_question').html('<%= image_tag 'queistion2.png', style: '-webkit-border-radius:10px;' %>')
+
+    $('#hid4 :input').removeAttr('disabled');
+    $('#ute_div').css('background', '#9ebb24');    
+    $('#ute_question').html('<%= image_tag 'qestion.png' %>')    
+    $('#ute_div').show();
+  <% end %>
+<% end%>

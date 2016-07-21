@@ -179,6 +179,11 @@ html.turbolinks-progress-bar::before {
   }
 }
 
+.clear_div {
+  clear:both;
+  padding-top: 10px;
+}
+
 .vehicle-selector, .category-selector {
   &.right {
     .control-label {
@@ -187,6 +192,17 @@ html.turbolinks-progress-bar::before {
     }
   }
 
+#second_row{
+  #vehicle_type{
+    margin-left:-15px;
+  }
+  #drive_type{
+    margin-left: 5px;
+  }
+  #lift_type{
+    margin-left:5px;
+  }    
+}
   @media (max-width: $screen-xs-max) {
     .control-label {
       padding-left: 0;
@@ -209,6 +225,7 @@ html.turbolinks-progress-bar::before {
 
     select {
       display: block ! important;
+      cursor: pointer;
     }
   }
 }

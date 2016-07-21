@@ -23,6 +23,9 @@ module Refinery
       scope :active, -> { where(draft: false) }
       scope :homepage_products, -> { where(show_on_homepage: true) }
 
+      # scope :lift_estimate, -> { joins(:specifications).where('category_id = ? and title = ?', [72, 77, 84], 'Estimated Lift') }
+      scope :lift_estimate, -> { joins(:specifications).where('title = ?', 'Estimated Lift') }
+
       #TODO: turn back on once duplicate product_no's have been sorted
       #validates_uniqueness_of :product_no
       validates_presence_of :product_no, :name, :quantity_required
@@ -94,6 +97,42 @@ module Refinery
         specs
       end
 
+      def rear_setup(specifications, total_weights)
+
+        @specifications = specifications
+
+        unless @specifications.blank?
+          @specifications.flatten!
+          @spec = @specifications.collect(&:value).uniq
+
+          match = ""
+          gvm_check = @spec.to_s.include?("GVM")
+
+          if total_weights == 0
+            gvm_check = false
+          else
+            @spec.each do |sp|            
+              if(sp.split("-")[0].gsub("kg","").to_i < total_weights && sp.split("-")[1].gsub("kg","").to_i > total_weights)
+                match = sp.split("-")[1].gsub("kg ","")
+                gvm_check = false
+              end
+            end         
+          end
+
+          product_id = ""
+          @specifications.each do |s|
+            if gvm_check
+              product_id = s.product_id if s.value.include?("GVM")
+            elsif total_weights == 0
+              product_id = @specifications[0].product_id
+            else
+              product_id = s.product_id if s.value.include?(match) && !s.value.include?("GVM")
+            end
+          end                  
+        end          
+        return product_id
+      end
+
       def thumbnail_display_mode_cached
         # TODO: add caching
         if thumbnail_display_mode.present?
@@ -110,6 +149,55 @@ module Refinery
             csv << ExportImport::Csv::Product.new.export_record(product)
           end
         end
+      end
+
+      def vehicle_types(products)       
+        @products = products
+
+        @pro = @products.collect(&:vehicle_type).uniq
+        @pro.reject! { |p| p.blank? }
+
+        if !@pro.blank?
+          if @pro.count == 2
+            @hash_value = [{},{}]
+          elsif @pro.count ==1
+            @hash_value = [{}]
+          end
+          (0..@pro.count-1).each do |p|
+            if @pro[p] == "petrol"
+              @hash_value[p].merge!({id: '1', name:'Petrol'})
+            end
+            if @pro[p] == "diesel"
+              @hash_value[p].merge!({id: '2', name: 'Diesel'})
+            end
+          end
+        end
+
+        return @hash_value
+      end
+
+      def drive_types(products)
+        @products = products
+        @pro = @products.collect(&:drive_type).uniq
+        @pro.reject! { |p| p.blank? }
+
+        if !@pro.blank?
+          if @pro.count == 2
+            @hash_value = [{},{}]
+          elsif @pro.count ==1
+            @hash_value = [{}]
+          end
+            
+          (0..@pro.count-1).each do |p|
+            if @pro[p] == "right_hand"
+              @hash_value[p].merge!({id: '1', name:'Right Hand'})
+            end
+            if @pro[p] == "left_hand"
+              @hash_value[p].merge!({id: '2', name: 'Light Hand'})
+            end
+          end
+        end
+        return @hash_value
       end
 
     end

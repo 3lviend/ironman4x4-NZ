@@ -1,7 +1,6 @@
 
 .main{
-
-	background: #D4D1D1;
+	background: #fff;
 	padding: 0px;
 	.text{
 		padding-left: 0px;
@@ -11,7 +10,7 @@
 	#hid{
 		padding: 15px;
 	}
-	#hid,
+
 	#hid1,
 	#hid2,
 	#hid3,
@@ -38,7 +37,7 @@
 		font-size: 12px;
 	}
 	.sub-menu{
-		padding: 5px;
+		padding: 5px 5px 0px 5px;
 
 	}
 	#radio1,
@@ -46,16 +45,13 @@
 		font-size: 25px;
 	}
 	.fix{
-		margin: 5px;
+		margin: 0px 5px 5px 5px;
 		width: 286px;
 		background-color: white;
-
 	}
 	.fix2{
-		margin: 5px;
 		width: 286px;
 		background-color: white;
-		padding-bottom: 10px;
 	}
 	.fixed {
 		position: fixed;
@@ -64,6 +60,10 @@
 	}
 	.container-fix {
 		height: 430px; 
+	}
+	.reset{
+		float:right;
+		margin-right:58px;
 	}
 	.size{
         padding-top: 7px;
@@ -109,6 +109,22 @@
 		border-radius: 0 0 10px 10px;
 		padding-left: 4%;
 	}
+
+	.radio input[type="radio"] {
+		margin-left: 0px;
+		position: relative;
+		cursor: pointer;
+	}
+
+	#hid5,#hid6 .radio input[type="radio"] {
+		margin-left: 0px;
+		position: relative;
+	}
+
+	.radio .shocks {
+		margin-left: 20px!important;
+	}
+
 	.caret{
 		border-top: 10px solid;
 	}
@@ -130,6 +146,14 @@
     	color: dimgrey;
     	font-weight: 600;
     }
+
+    .short_notes {
+		font-size: 11px;
+    	margin: 5px 0px 0px 65px;
+    	font-family: "HelveticaNeueW02-65Medi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    	font-weight: normal;    
+    }
+
 	.size2{
 		padding-top: 20px;
 		color: white;
@@ -155,6 +179,7 @@
 	}
 	.spec1{
 		width: 80px;
+		margin: 0px 0px 0px 5px;
 	}
     .photo3{
       display: inline-flex;
@@ -174,8 +199,6 @@
    .online{
    	padding: 0;
    	position: relative;
-    top: -20px;
-    left: 34px;
    }
    .bottom_price{
    	    color: black;
@@ -275,5 +298,11 @@
    .extra1_24{
    	font-size: 10px;
    	padding-left: 10px;
+   }
+
+   .vehicle_selected {
+	  font-size: 10px;
+	  font-family: "HelveticaNeueW02-65Medi", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	  font-weight: normal;
    }
 }

@@ -5,6 +5,21 @@ Refinery::Core::Engine.routes.draw do
 
   get 'categories/:id/children' => 'ironman/categories#children', :as => 'category_children', :format => :json
   get 'vehicles/:id/children' => 'ironman/vehicles#children', :as => 'vehicle_children', :format => :json
+  get 'vehicles/:id/find_lift_estimate' => 'ironman/vehicles#find_lift_estimate', :as => 'vehicle_lift_estimate', :format => :json
+  get 'vehicles/:id/find_vehicle_type' => 'ironman/vehicles#find_vehicle_type', :as => 'vehicle_type', :format => :json
+  get 'vehicles/:id/find_drive_type' => 'ironman/vehicles#find_drive_type', :as => 'drive_type', :format => :json
+  get 'vehicles/show_rear_type' => 'ironman/vehicles#show_rear_type', :as => 'show_rear_type'
+  get 'vehicles/calculate_front_springs' => 'ironman/vehicles#calculate_front_springs', :as => 'calculate_front_springs'
+  get 'vehicles/calculate_rear_wagon_setup' => 'ironman/vehicles#calculate_rear_wagon_setup', :as => 'calculate_rear_wagon_setup'
+  get 'vehicles/calculate_rear_ute_setup' => 'ironman/vehicles#calculate_rear_ute_setup', :as => 'calculate_rear_ute_setup'
+  get 'vehicles/front_shocks_setup' => 'ironman/vehicles#front_shocks_setup', :as => 'front_shocks_setup'
+  get 'vehicles/rear_shocks_setup' => 'ironman/vehicles#rear_shocks_setup', :as => 'rear_shocks_setup'
+  get 'vehicles/mandatory_component_setup' => 'ironman/vehicles#mandatory_component_setup', :as => 'mandatory_component_setup'
+  get 'vehicles/update_mandatory_sidebar' => 'ironman/vehicles#update_mandatory_sidebar', :as => 'update_mandatory_sidebar'
+  get 'vehicles/optional_component_setup' => 'ironman/vehicles#optional_component_setup', :as => 'optional_component_setup'
+  get 'vehicles/update_optional_sidebar' => 'ironman/vehicles#update_optional_sidebar', :as => 'update_optional_sidebar'
+  
+  
   get '/export', to: 'ironman/products#export'
   # index pages of categories
   get 'product-categories/:id' => 'ironman/categories#index', as: :product_categories

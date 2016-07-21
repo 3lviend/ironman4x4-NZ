@@ -100,7 +100,7 @@ module Refinery
       protected
         def vehicle_params
           params.require(:vehicle).permit(:parent_id, :name, :sort_order,
-            :visible, :id, :locale)
+            :visible, :id, :locale, :rear_type)
         end
       end
     end

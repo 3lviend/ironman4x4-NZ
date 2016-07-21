@@ -1,0 +1,9 @@
+<% if !@product.blank? %>
+  $('#optional_product_id').html('');
+  <% @product.each do |p|%>
+    $('#optional_product_id').append('<%= p.product_no %> x <%= p.quantity_required %>');
+    var hidden_field = '<input type="hidden" value="'+ <%= p.id %>+'_'+<%= p.quantity_required %> + '" name="optional_product_id_'+<%= p.id %>+'" />'
+    $('#optional_product_id').append(hidden_field);
+    $('#optional_product_id').append('<br>');
+  <% end %>
+<% end %>

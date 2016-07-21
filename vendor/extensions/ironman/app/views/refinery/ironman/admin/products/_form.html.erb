@@ -98,6 +98,33 @@
                   </td>
                 </tr>
               <% end %>
+                <tr style="padding-left:5px;">
+                  <td></td>
+                  <%#= f.fields_for :specifications do |s| %>
+                  <td>
+                    <label style="margin-top:5px; padding-left:3px;">Vehicle Type</label>
+                  </td>
+                  <td style="padding-left:3px;">   
+                    <%= f.radio_button :vehicle_type, 'petrol' %> Petrol
+                  </td>
+                  <td style="padding-left:3px;">   
+                    <%= f.radio_button :vehicle_type, 'diesel' %> Diesel
+                  </td>
+                </tr>
+                <tr style="padding-left:5px;">
+                  <td></td>
+                  <%#= f.fields_for :specifications do |s| %>
+                  <td>
+                    <label style="margin-top:5px; padding-left:3px;">Drive Type</label>
+                  </td>
+                  <td style="padding-left:3px;">   
+                    <%= f.radio_button :drive_type, 'left_hand' %> Left Hand
+                  </td>
+                  <td style="padding-left:3px;">   
+                    <%= f.radio_button :drive_type, 'right_hand' %> Right Hand
+                  </td>
+                </tr>                
+                <%# end %>              
               </table>
             </div>
           </div>

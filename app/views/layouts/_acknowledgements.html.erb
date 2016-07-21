@@ -2,7 +2,11 @@
     <div class="container">
       <div class="copyright"><%= t('.copyright', year:Time.zone.now.year) %></div>
       <div class="designed_by">
-        <%= link_to t('.designed_by'), 'http://1bdesign.com' %>
+      	<% if params[:controller] == "pages" && params[:action] == "index"%>
+      	  <%= link_to t('.suspension_designed_by'), 'http://www.jmarketing.com.au/' %>
+      	<% else%>
+          <%= link_to t('.designed_by'), 'http://1bdesign.com' %>
+        <% end %>
       </div>
     </div>
   </div>

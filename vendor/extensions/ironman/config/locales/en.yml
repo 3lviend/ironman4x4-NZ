@@ -362,6 +362,19 @@ en:
       config:
         from_name: "%{name} [%{site_name}]"
       fit_my_car:
+        suspension_select_boxes:
+          vehicle_make:
+            prompt: Select Make
+          vehicle_model:
+            prompt: Select Model
+          vehicle_series:
+            prompt: Select Series
+          vehicle_type:
+            prompt: Select Type
+          drive_type:
+            prompt: Select Drive Type
+          lift_type:
+            prompt: Select Lift Type           
         index:
           save_and_view: Save & View Products
         results_categories:
@@ -381,7 +394,8 @@ en:
           vehicle_model:
             prompt: Select Model
           vehicle_series:
-            prompt: Select Series
+            prompt: Select Series               
+
       enquiries:
         new:
           send: Submit Enquiry

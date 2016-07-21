@@ -1,0 +1,15 @@
+<% unless @components.blank? %>
+  <% @components.each do |c| %>
+    <div class="col-md-6 col-sm-6">
+      <div class="radio">
+        <label for="optional_<%= c.id %>">
+        <input id="optional_<%= c.id %>" name="<%= c.product_no %>" type="checkbox" value="<%= c.id %>"/>&nbsp; <%= c.name.upcase %> 
+        </label>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="radio">
+    <h2>No Matching Components Available</h2>    
+  </div>
+<% end %>

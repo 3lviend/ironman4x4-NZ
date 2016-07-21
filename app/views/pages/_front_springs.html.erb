@@ -1,0 +1,65 @@
+<div class="col-md-12 col-sm-12 second-container">
+  <div class="col-md-4 col-sm-4 line">
+    <p class="big_title">
+      <span id="caret1" class="glyphicon glyphicon-chevron-down" onclick="this.className = (this.className == 'glyphicon glyphicon-chevron-down' ? 'glyphicon glyphicon-chevron-up' : 'glyphicon glyphicon-chevron-down')">
+      </span> &nbsp; &nbsp;1.2 FRONT setup 
+    </p>
+  </div>
+
+  <div class="col-md-7 col-sm-7">
+    <p class="size">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+      <span class="more">More information
+        <span id="caret1" class="caret"></span>
+      </span>
+    </p>
+  </div>
+
+  <div class="photo"><%= image_tag 'qestion.png' %></div>
+</div>
+
+<div class="col-md-12 col-sm-12 second-container-gray" id="hid2">
+  <div class="col-md-6 col-sm-6">
+    <div class="radio">
+      <label for="bullbar_steel">
+        <input id="bullbar_steel" name="bar" type="radio" value="75"/>&nbsp; &nbsp;STEEL BAR
+      </label> 
+    </div>
+
+    <div class="radio">
+      <label for="bullbar_alloy">
+        <input id="bullbar_alloy" name="bar" type="radio" value="50"/>&nbsp; &nbsp;ALLOY BAR
+      </label> 
+    </div>
+
+    <div class="radio">
+      <label for="bullbar_batteries">
+        <input id="bullbar_batteries" name="batteries" type="checkbox" value="15"/>&nbsp; &nbsp;DUAL BATTERIES (IN ENGINE BAY)
+      </label> 
+    </div>    
+  </div>
+
+  <div class="col-md-6 col-sm-6">
+    <div class="radio">
+      <label for="bullbar_rope">
+        <input id="bullbar_rope" name="rope" type="radio" value="27"/>&nbsp; &nbsp;WINCH WITH ROPE
+      </label> 
+    </div>
+
+    <div class="radio">
+      <label for="bullbar_cable">
+        <input id="bullbar_cable" name="rope" type="radio" value="45" />&nbsp; &nbsp;WINCH WITH STEEL CABLE
+      </label> 
+    </div>
+
+    <div class="radio">
+      <label for="bullbar_other">
+        <input id="bullbar_other" name="others" type="checkbox" value="OTHER"/>&nbsp; &nbsp;OTHER TOTAL WEIGHTS<input id="weights" class="spec1" placeholder="Weight"/>&nbsp;Kg
+      </label> 
+    </div>
+  </div>
+  
+  <div class="reset">
+    <label for="reset_front_springs"><input id="reset_front_springs" name="reset_front_springs" type="checkbox"/>&nbsp; &nbsp;Clear Data
+    </label>
+  </div>
+</div>

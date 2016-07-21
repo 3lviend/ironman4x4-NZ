@@ -14,6 +14,14 @@ module Refinery
 
       scope :active, -> { where(visible: true) }
 
+      MANDATORY_0MM = ['U-Bolts', 'Spring Bush Kits', 'Camber Correction' ]
+      MANDATORY_50MM = MANDATORY_0MM + ['Centre Bearing Spacer Kits' ]
+      MANDATORY_100MM = ['Caster Correction', 'Adjustable Trailing Arms', 'Extended Brake Hose', 'Adjustable Drag Links', 'Adjustable Panhard Rods', 'Sway Bar Links', 'Camber Correction', 'Spring Bush Kits']
+
+      OPTIONAL_0MM = ['ABS Wire & Axle Protection', 'Adjustable Drag Links', 'Adjustable Panhard Rods', 'Adjustable Trailing Arms', 'Bracket', 'Bracket Kit', 'Brake Line Spacers', 'Centre Bearing Spacer Kit', 'Diff Breathers', 'Driveline Spacers', 'Extended Brake Hose', 'Load Plus', 'Shackles & Pins', 'Steering Dampers', 'Suspension Arm Bush Kits', 'Sway Bar Links', 'Trim Packers']
+      OPTIONAL_50MM = OPTIONAL_0MM
+      OPTIONAL_100MM = ['Trim Packers', 'Bracket', 'Bracket Kit', 'Brake Line Spacers', 'Diff Breathers', 'Driveline Spacers', 'Shackles & Pins', 'Steering Dampers', 'Suspension Arm Bush Kits']
+
       after_initialize do
         if self.new_record?
           self.visible = false if self.visible.nil?

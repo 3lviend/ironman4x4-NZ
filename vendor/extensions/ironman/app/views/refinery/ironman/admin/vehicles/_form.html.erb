@@ -17,6 +17,19 @@
     <%= f.text_field :name -%>
   </div>
 
+  <tr class='rear_type'>
+    <td></td>
+    <td>
+      <label>Rear Type</label>
+    </td>
+    <td class='rear_type_td'>   
+      <%= f.radio_button :rear_type, 'wagon' %> Wagon
+    </td>
+    <td class='rear_type_td'>   
+      <%= f.radio_button :rear_type, 'ute' %> UTE
+    </td>
+  </tr>  
+
   <div class='field'>
     <%= f.label :visible -%>
     <%= f.check_box :visible, :checked => @vehicle[:visible] -%>

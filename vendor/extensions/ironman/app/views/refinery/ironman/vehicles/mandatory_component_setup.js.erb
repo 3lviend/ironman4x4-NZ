@@ -1,0 +1,3 @@
+<% unless @components.blank? %>
+  $('#hid7').html("<%= escape_javascript (render partial: 'pages/mandatory_components') %>");
+<% end %>

@@ -3,7 +3,7 @@
   vehicle_model = nil
   vehicle_series = nil
 
-  if params[:vehicle_1st_id].present? or params[:vehicle_2nd_id].present? or params[:vehicle_3rd_id].present?
+  if params[:vehicle_1st_id].present? or params[:vehicle_2nd_id].present? or params[:vehicle_3rd_id].present? or params[:vehicle_4th_id].present? or params[:vehicle_5th_id].present? or params[:vehicle_6th_id].present?
     make_id = params[:vehicle_1st_id]
     model_id = params[:vehicle_2nd_id]
     series_id = params[:vehicle_3rd_id]
@@ -55,30 +55,14 @@
     cache_key.push :vehicle_3rd_id
   end
 
-  if local_assigns[:vehicle_4th_id].nil?
-    vehicle_4th_id = :vehicle_4th_id
-  else
-    cache_key.push :vehicle_4th_id
-  end
-
-  if local_assigns[:vehicle_5th_id].nil?
-    vehicle_5th_id = :vehicle_5th_id
-  else
-    cache_key.push :vehicle_5th_id
-  end
-
-  if local_assigns[:vehicle_6th_id].nil?
-    vehicle_6th_id = :vehicle_6th_id
-  else
-    cache_key.push :vehicle_6th_id
-  end
-
   cache(cache_key) do
   # find_by_id doesn't raise an exception if id doesn't exist
   vehicle_make = Refinery::Ironman::Vehicle.find_by_id(make_id) if make_id.present? and make_id != 0
   vehicle_model = Refinery::Ironman::Vehicle.find_by_id(model_id) if model_id.present? and model_id != 0
   vehicle_series = Refinery::Ironman::Vehicle.find_by_id(series_id) if series_id.present? and series_id != 0
+
 %>
+
   <div class="control first col-sm-4 col-md-4 pl0 seltop">
     <%= styled_select_tag :vehicle_1st_id, options_from_collection_for_select(Refinery::Ironman::Vehicle.roots, 'id', 'name', (vehicle_make.id if vehicle_make.present?)), :prompt => t('.vehicle_make.prompt'), :class => 'form-control', :id => vehicle_1st_id %>
   </div>
@@ -106,49 +90,4 @@
                    :class => 'form-control',
                    :id => vehicle_3rd_id %>
   </div>
-
-  <% if params[:controller] != "refinery/ironman/orders" %>
-      <div class="form-group clearfix vehicle-selector">
-
-      <div class="control last col-sm-3 col-md-3 pl0">
-        <%= styled_select_tag :vehicle_4th_id, options_from_collection_for_select([], 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
-                     'data-option-dependent' => true,
-                     'data-option-observed' => vehicle_3rd_id,
-                     'data-option-url' => '/vehicles/:vehicle_3rd_id:/find_vehicle_type.json',
-                     'data-option-key-method' => :id,
-                     'data-option-value-method' => :name,
-                     :prompt => t('.vehicle_type.prompt'),
-                     :class => 'form-control',
-                     :id => vehicle_4th_id %>
-      </div>  
-
-      <div class="control last col-sm-3 col-md-3">
-        <%= styled_select_tag :vehicle_5th_id, options_from_collection_for_select([], 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
-                     'data-option-dependent' => true,
-                     'data-option-observed' => vehicle_3rd_id,
-                     'data-option-url' => '/vehicles/:vehicle_3rd_id:/find_drive_type.json',
-                     'data-option-key-method' => :id,
-                     'data-option-value-method' => :name,
-                     :prompt => t('.drive_type.prompt'),
-                     :class => 'form-control',
-                     :id => vehicle_5th_id %>
-      </div>
-
-      <div class="control last col-sm-3 col-md-3">
-        <%= styled_select_tag :vehicle_6th_id, options_from_collection_for_select([], 'id', 'name', (vehicle_series.id if vehicle_series.present?)),
-                     'data-option-dependent' => true,
-                     'data-option-observed' => vehicle_3rd_id,
-                     'data-option-url' => '/vehicles/:vehicle_3rd_id:/find_lift_estimate.json',
-                     'data-option-key-method' => :name,
-                     'data-option-value-method' => :id,
-                     :prompt => t('.lift_type.prompt'),
-                     :class => 'form-control',
-                     :id => vehicle_6th_id %>
-      </div>
-      
-      <div class="col-sm-3 col-md-3 button pr0">
-        <button type="submit" id= "go_button" class="form-control go" disabled style="background-color:#dddddd">Go</button>
-      </div>
-      </div>       
-  <% end %>
 <% end %>

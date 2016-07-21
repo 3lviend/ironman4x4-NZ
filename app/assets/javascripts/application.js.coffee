@@ -41,6 +41,8 @@
 #= require jquery.ui.accordion
 #= require glasscase/jquery.glasscase
 #= require jquery-navidropdown/jquery.navidropdown
+#= require jSticky/jquery.scrollchaser
+#= require suspension_builder
 #= require pages
 
 $.fn.serializeObject = ->

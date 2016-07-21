@@ -47,8 +47,8 @@ module Refinery
         def product_params
           p = params.require(:product).permit(
             :product_no, :name, :description, :notes, :quantity_required,
-            :price, :locale, :short_description, :draft, :show_on_homepage,
-            :meta_description,
+            :price, :locale, :short_description, :draft, :show_on_homepage, :vehicle_type, 
+            :meta_description, :drive_type,
             {:category_ids => []}, {:vehicle_ids => []}, :thumbnail_image_id,
             :thumbnail_display_mode, :fitting_instructions_resource_id,
             :warranty, images_attributes: [:id, :image_page_id, :caption], resources_attributes: [:id],

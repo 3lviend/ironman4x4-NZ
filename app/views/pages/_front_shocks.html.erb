@@ -1,0 +1,20 @@
+<% unless @products.blank? %>
+  <% @products.each do |p| %>
+    <div class="radio">
+      <label for="<%= p.quantity_required %>_<%= p.product_no %>_<%= p.id %>">
+        <input class="shocks" type="radio" name="front_shocks" id="<%= p.quantity_required %>_<%= p.product_no %>_<%= p.id %>" value="<%= p.product_no %>">&nbsp; &nbsp;<%= p.name.split(" - ")[1].upcase %><br/>
+      </label> 
+      <p class="short_notes"> <%= p.short_description %></p>
+    </div>      
+  <% end %>    
+  <div class="reset">
+    <label for="reset_front_shocks"><input id="reset_front_shocks" name="reset_front_shocks" type="checkbox"/>&nbsp; &nbsp;Clear Data
+    </label>
+  </div>    
+<% else %>
+  <div class="radio">
+    <h2>No Matching Front Shocks Available</h2>    
+  </div>
+<% end %>
+
+
