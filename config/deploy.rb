@@ -20,6 +20,7 @@ set :shared_paths, ['config/database.yml', 'log', 'public/system']
 set :ssh_options, '-A'
 
 set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :term_mode, nil
 
 # This task is the environment that is loaded for most commands, such as
 # `mina deploy` or `mina rake`.
@@ -59,7 +60,7 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+    invoke :'rails:assets_precompile:force'
 
     to :launch do
       # all the files must be owned by the rails user, who runs the web process
@@ -69,6 +70,27 @@ task :deploy => :environment do
       queue "service unicorn restart"
     end
   end
+end
+
+desc "Rolls back the latest release"
+task :rollback => :environment do
+  queue! %[echo "-----> Rolling back to previous release for instance: #{domain}"]
+
+  # Delete existing sym link and create a new symlink pointing to the previous release
+  queue %[echo -n "-----> Creating new symlink from the previous release: "]
+  queue %[ls "#{deploy_to}/releases" -Art | sort | tail -n 2 | head -n 1]
+  queue! %[ls -Art "#{deploy_to}/releases" | sort | tail -n 2 | head -n 1 | xargs -I active ln -nfs "#{deploy_to}/releases/active" "#{deploy_to}/current"]
+
+  # Remove latest release folder (active release)
+  queue %[echo -n "-----> Deleting active release: "]
+  queue %[ls "#{deploy_to}/releases" -Art | sort | tail -n 1]
+  queue! %[ls "#{deploy_to}/releases" -Art | sort | tail -n 1 | xargs -I active rm -rf "#{deploy_to}/releases/active"]
+
+  # Setting up permissions
+  queue %[chown -R rails "#{deploy_to}"]
+  queue %[chgrp -R www-data "#{deploy_to}"]  
+  
+  queue "service unicorn restart"
 end
 
 # For help in making your deploy script, see the Mina documentation:
