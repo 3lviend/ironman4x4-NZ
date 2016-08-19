@@ -30,9 +30,11 @@
 
 body{
   font-family:"roboto";
-  font-size: 16px;
+  font-size: 15px;
 }
-
+label{
+  font-family:"roboto" !important;
+}
 a {
   color: $link-color;
   text-decoration: none;
@@ -268,7 +270,7 @@ html.turbolinks-progress-bar::before {
     margin-bottom: 10px;
 
     a.find-store {
-      font-size: $font-size-medium;
+      font-size: 17px;
       color: $dark-grey;
       text-transform: uppercase;
 
@@ -288,7 +290,7 @@ html.turbolinks-progress-bar::before {
       border-radius: 0;
       border-color: $dark-grey;
       background-color: $white;
-      font-size: $font-size-smallish;
+      font-size: 15px;
     }
 
     .form-heading {
@@ -382,7 +384,7 @@ html.turbolinks-progress-bar::before {
 }
 
 #layout-first-nav {
-  font-size: $font-size-smallish;
+  font-size: 17px;
   margin-bottom: 0;
 
   form {
@@ -404,7 +406,7 @@ html.turbolinks-progress-bar::before {
       border-radius: 0;
       border-color: $dark-grey;
       background-color: $white;
-      font-size: $font-size-smallish;
+      font-size: 15px;
     }
 
     .btn {
@@ -556,7 +558,7 @@ html.turbolinks-progress-bar::before {
         text-align: center;
         width: 104px;
         text-transform: uppercase;
-        font-size: $font-size-medium;
+        font-size: 17px;
 
         @media (max-width: $screen-xs-max) {
           padding: 10px 15px;
@@ -1165,7 +1167,7 @@ html.turbolinks-progress-bar::before {
   .breadcrumb {
     padding-left: 0;
     background-color: $white;
-    font-size: 70%;
+    font-size: 15px;
     color: $medium-grey;
 
     &> li + li:before {
@@ -1250,7 +1252,7 @@ html.turbolinks-progress-bar::before {
       padding: 0;
 
       p {
-        font-size: 17px;
+        font-size: 15px;
       }
     }
   }
