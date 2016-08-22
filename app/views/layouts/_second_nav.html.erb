@@ -6,11 +6,13 @@
       </div>
       <% end %>
 
-      <div class="clearfix">
+      <div class="clearfix top-header">
 
         <% cache_key = [:second_nav_links] %>
         <% num = num_items_in_cart %>
         <% cache_key.push num if num.present? and num > 0 %>
+
+        <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {find_store_link: true} %>
         <% cache(cache_key, expires_in: 1.hour) do %>
         <div class="navbar navbar-default">
           <div class="navbar-header">
@@ -76,8 +78,6 @@
         </ul>
         </div>
         <% end %>
-
-        <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {find_store_link: true} %>
       </div>
     </div>
   </div>

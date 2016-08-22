@@ -472,12 +472,15 @@ html.turbolinks-progress-bar::before {
     text-indent: -99999px;
     background-image: image-url('nav_logo.png');
     vertical-align: top;
+    float: left;
+    margin: 25px 0 0 0;
   }
 
   .stockists-search {
     @media (max-width: $screen-xs-max) {
       &.navbar-form {
         float: none;
+        clear: both;
       }
     }
 
@@ -496,7 +499,7 @@ html.turbolinks-progress-bar::before {
 
   .navbar {
     margin-bottom: 0;
-    float: left;
+    float: right;
 
     @media (max-width: $screen-xs-max) {
       float: none;
@@ -1407,4 +1410,10 @@ html.turbolinks-progress-bar::before {
       }
     }
   }
+}
+.clearfix.top-header{
+  margin-top: 91px;
+}
+form.stockists-search.navbar-form.navbar-right.navbar-input-group{
+  padding-right: 0;
 }
