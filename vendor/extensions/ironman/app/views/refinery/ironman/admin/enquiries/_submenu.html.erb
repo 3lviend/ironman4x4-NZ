@@ -23,5 +23,9 @@
                   refinery.edit_ironman_admin_setting_path(:enquiry_confirmation_body, :dialog => true),
                   :class => "edit_email_icon" %>
     </li>
+    <li>
+      <%= link_to t('.export_enquiries'), refinery.export_ironman_admin_enquiries_path(:search => params[:search]),
+                  :class => "export_icon" %>
+    </li>
   </ul>
 </div>

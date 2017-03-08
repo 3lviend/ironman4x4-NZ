@@ -3,13 +3,15 @@ module Refinery
     module Admin
       class EnquiriesController < ::Refinery::AdminController
 
+        include Refinery::Ironman::Admin::EnquiriesHelper
+
         crudify :'refinery/ironman/enquiry',
                 :title_attribute => 'name',
                 :xhr_paging => true
 
         helper_method :group_by_date
 
-        before_filter :find_all_ham, :only => [:index]
+        before_filter :find_all_ham, :only => [:index, :export]
         before_filter :find_all_spam, :only => [:spam]
         before_filter :get_spam_count, :only => [:index, :spam]
 
@@ -28,6 +30,16 @@ module Refinery
           @enquiry.toggle!(:spam)
 
           redirect_to :back
+        end
+
+        def export
+          @enquiries = @enquiries.with_query(params[:search]) if searching?
+          result = do_export(@enquiries)
+          if result[:status]
+            send_file result[:file_path]
+          else
+            redirect_to :back
+          end
         end
 
         protected

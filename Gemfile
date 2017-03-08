@@ -101,3 +101,5 @@ gem 'mailcatcher', group: :development
 gem 'sidekiq', '~> 2.17.8'
 
 gem "binding_of_caller"
+
+gem 'write_xlsx'
