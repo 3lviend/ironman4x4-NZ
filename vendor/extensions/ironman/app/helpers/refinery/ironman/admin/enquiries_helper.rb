@@ -4,10 +4,13 @@ module Refinery
       module EnquiriesHelper
         def do_export(enquiries)
           begin
+            io = StringIO.new
+
             file_name = "enquiries-#{Time.now.to_i}.xlsx"
-            workbook = WriteXLSX.new("public/enquiries/#{file_name}")
+            workbook = WriteXLSX.new(io)
             worksheet = workbook.add_worksheet
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
+            # create new array - for methods
             col = 0
             row = 1
 
@@ -28,6 +31,11 @@ module Refinery
             text_format.set_align('top')
 
             enquiries.each do |enquiry|
+              # col = 0
+              # [].each do ||
+              #   worksheet.write(row, col, Refinery::Core.config.site_name, text_format)
+              #   col+=1
+              # end
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{enquiry.name} [#{enquiry.email}]", text_format)
               worksheet.write(row, 2, enquiry.phone || "-", text_format)
@@ -43,7 +51,8 @@ module Refinery
             # end
             workbook.close
 
-            return {'status': true, 'file_path': "public/enquiries/#{file_name}"}
+            # return {'status': true, 'file_path': "public/enquiries/#{file_name}"}
+            return {'status': true, 'book': io.string, 'name': file_name}
           rescue
             logger.warn "There was an error exporting enquiries.\n#{$!}\n"
             return {'status': false, 'file_path': ""}

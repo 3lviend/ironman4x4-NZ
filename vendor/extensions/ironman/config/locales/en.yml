@@ -40,6 +40,8 @@ en:
             edit: Edit this subdomain
             delete: Remove this subdomain forever
         orders:
+          index:
+            orders_export: Orders Export
           order:
             view_live_html: View this order live <br/><em>(opens in a new window)</em>
             edit: Edit this order

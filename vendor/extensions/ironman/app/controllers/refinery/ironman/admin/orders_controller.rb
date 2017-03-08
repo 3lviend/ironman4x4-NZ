@@ -3,11 +3,25 @@ module Refinery
     module Admin
       class OrdersController < ::Refinery::AdminController
 
+        include Refinery::Ironman::Admin::OrdersHelper
+
         crudify :'refinery/ironman/order',
                 :title_attribute => 'order_no',
                 :xhr_paging => true,
                 :sortable => false,
                 :order => 'refinery_ironman_orders.created_at desc'
+
+        def export
+          orders = Refinery::Ironman::Order.all
+          orders = orders.with_query(params[:search]) if searching?
+          result = do_export(orders)
+
+          if result[:status]
+            send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
+          else
+            redirect_to :back
+          end
+        end
 
       protected
         def order_params

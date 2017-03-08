@@ -4,4 +4,11 @@
 <aside id='actions'>
   <%= render 'actions' %>
 </aside>
+<div id='actions'>
+  <ul>
+    <li>
+      <%= link_to t('.orders_export'), refinery.export_ironman_admin_orders_path(search: params[:search]), :class => "email_icon" %>
+    </li>
+  </ul>
+</div>
 <%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::Ironman::Admin::OrdersController.sortable? and ::Refinery::Ironman::Order.many? %>

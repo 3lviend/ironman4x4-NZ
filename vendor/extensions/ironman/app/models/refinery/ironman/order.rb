@@ -1,6 +1,8 @@
 module Refinery
   module Ironman
     class Order < Refinery::Core::BaseModel
+      acts_as_indexed :fields => [:name, :email]
+
       has_many :lines, :foreign_key => 'order_id', :class_name => 'Refinery::Ironman::OrderLine', :dependent => :destroy
 
       validates_presence_of :stockist_id, :name, :address1, :suburb,
