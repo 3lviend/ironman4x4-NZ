@@ -50,10 +50,10 @@ module Refinery
 
             workbook.close
 
-            return {'status': true, 'book': io.string, 'name': file_name}
+            return {'status' => true, 'book' => io.string, 'name' => file_name}
           rescue
             logger.warn "There was an error exporting orders.\n#{$!}\n"
-            return {'status': true, 'book': "", 'name': ""}
+            return {'status' => true, 'book' => "", 'name' => ""}
           end
         end
 
