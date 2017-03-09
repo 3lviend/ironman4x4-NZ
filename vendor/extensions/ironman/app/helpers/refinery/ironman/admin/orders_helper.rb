@@ -5,7 +5,6 @@ module Refinery
         include ActionView::Helpers::NumberHelper
 
         def do_export(orders)
-          # Refinery::Ironman::Order.column_names
           begin
             io = StringIO.new
             file_name = "orders-#{Time.now.to_i}.xlsx"
@@ -51,7 +50,6 @@ module Refinery
 
             workbook.close
 
-            # return {'status': true, 'file_path': "public/orders/#{file_name}"}
             return {'status': true, 'book': io.string, 'name': file_name}
           rescue
             logger.warn "There was an error exporting orders.\n#{$!}\n"

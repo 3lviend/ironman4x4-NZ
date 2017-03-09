@@ -34,7 +34,6 @@ module Refinery
 
         def export
           @enquiries = @enquiries.with_query(params[:search]) if searching?
-          debugger
           result = do_export(@enquiries)
           if result[:status]
             send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
