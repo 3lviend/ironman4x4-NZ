@@ -40,6 +40,8 @@ en:
             edit: Edit this subdomain
             delete: Remove this subdomain forever
         orders:
+          index:
+            orders_export: Orders Export
           order:
             view_live_html: View this order live <br/><em>(opens in a new window)</em>
             edit: Edit this order
@@ -136,6 +138,7 @@ en:
             spam: Spam
             update_notified: Update who gets notified
             edit_confirmation_email: Edit confirmation email
+            export_enquiries: Export Enquiries
           index:
             no_enquiries: You have not received any enquiries yet.
             no_spam: Hooray! You don't have any spam.
@@ -160,6 +163,8 @@ en:
             phone: Phone
             date: Date
             message: Comments
+          export:
+            to: 'To'
         stockists:
           actions:
             create_new: Add New Stockist
@@ -374,7 +379,7 @@ en:
           drive_type:
             prompt: Select Drive Type
           lift_type:
-            prompt: Select Lift Type           
+            prompt: Select Lift Type
         index:
           save_and_view: Save & View Products
         results_categories:
@@ -394,7 +399,7 @@ en:
           vehicle_model:
             prompt: Select Model
           vehicle_series:
-            prompt: Select Series               
+            prompt: Select Series
 
       enquiries:
         new:

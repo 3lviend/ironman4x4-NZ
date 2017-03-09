@@ -18,8 +18,8 @@ Refinery::Core::Engine.routes.draw do
   get 'vehicles/update_mandatory_sidebar' => 'ironman/vehicles#update_mandatory_sidebar', :as => 'update_mandatory_sidebar'
   get 'vehicles/optional_component_setup' => 'ironman/vehicles#optional_component_setup', :as => 'optional_component_setup'
   get 'vehicles/update_optional_sidebar' => 'ironman/vehicles#update_optional_sidebar', :as => 'update_optional_sidebar'
-  
-  
+
+
   get '/export', to: 'ironman/products#export'
   # index pages of categories
   get 'product-categories/:id' => 'ironman/categories#index', as: :product_categories
@@ -131,11 +131,14 @@ Refinery::Core::Engine.routes.draw do
         end
       end
 
-      resources :orders
+      resources :orders do
+        get :export, :on => :collection
+      end
 
       resources :enquiries, :only => [:index, :show, :destroy] do
         get :spam, :on => :collection
         get :toggle_spam, :on => :member
+        get :export, :on => :collection
       end
 
       scope :path => 'enquiries' do
@@ -145,7 +148,7 @@ Refinery::Core::Engine.routes.draw do
   end
 
   # Frontend routes
-  
+
 
   # Admin routes
   namespace :ironman, :path => '' do
