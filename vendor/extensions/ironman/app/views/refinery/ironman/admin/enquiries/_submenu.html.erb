@@ -24,7 +24,7 @@
                   :class => "edit_email_icon" %>
     </li>
     <li>
-      <%= link_to t('.export_enquiries'), refinery.export_ironman_admin_enquiries_path(:search => params[:search]),
+      <%= link_to t('.export_enquiries'), refinery.export_ironman_admin_enquiries_path(:search => params[:search], :page => params[:page] || 1),
                   :class => "go_icon" %>
     </li>
   </ul>

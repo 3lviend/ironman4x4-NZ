@@ -30,7 +30,7 @@ module Refinery
             text_format.set_text_wrap(true)
             text_format.set_align('top')
 
-            orders.each do |order|
+            orders.each_with_index do |order, index|              
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{order.name} [#{order.email}]", text_format)
               worksheet.write(row, 2, order.phone || "-", text_format)

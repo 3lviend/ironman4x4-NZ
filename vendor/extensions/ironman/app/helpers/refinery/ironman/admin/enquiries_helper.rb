@@ -5,11 +5,11 @@ module Refinery
         def do_export(enquiries)
           begin
             io = StringIO.new
-
+            titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
             file_name = "enquiries-#{Time.now.to_i}.xlsx"
             workbook = WriteXLSX.new(io)
             worksheet = workbook.add_worksheet
-            titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
+
             # create new array - for methods
             col = 0
             row = 1
@@ -30,7 +30,7 @@ module Refinery
             text_format.set_text_wrap(true)
             text_format.set_align('top')
 
-            enquiries.each do |enquiry|
+            enquiries.each_with_index do |enquiry, index|
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{enquiry.name} [#{enquiry.email}]", text_format)
               worksheet.write(row, 2, enquiry.phone || "-", text_format)
