@@ -14,6 +14,8 @@ module Refinery
         def export
           orders = Refinery::Ironman::Order.all
           orders = orders.with_query(params[:search]) if searching?
+          # export perpage
+          orders = orders.page(params[:page])
           result = do_export(orders)
 
           if result[:status]
