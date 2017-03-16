@@ -13,7 +13,7 @@ module Refinery
 
         def export
           # export between date
-          orders = Refinery::Ironman::Order.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day)
+          orders = Refinery::Ironman::Order.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day).order(created_at: :desc)
 
           if orders.blank?
             flash[:error] = "Data not found."
