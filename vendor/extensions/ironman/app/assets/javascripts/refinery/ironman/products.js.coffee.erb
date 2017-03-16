@@ -98,3 +98,13 @@ $(document).on 'page:load ready', ->
     document.location.href = Ironman.utils.updateQueryStringParameter(
       document.location.href, 'show_on_homepage', (if $(this).is(':checked') then 1 else 0)
     )
+
+  $('.export-open').click ->
+    obj_target = $(this).data('target')
+    form_obj = $(obj_target).find('form')
+    $(obj_target).addClass('opened')
+    form_obj.attr('action', $(this).data('url'))
+
+
+    $('.close-form').click ->
+      $(".export-card").removeClass('opened')

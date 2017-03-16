@@ -4,15 +4,16 @@ module Refinery
       module OrdersHelper
         include ActionView::Helpers::NumberHelper
 
-        def do_export(orders)
+        def do_export(orders, dates)
           begin
             io = StringIO.new
-            file_name = "orders-#{Time.now.to_i}.xlsx"
+            file_name = "orders (#{dates[0]} - #{dates[1]}).xlsx"
             workbook = WriteXLSX.new(io)
-            worksheet = workbook.add_worksheet
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'IP Address', 'Detected Country', 'Receive News?', 'Vehicle', 'Stockist', 'Comments', 'Qty', 'Total']
             col = 0
             row = 1
+            page = 1
+            worksheet = workbook.add_worksheet("page #{page}")
 
             # create title row
             format = workbook.add_format
@@ -30,7 +31,21 @@ module Refinery
             text_format.set_text_wrap(true)
             text_format.set_align('top')
 
-            orders.each_with_index do |order, index|              
+            orders.each_with_index do |order, index|
+              # activate data persheet
+              # change number 5 for the limit data persheet
+              if index % 20 == 0 and index != 0
+                page += 1
+                col = 0
+                worksheet = workbook.add_worksheet("page #{page}")
+
+                titles.each do |title|
+                  worksheet.write(0, col, title, format)
+                  col += 1
+                end
+                row = 1
+              end
+
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{order.name} [#{order.email}]", text_format)
               worksheet.write(row, 2, order.phone || "-", text_format)

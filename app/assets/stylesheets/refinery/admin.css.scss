@@ -70,7 +70,27 @@
 .remove_picked_resource {
   vertical-align: middle;
 }
+#actions {
+  .export-card {
+    background: #EAEAEA;
+    padding: 5px;
+    display: none;
 
+    h4 {
+      border-bottom: 1px solid #fff;
+      padding-bottom: 3px;
+      margin: 5px 0px;
+    }
+
+    input[type="date"] {
+      width: 127px;
+    }
+
+    &.opened {
+      display: block;
+    }
+  }
+}
 #actions #import li  {
   background-color: #dbedff;
   background-position: 12px;

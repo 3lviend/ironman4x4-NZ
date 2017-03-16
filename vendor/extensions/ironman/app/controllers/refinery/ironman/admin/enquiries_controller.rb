@@ -33,16 +33,20 @@ module Refinery
         end
 
         def export
-          @enquiries = @enquiries.with_query(params[:search]) if searching?
-          # export perpage
-          @enquiries = @enquiries.page(params[:page])
+          # export between date
+          @enquiries = Refinery::Ironman::Enquiry.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day).ham
 
-          result = do_export(@enquiries)
-          if result[:status]
-            send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
-          else
-            flash[:error] = "Something wrong."
+          if @enquiries.blank?
+            flash[:error] = "Data not found."
             redirect_to :back
+          else
+            result = do_export(@enquiries, [params[:from], params[:to]])
+            if result[:status]
+              send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
+            else
+              flash[:error] = "Something wrong."
+              redirect_to :back
+            end
           end
         end
 
