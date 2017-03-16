@@ -31,6 +31,19 @@ module Refinery
             text_format.set_align('top')
 
             enquiries.each_with_index do |enquiry, index|
+              # activate data persheet
+              # change number 5 for the limit data persheet
+              if index % 5 == 0 and index != 0
+                col = 0
+                worksheet = workbook.add_worksheet
+
+                titles.each do |title|
+                  worksheet.write(0, col, title, format)
+                  col += 1
+                end
+                row = 1
+              end
+
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{enquiry.name} [#{enquiry.email}]", text_format)
               worksheet.write(row, 2, enquiry.phone || "-", text_format)

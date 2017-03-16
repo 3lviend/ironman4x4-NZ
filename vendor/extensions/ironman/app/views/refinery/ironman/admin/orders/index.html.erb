@@ -7,8 +7,22 @@
 <div id='actions'>
   <ul>
     <li>
-      <%= link_to t('.orders_export'), refinery.export_ironman_admin_orders_path(:search => params[:search], :page => params[:page] || 1), :class => "go_icon" %>
+      <%= link_to t('.orders_export'), "javascript:void(0);",
+                  :class => "go_icon export-open", :data => {
+                    :target => '#export-orders',
+                    :url => refinery.export_ironman_admin_orders_path(:search => params[:search], :page => params[:page] || 1)
+                    } %>
     </li>
   </ul>
+  <div class="export-card" id="export-orders">
+    <h4>Export Filter</h4>
+    <form action="/" method="get">
+      <input type="date" name="from"> to <input type="date" name="to">
+      <p align="right">
+        <button type="button" class="close-form">close</button>
+        <button type="submit">Export</button>
+      </p>
+    </form>
+  </div>
 </div>
 <%= render '/refinery/admin/make_sortable', options: {tree: false} if !searching? and ::Refinery::Ironman::Admin::OrdersController.sortable? and ::Refinery::Ironman::Order.many? %>
