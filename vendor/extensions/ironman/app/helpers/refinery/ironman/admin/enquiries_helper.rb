@@ -2,17 +2,18 @@ module Refinery
   module Ironman
     module Admin
       module EnquiriesHelper
-        def do_export(enquiries)
+        def do_export(enquiries, dates)
           begin
             io = StringIO.new
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
-            file_name = "enquiries-#{Time.now.to_i}.xlsx"
+            file_name = "enquiries (#{dates[0]} - #{dates[1]}).xlsx"
             workbook = WriteXLSX.new(io)
-            worksheet = workbook.add_worksheet
 
             # create new array - for methods
             col = 0
             row = 1
+            page = 1
+            worksheet = workbook.add_worksheet("page #{page}")
 
             # create title row
             format = workbook.add_format
@@ -33,9 +34,10 @@ module Refinery
             enquiries.each_with_index do |enquiry, index|
               # activate data persheet
               # change number 5 for the limit data persheet
-              if index % 5 == 0 and index != 0
+              if index % 20 == 0 and index != 0
+                page += 1
                 col = 0
-                worksheet = workbook.add_worksheet
+                worksheet = workbook.add_worksheet("page #{page}")
 
                 titles.each do |title|
                   worksheet.write(0, col, title, format)
