@@ -15,12 +15,11 @@ module Refinery
           # export between date
           orders = Refinery::Ironman::Order.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day)
 
-          result = do_export(orders)
-
           if orders.blank?
             flash[:error] = "Data not found."
             redirect_to :back
           else
+            result = do_export(orders, [params[:from], params[:to]])
             if result[:status]
               send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
             else
