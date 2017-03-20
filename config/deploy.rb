@@ -39,15 +39,23 @@ end
 task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
+  queue! %[chown -R rails "#{deploy_to}/shared/log"]
+  queue! %[chgrp -R www-data "#{deploy_to}/shared/log"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
+  queue! %[chown -R rails "#{deploy_to}/shared/config"]
+  queue! %[chgrp -R www-data "#{deploy_to}/shared/config"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/public"]
   queue! %[mkdir -p "#{deploy_to}/shared/public/system"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/system"]
+  queue! %[chown -R rails "#{deploy_to}/shared/public/system"]
+  queue! %[chgrp -R www-data "#{deploy_to}/shared/public/system"]
 
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
+  queue! %[chown -R rails "#{deploy_to}/shared/config/database.yml"]
+  queue! %[chgrp -R www-data "#{deploy_to}/shared/config/database.yml"]
   queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
 
@@ -64,8 +72,8 @@ task :deploy => :environment do
 
     to :launch do
       # all the files must be owned by the rails user, who runs the web process
-      queue %[chown -R rails "#{deploy_to}"]
-      queue %[chgrp -R www-data "#{deploy_to}"]
+      queue %[chown -R rails "#{deploy_to}/current"]
+      queue %[chgrp -R www-data "#{deploy_to}/current"]
 
       queue "service unicorn restart"
     end
