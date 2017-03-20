@@ -1,6 +1,7 @@
 set :domain, '128.199.176.45'
 set :deploy_to, '/home/rails'
-set :repository, 'git@github.com:1bdesign/ironman4x4.git'
+# set :repository, 'git@github.com:1bdesign/ironman4x4.git'
+set :repository, 'git@github.com:Ironman4x4/ironman4x4.git'
 set :branch, 'master'
 set :user, 'root'
 set :rails_env, 'production'
