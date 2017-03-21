@@ -9,8 +9,8 @@ ExceptionNotification.configure do |config|
   # The ignore_if method can be invoked multiple times to add extra conditions.
   config.ignore_if do |exception, options|
     # for now don't send anymore exception notifications
-    true
-    # not (Rails.env.production? or Rails.env.staging?)
+    # true
+    not (Rails.env.production? or Rails.env.staging?)
   end
 
   # Notifiers =================================================================
@@ -19,7 +19,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     :email_prefix         => "[ERROR] ",
     :sender_address       => %{"Notifier" <noreply@ironman4x4-#{Rails.env}>},
-    :exception_recipients => ENV['ERROR_EMAIL'] # for now just send to this address
+    :exception_recipients => "elvin.alvian.siagian@gmail.com" #ENV['ERROR_EMAIL'] # for now just send to this address
   }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
