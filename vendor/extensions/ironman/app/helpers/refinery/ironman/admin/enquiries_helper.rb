@@ -6,7 +6,7 @@ module Refinery
           begin
             io = StringIO.new
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
-            file_name = "enquiries (#{dates[0]} - #{dates[1]}).xlsx"
+            file_name = "enquiries (#{dates[0]} - #{dates[1]}).xls"
             workbook = WriteXLSX.new(io)
 
             # create new array - for methods

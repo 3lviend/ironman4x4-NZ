@@ -7,7 +7,7 @@ module Refinery
         def do_export(orders, dates)
           begin
             io = StringIO.new
-            file_name = "orders (#{dates[0]} - #{dates[1]}).xlsx"
+            file_name = "orders (#{dates[0]} - #{dates[1]}).xls"
             workbook = WriteXLSX.new(io)
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'IP Address', 'Detected Country', 'Receive News?', 'Vehicle', 'Stockist', 'Comments', 'Qty', 'Total']
             col = 0
