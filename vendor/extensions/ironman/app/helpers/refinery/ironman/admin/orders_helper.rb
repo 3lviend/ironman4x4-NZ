@@ -77,8 +77,9 @@ module Refinery
           qty = ""
           total = ""
           lines.each do |line|
-            qty += "(#{line.product.name}) ~ #{line.quantity} \n"
-            total += "(#{line.product.name}) ~ #{number_to_currency(line.net_amount)} \n"
+            name = line.product.present? ? line.product.name : ""
+            qty += "(#{name}) ~ #{line.quantity} \n"
+            total += "(#{name}) ~ #{number_to_currency(line.net_amount)} \n"
           end
 
           return [qty, total]
