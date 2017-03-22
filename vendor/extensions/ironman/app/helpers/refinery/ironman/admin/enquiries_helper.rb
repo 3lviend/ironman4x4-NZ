@@ -3,7 +3,6 @@ module Refinery
     module Admin
       module EnquiriesHelper
         def do_export(enquiries, dates)
-          begin
             io = StringIO.new
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
             file_name = "enquiries (#{dates[0]} - #{dates[1]}).xls"
@@ -31,6 +30,7 @@ module Refinery
             text_format.set_text_wrap(true)
             text_format.set_align('top')
 
+          begin
             enquiries.each_with_index do |enquiry, index|
               # activate data persheet
               # change number 5 for the limit data persheet
@@ -54,7 +54,7 @@ module Refinery
               worksheet.write(row, 5, enquiry.enquiry_type, text_format)
               worksheet.write(row, 6, enquiry.receive_news ? 'Yes' : 'No', text_format)
               worksheet.write(row, 7, enquiry.vehicle_name_full || "N/A", text_format)
-              worksheet.write(row, 8, enquiry.message.gsub(/[\r]/, ''), text_format)
+              worksheet.write_string(row, 8, enquiry.message.gsub(/[\r]/, ''))
               row += 1
             end
 
