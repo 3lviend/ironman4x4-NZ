@@ -32,6 +32,7 @@ module Refinery
             text_format.set_align('top')
 
             orders.each_with_index do |order, index|
+              if !order.blank?
               # activate data persheet
               # change number 5 for the limit data persheet
               if index % 20 == 0 and index != 0
@@ -62,7 +63,7 @@ module Refinery
               worksheet.write(row, 12, lines[1], text_format)
               row+=1
             end
-
+          end
             workbook.close
 
             return {:status => true, :book => io.string, :name => file_name}
