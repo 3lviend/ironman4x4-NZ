@@ -58,9 +58,9 @@ module Refinery
               worksheet.write(row, 8, order.vehicle_name_full || "N/A", text_format)
               worksheet.write(row, 9, order.stockist.present? ? order.stockist.name : "N/A", text_format)
               worksheet.write(row, 10, order.comments.gsub(/[\r]/, ''), text_format)
-              lines = order_products(order.lines)
-              worksheet.write(row, 11, lines[0], text_format)
-              worksheet.write(row, 12, lines[1], text_format)
+              qty, total = order_products(order.lines)
+              worksheet.write(row, 11, qty, text_format)
+              worksheet.write(row, 12, total, text_format)
               row+=1
             end
           end
