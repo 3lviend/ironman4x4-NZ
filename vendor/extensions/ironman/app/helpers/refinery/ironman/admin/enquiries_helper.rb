@@ -62,9 +62,9 @@ module Refinery
             workbook.close
 
             return {:status => true, :book => io.string, :name => file_name}
-          rescue
+          rescue => ex
             logger.warn "There was an error exporting enquiries.\n#{$!}\n"
-            return {:status => false, :file_path => ""}
+            return {:status => false, :file_path => "", :error => ex.message}
           end
         end
       end

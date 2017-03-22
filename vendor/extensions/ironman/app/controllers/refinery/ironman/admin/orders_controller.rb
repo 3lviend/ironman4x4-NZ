@@ -23,7 +23,7 @@ module Refinery
             if result[:status]
               send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
             else
-              flash[:error] = "Something wrong."
+              flash[:error] = result[:error]
               redirect_to :back
             end
           end
