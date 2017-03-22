@@ -7,7 +7,7 @@ module Refinery
         def do_export(orders, dates)
           begin
             io = StringIO.new
-            file_name = "orders (#{dates[0]} - #{dates[1]}).xlsx"
+            file_name = "orders (#{dates[0]} - #{dates[1]}).xls"
             workbook = WriteXLSX.new(io)
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'IP Address', 'Detected Country', 'Receive News?', 'Vehicle', 'Stockist', 'Comments', 'Qty', 'Total']
             col = 0
@@ -66,9 +66,9 @@ module Refinery
             workbook.close
 
             return {:status => true, :book => io.string, :name => file_name}
-          rescue
+          rescue => ex
             logger.warn "There was an error exporting orders.\n#{$!}\n"
-            return {:status => true, :book => "", :name => ""}
+            return {:status => false, :error => ex.message}
           end
         end
 

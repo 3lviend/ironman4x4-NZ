@@ -6,7 +6,7 @@ module Refinery
           begin
             io = StringIO.new
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'Enquiry Type', 'Receive News?', 'Vehicle', 'Comments']
-            file_name = "enquiries (#{dates[0]} - #{dates[1]}).xlsx"
+            file_name = "enquiries (#{dates[0]} - #{dates[1]}).xls"
             workbook = WriteXLSX.new(io)
 
             # create new array - for methods
@@ -62,9 +62,9 @@ module Refinery
             workbook.close
 
             return {:status => true, :book => io.string, :name => file_name}
-          rescue
+          rescue => ex
             logger.warn "There was an error exporting enquiries.\n#{$!}\n"
-            return {:status => false, :file_path => ""}
+            return {:status => false, :file_path => "", :error => ex.message}
           end
         end
       end
