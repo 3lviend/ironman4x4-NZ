@@ -51,7 +51,7 @@ module Refinery
                 if order.detected_country['data'].blank? 
                   "" 
                   else 
-                    order.detected_country['data']['country_name']) 
+                    order.detected_country['data']['country_name'] 
                 end
               else 
                 ""
