@@ -76,12 +76,12 @@ module Refinery
           end
             workbook.close
 
-            return {:status => true, :book => io.string, :name => file_name}
+          return {:status => true, :book => io.string, :name => file_name}
           rescue => ex
             logger.warn "There was an error exporting orders.\n#{$!}\n"
             return {:status => false, :error => ex.message}
           end
-        end
+        # end
 
         def order_products(lines)
           qty = ""
@@ -94,6 +94,7 @@ module Refinery
 
           return [qty, total]
         end
+        
       end
     end
   end
