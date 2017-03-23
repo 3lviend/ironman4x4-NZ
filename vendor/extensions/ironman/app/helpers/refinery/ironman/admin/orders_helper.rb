@@ -5,7 +5,7 @@ module Refinery
         include ActionView::Helpers::NumberHelper
 
         def do_export(orders, dates)
-          # begin
+          begin
             io = StringIO.new
             file_name = "orders (#{dates}).xls"
             workbook = WriteXLSX.new(io)
@@ -81,7 +81,7 @@ module Refinery
             logger.warn "There was an error exporting orders.\n#{$!}\n"
             return {:status => false, :error => ex.message}
           end
-        # end
+        end
 
         def order_products(lines)
           qty = ""
