@@ -65,11 +65,11 @@ module Refinery
             end
           end
             workbook.close
-
+            xxxx
             return {:status => true, :book => io.string, :name => file_name}
           rescue => ex
             logger.warn "There was an error exporting orders.\n#{$!}\n"
-            return {:status => false, :error => ex.message}
+            return {:status => false, :error => ex.backtrace}
           end
         end
 
