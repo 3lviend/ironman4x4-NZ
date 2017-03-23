@@ -7,7 +7,7 @@ module Refinery
         def do_export(orders, dates)
           # begin
             io = StringIO.new
-            file_name = "orders (#{dates[0]} - #{dates[1]}).xls"
+            file_name = "orders (#{dates}).xls"
             workbook = WriteXLSX.new(io)
             titles = ['To', 'From', 'Phone', 'Date', 'Address', 'IP Address', 'Detected Country', 'Receive News?', 'Vehicle', 'Stockist', 'Comments', 'Qty', 'Total']
             col = 0
@@ -53,13 +53,13 @@ module Refinery
               worksheet.write(row, 3, l(Date.parse(order.created_at.to_s), :format => :long), text_format)
               worksheet.write(row, 4, order.full_street_address, text_format)
               worksheet.write(row, 5, order.ip_address, text_format)
-              worksheet.write(row, 6, order.detected_country.present? ? order.detected_country['data']['country_name'] : "", text_format)
+              worksheet.write(row, 6, order.detected_country.present? ? (order.detected_country['data'].blank? ? "" : order.detected_country['data']['country_name']) : "", text_format)
               worksheet.write(row, 7, order.receive_news ? "Yes" : "No", text_format)
               worksheet.write(row, 8, order.vehicle_name_full || "N/A", text_format)
               worksheet.write(row, 9, order.stockist.present? ? order.stockist.name : "N/A", text_format)
               worksheet.write(row, 10, order.comments.gsub(/[\r]/, ''), text_format)
               qty, total = order_products(order.lines)
-              worksheet.write(row, 11, qty[1], text_format)
+              worksheet.write(row, 11, qty, text_format)
               worksheet.write(row, 12, total, text_format)
               row+=1
             end
@@ -67,10 +67,10 @@ module Refinery
             workbook.close
 
             return {:status => true, :book => io.string, :name => file_name}
-          # rescue => ex
-          #   logger.warn "There was an error exporting orders.\n#{$!}\n"
-          #   return {:status => false, :error => ex.message}
-          # end
+          rescue => ex
+            logger.warn "There was an error exporting orders.\n#{$!}\n"
+            return {:status => false, :error => ex.message}
+          end
         end
 
         def order_products(lines)
@@ -82,7 +82,7 @@ module Refinery
             total += "(#{name}) ~ #{number_to_currency(line.net_amount)} \n"
           end
 
-          return [nil, total]
+          return [qty, total]
         end
       end
     end

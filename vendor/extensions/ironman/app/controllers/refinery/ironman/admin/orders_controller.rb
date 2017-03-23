@@ -19,7 +19,8 @@ module Refinery
             flash[:error] = "Data not found."
             redirect_to :back
           else
-            result = do_export(orders, [params[:from], params[:to]])
+            dates = params[:from] + " - " + params[:to]
+            result = do_export(orders, dates)
             if result[:status]
               send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
             else
