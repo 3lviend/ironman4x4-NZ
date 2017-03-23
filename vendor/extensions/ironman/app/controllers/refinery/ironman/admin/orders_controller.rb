@@ -12,21 +12,29 @@ module Refinery
                 :order => 'refinery_ironman_orders.created_at desc'
 
         def export
-          # export between date
-          orders = Refinery::Ironman::Order.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day).order(created_at: :desc)
+          # check max day
+          from  = Date.strptime(params[:from], '%m/%d/%Y')
+          to  = Date.strptime(params[:to], '%m/%d/%Y')
+          if (to - from).to_i+1 <= 5
+            # export between date
+            orders = Refinery::Ironman::Order.where(:created_at => from.beginning_of_day..to.end_of_day).order(created_at: :desc)
 
-          if orders.blank?
-            flash[:error] = "Data not found."
-            redirect_to :back
-          else
-            dates = params[:from] + " - " + params[:to]
-            result = do_export(orders, dates)
-            if result[:status]
-              send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
-            else
-              flash[:error] = result[:error]
+            if orders.blank?
+              flash[:error] = "Data not found."
               redirect_to :back
+            else
+              dates = from + " - " + to
+              result = do_export(orders, dates)
+              if result[:status]
+                send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
+              else
+                flash[:error] = result[:error]
+                redirect_to :back
+              end
             end
+          else
+            flash[:error] = "The maximum is 5 days"
+            redirect_to :back
           end
         end
 
