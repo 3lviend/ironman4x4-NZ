@@ -47,13 +47,23 @@ module Refinery
                 row = 1
               end
 
+              country = if order.detected_country.present? 
+                if order.detected_country['data'].blank? 
+                  "" 
+                  else 
+                    order.detected_country['data']['country_name']) 
+                end
+              else 
+                ""
+              end
+
               worksheet.write(row, 0, Refinery::Core.config.site_name, text_format)
               worksheet.write(row, 1, "#{order.name} [#{order.email}]", text_format)
               worksheet.write(row, 2, order.phone || "-", text_format)
               worksheet.write(row, 3, l(Date.parse(order.created_at.to_s), :format => :long), text_format)
               worksheet.write(row, 4, order.full_street_address, text_format)
               worksheet.write(row, 5, order.ip_address, text_format)
-              worksheet.write(row, 6, order.detected_country.present? ? (order.detected_country['data'].blank? ? "" : order.detected_country['data']['country_name']) : "", text_format)
+              worksheet.write(row, 6, country, text_format)
               worksheet.write(row, 7, order.receive_news ? "Yes" : "No", text_format)
               worksheet.write(row, 8, order.vehicle_name_full || "N/A", text_format)
               worksheet.write(row, 9, order.stockist.present? ? order.stockist.name : "N/A", text_format)
