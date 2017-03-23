@@ -34,7 +34,9 @@ module Refinery
 
         def export
           # export between date
-          @enquiries = Refinery::Ironman::Enquiry.where(:created_at => params[:from].to_date.beginning_of_day..params[:to].to_date.end_of_day).ham
+          date_from = Date.strptime(params[:from], '%m/%d/%Y').beginning_of_day
+          date_to = Date.strptime(params[:to], '%m/%d/%Y').end_of_day
+          @enquiries = Refinery::Ironman::Enquiry.where(:created_at => date_from..date_to).ham
 
           if @enquiries.blank?
             flash[:error] = "Data not found."
