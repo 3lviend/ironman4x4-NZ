@@ -15,6 +15,7 @@ module Refinery
           # check max day
           from  = Date.strptime(params[:from], '%m/%d/%Y')
           to  = Date.strptime(params[:to], '%m/%d/%Y')
+          
           if (to - from).to_i+1 <= 5
             # export between date
             orders = Refinery::Ironman::Order.where(:created_at => from.beginning_of_day..to.end_of_day).order(created_at: :desc)
@@ -23,7 +24,7 @@ module Refinery
               flash[:error] = "Data not found."
               redirect_to :back
             else
-              dates = from + " - " + to
+              dates = params[:from] + " - " + params[:to]
               result = do_export(orders, dates)
               if result[:status]
                 send_data result[:book], :filename => result[:name], :type =>  "application/vnd.ms-excel"
@@ -33,7 +34,7 @@ module Refinery
               end
             end
           else
-            flash[:error] = "The maximum is 5 days"
+            flash[:error] = "You are not allowed to export orders more than 5 days."
             redirect_to :back
           end
         end
