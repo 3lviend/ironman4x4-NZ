@@ -90,16 +90,17 @@ gem 'eventmachine', '~> 1.0.4'
 gem 'mina'
 gem 'mina-multistage', require: false
 
-# Development gems
-#gem 'rack-mini-profiler'
-gem 'mailcatcher', group: :development
-
-# debug
-#gem 'pry-byebug', group: :development
-
 # delayed jobs
 gem 'sidekiq', '~> 2.17.8'
 
 gem "binding_of_caller"
 
 gem 'write_xlsx'
+
+# Development gems
+group :development do
+	#gem 'rack-mini-profiler'
+	gem 'mailcatcher'
+	gem 'letter_opener_web'
+	gem 'byebug'
+end
