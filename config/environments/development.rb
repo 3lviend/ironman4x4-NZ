@@ -15,8 +15,10 @@ Rails.application.configure do
 
   if config.respond_to?(:action_mailer)
     # for use with mailcatcher
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+    # config.action_mailer.delivery_method = :smtp
+    # config.action_mailer.smtp_settings = { address: 'localhost', port: 1025 }
+    config.action_mailer.delivery_method = :letter_opener
+    config.action_mailer.smtp_settings = { :host => 'localhost:3000' }
 
     # Don't care if the mailer can't send.
     config.action_mailer.raise_delivery_errors = false
