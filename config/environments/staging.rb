@@ -67,7 +67,7 @@ Rails.application.configure do
     # config.action_mailer.raise_delivery_errors = false
 
     # sendgrid email settings
-    config.action_mailer.default_url_options = { :host => ENV['HOME_URL'] }
+    config.action_mailer.default_url_options = { :host => 'http://128.199.182.106/' }
     config.action_mailer.delivery_method = :smtp
     ActionMailer::Base.smtp_settings = {
       :address        => 'smtp.sendgrid.net',
