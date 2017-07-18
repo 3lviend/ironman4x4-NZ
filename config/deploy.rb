@@ -32,6 +32,10 @@ task :environment do
 
   # For those using RVM, use this to load an RVM version@gemset.
   # invoke :'rvm:use[ruby-1.9.3-p448@default]'
+  queue %{
+    source /home/rails/.rvm/scripts/rvm
+    rvm list
+  }
   invoke :'rvm:use[ruby-2.1.3@default]'
 end
 
