@@ -19,8 +19,8 @@ set :shared_paths, ['config/database.yml', 'log', 'public/system']
 #   set :port, '30000'     # SSH port number.
 set :ssh_options, '-A'
 
-set :rvm_path, '/usr/local/rvm/bin/rvm'
-# set :rvm_path, '/home/rails/.rvm/bin/rvm'
+# set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :rvm_path, '/home/rails/.rvm/bin/rvm'
 set :term_mode, nil
 
 # This task is the environment that is loaded for most commands, such as
@@ -31,8 +31,8 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[ruby-1.9.3-p448@default]'
-  # invoke :'rvm:use[ruby-2.1.3@default]'
+  # invoke :'rvm:use[ruby-1.9.3-p448@default]'
+  invoke :'rvm:use[ruby-2.1.3@default]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -42,23 +42,23 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
   queue! %[chown -R rails "#{deploy_to}/shared/log"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/log"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/log"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
   queue! %[chown -R rails "#{deploy_to}/shared/config"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/config"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/config"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/public"]
   queue! %[mkdir -p "#{deploy_to}/shared/public/system"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/system"]
   queue! %[chown -R rails "#{deploy_to}/shared/public/system"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/public/system"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/public/system"]
 
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
   queue! %[chown -R rails "#{deploy_to}/shared/config/database.yml"]
   queue! %[chgrp -R www-data "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  # queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 end
 
 desc "Deploys the current version to the server."
@@ -75,7 +75,7 @@ task :deploy => :environment do
     to :launch do
       # all the files must be owned by the rails user, who runs the web process
       queue %[chown -R rails "#{deploy_to}/current"]
-      queue %[chgrp -R www-data "#{deploy_to}/current"]
+      # queue %[chgrp -R www-data "#{deploy_to}/current"]
 
       queue "service unicorn restart"
     end
@@ -98,7 +98,7 @@ task :rollback => :environment do
 
   # Setting up permissions
   queue %[chown -R rails "#{deploy_to}"]
-  queue %[chgrp -R www-data "#{deploy_to}"]  
+  # queue %[chgrp -R www-data "#{deploy_to}"]  
   
   queue "service unicorn restart"
 end
