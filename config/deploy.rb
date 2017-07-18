@@ -123,7 +123,7 @@ namespace :unicorn do
   set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
   set :start_unicorn, %{
     cd #{deploy_to}
-    bundle exec unicorn -c #{deploy_to}/config/unicorn.rb -E #{rails_env} -D
+    bundle exec unicorn -c #{deploy_to}/current/config/unicorn.rb -E #{rails_env} -D
   }
 
 #                                                                    Start task
