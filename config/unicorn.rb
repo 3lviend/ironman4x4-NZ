@@ -3,7 +3,7 @@ listen "127.0.0.1:8080"
 user "rails"
 working_directory "/home/rails/current"
 timeout 1440
-pid "/home/rails/tmp/pids/unicorn.pid"
+pid "/home/rails/shared/tmp/pids/unicorn.pid"
 stderr_path "/var/log/unicorn/unicorn.log"
 stdout_path "/var/log/unicorn/unicorn.log"
 
