@@ -4,8 +4,8 @@ user "rails"
 working_directory "/home/rails/current"
 timeout 1440
 pid "/home/rails/shared/tmp/pids/unicorn.pid"
-stderr_path "/var/log/unicorn/unicorn.log"
-stdout_path "/var/log/unicorn/unicorn.log"
+stderr_path "/home/rails/shared/log/unicorn/unicorn.log"
+stdout_path "/home/rails/shared/log/unicorn/unicorn.log"
 
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
 # timeout 30
