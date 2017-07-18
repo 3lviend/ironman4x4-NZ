@@ -1,6 +1,14 @@
 # config/unicorn.rb
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 30
+listen "127.0.0.1:8080"
+user "rails"
+working_directory "/home/rails/current"
+timeout 1440
+pid "/home/rails/tmp/pids/unicorn.pid"
+stderr_path "/var/log/unicorn/unicorn.log"
+stdout_path "/var/log/unicorn/unicorn.log"
+
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 4)
+# timeout 30
 preload_app true
 
 before_fork do |server, worker|

@@ -34,9 +34,9 @@ task :environment do
   # invoke :'rvm:use[ruby-1.9.3-p448@default]'
   queue %{
     source /home/rails/.rvm/scripts/rvm
-    rvm list
+    rvm use ruby-2.1.3 --default 
   }
-  invoke :'rvm:use[ruby-2.1.3@default]'
+  # invoke :'rvm:use[ruby-2.1.3@default]'
 end
 
 # Put any custom mkdir's in here for when `mina setup` is ran.
@@ -63,6 +63,8 @@ task :setup => :environment do
   queue! %[chown -R rails "#{deploy_to}/shared/config/database.yml"]
   queue! %[chgrp -R www-data "#{deploy_to}/shared/config/database.yml"]
   # queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]  
 end
 
 desc "Deploys the current version to the server."
@@ -80,8 +82,8 @@ task :deploy => :environment do
       # all the files must be owned by the rails user, who runs the web process
       queue %[chown -R rails "#{deploy_to}/current"]
       # queue %[chgrp -R www-data "#{deploy_to}/current"]
-
-      queue "service unicorn restart"
+      invoke :'unicorn:restart'
+      # queue "service unicorn restart"
     end
   end
 end
@@ -114,3 +116,40 @@ end
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
 
+
+#                                                                       Unicorn
+# ==============================================================================
+namespace :unicorn do
+  set :unicorn_pid, "#{deploy_to}/tmp/pids/unicorn.pid"
+  set :start_unicorn, %{
+    cd #{deploy_to}
+    bundle exec unicorn -c #{deploy_to}/config/unicorn.rb -E #{rails_env} -D
+  }
+
+#                                                                    Start task
+# ------------------------------------------------------------------------------
+  desc "Start unicorn"
+  task :start => :environment do
+    queue 'echo "-----> Start Unicorn"'
+    queue! start_unicorn
+  end
+
+#                                                                     Stop task
+# ------------------------------------------------------------------------------
+  desc "Stop unicorn"
+  task :stop do
+    queue 'echo "-----> Stop Unicorn"'
+    queue! %{
+      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+
+#                                                                  Restart task
+# ------------------------------------------------------------------------------
+  desc "Restart unicorn using 'upgrade'"
+  task :restart => :environment do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+  end
+end
