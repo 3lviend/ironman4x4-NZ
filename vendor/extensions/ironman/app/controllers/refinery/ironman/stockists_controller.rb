@@ -22,7 +22,7 @@ module Refinery
     protected
 
       def find_all_stockists
-        @all_stockists = Stockist.active
+        @all_stockists = Stockist.active.only_new_zealand
 
         conditions = {}
 
@@ -34,7 +34,7 @@ module Refinery
           conditions[:services] = params[:services]
         end
 
-        @stockists = Stockist.active.where(conditions)
+        @stockists = Stockist.active.only_new_zealand.where(conditions)
 
         if params[:stockist_query].present?
           stockist_query = params[:stockist_query]

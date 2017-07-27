@@ -21,6 +21,7 @@ module Refinery
       STORE_TYPE = ['Stockist', 'Showroom', 'Ironman 4x4 Branch']
 
       scope :active, -> { where(visible: true) }
+      scope :only_new_zealand, -> { where("country =? OR country = ?", 'New Zealand', "new zealand") }
       scope :show_on_contact, -> { where(show_on_contact: true) }
 
       after_initialize do
