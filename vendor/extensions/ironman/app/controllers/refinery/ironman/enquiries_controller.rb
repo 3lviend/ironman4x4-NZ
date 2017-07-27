@@ -10,7 +10,7 @@ module Refinery
 
       def new
         @enquiry = Enquiry.new
-        @warehouses = Stockist.active.show_on_contact.order('region asc, country asc, warehouse_name ASC').group_by(&:region)
+        @warehouses = Stockist.active.show_on_contact.only_new_zealand.order('region asc, country asc, warehouse_name ASC').group_by(&:region)
       end
 
       def create

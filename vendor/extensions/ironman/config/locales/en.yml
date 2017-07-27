@@ -414,8 +414,10 @@ en:
             label: Terms & Conditions
             warning: You must agree to the terms and conditions
           australian_phone: 1300 731 137
+          new_zealand_phone: 03 3490037
           international_phone: "+61 (0) 3 9532 1111"
           australian_call: Australia Wide Local Call %{phone}
+          new_zealand_call: New Zealand Wide Local Call %{phone}
           international_call: International Call %{phone}
           vehicle_make:
             label: Vehicle Details

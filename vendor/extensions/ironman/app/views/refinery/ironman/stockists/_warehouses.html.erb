@@ -2,9 +2,9 @@
 
 <% cache([cache_key_for_stockists, cache_key]) do %>
 <div id="warehouses">
-  <% australia = @warehouses.slice('Australia') %>
-  <% warehouses = australia.merge(@warehouses.except('Australia')) %>
-  <% warehouses.each do |region, warehouses| %>
+  <%# australia = @warehouses.slice('Australia') %>
+  <%# warehouses = australia.merge(@warehouses.except('Australia')) %>
+  <% @warehouses.each do |region, warehouses| %>
     <h3 id="<%= region.parameterize %>"><%= region %></h3>
     <div>
       <ul>
