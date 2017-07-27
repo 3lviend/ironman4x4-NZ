@@ -35,7 +35,7 @@ en:
         blog: 'Blog'
         catalogue: 'Catalogue'
         news: 'News & Events'
-        media: 'Media'
+        media: 'Releases'
         contact: 'Contact'
       search_form:
         placeholder: 'Search'
