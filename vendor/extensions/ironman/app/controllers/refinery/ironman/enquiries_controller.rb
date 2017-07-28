@@ -9,8 +9,9 @@ module Refinery
       end
 
       def new
-        @enquiry = Enquiry.new
-        @warehouses = Stockist.active.show_on_contact.only_new_zealand.order('region asc, country asc, warehouse_name ASC').group_by(&:region)
+        @enquiry       = Enquiry.new
+        @warehouses    = Stockist.active.show_on_contact.only_new_zealand.order('region asc, country asc, warehouse_name ASC').group_by(&:region)
+        @contact_phone = Refinery::Setting.find_or_set(:contact_phone, t('.new_zealand_phone'))
       end
 
       def create
