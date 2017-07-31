@@ -1,8 +1,8 @@
 development:
   adapter: mysql2
   encoding: utf8
-  #database: ironman4x4_development
-  database: ironman4x4_production
+  #database: ironman4x4_nz_development
+  database: ironman4x4_nz_production
   username: root
   password: password
   host: localhost
@@ -10,7 +10,7 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: ironman4x4_test
+  database: ironman4x4_nz_test
   username: root
   password: password
   host: localhost
