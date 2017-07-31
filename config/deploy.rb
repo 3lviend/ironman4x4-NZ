@@ -19,8 +19,8 @@ set :shared_paths, ['config/database.yml', 'log', 'public/system']
 #   set :port, '30000'     # SSH port number.
 set :ssh_options, '-A'
 
-set :rvm_path, '/usr/local/rvm/bin/rvm'
-# set :rvm_path, '/home/rails/.rvm/bin/rvm'
+# set :rvm_path, '/usr/local/rvm/bin/rvm'
+set :rvm_path, '/home/rails/.rvm/bin/rvm'
 set :term_mode, nil
 
 # This task is the environment that is loaded for most commands, such as
@@ -31,7 +31,11 @@ task :environment do
   # invoke :'rbenv:load'
 
   # For those using RVM, use this to load an RVM version@gemset.
-  invoke :'rvm:use[ruby-1.9.3-p448@default]'
+  # invoke :'rvm:use[ruby-1.9.3-p448@default]'
+  queue %{
+    source /home/rails/.rvm/scripts/rvm
+    rvm use ruby-2.1.3 --default 
+  }
   # invoke :'rvm:use[ruby-2.1.3@default]'
 end
 
@@ -42,23 +46,26 @@ task :setup => :environment do
   queue! %[mkdir -p "#{deploy_to}/shared/log"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/log"]
   queue! %[chown -R rails "#{deploy_to}/shared/log"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/log"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/log"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/config"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/config"]
   queue! %[chown -R rails "#{deploy_to}/shared/config"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/config"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/config"]
 
   queue! %[mkdir -p "#{deploy_to}/shared/public"]
   queue! %[mkdir -p "#{deploy_to}/shared/public/system"]
   queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/public/system"]
   queue! %[chown -R rails "#{deploy_to}/shared/public/system"]
-  queue! %[chgrp -R www-data "#{deploy_to}/shared/public/system"]
+  # queue! %[chgrp -R www-data "#{deploy_to}/shared/public/system"]
 
   queue! %[touch "#{deploy_to}/shared/config/database.yml"]
   queue! %[chown -R rails "#{deploy_to}/shared/config/database.yml"]
   queue! %[chgrp -R www-data "#{deploy_to}/shared/config/database.yml"]
-  queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+  # queue  %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
+
+  queue! %[mkdir -p "#{deploy_to}/shared/tmp/pids"]  
+  queue! %[chmod g+rx,u+rwx "#{deploy_to}/shared/tmp/pids"]
 end
 
 desc "Deploys the current version to the server."
@@ -75,9 +82,9 @@ task :deploy => :environment do
     to :launch do
       # all the files must be owned by the rails user, who runs the web process
       queue %[chown -R rails "#{deploy_to}/current"]
-      queue %[chgrp -R www-data "#{deploy_to}/current"]
-
-      queue "service unicorn restart"
+      # queue %[chgrp -R www-data "#{deploy_to}/current"]
+      invoke :'unicorn:restart'
+      # queue "service unicorn restart"
     end
   end
 end
@@ -98,7 +105,7 @@ task :rollback => :environment do
 
   # Setting up permissions
   queue %[chown -R rails "#{deploy_to}"]
-  queue %[chgrp -R www-data "#{deploy_to}"]  
+  # queue %[chgrp -R www-data "#{deploy_to}"]  
   
   queue "service unicorn restart"
 end
@@ -110,3 +117,40 @@ end
 #  - http://nadarei.co/mina/settings
 #  - http://nadarei.co/mina/helpers
 
+
+#                                                                       Unicorn
+# ==============================================================================
+namespace :unicorn do
+  set :unicorn_pid, "/home/rails/shared/tmp/pids/unicorn.pid"
+  set :start_unicorn, %{
+    cd /home/rails/current
+    bundle exec unicorn -c /home/rails/current/config/unicorn.rb -E #{rails_env} -D
+  }
+
+#                                                                    Start task
+# ------------------------------------------------------------------------------
+  desc "Start unicorn"
+  task :start => :environment do
+    queue 'echo "-----> Start Unicorn"'
+    queue! start_unicorn
+  end
+
+#                                                                     Stop task
+# ------------------------------------------------------------------------------
+  desc "Stop unicorn"
+  task :stop do
+    queue 'echo "-----> Stop Unicorn"'
+    queue! %{
+      test -s "#{unicorn_pid}" && kill -QUIT `cat "#{unicorn_pid}"` && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+
+#                                                                  Restart task
+# ------------------------------------------------------------------------------
+  desc "Restart unicorn using 'upgrade'"
+  task :restart => :environment do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+  end
+end
