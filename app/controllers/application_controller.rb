@@ -9,8 +9,10 @@ class ApplicationController < ActionController::Base
   before_action :set_current_database
 
   def set_time_zone(&block)
-    time_zone = Refinery::Setting.get(:time_zone)
-    Time.use_zone(time_zone, &block)
+    # time_zone = Refinery::Setting.get(:time_zone)
+    default_timezone = "Pacific/Auckland"
+    time_zone = Refinery::Setting.find_or_set(:time_zone, default_timezone)
+    Time.use_zone(time_zone, &block) rescue Time.use_zone(default_timezone, &block)
   end
 
   def set_date_format
@@ -35,8 +37,10 @@ Refinery::AdminController.class_eval do
   before_action :set_current_database
 
   def set_time_zone(&block)
-    time_zone = Refinery::Setting.get(:time_zone)
-    Time.use_zone(time_zone, &block)
+    # time_zone = Refinery::Setting.get(:time_zone)
+    default_timezone = "Pacific/Auckland"
+    time_zone = Refinery::Setting.find_or_set(:time_zone, default_timezone)
+    Time.use_zone(time_zone, &block) rescue Time.use_zone(default_timezone, &block)
   end
 
   def set_date_format
