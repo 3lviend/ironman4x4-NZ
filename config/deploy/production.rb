@@ -1,4 +1,4 @@
-# set :domain, '128.199.176.45'
+# set :domain, '128.199.176.45' - old
 set :domain, '223.165.66.167'
 set :deploy_to, '/home/rails'
 # set :repository, 'git@github.com:1bdesign/ironman4x4.git'
