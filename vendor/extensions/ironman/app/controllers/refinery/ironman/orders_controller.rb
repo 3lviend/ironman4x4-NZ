@@ -77,7 +77,8 @@ module Refinery
       end
 
       def find_all_warehouses
-        @warehouses = Stockist.active.where('lower(region) != ? or (lower(region) = ? and lower(store_type) = ?)', 'australia', 'australia', 'ironman 4x4 branch').where("region is not null and region != ''").order('region asc, name ASC').group_by(&:region)
+        # @warehouses = Stockist.active.where('lower(region) != ? or (lower(region) = ? and lower(store_type) = ?)', 'australia', 'australia', 'ironman 4x4 branch').where("region is not null and region != ''").order('region asc, name ASC').group_by(&:region)
+        @warehouses = Stockist.active.only_new_zealand.order('region asc, name ASC').group_by(&:region)
       end
 
       def find_all_stockists

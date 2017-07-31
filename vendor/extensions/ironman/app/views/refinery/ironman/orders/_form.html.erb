@@ -28,41 +28,41 @@
     <div class="tab-pane" id="wishlist-stockist">
       <% if not params[:stockist_query].present? %>
       <div class="international">
-        <h3 class="international-user"><%= t('.international.international_user') %></h3>
+        <!-- <h3 class="international-user"><%#= t('.international.international_user') %></h3> -->
         <h3 class="select-regional-office"><%= t('.international.select_regional_office') %></h3>
         <p><%= t('.international.description') %></p>
 
         <% cache(cache_key_for_stockists) do %>
-        <% australian = @warehouses.slice('Australia') %>
-        <% @warehouses = @warehouses.except('Australia') %>
+        <%# australian = @warehouses.slice('Australia') %>
+        <%# @warehouses = @warehouses.except('Australia') %>
         <%= render :layout => '/refinery/ironman/stockists/warehouses', :locals => {:cache_key => :order_form} do %>
-          <% if australian.empty? %>
-          <% australian = {'Australia' => []}; %>
-          <% end %>
-          <% australian.each do |region, warehouses| %>
-            <h3 id="<%= region.parameterize %>" class="australia"><%= region %></h3>
-            <div>
-              <% if warehouses.any? %>
-              <ul>
-                <% warehouses.each do |warehouse| %>
-                  <%= render :partial => 'refinery/ironman/stockists/warehouse', :locals => {:warehouse => warehouse} %>
-                <% end %>
-              </ul>
-              <% end %>
+          <%# if australian.empty? %>
+          <%## australian = {'Australia' => []}; %>
+          <%# end %>
+          <%# australian.each do |region, warehouses| %>
+            <!-- <h3 id="<%= region.parameterize %>" class="australia"><%#= region %></h3> -->
+            <!-- <div> -->
+              <%# if warehouses.any? %>
+              <!-- <ul> -->
+                <%# warehouses.each do |warehouse| %>
+                  <%#= render :partial => 'refinery/ironman/stockists/warehouse', :locals => {:warehouse => warehouse} %>
+                <%# end %>
+              <!-- </ul> -->
+              <%# end %>
 
-              <%= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => request.original_url, :submit_btn_text => 'Load Australian Stockists', :heading => t('refinery.ironman.orders.form.international.australian_search') } %>
-            </div>
-          <% end %>
+              <%#= render :partial => 'refinery/ironman/stockists/search_form', :locals => {:url => request.original_url, :submit_btn_text => 'Load Australian Stockists', :heading => t('refinery.ironman.orders.form.international.australian_search') } %>
+            <!-- </div> -->
+          <%# end %>
         <% end %>
         <% end %>
 
-        <%= render :partial => '/refinery/ironman/stockists/warehouses_javascript', :locals => {:auto_scroll => false, :open_first => false, :cache_key => :order_form} %>
+        <%= render :partial => '/refinery/ironman/stockists/warehouses_javascript', :locals => {:auto_scroll => false, :open_first => true, :cache_key => :order_form} %>
       </div>
       <% end %>
 
-      <div<%= raw ' class="australian"' if not params[:stockist_query].present? %>>
-        <%= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
-      </div>
+      <!-- <div<%#= raw ' class="australian"' if not params[:stockist_query].present? %>>
+        <%#= render :partial => 'refinery/ironman/stockists/index', :locals => {:stockists_search_url => request.original_url} %>
+      </div> -->
 
       <div class="row stockists-buttons">
         <div class="col-sm-6 col-lg-offset-4 col-lg-4 print">
