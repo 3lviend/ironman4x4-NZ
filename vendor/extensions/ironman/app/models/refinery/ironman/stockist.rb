@@ -23,7 +23,8 @@ module Refinery
       scope :active, -> { where(visible: true) }
       scope :only_new_zealand, -> { where("country =? OR country = ?", 'New Zealand', "new zealand") }
       scope :show_on_contact, -> { where(show_on_contact: true) }
-
+      scope :head_office, -> { where(store_type: "Ironman 4x4 Branch") }
+      
       after_initialize do
         if self.new_record?
           self.visible = false if self.visible.nil?
