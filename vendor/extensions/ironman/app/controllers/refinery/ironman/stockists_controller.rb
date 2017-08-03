@@ -38,12 +38,12 @@ module Refinery
 
         if params[:stockist_query].present?
           stockist_query = params[:stockist_query]
-          countries = Stockist.active.pluck(:country).uniq
+          countries = Stockist.active.only_new_zealand.pluck(:country).uniq
 
           if not countries.any? { |country| stockist_query.downcase.include?(country.downcase) }
-            stockist_query = "#{stockist_query}, Australia"
+            stockist_query = "#{stockist_query}, New Zealand"
           end
-
+          
           @stockists = @stockists.near(stockist_query, 3185, :units => :km).first(12)
         else
           @stockists = @stockists.order('state ASC, name ASC').paginate(:page => params[:page], :per_page => 12)
