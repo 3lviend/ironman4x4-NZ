@@ -114,7 +114,7 @@ module Refinery
             email = get(:"order_notification_email")
           end
 
-          [email, 'taryn.bierman@ironman4x4.com', 'info@ironman4x4.com']
+          [email, 'info@ironman4x4.com']
         end
 
         def order_confirmation_from
