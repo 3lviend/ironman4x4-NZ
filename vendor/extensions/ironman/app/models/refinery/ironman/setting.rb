@@ -79,7 +79,7 @@ module Refinery
         end
 
         def order_confirmation_reply_to
-          find_or_set(:"order_confirmation_reply_to", '"Ironman 4x4" <no-reply@ironman4x4.com>', scoping: "orders")
+          find_or_set(:"order_confirmation_reply_to", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
         end
 
         def notification_recipients
@@ -114,15 +114,15 @@ module Refinery
             email = get(:"order_notification_email")
           end
 
-          [email, 'info@ironman4x4.com']
+          [email, 'enquiries@terraquip.co.nz']
         end
 
         def order_confirmation_from
-          find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.com>', scoping: "orders")
+          find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
         end
 
         def order_notification_from
-          find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.com>', scoping: "orders")
+          find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
         end
 
         def send_confirmation?
