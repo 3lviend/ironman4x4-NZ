@@ -238,7 +238,7 @@ $(document).on 'page:load ready', ->
   if not location?
     $.ajax
       #url: "//freegeoip.net/json/"
-      url: "//api.ipstack.com/186.116.207.169?access_key=adaec39cbe216f5806c8ac766e6a4c0f&output=json&legacy=1"
+      url: "//api.ipstack.com/check?access_key=adaec39cbe216f5806c8ac766e6a4c0f&output=json&legacy=1"
       type: "POST"
       dataType: "jsonp"
       success: (location) ->
