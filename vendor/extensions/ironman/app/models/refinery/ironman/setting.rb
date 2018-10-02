@@ -117,9 +117,9 @@ module Refinery
           [email, 'enquiries@terraquip.co.nz']
         end
 
-        def order_confirmation_from
-          find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
-        end
+        #def order_confirmation_from
+        #  find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
+        #end
 
         def order_notification_from
           find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
