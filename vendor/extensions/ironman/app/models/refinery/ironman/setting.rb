@@ -121,6 +121,10 @@ module Refinery
         #  find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
         #end
 
+        def order_notification_recipients
+          find_or_set(:"order_notification_recipients", 'enquiries@terraquip.co.nz', scoping: "orders")
+        end 
+        
         def order_notification_from
           find_or_set(:"order_confirmation_from", '"Ironman 4x4" <no-reply@ironman4x4.co.nz>', scoping: "orders")
         end
