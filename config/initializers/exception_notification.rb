@@ -19,7 +19,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     :email_prefix         => "[ERROR] ",
     :sender_address       => %{"Notifier" <noreply@ironman4x4-#{Rails.env}>},
-    :exception_recipients => "elvin.alvian.siagian@gmail.com" #ENV['ERROR_EMAIL'] # for now just send to this address
+    :exception_recipients => "derek@reformedridez.com" #ENV['ERROR_EMAIL'] # for now just send to this address
   }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.
