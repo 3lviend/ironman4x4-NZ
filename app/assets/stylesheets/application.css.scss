@@ -1029,6 +1029,11 @@ html.turbolinks-progress-bar::before {
 
 #layout-categories {
   background-color: $lighter-grey;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), #878b8d),
+url('/system/images/W1siZiIsIjIwMjAvMDQvMjgvMzhibXhod2JuMl9EU0MwMTkxM18xLmpwZyJdXQ/DSC01913-1.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media (max-width: $screen-xs-max) {
     display: none;
