@@ -1,13 +1,13 @@
-$green: #9EBB24;
+$green: #9dd82c;
 $white: #FFFFFF;
 $black: #000000;
 $dark-grey: #4D4D4D;
-$medium-grey: #808080;
+$medium-grey: #53565a;
 $light-grey: #B3B3B3;
 $lighter-grey: #E6E6E6;
 $lightest-grey: #F2F2F2;
 
-$medium-grey: #999999;
+$medium-grey: #53565a;
 $grey: #B3B3B3;
 
 $text-color: $dark-grey;
@@ -22,10 +22,10 @@ $border-radius-base: 0;
 $border-radius-small: 0;
 $border-radius-large: 0;
 
-$navbar-default-bg: $green;
-$navbar-default-border: $green;
+$navbar-default-bg: $medium-grey;
+$navbar-default-border: $medium-grey;
 $navbar-default-link-color: $white;
-$navbar-default-link-hover-color: $black;
+$navbar-default-link-hover-color: $green;
 $navbar-border-radius: 0;
 
 @import "bootstrap-sprockets";
