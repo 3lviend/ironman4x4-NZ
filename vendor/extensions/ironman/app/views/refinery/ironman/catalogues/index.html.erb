@@ -22,7 +22,7 @@
         <div class="buttons">
           <%= link_to t('.buttons.download_pdf'), catalogue.priced_resource.url, class: 'btn btn-primary btn-block priced' if catalogue.priced_resource.present? %>
           <%= link_to t('.buttons.download_pdf'), catalogue.unpriced_resource.url, class: 'btn btn-primary btn-block unpriced' if catalogue.unpriced_resource.present? %>
-          <%= link_to t('.buttons.view_online'), catalogue.unpriced_resource.url, target: "_blank", class: 'btn btn-primary btn-block' if catalogue.unpriced_resource.present? %>
+          <%= link_to t('.buttons.view_products_online'), catalogue.products_link, class: 'btn btn-primary btn-block' if catalogue.products_link.present? %>
         </div>
         <div class="description">
           <%= raw catalogue.description %>
